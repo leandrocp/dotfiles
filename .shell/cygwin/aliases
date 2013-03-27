@@ -1,0 +1,6 @@
+if [[ "$OSTYPE" == "cygwin" ]]; then
+
+alias v="gvim.bat"
+alias e="gvim.bat"
+
+fi

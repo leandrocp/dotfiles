@@ -1,0 +1,17 @@
+alias rm='rm -i'
+
+alias df='df -h'
+alias du='du -h'
+
+alias grep='grep --color'
+
+alias ls='ls -lh --color=tty'
+alias ll='ls -lah --color=tty'
+alias la='ls -A'
+alias l='ls -CF'
+
+alias ..='cd ..'
+alias ...='cd ../..'
+alias h='cd ~'
+
+alias cr='curl -i -H "Content-Type: application/json" -H "Accept: application/json"'

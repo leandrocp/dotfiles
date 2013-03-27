@@ -1,0 +1,7 @@
+# ZSH
+ZSH_THEME="gentoo"
+DISABLE_AUTO_UPDATE="true"
+plugins=(git rails3 rake rbenv)
+
+# GLOBAL
+

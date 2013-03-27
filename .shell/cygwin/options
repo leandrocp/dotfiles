@@ -1,0 +1,13 @@
+if [[ "$OSTYPE" == "cygwin" ]]; then
+
+if [ -z "$HTTP_PROXY" ]; then
+    echo "Enviroment variable HTTP_PROXY doesnt exist. See ~/.sensitive"
+fi
+
+# ZSH
+plugins=(svn)
+
+# GLOBAL
+export NO_PROXY=localhost,127.0.0.0/8,127.0.1.1,10.1.0.122
+
+fi
