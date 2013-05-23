@@ -21,6 +21,7 @@
   aa = add --all
   ca = commit --amend
   ci = commit -a
+  cm = !git commit -am @{-1}
   co = checkout
   cl = clone
   st = status

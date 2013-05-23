@@ -1,8 +1,8 @@
 ## Install
 
-    git clone https://github.com/leandrocp/dotfiles.git ~/.dotfiles
+    git clone git@github.com:leandrocp/dotfiles.git ~/.dotfiles
 
     cd ~/.dotfiles
 
-    ./bootstrap.sh
+    ./install.sh
 
