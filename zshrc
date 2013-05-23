@@ -20,9 +20,10 @@ source $HOME/.shell/cygwin/empro
 ZSH=$HOME/.oh-my-zsh
 source $ZSH/oh-my-zsh.sh
 
-# GO HOME
+# INIT
 if [[ "$OSTYPE" == "cygwin" ]]; then
   cd /cygdrive/c
 else
+  eval "$(rbenv init -)"
   cd $HOME
 fi

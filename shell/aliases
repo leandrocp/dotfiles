@@ -16,5 +16,9 @@ alias h='cd ~'
 
 alias e='mvim'
 alias g='git'
+alias b="bundle exec"
 
 alias cr='curl -i -H "Content-Type: application/json" -H "Accept: application/json"'
+alias yt="youtube-dl -w -c -f 22/18 -o '%(title)s.%(ext)s'"
+alias ss="rsync -Cravzph -e ssh --progress --exclude '*.part' /Users/leandrocp/data/videos/ server@192.168.0.111:/mnt/data/videos/"
+

@@ -1,7 +1,7 @@
 # ZSH
 ZSH_THEME="gentoo"
 DISABLE_AUTO_UPDATE="true"
-plugins=(git rails3 rake rbenv)
+plugins=(brew git ruby rails3 gem bundler rake rbenv cp heroku osx web-search)
 
 # GLOBAL
 EDITOR=mvim
