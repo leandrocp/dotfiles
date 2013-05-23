@@ -14,4 +14,7 @@ alias ..='cd ..'
 alias ...='cd ../..'
 alias h='cd ~'
 
+alias e='mvim'
+alias g='git'
+
 alias cr='curl -i -H "Content-Type: application/json" -H "Accept: application/json"'

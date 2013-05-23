@@ -1,0 +1,9 @@
+if [[ "$OSTYPE" == "cygwin" ]]; then
+
+  export USERID=user/pass@db
+  export HTTP_PROXY=http://user:pass@host:port
+  export HTTP_PROXYS=http://user:pass@host:port
+
+fi
+
+export FOO=bar
