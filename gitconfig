@@ -17,6 +17,10 @@
   ui = auto
 [push]
   default = upstream
+[branch]
+	autosetuprebase = always
+[branch "master"]
+	rebase = true
 [alias]
   aa = add --all
   ca = commit --amend
@@ -31,4 +35,5 @@
   push-branch = !git push -u origin
   pull-request = !hub pull-request
   rebase-origin = !git fetch origin && git rebase origin/master
-
+[branch "master"]
+	rebase = true
