@@ -7,8 +7,6 @@
   editor = $EDITOR
   excludesfile = ~/.gitignore
   autocrlf = input
-[merge]
-  ff = only
 [color]
   diff = auto
   status = auto
@@ -17,6 +15,10 @@
   ui = auto
 [push]
   default = upstream
+[pull]
+  rebase = true
+[merge]
+  summary = true
 [branch]
 	autosetuprebase = always
 [branch "master"]
@@ -29,11 +31,15 @@
   co = checkout
   cl = clone
   st = status
-  create-branch = !sh -c 'git push origin HEAD:refs/heads/$1 && git fetch origin && git branch --track $1 origin/$1 && cd . && git checkout $1' -
+  init-repo = checkout -b develop origin/develop
+  create-branch = !sh -c 'git update-develop && git push origin HEAD:refs/heads/$1 && git fetch origin && git branch --track $1 origin/$1 && cd . && git checkout $1' -
   delete-branch = !sh -c 'git push origin :refs/heads/$1 && git remote prune origin && git branch -D $1' -
-  push-branch = !git push -u origin
-  pull-request = !hub pull-request
-  rebase-master = !git fetch origin && git rebase origin/master
-  rebase-current = !git fetch origin && git rebase origin
-  squash = rebase -i
+  update-branch = pull --rebase
+  rebase-branch = pull --rebase origin develop
+  update-develop = !sh -c 'git checkout develop && git update-branch' -
+  list-branches = branch -a
+  squash = rebase -i @{u}
+  pull-request-branch = !sh -c 'hub pull-request -h origin:develop' -
+  pull-request-issue = !sh -c 'hub pull-request -h origin:develop -i $1' - 
+  pull-request-master = !sh -c 'git update-develop && hub pull-request -h origin:master' -
 
