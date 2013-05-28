@@ -14,8 +14,7 @@ alias ..='cd ..'
 alias ...='cd ../..'
 alias h='cd ~'
 
-alias e='mvim'
-alias v='vim'
+alias e='$EDITOR'
 alias g='git'
 alias b="bundle exec"
 

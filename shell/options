@@ -4,5 +4,6 @@ DISABLE_AUTO_UPDATE="true"
 plugins=(brew git ruby rails3 gem bundler rake rbenv cp heroku osx web-search)
 
 # GLOBAL
-EDITOR=mvim
+EDITOR=vim
+GIT_EDITOR=vim
 

@@ -4,7 +4,6 @@
 [github]
   user = leandrocp
 [core]
-  editor = $EDITOR
   excludesfile = ~/.gitignore
   autocrlf = input
 [color]
