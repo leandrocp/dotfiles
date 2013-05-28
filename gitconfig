@@ -30,6 +30,9 @@
   co = checkout
   cl = clone
   st = status
+  log = log -p
+  logd = log --graph --decorate --pretty=oneline --abbrev-commit
+  logda = log --graph --decorate --pretty=oneline --abbrev-commit --all
   init-repo = checkout -b develop origin/develop
   create-branch = !sh -c 'git update-develop && git push origin HEAD:refs/heads/$1 && git fetch origin && git branch --track $1 origin/$1 && cd . && git checkout $1' -
   delete-branch = !sh -c 'git push origin :refs/heads/$1 && git remote prune origin && git branch -D $1' -
