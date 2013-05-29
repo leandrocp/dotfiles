@@ -5,7 +5,6 @@ Icon
 ._*
 .Spotlight-V100
 .Trashes
-.*
 !.gitignore
 *~
 Thumbs.db
