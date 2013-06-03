@@ -3,7 +3,7 @@
 # https://github.com/thoughtbot/dotfiles/blob/master/install.sh
 
 if [[ ! -d ~/.oh-my-zsh ]]; then
-  echo "Hey! You're not running ZSH and OH-MY-ZSH. See: https://github.com/robbyrussell/oh-my-zsh"
+  echo "\033[0;33mHey! You're not running ZSH and OH-MY-ZSH.\033[0m See: https://github.com/robbyrussell/oh-my-zsh"
   exit
 fi
 

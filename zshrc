@@ -1,6 +1,6 @@
 # PRE CHECK
 if [[ ! -d ~/.oh-my-zsh ]]; then
-  echo "\033[0;33mYou do not have Oh My Zsh installed.\033[0m See https://github.com/robbyrussell/oh-my-zsh"
+  echo "\033[0;33mHey! You're not running ZSH and OH-MY-ZSH.\033[0m See: https://github.com/robbyrussell/oh-my-zsh"
   exit
 fi
 
