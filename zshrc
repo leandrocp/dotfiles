@@ -17,6 +17,7 @@ source $HOME/.shell/cygwin/path
 source $HOME/.shell/cygwin/empro
 
 # ZSH
+fpath=(/usr/local/share/zsh-completions $fpath)
 ZSH=$HOME/.oh-my-zsh
 source $ZSH/oh-my-zsh.sh
 
@@ -28,4 +29,5 @@ if [[ "$OSTYPE" == "cygwin" ]]; then
   cd /cygdrive/c
 else
   eval "$(rbenv init -)"
+  eval "$(hub alias -s)"
 fi
