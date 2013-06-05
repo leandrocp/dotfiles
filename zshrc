@@ -6,18 +6,15 @@ fi
 
 # SHELL
 source $HOME/.sensitive
-if [[ $OSTYPE == "cygwin" ]] ; then
-  source $HOME/.shell/cygwin/options
-  source $HOME/.shell/cygwin/aliases
-  source $HOME/.shell/cygwin/functions
-  source $HOME/.shell/cygwin/path
-  source $HOME/.shell/cygwin/empro
-else
-  source $HOME/.shell/options
-  source $HOME/.shell/aliases
-  source $HOME/.shell/functions
-  source $HOME/.shell/path
-fi
+source $HOME/.shell/options
+source $HOME/.shell/aliases
+source $HOME/.shell/functions
+source $HOME/.shell/path
+source $HOME/.shell/cygwin/options
+source $HOME/.shell/cygwin/aliases
+source $HOME/.shell/cygwin/functions
+source $HOME/.shell/cygwin/path
+source $HOME/.shell/cygwin/empro
 
 # ZSH
 fpath=(/usr/local/share/zsh-completions $fpath)
