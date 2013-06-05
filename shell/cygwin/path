@@ -12,7 +12,10 @@ export M2_HOME
 M2=$M2_HOME/bin
 export M2
 
-PATH=/cygdrive/c/EMPRO/Apps/cygwin/bin:/cygdrive/c/WINDOWS:$HOME/.bin:$RUBY_HOME/bin:$JAVA_HOME/bin:$M2:/cygdrive/c/EMPRO/Stacks/Java/play-2.1.0:/cygdrive/c/EMPRO/Apps/Git/bin:/cygdrive/c/EMPRO/Stacks/Python/Python26:/cygdrive/c/Oracle/ids10gR2/BIN:$PATH
+NODEJS_HOME=/cygdrive/c/EMPRO/Stacks/Javascript/nodejs
+export NODEJS_HOME
+
+PATH=/cygdrive/c/EMPRO/Apps/cygwin/bin:/cygdrive/c/WINDOWS:$HOME/.bin:$RUBY_HOME/bin:$JAVA_HOME/bin:$M2:/cygdrive/c/EMPRO/Stacks/Java/play-2.1.0:/cygdrive/c/EMPRO/Apps/Git/bin:/cygdrive/c/EMPRO/Stacks/Python/Python26:$NPM_HOME:/cygdrive/c/Oracle/ids10gR2/BIN:$PATH
 export PATH
 
 fi
