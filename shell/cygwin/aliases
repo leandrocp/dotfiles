@@ -12,5 +12,6 @@ alias ri='ri.bat'
 alias rspec='rspec.bat'
 alias cucumber='cucumber.bat'
 alias bundle='bundle.bat'
+alias heroku='heroku.bat'
 
 fi
