@@ -10,6 +10,7 @@ source $HOME/.shell/options
 source $HOME/.shell/aliases
 source $HOME/.shell/functions
 source $HOME/.shell/path
+source $HOME/.shell/completion
 source $HOME/.shell/cygwin/options
 source $HOME/.shell/cygwin/aliases
 source $HOME/.shell/cygwin/functions
@@ -24,10 +25,12 @@ source $ZSH/oh-my-zsh.sh
 # BASE16 COLORS
 source $HOME/.base16-tomorrow.dark.sh
 
+# SCRIPTS
+which rbenv > /dev/null && eval "$(rbenv init -)"
+which hub > /dev/null && eval "$(hub alias -s)"
+which vault > /dev/null && eval "$( vault --initpath )"
+
 # INIT
 if [[ "$OSTYPE" == "cygwin" ]]; then
   cd /cygdrive/c
-else
-  eval "$(rbenv init -)"
-  eval "$(hub alias -s)"
 fi
