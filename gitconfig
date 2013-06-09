@@ -4,6 +4,7 @@
 [github]
   user = leandrocp
 [core]
+  editor = vim
   excludesfile = ~/.gitignore
   autocrlf = input
 [color]
@@ -42,6 +43,6 @@
   list-branches = branch -a
   squash = rebase -i @{u}
   pull-request-branch = !sh -c 'hub pull-request -h origin:develop' -
-  pull-request-issue = !sh -c 'hub pull-request -h origin:develop -i $1' - 
+  pull-request-issue = !sh -c 'hub pull-request -h origin:develop -i $1' -
   pull-request-master = !sh -c 'git update-develop && hub pull-request -h origin:master' -
 

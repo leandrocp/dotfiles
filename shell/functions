@@ -3,4 +3,17 @@
 # Youtube channel rip
 yt-chanrip() { for i in $(curl -s http://gdata.youtube.com/feeds/api/users/"$1"/uploads | grep -Eo "watch\?v=[^[:space:]\"\'\\]{11}" | uniq); do youtube-dl --title --no-overwrites http://youtube.com/"$i"; done }
 
+mk() { mkdir -p "$1"; cd "$1" }
+
+google() {
+  local term="$@"
+  local url="http://www.google.com/search?q=${term// /+}"
+  open "$url"
+}
+
+googlebr() {
+  local term="$@"
+  local url="http://www.google.com.br/search?q=${term// /+}"
+  open "$url"
+}
 

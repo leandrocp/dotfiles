@@ -3,7 +3,8 @@ alias rm='rm -i'
 alias df='df -h'
 alias du='du -h'
 
-alias grep='grep --color'
+alias -g G='| grep -i --color'
+alias -g L='| less'
 
 alias ls='ls -lh --color=tty'
 alias ll='ls -lah --color=tty'
@@ -16,7 +17,8 @@ alias h='cd ~'
 
 alias e='$EDITOR'
 alias g='git'
-alias b="bundle exec"
+alias r='rails'
+alias b='bundle exec'
 
 alias cr='curl -i -H "Content-Type: application/json" -H "Accept: application/json"'
 alias yt="youtube-dl -w -c -f 22/18 -o '%(title)s.%(ext)s'"
