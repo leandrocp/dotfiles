@@ -19,4 +19,7 @@ alias r=r10
 
 function sps { echo exit | sqlplus -S $USERID @"$1" ; }
 
+# an ugly hack to not load Oracle Translation Hub at ZSH statup
+alias hub=''
+
 fi
