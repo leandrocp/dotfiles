@@ -13,5 +13,6 @@ alias rspec='rspec.bat'
 alias cucumber='cucumber.bat'
 alias bundle='bundle.bat'
 alias heroku='heroku.bat'
+alias compass='compass.bat'
 
 fi
