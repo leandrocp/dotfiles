@@ -13,8 +13,8 @@ alias l='ls -CF'
 
 alias ..='cd ..'
 alias ...='cd ../..'
-alias h='cd ~'
 
+alias s='google'
 alias e='$EDITOR'
 alias g='git'
 alias r='rails'

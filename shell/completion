@@ -7,6 +7,9 @@ _vault_complete() {
 }
 compctl -f -K _vault_complete vault
 
-# Code dir complete
+# Dir complete
 function c() { cd ~/code/$@; };
 compctl -/ -W ~/code c
+function h() { cd ~/$@; };
+compctl -/ -W ~/ h
+
