@@ -19,6 +19,7 @@
   rebase = true
 [merge]
   summary = true
+	tool = diffmerge
 [branch]
 	autosetuprebase = always
 [branch "master"]
@@ -26,6 +27,13 @@
 [grep]
 	extendRegexp = true
 	lineNumber = true
+[diff]
+	tool = diffmerge
+[difftool "diffmerge"]
+	cmd = diffmerge \"$LOCAL\" \"$REMOTE\"
+[mergetool "diffmerge"]
+	cmd = "diffmerge --merge --result=\"$MERGED\" \"$LOCAL\" \"$(if test -f \"$BASE\"; then echo \"$BASE\"; else echo \"$LOCAL\"; fi)\" \"$REMOTE\""
+	trustExitCode = true
 [alias]
   aa = !git add --all && git status -sb
   au = !git add -u && git status -sb
@@ -34,6 +42,7 @@
   co = checkout
   cl = clone
   st = status
+  e = difftool -y
   l = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
   ll = log --graph --decorate --pretty=oneline --abbrev-commit --all
 	g = grep --break --heading --line-number
