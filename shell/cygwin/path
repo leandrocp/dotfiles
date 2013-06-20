@@ -1,6 +1,6 @@
 if [[ "$OSTYPE" == "cygwin" ]]; then
 
-RUBY_HOME=/cygdrive/c/EMPRO/Stacks/Ruby/Ruby193
+RUBY_HOME=/cygdrive/c/EMPRO/Stacks/Ruby/Ruby200
 export RUBY_HOME
 
 JAVA_HOME=/cygdrive/c/EMPRO/Stacks/Java/jdk1.6.0_37

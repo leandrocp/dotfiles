@@ -5,9 +5,16 @@ yt-chanrip() { for i in $(curl -s http://gdata.youtube.com/feeds/api/users/"$1"/
 
 mk() { mkdir -p "$1"; cd "$1" }
 
+# Google it
 google() {
   local term="$@"
   local url="http://www.google.com/search?q=${term// /+}"
   $BROWSER "$url"
 }
+
+# https://coderwall.com/p/r2g2rq
+todo() {
+  git commit --allow-empty -m "TODO: $*"
+}
+
 
