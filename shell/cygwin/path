@@ -18,7 +18,7 @@ export NODEJS_HOME
 HEROKU_HOME=/cygdrive/c/EMPRO/Apps/Heroku
 export HEROKU_HOME
 
-PATH=/cygdrive/c/EMPRO/Apps/cygwin/bin:/cygdrive/c/WINDOWS:$HOME/.bin:$RUBY_HOME/bin:$JAVA_HOME/bin:$M2:/cygdrive/c/EMPRO/Stacks/Java/play-2.1.0:/cygdrive/c/EMPRO/Apps/Git/bin:/cygdrive/c/EMPRO/Stacks/Python/Python26:$NPM_HOME:$HEROKU_HOME/bin:/cygdrive/c/Oracle/ids10gR2/BIN:$PATH
+PATH=/cygdrive/c/EMPRO/Apps/cygwin/bin:$HOME/.bin:./bin:/cygdrive/c/WINDOWS:$RUBY_HOME/bin:$JAVA_HOME/bin:$M2:/cygdrive/c/EMPRO/Stacks/Java/play-2.1.0:/cygdrive/c/EMPRO/Apps/Git/bin:/cygdrive/c/EMPRO/Stacks/Python/Python26:$NPM_HOME:$HEROKU_HOME/bin:/cygdrive/c/Oracle/ids10gR2/BIN:$PATH
 export PATH
 
 fi
