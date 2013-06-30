@@ -22,7 +22,7 @@ end
 
 begin
   require "awesome_print"
-  Pry.config.print = proc {|output, value| Pry::Helpers::BaseHelpers.stagger_output("=> #{value.ai}", output)}
+  AwesomePrint.pry!
 rescue LoadError => err
    warn "=> Unable to load awesome_print"
 end
@@ -30,9 +30,8 @@ end
 begin
   require 'hirb'
   Hirb.enable
-  old_print = Pry.config.print
   Pry.config.print = proc do |output, value|
-    Hirb::View.view_or_page_output(value) || old_print.call(output, value)
+    Hirb::View.view_or_page_output(value) || Pry::DEFAULT_PRINT.call(output, value)
   end
 rescue LoadError => err
   warn "=> Unable to load Hirb"
