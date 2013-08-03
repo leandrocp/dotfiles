@@ -153,6 +153,8 @@ class Destination
   end
 end
 
+$VERBOSE=nil
+
 photo = Photo.new(ARGV[0])
 dest = Destination.new(ARGV[1], photo)
 
