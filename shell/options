@@ -1,5 +1,5 @@
 # ZSH
-ZSH_THEME="gentoo"
+ZSH_THEME="leandrocp"
 DISABLE_AUTO_UPDATE="true"
 plugins=(brew git ruby rails3 gem bundler rake rbenv cp heroku osx)
 

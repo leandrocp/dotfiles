@@ -10,8 +10,8 @@ fi
 function install() {
   for name in *; do
     target="$HOME/.$name"
-    
-    if [ "$name" != 'install.sh' ] && [ "$name" != 'README.md' ]; then
+
+    if [ "$name" != 'install.sh' ] && [ "$name" != 'README.md' ] && [ "$name" != 'oh-my-zsh' ]; then
       rm -rf "$target"
       if [[ "$OSTYPE" == "cygwin" ]]; then
         echo "cp -R "$PWD/$name" "$target""
@@ -22,6 +22,8 @@ function install() {
       fi
     fi
   done
+
+  cp -R oh-my-zsh/ ~/.oh-my-zsh/
 }
 
 read -p "This action will replace all target files. Are you sure? (y/n) " -n 1
