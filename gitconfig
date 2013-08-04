@@ -46,6 +46,7 @@
   l = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
   ll = log --graph --decorate --pretty=oneline --abbrev-commit --all
 	g = grep --break --heading --line-number
+  decrypt = !sh -c 'gitcrypt init && git reset --hard HEAD'
   create-develop-branch = !sh -c 'git push origin HEAD:refs/heads/develop && git fetch origin && git branch --track develop origin/develop && cd . && git checkout develop' -
   create-branch = !sh -c 'git update-develop && git push origin HEAD:refs/heads/$1 && git fetch origin && git branch --track $1 origin/$1 && cd . && git checkout $1' -
   delete-branch = !sh -c 'git push origin :refs/heads/$1 && git remote prune origin && git branch -D $1' -

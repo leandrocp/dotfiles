@@ -23,6 +23,8 @@ function install() {
     fi
   done
 
+  touch ~/.sensitive
+
   mkdir -p ~/.oh-my-zsh/custom/themes/
   cp oh-my-zsh/custom/themes/leandrocp.zsh-theme ~/.oh-my-zsh/custom/themes/leandrocp.zsh-theme
 }

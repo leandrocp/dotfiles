@@ -4,6 +4,13 @@ export JAVA_HOME=$(/usr/libexec/java_home)
 
 export ANDROID_SDK_ROOT=/usr/local/opt/android-sdk
 
-export PATH=$HOME/.bin:./bin:$HOME/.rbenv/bin:/usr/local/bin:/usr/local/share/npm/bin:/usr/local/lib:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin:/opt/X11/bin:/usr/local/git/bin:/usr/X11/bin:/opt/local/bin
+export PATH=$HOME/.bin:./bin:./.bundle/bin:$RBENV_ROOT/bin:$RBENV_ROOT/shims:/usr/local/bin:/usr/local/share/npm/bin:/usr/local/lib:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin:/opt/X11/bin:/usr/local/git/bin:/usr/X11/bin:/opt/local/bin
 
 fi
+
+if [[ "$OSTYPE" == "linux-gnu" ]]; then
+
+export PATH=$HOME/.bin:./bin:./.bundle/bin:$RBENV_ROOT/bin:$RBENV_ROOT/shims:$PATH
+
+fi
+
