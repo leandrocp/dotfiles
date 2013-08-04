@@ -23,7 +23,8 @@ function install() {
     fi
   done
 
-  cp -R oh-my-zsh/ ~/.oh-my-zsh/
+  mkdir -p ~/.oh-my-zsh/custom/themes/
+  cp oh-my-zsh/custom/themes/leandrocp.zsh-theme ~/.oh-my-zsh/custom/themes/leandrocp.zsh-theme
 }
 
 read -p "This action will replace all target files. Are you sure? (y/n) " -n 1
