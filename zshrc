@@ -21,9 +21,8 @@ ZSH=$HOME/.oh-my-zsh
 source $ZSH/oh-my-zsh.sh
 
 # SCRIPTS
-#which rbenv > /dev/null && eval "$(rbenv init -)"
-eval "$(rbenv init -)"
-which hub > /dev/null && eval "$(hub alias -s)"
+which rbenv > /dev/null && eval "$(rbenv init -)"
+which hub   > /dev/null && eval "$(hub alias -s)"
 which vault > /dev/null && eval "$( vault --initpath )"
 
 # PATH
