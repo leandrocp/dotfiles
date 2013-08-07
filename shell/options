@@ -7,3 +7,9 @@ plugins=(brew git github ruby rails3 rails4 gem bundler rake rbenv capistrano cp
 EDITOR="vim"
 GIT_EDITOR="vim"
 
+# Ruby Tuning
+export RUBY_HEAP_MIN_SLOTS=2000000
+export RUBY_HEAP_SLOTS_INCREMENT=500000
+export RUBY_HEAP_SLOTS_GROWTH_FACTOR=1
+export RUBY_GC_MALLOC_LIMIT=70000000
+export RUBY_HEAP_FREE_MIN=100000
