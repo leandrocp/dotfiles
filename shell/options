@@ -1,7 +1,7 @@
 # ZSH
 ZSH_THEME="leandrocp"
 DISABLE_AUTO_UPDATE="true"
-plugins=(brew git github ruby rails3 rails4 gem bundler rake rbenv capistrano cp heroku osx)
+plugins=(brew git github ruby rbenv cp heroku osx)
 
 # GLOBAL
 EDITOR="vim"
