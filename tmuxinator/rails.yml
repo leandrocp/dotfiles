@@ -1,0 +1,13 @@
+project_name: rails
+project_root: .
+pre_window: rbenv shell 2.0.0-p195
+windows:
+  - editor: vim
+  - guard: guard
+  - console: rails console
+  - logs:
+      layout: main-vertical
+      panes:
+        - tail -f log/development.log
+        - tail -f log/test.log
+
