@@ -33,7 +33,11 @@ source $HOME/.shell/cygwin/path
 # TERMINAL THEME
 source $HOME/.base16-tomorrow.dark.sh
 
+# AFTER LOADING
+source $HOME/.shell/zsh_after_load
+
 # INIT
 if [[ "$OSTYPE" == "cygwin" ]]; then
   cd /cygdrive/c
 fi
+
