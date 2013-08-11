@@ -1,11 +1,12 @@
 # ZSH
 ZSH_THEME="leandrocp"
 DISABLE_AUTO_UPDATE="true"
-plugins=(brew git github ruby rbenv cp heroku osx zsh-syntax-highlighting)
+plugins=(brew git github ruby rbenv cp heroku osx autojump zsh-syntax-highlighting)
+# hey! zsh-syntax-highlighting must be the last declared plugin.
 
 # GLOBAL
-EDITOR="vim"
-GIT_EDITOR="vim"
+export EDITOR="vim"
+export GIT_EDITOR="vim"
 
 # Ruby Tuning
 export RUBY_HEAP_MIN_SLOTS=2000000
