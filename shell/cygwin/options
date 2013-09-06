@@ -9,8 +9,8 @@ plugins=(svn)
 
 # GLOBAL
 export EDITOR="gvim.bat"
-export GIT_EDITOR="gvim.bat -f"
-export SVN_EDITOR="gvim.bat -f"
+export GIT_EDITOR="vim.bat"
+export SVN_EDITOR="vim.bat"
 export NO_PROXY=localhost,127.0.0.0/8,127.0.1.1,10.1.0.122
 export BROWSER="/cygdrive/c/Documents and Settings/lcpereira/Configurações locais/Dados de aplicativos/Google/Chrome/Application/chrome.exe"
 
