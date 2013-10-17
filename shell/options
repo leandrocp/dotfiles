@@ -1,8 +1,12 @@
 # ZSH
 ZSH_THEME="leandrocp"
 DISABLE_AUTO_UPDATE="true"
-plugins=(brew git github ruby rbenv cp heroku osx autojump zsh-syntax-highlighting)
+plugins=(brew git github ruby rbenv cp heroku osx autojump tmux tmuxinator zsh-syntax-highlighting)
 # hey! zsh-syntax-highlighting must be the last declared plugin.
+
+# LOCALE
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
 
 # GLOBAL
 export EDITOR="vim"
