@@ -1,0 +1,52 @@
+#!/usr/bin/env bash
+
+# https://discussions.apple.com/docs/DOC-5001
+defaults write NSGlobalDomain NSWindowResizeTime .001
+defaults write com.apple.finder _FXShowPosixPathInTitle -bool true
+defaults write com.apple.dock workspaces-swoosh-animation-off -bool YES
+defaults write com.apple.finder DisableAllAnimations -bool true
+defaults write com.apple.finder IKImageFlowShowFrameRate 1
+defaults write com.apple.Dock autohide-delay -float 0
+
+# http://www.defaults-write.com/
+defaults write com.apple.dock launchanim -bool false
+defaults write com.apple.dock no-bouncing -bool TRUE
+defaults write com.apple.Finder FXPreferredViewStyle Nlsv
+
+# https://github.com/mathiasbynens/dotfiles/blob/master/.osx
+defaults write NSGlobalDomain AppleEnableMenuBarTransparency -bool false
+defaults write NSGlobalDomain NSAutomaticWindowAnimationsEnabled -bool false
+defaults write NSGlobalDomain NSDisableAutomaticTermination -bool true
+defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true
+defaults -currentHost write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
+defaults write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
+defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadCornerSecondaryClick -int 2
+defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadRightClick -bool true
+defaults -currentHost write NSGlobalDomain com.apple.trackpad.trackpadCornerClickBehavior -int 1
+defaults -currentHost write NSGlobalDomain com.apple.trackpad.enableSecondaryClick -bool true
+defaults write com.apple.BezelServices kDim -bool true
+defaults write com.apple.BezelServices kDimTime -int 300
+defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
+defaults write com.apple.finder ShowExternalHardDrivesOnDesktop -bool true
+defaults write com.apple.finder ShowHardDrivesOnDesktop -bool true
+defaults write com.apple.finder ShowMountedServersOnDesktop -bool true
+defaults write com.apple.finder ShowRemovableMediaOnDesktop -bool true
+defaults write com.apple.finder AppleShowAllFiles -bool false
+defaults write NSGlobalDomain AppleShowAllExtensions -bool true
+defaults write com.apple.finder ShowStatusBar -bool true
+defaults write com.apple.finder ShowPathbar -bool true
+defaults write com.apple.finder QLEnableTextSelection -bool true
+defaults write com.apple.finder FXEnableExtensionChangeWarning -bool false
+defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
+defaults write com.apple.frameworks.diskimages auto-open-ro-root -bool true
+defaults write com.apple.frameworks.diskimages auto-open-rw-root -bool true
+defaults write com.apple.finder OpenWindowForNewRemovableDisk -bool true
+chflags nohidden ~/Library
+
+
+for app in "Address Book" "Calendar" "Contacts" "Dashboard" "Dock" "Finder" \
+  "Mail" "Safari" "SizeUp" "SystemUIServer" "Terminal" "Transmission" \
+  "Twitter" "iCal" "iTunes"; do
+    killall "$app" > /dev/null 2>&1
+done
+echo "Done. Note that some of these changes require a logout/restart to take effect."
