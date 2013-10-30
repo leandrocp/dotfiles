@@ -43,6 +43,7 @@
   cl = clone
   st = status
   e = difftool -y
+  df = diff --ignore-space-at-eol -b -w --ignore-blank-lines
   l = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
   ll = log --graph --decorate --pretty=oneline --abbrev-commit --all
 	g = grep --break --heading --line-number
