@@ -28,8 +28,8 @@ function install() {
   cp -R ~/.dotfiles/oh-my-zsh/custom ~/.oh-my-zsh/
 }
 
-read -p "This action will replace all target files. Are you sure? (y/n) " -n 1
-echo
-if [[ $REPLY =~ ^[Yy]$ ]]; then
-  install
-fi
+#read -p "This action will replace all target files. Are you sure? (y/n) " -n 1
+#echo
+#if [[ $REPLY =~ ^[Yy]$ ]]; then
+install
+#fi
