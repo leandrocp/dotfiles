@@ -25,7 +25,7 @@ function install() {
 
   touch ~/.sensitive
 
-  cp -R oh-my-zsh/custom ~/.oh-my-zsh/
+  cp -R ~/.dotfiles/oh-my-zsh/custom ~/.oh-my-zsh/
 }
 
 read -p "This action will replace all target files. Are you sure? (y/n) " -n 1
