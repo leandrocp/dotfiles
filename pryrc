@@ -20,6 +20,12 @@ if defined?(Rails)
   TOPLEVEL_BINDING.eval("self").extend ::Rails::ConsoleMethods
 end
 
+# Debug
+Pry.commands.alias_command 'c', 'continue'
+Pry.commands.alias_command 's', 'step'
+Pry.commands.alias_command 'n', 'next'
+Pry.commands.alias_command 'f', 'finish'
+
 begin
   require "awesome_print"
   AwesomePrint.pry!
