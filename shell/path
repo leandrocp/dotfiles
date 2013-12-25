@@ -1,4 +1,4 @@
-if [[ "$OSTYPE" == "darwin10.0" ]]; then
+if [[ "$OSTYPE" == "darwin13.0" ]]; then
 
 export JAVA_HOME=$(/usr/libexec/java_home)
 
