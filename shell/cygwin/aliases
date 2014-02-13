@@ -14,5 +14,9 @@ alias cucumber='cucumber.bat'
 alias bundle='bundle.bat'
 alias heroku='heroku.bat'
 alias compass='compass.bat'
+alias elixir='elixir.bat'
+alias elixirc='elixirc.bat'
+alias iex='iex.bat'
+alias mix='mix.bat'
 
 fi

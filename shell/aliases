@@ -6,6 +6,8 @@ alias du='du -h'
 alias -g G='| grep -i --color'
 alias -g L='| less'
 
+alias ccat='pygmentize -O style=monokai -f terminal -g'
+
 alias ls='ls -lh --color=tty'
 alias ll='ls -lah --color=tty'
 alias la='ls -A'
