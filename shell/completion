@@ -1,15 +1,15 @@
-# Vault
-_vault_complete() {
-  local word completions
-  word="$1"
-  completions="$(vault --cmplt "${word}")"
-  reply=( "${(ps:\n:)completions}" )
-}
-compctl -f -K _vault_complete vault
-
 # Dir complete
 function c() { cd ~/code/$@; };
 compctl -/ -W ~/code c
 function h() { cd ~/$@; };
 compctl -/ -W ~/ h
 
+# ZSH & Bash Completion
+autoload -U compinit && compinit
+autoload -U bashcompinit && bashcompinit
+source /usr/local/etc/bash_completion.d/ag.bashcomp.sh
+source /usr/local/etc/bash_completion.d/git-completion.bash
+source /usr/local/etc/bash_completion.d/git-prompt.sh
+source /usr/local/etc/bash_completion.d/git-prompt.sh
+source /usr/local/etc/bash_completion.d/npm
+source /usr/local/etc/bash_completion.d/tmux
