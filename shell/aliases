@@ -22,7 +22,7 @@ alias g='git'
 alias r='rails'
 alias b='bundle exec'
 
-alias sshagent="eval `ssh-agent`; ssh-add $HOME/.ssh/id_rsa"
+#alias sshagent="eval `ssh-agent`; ssh-add $HOME/.ssh/id_rsa"
 
 alias cr='curl -i -H "Content-Type: application/json" -H "Accept: application/json"'
 alias yt="youtube-dl -w -c -f 22/18 -o '%(title)s.%(ext)s'"

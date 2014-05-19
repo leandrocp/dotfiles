@@ -1,5 +1,5 @@
 # ZSH
-ZSH_THEME="leandrocp"
+ZSH_THEME="gentoo"
 DISABLE_AUTO_UPDATE="true"
 plugins=(brew git github ruby rbenv cp heroku osx autojump tmux tmuxinator zsh-syntax-highlighting)
 # hey! zsh-syntax-highlighting must be the last declared plugin.

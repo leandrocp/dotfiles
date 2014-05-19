@@ -16,8 +16,8 @@ source $HOME/.shell/cygwin/functions
 source $HOME/.shell/cygwin/empro
 
 # ZSH
-fpath=(/usr/local/share/zsh-completions $fpath)
-ZSH=$HOME/.oh-my-zsh
+#fpath=(/usr/local/share/zsh-completions $fpath)
+export ZSH=$HOME/.oh-my-zsh
 source $ZSH/oh-my-zsh.sh
 
 # SCRIPTS
@@ -30,13 +30,5 @@ source $HOME/.shell/path
 source $HOME/.shell/cygwin/path
 
 # TERMINAL THEME
-source $HOME/.base16-tomorrow.dark.sh
-
-# AFTER LOADING
-source $HOME/.shell/zsh_after_load
-
-# INIT
-if [[ "$OSTYPE" == "cygwin" ]]; then
-  cd /cygdrive/c
-fi
+#source $HOME/.base16-tomorrow.dark.sh
 

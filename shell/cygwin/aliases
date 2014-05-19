@@ -1,6 +1,6 @@
 if [[ "$OSTYPE" == "cygwin" ]]; then
 
-alias e="gvim.bat"
+alias e="vim"
 
 # http://stackoverflow.com/questions/3831131/rubygems-cygwin-posix-path-not-found-by-ruby-exe
 alias gem='gem.bat'

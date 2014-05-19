@@ -5,12 +5,10 @@ if [ -z "$HTTP_PROXY" ]; then
 fi
 
 # ZSH
-plugins=(svn)
+plugins=(cp autojump svn zsh-syntax-highlighting)
 
 # GLOBAL
-export EDITOR="gvim.bat"
-export GIT_EDITOR="vim.bat"
-export SVN_EDITOR="vim.bat"
+export SVN_EDITOR="vim"
 export NO_PROXY=localhost,127.0.0.0/8,127.0.1.1,10.1.0.122
 export BROWSER="/cygdrive/c/Documents and Settings/lcpereira/Configurações locais/Dados de aplicativos/Google/Chrome/Application/chrome.exe"
 

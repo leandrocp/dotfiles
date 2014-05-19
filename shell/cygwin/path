@@ -1,33 +1,12 @@
 if [[ "$OSTYPE" == "cygwin" ]]; then
 
-RUBY_HOME=/cygdrive/c/EMPRO/Stacks/Ruby/Ruby200
-export RUBY_HOME
-
-JAVA_HOME=/cygdrive/c/EMPRO/Stacks/Java/jdk1.6.0_37
+JAVA_HOME=/cygdrive/c/EMPRO/Stacks/Java/jdk7
 export JAVA_HOME
 
-M2_HOME=/cygdrive/c/EMPRO/Stacks/Java/apache-maven-3.0.5
+M2_HOME=/cygdrive/c/EMPRO/Stacks/Java/apache-maven-3.2.1
 export M2_HOME
 
-M2=$M2_HOME/bin
-export M2
-
-NODEJS_HOME=/cygdrive/c/EMPRO/Stacks/Javascript/nodejs
-export NODEJS_HOME
-
-HEROKU_HOME=/cygdrive/c/EMPRO/Apps/Heroku
-export HEROKU_HOME
-
-EDITORCONFIG_HOME=/cygdrive/c/EMPRO/Apps/editorconfig
-export EDITORCONFIG_HOME
-
-ERLANG_HOME=/cygdrive/c/EMPRO/Stacks/Elixir/erl5.10.4
-export ERLANG_HOME
-
-ELIXIR_HOME=/cygdrive/c/EMPRO/Stacks/Elixir/elixir0.12.2
-export ELIXIR_HOME
-
-PATH=/cygdrive/c/EMPRO/Apps/cygwin/bin:$HOME/.bin:./bin:/cygdrive/c/WINDOWS:/cygdrive/c/EMPRO/Apps/ctags58:$RUBY_HOME/bin:$JAVA_HOME/bin:$M2:/cygdrive/c/EMPRO/Stacks/Java/play-2.1.0:/cygdrive/c/EMPRO/Apps/Git/bin:/cygdrive/c/EMPRO/Stacks/Python/Python26:$NPM_HOME:$HEROKU_HOME/bin:$EDITORCONFIG_HOME/bin:/cygdrive/c/Oracle/ids10gR2/BIN:$ERLANG_HOME/bin:$ELIXIR_HOME/bin:$PATH
+PATH=$HOME/.bin:./bin:/bin:/usr/bin:/cygdrive/c/WINDOWS:$JAVA_HOME/bin:$M2/bin:/cygdrive/c/Oracle/ids10gR2/BIN:$PATH
 export PATH
 
 fi

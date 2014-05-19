@@ -7,9 +7,9 @@ compctl -/ -W ~/ h
 # ZSH & Bash Completion
 autoload -U compinit && compinit
 autoload -U bashcompinit && bashcompinit
-source /usr/local/etc/bash_completion.d/ag.bashcomp.sh
-source /usr/local/etc/bash_completion.d/git-completion.bash
-source /usr/local/etc/bash_completion.d/git-prompt.sh
-source /usr/local/etc/bash_completion.d/git-prompt.sh
-source /usr/local/etc/bash_completion.d/npm
-source /usr/local/etc/bash_completion.d/tmux
+#source /usr/local/etc/bash_completion.d/ag.bashcomp.sh
+#source /usr/local/etc/bash_completion.d/git-completion.bash
+#source /usr/local/etc/bash_completion.d/git-prompt.sh
+#source /usr/local/etc/bash_completion.d/git-prompt.sh
+#source /usr/local/etc/bash_completion.d/npm
+#source /usr/local/etc/bash_completion.d/tmux
