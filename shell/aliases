@@ -21,6 +21,7 @@ alias e='$EDITOR'
 alias g='git'
 alias r='rails'
 alias b='bundle exec'
+alias em='ember'
 
 #alias sshagent="eval `ssh-agent`; ssh-add $HOME/.ssh/id_rsa"
 
