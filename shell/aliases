@@ -20,6 +20,7 @@ alias s='google'
 alias e='$EDITOR'
 alias g='git'
 alias r='rails'
+alias ra='rails-api'
 alias b='bundle exec'
 alias em='ember'
 
