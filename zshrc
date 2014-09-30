@@ -20,9 +20,12 @@ source $HOME/.shell/cygwin/empro
 export ZSH=$HOME/.oh-my-zsh
 source $ZSH/oh-my-zsh.sh
 
-# SCRIPTS
+# MANAGERS
 which rbenv > /dev/null && eval "$(rbenv init -)"
 which hub   > /dev/null && eval "$(hub alias -s)"
+
+export NVM_DIR="/home/leandrocp/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
 
 # PATH
 # It must be loaded after rbenv
@@ -32,5 +35,6 @@ source $HOME/.shell/cygwin/path
 # TERMINAL THEME
 # https://github.com/chriskempson/base16-shell
 BASE16_SCHEME="default"
-BASE16_SHELL="$HOME/.config/base16-shell/base16-$BASE16_SCHEME.dark.sh"
+BASE16_SHELL="$HOME/.colors/base16-$BASE16_SCHEME.dark.sh"
 [[ -s $BASE16_SHELL  ]] && . $BASE16_SHELL
+
