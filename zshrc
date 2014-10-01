@@ -24,7 +24,7 @@ source $ZSH/oh-my-zsh.sh
 which rbenv > /dev/null && eval "$(rbenv init -)"
 which hub   > /dev/null && eval "$(hub alias -s)"
 
-export NVM_DIR="/home/leandrocp/.nvm"
+export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
 
 # PATH
