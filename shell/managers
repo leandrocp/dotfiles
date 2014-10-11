@@ -1,0 +1,17 @@
+which rbenv > /dev/null && eval "$(rbenv init -)"
+which hub   > /dev/null && eval "$(hub alias -s)"
+
+if [[ "$OSTYPE" == "darwin13.0" ]]; then
+
+export NVM_DIR=~/.nvm
+source $(brew --prefix nvm)/nvm.sh
+
+fi
+
+if [[ "$OSTYPE" == "linux-gnu" ]]; then
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
+
+fi
+
