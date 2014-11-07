@@ -20,7 +20,6 @@ alias s='google'
 alias e='$EDITOR'
 alias g='git'
 alias r='rails'
-alias ra='rails-api'
 alias b='bundle exec'
 alias em='ember'
 
@@ -33,5 +32,11 @@ alias ss="rsync -Cravzph -e ssh --progress --exclude '*.part' /Users/leandrocp/d
 if [[ "$OSTYPE" == "darwin13.0" ]]; then
 
 alias cask='brew cask'
+
+fi
+
+if [[ "$OSTYPE" == "linux-gnu" ]]; then
+
+alias apt='aptitude'
 
 fi
