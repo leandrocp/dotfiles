@@ -37,6 +37,6 @@ fi
 
 if [[ "$OSTYPE" == "linux-gnu" ]]; then
 
-alias apt='aptitude'
+alias apt='sudo aptitude'
 
 fi
