@@ -1,6 +1,8 @@
 ## Install
 
 ```
+git clone https://github.com/yonchu/zsh-vcs-prompt.git ~/.zsh/zsh-vcs-prompt
+
 git clone git@github.com:leandrocp/dotfiles.git ~/.dotfiles
 
 cd ~/.dotfiles
