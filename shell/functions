@@ -17,4 +17,7 @@ todo() {
   git commit --allow-empty -m "TODO: $*"
 }
 
-
+# http://zalas.eu/viewing-svn-diff-result-in-colors/
+svndiff() {
+  svn diff "${@}" | colordiff
+}
