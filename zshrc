@@ -34,9 +34,4 @@ BASE16_SCHEME="default"
 BASE16_SHELL="$HOME/.colors/base16-$BASE16_SCHEME.dark.sh"
 [[ -s $BASE16_SHELL ]] && . $BASE16_SHELL
 
-# VCS Prompt
-source ~/.zsh/zsh-vcs-prompt/zshrc.sh
-ZSH_VCS_PROMPT_ENABLE_CACHING='true'
-RPROMPT='$(vcs_super_info)'
-
 export TERM=xterm-256color
