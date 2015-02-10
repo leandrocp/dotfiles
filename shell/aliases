@@ -15,11 +15,13 @@ alias l='ls -CF'
 
 alias ..='cd ..'
 alias ...='cd ../..'
+alias ....='cd ../../..'
 
-alias s='google'
 alias e='$EDITOR'
+alias s='svn'
 alias g='git'
 alias r='rails'
+alias rk='rake'
 alias b='bundle exec'
 alias em='ember'
 

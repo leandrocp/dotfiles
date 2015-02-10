@@ -1,15 +1,20 @@
 # ZSH BUNDLES
 source $HOME/.antigen.zsh
 antigen use oh-my-zsh
-antigen bundle osx
-antigen bundle cp
-antigen bundle autojump
-antigen bundle tmux
-antigen bundle ruby
-antigen bundle rbenv
-antigen bundle git
-antigen bundle brew
-antigen bundle zsh-users/zsh-syntax-highlighting
+antigen bundle <<EOBUNDLES
+  osx
+  cp
+  extract
+  autojump
+  tmux
+  ruby
+  rbenv
+  git
+  svn
+  brew
+  zsh-users/zsh-completions src
+  zsh-users/zsh-syntax-highlighting
+EOBUNDLES
 antigen apply
 
 # SHELL CONFIG
