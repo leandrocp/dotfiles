@@ -1,8 +1,16 @@
-# IS OH-MY-ZSH INSTALLED ?
-if [[ ! -d ~/.oh-my-zsh ]]; then
-  echo "\033[0;33mHey! You're not running ZSH and OH-MY-ZSH.\033[0m See: https://github.com/robbyrussell/oh-my-zsh"
-  exit
-fi
+# ZSH BUNDLES
+source $HOME/.antigen.zsh
+antigen use oh-my-zsh
+antigen bundle osx
+antigen bundle cp
+antigen bundle autojump
+antigen bundle tmux
+antigen bundle ruby
+antigen bundle rbenv
+antigen bundle git
+antigen bundle brew
+antigen bundle zsh-users/zsh-syntax-highlighting
+antigen apply
 
 # SHELL CONFIG
 source $HOME/.sensitive
@@ -33,5 +41,6 @@ source $HOME/.shell/cygwin/path
 BASE16_SCHEME="tomorrow"
 BASE16_SHELL="$HOME/.config/base16-shell/base16-$BASE16_SCHEME.dark.sh"
 source $BASE16_SHELL
+
 
 export TERM=xterm-256color
