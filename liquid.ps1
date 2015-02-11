@@ -31,9 +31,7 @@
 LP_PS1="${LP_PS1_PREFIX}${LP_TIME}${LP_JOBS}"
 
 # add user, host and permissions colon
-LP_PS1="${LP_PS1}${LP_USER}${LP_HOST}"
-
-LP_PS1="${LP_PS1} ${LP_PWD}${LP_PROXY}"
+LP_PS1="${LP_PS1}${LP_USER}${LP_HOST} ${LP_PERM}${LP_PWD}"
 
 # Add VCS infos
 # If root, the info has not been collected unless LP_ENABLE_VCS_ROOT
