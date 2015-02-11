@@ -1,5 +1,4 @@
 # ZSH
-ZSH_THEME="leandrocp"
 DISABLE_AUTO_UPDATE="true"
 
 # SHELL

@@ -1,19 +1,24 @@
 # ZSH BUNDLES
 source $HOME/.antigen.zsh
 antigen use oh-my-zsh
-antigen bundle <<EOBUNDLES
+antigen bundles <<EOBUNDLES
   osx
   cp
   extract
   autojump
   tmux
   ruby
+  gem
   rbenv
+  bundler
+  npm
   git
   svn
   brew
+  aws
   zsh-users/zsh-completions src
   zsh-users/zsh-syntax-highlighting
+  nojhan/liquidprompt
 EOBUNDLES
 antigen apply
 
