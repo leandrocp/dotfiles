@@ -1,23 +1,29 @@
+# GLOBAL
+export NVM_DIR="$HOME/.nvm"
+export RBENV_ROOT="$HOME/.rbenv"
+
+# MAC
 if [[ "$OSTYPE" == "darwin13.0" ]]; then
 
-export JAVA_HOME=$(/usr/libexec/java_home)
+  export JAVA_HOME=$(/usr/libexec/java_home)
 
-export ANDROID_SDK=/usr/local/Cellar/android-sdk/22.3
-export ANDROID_NDK=/usr/local/Cellar/android-ndk/r9c
+  export ANDROID_SDK=/usr/local/Cellar/android-sdk/22.3
+  export ANDROID_NDK=/usr/local/Cellar/android-ndk/r9c
 
-export PYTHONPATH=`brew --prefix`/lib/python2.7/site-packages
+  export PYTHONPATH=`brew --prefix`/lib/python2.7/site-packages
 
-export JBOSS_HOME=/usr/local/opt/wildfly-as/libexec
+  export JBOSS_HOME=/usr/local/opt/wildfly-as/libexec
 
-export PATH=$HOME/.bin:./bin:./.bundle/bin:$RBENV_ROOT/bin:$RBENV_ROOT/shims:/usr/local/bin:/usr/local/share/npm/bin:/usr/local/lib:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin:/opt/X11/bin:/usr/local/git/bin:/usr/X11/bin:/opt/local/bin:$ANDROID_SDK/bin:$ANDROID_NDK/bin:${JBOSS_HOME}/bin:/Applications/Postgres.app/Contents/Versions/9.3/bin
+  export PATH=$RBENV_ROOT/bin:$HOME/.bin:./bin:./.bundle/bin:/usr/local/bin:/usr/local/share/npm/bin:/usr/local/lib:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin:/opt/X11/bin:/usr/X11/bin:/opt/local/bin:$ANDROID_SDK/bin:$ANDROID_NDK/bin:${JBOSS_HOME}/bin
 
 fi
 
+# LINUX
 if [[ "$OSTYPE" == "linux-gnu" ]]; then
 
-export M2_HOME=/opt/apache-maven-3.2.3
+  export M2_HOME=/opt/apache-maven-3.2.3
 
-export PATH=$HOME/.bin:./bin:./.bundle/bin:$RBENV_ROOT/bin:$RBENV_ROOT/shims:/usr/local/heroku/bin:$M2_HOME/bin:$PATH
+  export PATH=$RBENV_ROOT/bin:$HOME/.bin:./bin:./.bundle/bin:/usr/local/heroku/bin:$M2_HOME/bin:$PATH
 
 fi
 
