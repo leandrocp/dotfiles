@@ -25,7 +25,9 @@ if [[ "$OSTYPE" == "linux-gnu" ]]; then
 
   export M2_HOME=/opt/apache-maven-3.2.3
 
-  export PATH=$RBENV_ROOT/bin:$HOME/.bin:./bin:./.bundle/bin:/usr/local/heroku/bin:$M2_HOME/bin:$PATH
+  export ANDROID_HOME=/opt/android-sdk-linux
+
+  export PATH=$RBENV_ROOT/bin:$HOME/.bin:./bin:./.bundle/bin:/usr/local/heroku/bin:$M2_HOME/bin:$ANDROID_HOME/tools:$PATH
 
 fi
 
