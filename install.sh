@@ -2,11 +2,6 @@
 
 # https://github.com/thoughtbot/dotfiles/blob/master/install.sh
 
-if [[ ! -d ~/.oh-my-zsh ]]; then
-  echo "\033[0;33mHey! You're not running ZSH and OH-MY-ZSH.\033[0m See: https://github.com/robbyrussell/oh-my-zsh"
-  exit
-fi
-
 function install() {
   for name in *; do
     target="$HOME/.$name"
@@ -26,10 +21,20 @@ function install() {
   touch ~/.sensitive
 
   cp -R ~/.dotfiles/oh-my-zsh/custom ~/.oh-my-zsh/
+
+  git clone https://github.com/chriskempson/base16-shell.git ~/.config/base16-shell
+
+  git clone https://github.com/powerline/fonts.git ~/.powerline-fonts
+  bash ~/.powerline-fonts/install.sh
+
+  git clone https://github.com/sstephenson/rbenv.git ~/.rbenv
+  mkdir ~/.rbenv/plugins
+  git clone https://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build
+  git clone https://github.com/rkh/rbenv-update.git ~/.rbenv/plugins/rbenv-update
+
+  git clone https://github.com/creationix/nvm.git ~/.nvm
+
+  git clone https://github.com/gcuisinier/jenv.git ~/.jenv
 }
 
-#read -p "This action will replace all target files. Are you sure? (y/n) " -n 1
-#echo
-#if [[ $REPLY =~ ^[Yy]$ ]]; then
 install
-#fi

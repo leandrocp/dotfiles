@@ -38,17 +38,9 @@ source $HOME/.shell/cygwin/functions
 source $HOME/.shell/cygwin/empro
 source $HOME/.shell/managers
 
-# ZSH
-export ZSH=$HOME/.oh-my-zsh
-source $ZSH/oh-my-zsh.sh
-
-# PATH
-
 # TERMINAL THEME
 # https://github.com/chriskempson/base16-shell
 BASE16_SCHEME="tomorrow"
 BASE16_SHELL="$HOME/.config/base16-shell/base16-$BASE16_SCHEME.dark.sh"
 source $BASE16_SHELL
-
-
 export TERM=xterm-256color

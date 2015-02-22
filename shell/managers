@@ -1,16 +1,7 @@
 which rbenv > /dev/null && eval "$(rbenv init -)"
+which jenv  > /dev/null && eval "$(jenv init -)"
 which hub   > /dev/null && eval "$(hub alias -s)"
 
-if [[ "$OSTYPE" == "darwin13.0" ]]; then
-
-  source $(brew --prefix nvm)/nvm.sh
-
-fi
-
-if [[ "$OSTYPE" == "linux-gnu" ]]; then
-
-  [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
-  [ -s /usr/share/autojump/autojump.sh ] && . /usr/share/autojump/autojump.sh
-
-fi
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
+[ -s /usr/share/autojump/autojump.sh ] && . /usr/share/autojump/autojump.sh
 
