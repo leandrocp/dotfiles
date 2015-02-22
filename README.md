@@ -11,6 +11,7 @@ bash install.sh
 ```
 
 ## Dependencies
+* https://github.com/zsh-users/antigen
 * https://github.com/robbyrussell/oh-my-zsh
 * https://github.com/sstephenson/rbenv
 * https://github.com/creationix/nvm
