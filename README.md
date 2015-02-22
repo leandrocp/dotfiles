@@ -14,3 +14,4 @@ bash install.sh
 * https://github.com/sstephenson/rbenv
 * https://github.com/creationix/nvm
 * https://github.com/chriskempson/base16-shell
+* https://github.com/chriskempson/base16-iterm2
