@@ -35,6 +35,7 @@ brew install tmux
 brew install htop-osx
 brew install hub
 brew install clang-format
+brew install ctags
 
 brew cask install xquartz
 brew cask install vlc
