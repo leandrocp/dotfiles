@@ -24,6 +24,9 @@ function install() {
 
   git clone https://github.com/zsh-users/antigen.git ~/.antigen-zsh
 
+  mkdir -p ~/.tmux/plugins
+  git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+
   git clone https://github.com/chriskempson/base16-shell.git ~/.config/base16-shell
 
   git clone https://github.com/powerline/fonts.git ~/.powerline-fonts
