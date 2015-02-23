@@ -1,5 +1,5 @@
 # ZSH BUNDLES
-source $HOME/.antigen.zsh
+source $HOME/.antigen-zsh/antigen.zsh
 antigen use oh-my-zsh
 antigen bundles <<EOBUNDLES
   osx

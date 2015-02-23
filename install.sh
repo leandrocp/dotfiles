@@ -22,6 +22,8 @@ function install() {
 
   cp -R ~/.dotfiles/oh-my-zsh/custom ~/.oh-my-zsh/
 
+  git clone https://github.com/zsh-users/antigen.git ~/.antigen-zsh
+
   git clone https://github.com/chriskempson/base16-shell.git ~/.config/base16-shell
 
   git clone https://github.com/powerline/fonts.git ~/.powerline-fonts
