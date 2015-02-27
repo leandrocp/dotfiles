@@ -1,0 +1,16 @@
+name: faturamento-semae
+root: ~/svn/
+
+windows:
+  - ember-cli-empro:
+      root: ~/svn/ember-cli-empro/trunk
+      layout: even-horizontal
+      panes:
+        - cd ~/svn/ember-cli-empro/trunk && clear && vim
+        - cd ~/svn/ember-cli-empro/trunk && clear && svn status
+  - faturamento-semae:
+      root: /home/vagrant/svn/faturamento_semae/frontend/trunk
+      layout: even-horizontal
+      panes:
+        - cd /home/vagrant/svn/faturamento_semae/frontend/trunk && clear && vim
+        - cd /home/vagrant/svn/faturamento_semae/frontend/trunk && clear && svn status
