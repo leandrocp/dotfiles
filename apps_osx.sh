@@ -36,6 +36,7 @@ brew install htop-osx
 brew install hub
 brew install clang-format
 brew install ctags
+brew install ack
 brew install the_silver_searcher
 
 brew cask install xquartz

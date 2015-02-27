@@ -1,0 +1,9 @@
+# https://gist.github.com/kevinold/4749656
+
+--smart-case
+--color
+--ignore-dir=node_modules/
+--ignore-dir=bower_components/
+--ignore-dir=tmp/
+--ignore-dir=dist/
+--ignore-dir=target/

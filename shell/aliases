@@ -40,5 +40,6 @@ fi
 if [[ "$OSTYPE" == "linux-gnu" ]]; then
 
 alias apt='sudo aptitude'
+alias ack='ack-grep'
 
 fi
