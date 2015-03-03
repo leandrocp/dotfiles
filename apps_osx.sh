@@ -38,6 +38,8 @@ brew install clang-format
 brew install ctags
 brew install ack
 brew install the_silver_searcher
+brew tap neovim/homebrew-neovim
+brew install --HEAD neovim
 
 brew cask install xquartz
 brew cask install vlc
