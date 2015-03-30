@@ -9,6 +9,8 @@ while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
 # Make sure we’re using the latest packages
 sudo apt-get update
 
+sudo apt-get install aptitude -y
+
 sudo apt-get install build-essential cmake -y
 sudo apt-get install python-dev -y
 
@@ -22,3 +24,8 @@ sudo add-apt-repository ppa:neovim-ppa/unstable -y
 sudo apt-get update -y
 sudo apt-get install neovim -y
 sudo apt-get install editorconfig -y
+
+sudo apt-get install python-software-properties software-properties-common -y
+sudo add-apt-repository ppa:pi-rho/dev -y
+sudo apt-get update
+sudo apt-get install tmux=1.9a-1~ppa1~t -y
