@@ -1,7 +1,19 @@
+# PATHS
+export RBENV_ROOT="$HOME/.rbenv"
+export JENV_ROOT="$HOME/.jenv"
+export M2_HOME="$HOME/apache-maven"
+export PATH="$RBENV_ROOT/bin:$JENV_ROOT/bin:$M2_HOME/bin:$PATH"
+
+# RBENV
 which rbenv > /dev/null && eval "$(rbenv init -)"
+
+# JENV
 which jenv  > /dev/null && eval "$(jenv init -)"
+
 which hub   > /dev/null && eval "$(hub alias -s)"
 
+export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
+
 [ -s /usr/share/autojump/autojump.sh ] && . /usr/share/autojump/autojump.sh
 

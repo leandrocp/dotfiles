@@ -1,8 +1,3 @@
-# GLOBAL
-export RBENV_ROOT="$HOME/.rbenv"
-export NVM_DIR="$HOME/.nvm"
-export JENV_ROOT="$HOME/.jenv"
-
 # MAC
 if [[ "$OSTYPE" == "darwin"* ]]; then
 
@@ -15,19 +10,18 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
 
   export JBOSS_HOME=/usr/local/opt/wildfly-as/libexec
 
-  export PATH=$RBENV_ROOT/bin:$JENV_ROOT/bin:$HOME/.bin:./bin:./.bundle/bin:/usr/local/bin:/usr/local/opt/coreutils/libexec/gnubin:/usr/local/opt/gnu-sed/libexec/gnubin:/usr/local/share/npm/bin:/usr/local/lib:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin:/opt/X11/bin:/usr/X11/bin:/opt/local/bin:$ANDROID_SDK/bin:$ANDROID_NDK/bin:${JBOSS_HOME}/bin
+  export PATH=$HOME/.bin:./bin:./.bundle/bin:/usr/local/bin:/usr/local/opt/coreutils/libexec/gnubin:/usr/local/opt/gnu-sed/libexec/gnubin:/usr/local/share/npm/bin:/usr/local/lib:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin:/opt/X11/bin:/usr/X11/bin:/opt/local/bin:${ANDROID_SDK}/bin:${ANDROID_NDK}/bin:${JBOSS_HOME}/bin
 
   export MANPATH=/usr/local/opt/gnu-sed/libexec/gnuman:$MANPATH
+
 fi
 
 # LINUX
 if [[ "$OSTYPE" == "linux-gnu" ]]; then
 
-  export M2_HOME=/opt/apache-maven-3.2.3
-
   export ANDROID_HOME=/opt/android-sdk-linux
 
-  export PATH=$RBENV_ROOT/bin:$HOME/.bin:./bin:./.bundle/bin:/usr/local/heroku/bin:$M2_HOME/bin:$ANDROID_HOME/tools:$PATH
+  export PATH=$HOME/.bin:./bin:./.bundle/bin:/usr/local/heroku/bin:$ANDROID_HOME/tools:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 
 fi
 
