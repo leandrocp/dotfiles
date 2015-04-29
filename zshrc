@@ -16,6 +16,7 @@ antigen bundles <<EOBUNDLES
   svn
   brew
   aws
+  docker
   zsh-users/zsh-completions src
   zsh-users/zsh-syntax-highlighting
   nojhan/liquidprompt
@@ -40,7 +41,7 @@ source $HOME/.shell/cygwin/empro
 
 # TERMINAL THEME
 # https://github.com/chriskempson/base16-shell
-BASE16_SCHEME="tomorrow"
+BASE16_SCHEME="ocean"
 BASE16_SHELL="$HOME/.config/base16-shell/base16-$BASE16_SCHEME.dark.sh"
 source $BASE16_SHELL
 export TERM=xterm-256color

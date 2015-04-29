@@ -1,6 +1,6 @@
-# https://github.com/fnando/dotfiles/blob/master/files/pryrc
+# https://raw.githubusercontent.com/fnando/dotfiles/master/files/home/.pryrc
 
-Pry.config.editor = "vim"
+Pry.config.editor = ENV.fetch("EDITOR", "nvim")
 
 Pry.config.prompt = proc do |obj, level, _|
   prompt = ""
@@ -20,26 +20,17 @@ if defined?(Rails)
   TOPLEVEL_BINDING.eval("self").extend ::Rails::ConsoleMethods
 end
 
-# Debug
-Pry.commands.alias_command 'c', 'continue'
-Pry.commands.alias_command 's', 'step'
-Pry.commands.alias_command 'n', 'next'
-Pry.commands.alias_command 'f', 'finish'
-
 begin
-  require "awesome_print"
-  AwesomePrint.pry!
-rescue LoadError => err
-   warn "=> Unable to load awesome_print"
-end
+  require "pry-meta"
 
-begin
-  require 'hirb'
-  Hirb.enable
   Pry.config.print = proc do |output, value|
-    Hirb::View.view_or_page_output(value) || Pry::DEFAULT_PRINT.call(output, value)
+    Pry::Helpers::BaseHelpers
+      .stagger_output("=> #{value.ai}", output)
   end
-rescue LoadError => err
-  warn "=> Unable to load Hirb"
-end
 
+  Pry.commands.alias_command "c", "continue"
+  Pry.commands.alias_command "s", "step"
+  Pry.commands.alias_command "n", "next"
+rescue LoadError => error
+  warn "=> Unable to load pry-meta"
+end
