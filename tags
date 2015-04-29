@@ -1,0 +1,59 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+Destination	/home/leandrocp/.dotfiles/bin/photo-in-the-box.rb	/^class Destination$/;"	c
+InvalidDestinationDir	/home/leandrocp/.dotfiles/bin/photo-in-the-box.rb	/^class InvalidDestinationDir < StandardError; end$/;"	c
+InvalidPhotoFile	/home/leandrocp/.dotfiles/bin/photo-in-the-box.rb	/^class InvalidPhotoFile < StandardError; end$/;"	c
+Photo	/home/leandrocp/.dotfiles/bin/photo-in-the-box.rb	/^class Photo$/;"	c
+_clean	/home/leandrocp/.dotfiles/bin/gitcrypt	/^_clean() {$/;"	f
+_diff	/home/leandrocp/.dotfiles/bin/gitcrypt	/^_diff() {$/;"	f
+_smudge	/home/leandrocp/.dotfiles/bin/gitcrypt	/^_smudge() {$/;"	f
+_zsh_highlight	/home/leandrocp/.dotfiles/oh-my-zsh/custom/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh	/^_zsh_highlight()$/;"	f
+_zsh_highlight	/home/leandrocp/.dotfiles/oh-my-zsh/custom/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh	/^_zsh_highlight()$/;"	f
+_zsh_highlight_bind_widgets	/home/leandrocp/.dotfiles/oh-my-zsh/custom/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh	/^_zsh_highlight_bind_widgets()$/;"	f
+_zsh_highlight_bind_widgets	/home/leandrocp/.dotfiles/oh-my-zsh/custom/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh	/^_zsh_highlight_bind_widgets()$/;"	f
+_zsh_highlight_brackets_highlighter	/home/leandrocp/.dotfiles/oh-my-zsh/custom/plugins/zsh-syntax-highlighting/highlighters/brackets/brackets-highlighter.zsh	/^_zsh_highlight_brackets_highlighter()$/;"	f
+_zsh_highlight_brackets_highlighter_brackettype	/home/leandrocp/.dotfiles/oh-my-zsh/custom/plugins/zsh-syntax-highlighting/highlighters/brackets/brackets-highlighter.zsh	/^_zsh_highlight_brackets_highlighter_brackettype()$/;"	f
+_zsh_highlight_brackets_highlighter_predicate	/home/leandrocp/.dotfiles/oh-my-zsh/custom/plugins/zsh-syntax-highlighting/highlighters/brackets/brackets-highlighter.zsh	/^_zsh_highlight_brackets_highlighter_predicate()$/;"	f
+_zsh_highlight_buffer_modified	/home/leandrocp/.dotfiles/oh-my-zsh/custom/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh	/^_zsh_highlight_buffer_modified()$/;"	f
+_zsh_highlight_buffer_modified	/home/leandrocp/.dotfiles/oh-my-zsh/custom/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh	/^_zsh_highlight_buffer_modified()$/;"	f
+_zsh_highlight_cursor_highlighter	/home/leandrocp/.dotfiles/oh-my-zsh/custom/plugins/zsh-syntax-highlighting/highlighters/cursor/cursor-highlighter.zsh	/^_zsh_highlight_cursor_highlighter()$/;"	f
+_zsh_highlight_cursor_highlighter_predicate	/home/leandrocp/.dotfiles/oh-my-zsh/custom/plugins/zsh-syntax-highlighting/highlighters/cursor/cursor-highlighter.zsh	/^_zsh_highlight_cursor_highlighter_predicate()$/;"	f
+_zsh_highlight_cursor_moved	/home/leandrocp/.dotfiles/oh-my-zsh/custom/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh	/^_zsh_highlight_cursor_moved()$/;"	f
+_zsh_highlight_cursor_moved	/home/leandrocp/.dotfiles/oh-my-zsh/custom/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh	/^_zsh_highlight_cursor_moved()$/;"	f
+_zsh_highlight_load_highlighters	/home/leandrocp/.dotfiles/oh-my-zsh/custom/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh	/^_zsh_highlight_load_highlighters()$/;"	f
+_zsh_highlight_load_highlighters	/home/leandrocp/.dotfiles/oh-my-zsh/custom/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh	/^_zsh_highlight_load_highlighters()$/;"	f
+_zsh_highlight_main_highlighter	/home/leandrocp/.dotfiles/oh-my-zsh/custom/plugins/zsh-syntax-highlighting/highlighters/main/main-highlighter.zsh	/^_zsh_highlight_main_highlighter()$/;"	f
+_zsh_highlight_main_highlighter_check_assign	/home/leandrocp/.dotfiles/oh-my-zsh/custom/plugins/zsh-syntax-highlighting/highlighters/main/main-highlighter.zsh	/^_zsh_highlight_main_highlighter_check_assign()$/;"	f
+_zsh_highlight_main_highlighter_check_path	/home/leandrocp/.dotfiles/oh-my-zsh/custom/plugins/zsh-syntax-highlighting/highlighters/main/main-highlighter.zsh	/^_zsh_highlight_main_highlighter_check_path()$/;"	f
+_zsh_highlight_main_highlighter_highlight_string	/home/leandrocp/.dotfiles/oh-my-zsh/custom/plugins/zsh-syntax-highlighting/highlighters/main/main-highlighter.zsh	/^_zsh_highlight_main_highlighter_highlight_string()$/;"	f
+_zsh_highlight_main_highlighter_predicate	/home/leandrocp/.dotfiles/oh-my-zsh/custom/plugins/zsh-syntax-highlighting/highlighters/main/main-highlighter.zsh	/^_zsh_highlight_main_highlighter_predicate()$/;"	f
+_zsh_highlight_pattern_highlighter	/home/leandrocp/.dotfiles/oh-my-zsh/custom/plugins/zsh-syntax-highlighting/highlighters/pattern/pattern-highlighter.zsh	/^_zsh_highlight_pattern_highlighter()$/;"	f
+_zsh_highlight_pattern_highlighter_loop	/home/leandrocp/.dotfiles/oh-my-zsh/custom/plugins/zsh-syntax-highlighting/highlighters/pattern/pattern-highlighter.zsh	/^_zsh_highlight_pattern_highlighter_loop()$/;"	f
+_zsh_highlight_pattern_highlighter_predicate	/home/leandrocp/.dotfiles/oh-my-zsh/custom/plugins/zsh-syntax-highlighting/highlighters/pattern/pattern-highlighter.zsh	/^_zsh_highlight_pattern_highlighter_predicate()$/;"	f
+_zsh_highlight_preexec_hook	/home/leandrocp/.dotfiles/oh-my-zsh/custom/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh	/^_zsh_highlight_preexec_hook()$/;"	f
+_zsh_highlight_preexec_hook	/home/leandrocp/.dotfiles/oh-my-zsh/custom/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh	/^_zsh_highlight_preexec_hook()$/;"	f
+_zsh_highlight_root_highlighter	/home/leandrocp/.dotfiles/oh-my-zsh/custom/plugins/zsh-syntax-highlighting/highlighters/root/root-highlighter.zsh	/^_zsh_highlight_root_highlighter()$/;"	f
+_zsh_highlight_root_highlighter_predicate	/home/leandrocp/.dotfiles/oh-my-zsh/custom/plugins/zsh-syntax-highlighting/highlighters/root/root-highlighter.zsh	/^_zsh_highlight_root_highlighter_predicate()$/;"	f
+copy_photo	/home/leandrocp/.dotfiles/bin/photo-in-the-box.rb	/^  def copy_photo$/;"	f	class:Destination
+delete_empty_dir	/home/leandrocp/.dotfiles/bin/photo-in-the-box.rb	/^  def delete_empty_dir$/;"	f	class:Destination
+delete_source	/home/leandrocp/.dotfiles/bin/photo-in-the-box.rb	/^  def delete_source$/;"	f	class:Destination
+destination_file_name	/home/leandrocp/.dotfiles/bin/photo-in-the-box.rb	/^  def destination_file_name$/;"	f	class:Photo
+diff?	/home/leandrocp/.dotfiles/bin/photo-in-the-box.rb	/^  def diff?(dest_photo)$/;"	f	class:Photo
+dir_by_date	/home/leandrocp/.dotfiles/bin/photo-in-the-box.rb	/^  def dir_by_date$/;"	f	class:Photo
+equal?	/home/leandrocp/.dotfiles/bin/photo-in-the-box.rb	/^  def equal?(dest_photo)$/;"	f	class:Photo
+has_exif?	/home/leandrocp/.dotfiles/bin/photo-in-the-box.rb	/^  def has_exif?$/;"	f	class:Photo
+init_config	/home/leandrocp/.dotfiles/bin/gitcrypt	/^init_config() {$/;"	f
+initialize	/home/leandrocp/.dotfiles/bin/photo-in-the-box.rb	/^  def initialize(path, photo)$/;"	f	class:Destination
+initialize	/home/leandrocp/.dotfiles/bin/photo-in-the-box.rb	/^  def initialize(source)$/;"	f	class:Photo
+install	/home/leandrocp/.dotfiles/install.sh	/^function install() {$/;"	f
+make_dir	/home/leandrocp/.dotfiles/bin/photo-in-the-box.rb	/^  def make_dir$/;"	f	class:Destination
+process	/home/leandrocp/.dotfiles/bin/photo-in-the-box.rb	/^  def process$/;"	f	class:Destination
+remove_merged_branches	/home/leandrocp/.dotfiles/bin/git-remove-merged-branches.sh	/^function remove_merged_branches {$/;"	f
+size	/home/leandrocp/.dotfiles/bin/photo-in-the-box.rb	/^  def size$/;"	f	class:Photo
+success_message	/home/leandrocp/.dotfiles/bin/photo-in-the-box.rb	/^  def success_message$/;"	f	class:Destination
+valid?	/home/leandrocp/.dotfiles/bin/photo-in-the-box.rb	/^  def valid?(file)$/;"	f	class:Photo
+valid?	/home/leandrocp/.dotfiles/bin/photo-in-the-box.rb	/^  def valid?(path)$/;"	f	class:Destination
