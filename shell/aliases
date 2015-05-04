@@ -25,6 +25,7 @@ alias rk='rake'
 alias b='bundle exec'
 alias em='ember'
 alias d='docker'
+alias dcp='docker-compose'
 
 #alias sshagent="eval `ssh-agent`; ssh-add $HOME/.ssh/id_rsa"
 
