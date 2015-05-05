@@ -3,7 +3,7 @@
 # Youtube channel rip
 yt-chanrip() { for i in $(curl -s http://gdata.youtube.com/feeds/api/users/"$1"/uploads | grep -Eo "watch\?v=[^[:space:]\"\'\\]{11}" | uniq); do youtube-dl --title --no-overwrites http://youtube.com/"$i"; done }
 
-mk() { mkdir -p "$1"; cd "$1" }
+mkd() { mkdir -p "$1"; cd "$1" }
 
 # Google it
 google() {
@@ -20,4 +20,11 @@ todo() {
 # http://zalas.eu/viewing-svn-diff-result-in-colors/
 svndiff() {
   svn diff "${@}" | colordiff
+}
+
+# Docker
+# https://coderwall.com/p/ewk0mq/stop-remove-all-docker-containers
+docker-rmall() {
+  docker stop $(docker ps -a -q)
+  docker rm $(docker ps -a -q)
 }
