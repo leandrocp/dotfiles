@@ -1,9 +1,5 @@
-# https://raw.githubusercontent.com/fnando/dotfiles/master/files/home/.pryrc
-
-Pry.config.editor = ENV.fetch("EDITOR", "nvim")
-
-Pry.config.prompt = proc do |obj, level, _|
-  prompt = ""
+Pry.config.prompt = proc do |obj, _level, _|
+  prompt = ''
   prompt << "#{Rails.version}@" if defined?(Rails)
   prompt << "#{RUBY_VERSION}"
   "#{prompt} (#{obj})> "
@@ -15,26 +11,21 @@ Pry.config.exception_handler = proc do |output, exception, _|
 end
 
 if defined?(Rails)
-  require "rails/console/app"
-  require "rails/console/helpers"
-  TOPLEVEL_BINDING.eval("self").extend ::Rails::ConsoleMethods
+  require 'rails/console/app'
+  require 'rails/console/helpers'
+  TOPLEVEL_BINDING.eval('self').extend ::Rails::ConsoleMethods
 end
 
 begin
-  require "pry-meta"
+  require 'pry-meta'
+  require 'awesome_print'
 
-  Pry.config.print = proc do |output, value|
-    Pry::Helpers::BaseHelpers
-      .stagger_output("=> #{value.ai}", output)
-  end
+  Pry.config.print = proc { |output, value| output.puts value.ai }
 
-  Pry.commands.alias_command "c", "continue"
-  Pry.commands.alias_command "s", "step"
-  Pry.commands.alias_command "n", "next"
-
-  if defined?(PryByebug)
-    Pry.commands.alias_command 'f', 'finish'
-  end
-rescue LoadError => error
-  warn "=> Unable to load pry-meta"
+  Pry.commands.alias_command 'c', 'continue'
+  Pry.commands.alias_command 's', 'step'
+  Pry.commands.alias_command 'n', 'next'
+  Pry.commands.alias_command 'f', 'finish' if defined?(PryByebug)
+rescue LoadError
+  warn '=> Unable to load .pryrc requires'
 end
