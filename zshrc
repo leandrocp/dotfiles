@@ -2,7 +2,6 @@
 source $HOME/.antigen-zsh/antigen.zsh
 antigen use oh-my-zsh
 antigen bundles <<EOBUNDLES
-  osx
   cp
   extract
   autojump
@@ -13,10 +12,9 @@ antigen bundles <<EOBUNDLES
   bundler
   npm
   git
-  svn
-  brew
   aws
   docker
+  archlinux
   zsh-users/zsh-completions src
   zsh-users/zsh-syntax-highlighting
   nojhan/liquidprompt
