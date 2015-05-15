@@ -44,3 +44,8 @@ BASE16_SHELL="$HOME/.config/base16-shell/base16-$BASE16_SCHEME.dark.sh"
 source $BASE16_SHELL
 export TERM=xterm-256color
 
+# TMUX
+if which tmux >/dev/null 2>&1; then
+  #if not inside a tmux session, and if no session is started, start a new session
+  test -z "$TMUX" && (tmux attach || tmux new-session)
+fi

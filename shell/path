@@ -21,7 +21,7 @@ if [[ "$OSTYPE" == "linux-gnu" ]]; then
 
   export ANDROID_HOME=/opt/android-sdk-linux
 
-  export PATH=$HOME/.bin:./bin:./.bundle/bin:/usr/local/heroku/bin:$ANDROID_HOME/tools:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+  export PATH=$HOME/.bin:./bin:./.bundle/bin:/usr/local/heroku/bin:$ANDROID_HOME/tools:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/bin/vendor_perl
 
 fi
 
