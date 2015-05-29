@@ -26,6 +26,8 @@ alias b='bundle exec'
 alias em='ember'
 alias d='docker'
 alias dcp='docker-compose'
+alias kb='kubectl'
+alias gc='gcloud'
 alias pac='pacman'
 alias ya='yaourt'
 

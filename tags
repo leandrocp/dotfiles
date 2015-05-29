@@ -51,6 +51,7 @@ initialize	/home/leandrocp/.dotfiles/bin/photo-in-the-box.rb	/^  def initialize(
 initialize	/home/leandrocp/.dotfiles/bin/photo-in-the-box.rb	/^  def initialize(source)$/;"	f	class:Photo
 install	/home/leandrocp/.dotfiles/install.sh	/^function install() {$/;"	f
 make_dir	/home/leandrocp/.dotfiles/bin/photo-in-the-box.rb	/^  def make_dir$/;"	f	class:Destination
+message	/home/leandrocp/.dotfiles/bin/idea.sh	/^message()$/;"	f
 process	/home/leandrocp/.dotfiles/bin/photo-in-the-box.rb	/^  def process$/;"	f	class:Destination
 remove_merged_branches	/home/leandrocp/.dotfiles/bin/git-remove-merged-branches.sh	/^function remove_merged_branches {$/;"	f
 size	/home/leandrocp/.dotfiles/bin/photo-in-the-box.rb	/^  def size$/;"	f	class:Photo

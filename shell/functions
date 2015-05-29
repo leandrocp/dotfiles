@@ -28,3 +28,7 @@ docker-rmall() {
   docker stop $(docker ps -a -q)
   docker rm $(docker ps -a -q)
 }
+
+docker-rmimages() {
+  docker rmi $(docker images -qf "dangling=true")
+}
