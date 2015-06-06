@@ -45,8 +45,10 @@ source $BASE16_SHELL
 export TERM=xterm-256color
 
 # SSH
-eval $(/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh)
-export SSH_AUTH_SOCK
+if [ -f /usr/bin/gnome-keyring-darmon ]; then
+  eval $(/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets,ssh)
+  export SSH_AUTH_SOCK
+fi
 
 # TMUX
 [[ $- != *i* ]] && return
