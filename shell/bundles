@@ -1,0 +1,50 @@
+source $HOME/.antigen-zsh/antigen.zsh
+antigen use oh-my-zsh
+
+# MAC
+if [[ "$OSTYPE" == "darwin"* ]]; then
+antigen bundles <<EOBUNDLES
+  cp
+  extract
+  autojump
+  tmux
+  ruby
+  gem
+  rbenv
+  bundler
+  npm
+  git
+  aws
+  docker
+  brew
+  osx
+  vagrant
+  zsh-users/zsh-completions src
+  zsh-users/zsh-syntax-highlighting
+  nojhan/liquidprompt
+EOBUNDLES
+fi
+
+# LINUX
+if [[ "$OSTYPE" == "linux-gnu" ]]; then
+antigen bundles <<EOBUNDLES
+  cp
+  extract
+  autojump
+  tmux
+  ruby
+  gem
+  rbenv
+  bundler
+  npm
+  git
+  aws
+  docker
+  archlinux
+  zsh-users/zsh-completions src
+  zsh-users/zsh-syntax-highlighting
+  nojhan/liquidprompt
+EOBUNDLES
+fi
+
+antigen apply

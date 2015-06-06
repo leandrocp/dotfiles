@@ -1,25 +1,5 @@
 # ZSH BUNDLES
-source $HOME/.antigen-zsh/antigen.zsh
-antigen use oh-my-zsh
-antigen bundles <<EOBUNDLES
-  cp
-  extract
-  autojump
-  tmux
-  ruby
-  gem
-  rbenv
-  bundler
-  npm
-  git
-  aws
-  docker
-  archlinux
-  zsh-users/zsh-completions src
-  zsh-users/zsh-syntax-highlighting
-  nojhan/liquidprompt
-EOBUNDLES
-antigen apply
+source $HOME/.shell/bundles
 
 # SHELL CONFIG
 source $HOME/.sensitive
