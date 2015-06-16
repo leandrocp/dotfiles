@@ -57,4 +57,3 @@ size	/Users/leandrocp/.dotfiles/bin/photo-in-the-box.rb	/^  def size$/;"	f	class
 success_message	/Users/leandrocp/.dotfiles/bin/photo-in-the-box.rb	/^  def success_message$/;"	f	class:Destination
 valid?	/Users/leandrocp/.dotfiles/bin/photo-in-the-box.rb	/^  def valid?(file)$/;"	f	class:Photo
 valid?	/Users/leandrocp/.dotfiles/bin/photo-in-the-box.rb	/^  def valid?(path)$/;"	f	class:Destination
-zgen	/Users/leandrocp/.dotfiles/zgen.zsh	/^zgen() {$/;"	f
