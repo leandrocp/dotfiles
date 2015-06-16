@@ -32,3 +32,16 @@ docker-rmall() {
 docker-rmimages() {
   docker rmi $(docker images -qf "dangling=true")
 }
+
+# Smart Ctrl-Z
+fancy-ctrl-z () {
+  if [[ $#BUFFER -eq 0 ]]; then
+    BUFFER="fg"
+    zle accept-line
+  else
+    zle push-input
+    zle clear-screen
+  fi
+}
+zle -N fancy-ctrl-z
+bindkey '^Z' fancy-ctrl-z

@@ -28,6 +28,8 @@ alias d='docker'
 alias dcp='docker-compose'
 alias kb='kubectl'
 alias gc='gcloud'
+alias tf='terraform'
+alias fc='fleetctl'
 alias pac='pacman'
 alias ya='yaourt'
 
