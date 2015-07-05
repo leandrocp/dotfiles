@@ -12,3 +12,7 @@ export LANG=en_US.UTF-8
 export EDITOR="nvim"
 export GIT_EDITOR="nvim"
 
+# TMUX
+# https://github.com/robbyrussell/oh-my-zsh/wiki/Plugins#tmux
+export ZSH_TMUX_AUTOSTART="true"
+export ZSH_TMUX_AUTOSTART_ONCE="true"

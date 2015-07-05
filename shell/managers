@@ -22,13 +22,13 @@ export NVM_DIR="$HOME/.nvm"
 
 if [[ "$OSTYPE" == "darwin"* ]]; then
 
-# GOOGLE CLOUD SDK
-if [ -d /opt/homebrew-cask/Caskroom/google-cloud-sdk/latest/google-cloud-sdk ]; then
-  source '/opt/homebrew-cask/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc'
-  source '/opt/homebrew-cask/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc'
-fi
+  # GOOGLE CLOUD SDK
+  if [ -d /opt/homebrew-cask/Caskroom/google-cloud-sdk/latest/google-cloud-sdk ]; then
+    source '/opt/homebrew-cask/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc'
+    source '/opt/homebrew-cask/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc'
+  fi
 
-# DOCKER
-export DOCKER_HOST='tcp://127.0.0.1:2375'
+  # DOCKER
+  export DOCKER_HOST='tcp://127.0.0.1:2375'
 
 fi

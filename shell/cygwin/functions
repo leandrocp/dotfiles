@@ -1,4 +1,0 @@
-if [[ "$OSTYPE" == "cygwin" ]]; then
-
-
-fi

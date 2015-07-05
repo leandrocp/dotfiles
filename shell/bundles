@@ -1,50 +1,28 @@
-source $HOME/.antigen-zsh/antigen.zsh
-antigen use oh-my-zsh
+source "${HOME}/.zgen/zgen.zsh"
 
-# MAC
-if [[ "$OSTYPE" == "darwin"* ]]; then
-antigen bundles <<EOBUNDLES
-  cp
-  extract
-  autojump
-  tmux
-  ruby
-  gem
-  rbenv
-  bundler
-  npm
-  git
-  aws
-  docker
-  brew
-  osx
-  vagrant
-  zsh-users/zsh-completions src
-  zsh-users/zsh-syntax-highlighting
-  nojhan/liquidprompt
-EOBUNDLES
+if ! zgen saved; then
+    echo "Creating a zgen save"
+
+    zgen oh-my-zsh
+
+    zgen oh-my-zsh plugins/brew
+    zgen oh-my-zsh plugins/bundler
+    zgen oh-my-zsh plugins/dirhistory
+    zgen oh-my-zsh plugins/docker
+    zgen oh-my-zsh plugins/gem
+    zgen oh-my-zsh plugins/git
+    zgen oh-my-zsh plugins/gitfast
+    zgen oh-my-zsh plugins/git-extras
+    zgen oh-my-zsh plugins/jsontools
+    zgen oh-my-zsh plugins/npm
+    zgen oh-my-zsh plugins/ruby
+    zgen oh-my-zsh plugins/sudo
+    zgen oh-my-zsh plugins/vagrant
+
+    zgen load zsh-users/zsh-syntax-highlighting
+    zgen load zsh-users/zsh-completions src
+
+    zgen load nojhan/liquidprompt
+
+    zgen save
 fi
-
-# LINUX
-if [[ "$OSTYPE" == "linux-gnu" ]]; then
-antigen bundles <<EOBUNDLES
-  cp
-  extract
-  autojump
-  tmux
-  ruby
-  gem
-  rbenv
-  bundler
-  npm
-  git
-  aws
-  docker
-  archlinux
-  zsh-users/zsh-completions src
-  zsh-users/zsh-syntax-highlighting
-  nojhan/liquidprompt
-EOBUNDLES
-fi
-
-antigen apply

@@ -22,7 +22,7 @@ function install() {
 
   cp -R ~/.dotfiles/oh-my-zsh/custom ~/.oh-my-zsh/
 
-  git clone https://github.com/zsh-users/antigen.git ~/.antigen-zsh
+  git clone https://github.com/tarjoilija/zgen.git ~/.zgen
 
   mkdir -p ~/.tmux/plugins
   mkdir -p ~/.tmux/themes
