@@ -1,3 +1,11 @@
+begin
+  require 'pry-meta'
+  require 'awesome_print'
+  Pry.config.print = proc { |output, value| output.puts value.ai }
+rescue LoadError
+  warn '=> Unable to load .pryrc requires'
+end
+
 Pry.config.prompt = proc do |obj, _level, _|
   prompt = ''
   prompt << "#{Rails.version}@" if defined?(Rails)
@@ -16,16 +24,7 @@ if defined?(Rails)
   TOPLEVEL_BINDING.eval('self').extend ::Rails::ConsoleMethods
 end
 
-begin
-  require 'pry-meta'
-  require 'awesome_print'
-
-  Pry.config.print = proc { |output, value| output.puts value.ai }
-
-  Pry.commands.alias_command 'c', 'continue'
-  Pry.commands.alias_command 's', 'step'
-  Pry.commands.alias_command 'n', 'next'
-  Pry.commands.alias_command 'f', 'finish' if defined?(PryByebug)
-rescue LoadError
-  warn '=> Unable to load .pryrc requires'
-end
+Pry.commands.alias_command 'cont', 'continue'
+Pry.commands.alias_command 'st', 'step'
+Pry.commands.alias_command 'ne', 'next'
+Pry.commands.alias_command 'fin', 'finish' if defined?(PryByebug)

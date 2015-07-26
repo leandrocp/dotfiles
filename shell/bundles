@@ -9,6 +9,7 @@ if ! zgen saved; then
     zgen oh-my-zsh plugins/bundler
     zgen oh-my-zsh plugins/dirhistory
     zgen oh-my-zsh plugins/docker
+    zgen oh-my-zsh plugins/extract
     zgen oh-my-zsh plugins/gem
     zgen oh-my-zsh plugins/git
     zgen oh-my-zsh plugins/gitfast
@@ -19,10 +20,11 @@ if ! zgen saved; then
     zgen oh-my-zsh plugins/sudo
     zgen oh-my-zsh plugins/vagrant
 
+    zgen load mafredri/zsh-async
+    zgen load sindresorhus/pure
+
     zgen load zsh-users/zsh-syntax-highlighting
     zgen load zsh-users/zsh-completions src
-
-    zgen load nojhan/liquidprompt
 
     zgen save
 fi

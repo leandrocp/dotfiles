@@ -7,3 +7,4 @@
 --ignore-dir=tmp/
 --ignore-dir=dist/
 --ignore-dir=target/
+--ignore-file=is:tags
