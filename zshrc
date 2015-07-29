@@ -16,7 +16,10 @@ BASE16_SCHEME="twilight"
 BASE16_SHELL="$HOME/.config/base16-shell/base16-$BASE16_SCHEME.dark.sh"
 source $BASE16_SHELL
 export TERM=xterm-256color
-export ZSH_THEME="pure"
+
+# PURE PROMPT
+# https://github.com/sindresorhus/pure
+# export ZSH_THEME="pure"
 
 # TMUX
 [[ $- != *i* ]] && return
