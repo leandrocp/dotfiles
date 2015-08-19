@@ -3,7 +3,7 @@ begin
   require 'awesome_print'
   Pry.config.print = proc { |output, value| output.puts value.ai }
 rescue LoadError
-  warn '=> Unable to load .pryrc requires'
+  warn '=> Unable to load either pry-meta or awesome_print'
 end
 
 Pry.config.prompt = proc do |obj, _level, _|
