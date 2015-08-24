@@ -22,5 +22,5 @@ export TERM=xterm-256color
 # export ZSH_THEME="pure"
 
 # TMUX
-[[ $- != *i* ]] && return
-[[ -z "$TMUX" ]] && exec tmux
+# [[ $- != *i* ]] && return
+# [[ -z "$TMUX" ]] && exec tmux

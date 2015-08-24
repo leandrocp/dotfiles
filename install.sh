@@ -32,7 +32,7 @@ function install() {
   git clone https://github.com/chriskempson/base16-shell.git ~/.config/base16-shell
 
   git clone https://github.com/powerline/fonts.git ~/.powerline-fonts
-  bash ~/.powerline-fonts/install.sh
+  # bash ~/.powerline-fonts/install.sh
 
   git clone https://github.com/sstephenson/rbenv.git ~/.rbenv
   mkdir ~/.rbenv/plugins

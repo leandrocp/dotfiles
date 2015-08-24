@@ -1,1 +1,0 @@
-/home/leandrocp/Apps/idea-IU-141.1010.3/bin/idea.sh

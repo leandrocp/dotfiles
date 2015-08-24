@@ -55,5 +55,6 @@ process	/Users/leandrocp/.dotfiles/bin/photo-in-the-box.rb	/^  def process$/;"	f
 remove_merged_branches	/Users/leandrocp/.dotfiles/bin/git-remove-merged-branches.sh	/^function remove_merged_branches {$/;"	f
 size	/Users/leandrocp/.dotfiles/bin/photo-in-the-box.rb	/^  def size$/;"	f	class:Photo
 success_message	/Users/leandrocp/.dotfiles/bin/photo-in-the-box.rb	/^  def success_message$/;"	f	class:Destination
+trim	/Users/leandrocp/.dotfiles/bin/tmx	/^trim() { echo $1; }$/;"	f
 valid?	/Users/leandrocp/.dotfiles/bin/photo-in-the-box.rb	/^  def valid?(file)$/;"	f	class:Photo
 valid?	/Users/leandrocp/.dotfiles/bin/photo-in-the-box.rb	/^  def valid?(path)$/;"	f	class:Destination

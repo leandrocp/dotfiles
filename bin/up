@@ -1,0 +1,6 @@
+#!/bin/bash
+
+zgen selfupdate
+zgen update
+
+rbenv update
