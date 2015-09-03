@@ -1,2 +1,8 @@
 Documentation:
         Enabled: false
+
+Style/AsciiComments:
+        Enabled: false
+
+LineLength:
+        Enabled: false

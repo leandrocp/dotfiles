@@ -46,6 +46,8 @@ diff?	/Users/leandrocp/.dotfiles/bin/photo-in-the-box.rb	/^  def diff?(dest_phot
 dir_by_date	/Users/leandrocp/.dotfiles/bin/photo-in-the-box.rb	/^  def dir_by_date$/;"	f	class:Photo
 equal?	/Users/leandrocp/.dotfiles/bin/photo-in-the-box.rb	/^  def equal?(dest_photo)$/;"	f	class:Photo
 has_exif?	/Users/leandrocp/.dotfiles/bin/photo-in-the-box.rb	/^  def has_exif?$/;"	f	class:Photo
+hr	/Users/leandrocp/.dotfiles/bin/hr	/^hr() {$/;"	f
+hrs	/Users/leandrocp/.dotfiles/bin/hr	/^hrs() {$/;"	f
 init_config	/Users/leandrocp/.dotfiles/bin/gitcrypt	/^init_config() {$/;"	f
 initialize	/Users/leandrocp/.dotfiles/bin/photo-in-the-box.rb	/^  def initialize(path, photo)$/;"	f	class:Destination
 initialize	/Users/leandrocp/.dotfiles/bin/photo-in-the-box.rb	/^  def initialize(source)$/;"	f	class:Photo
