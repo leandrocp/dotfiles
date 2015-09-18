@@ -7,6 +7,7 @@ Icon
 .Trashes
 .*
 !.gitignore
+!.gitkeep
 *~
 Thumbs.db
 ehthumbs.db

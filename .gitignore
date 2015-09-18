@@ -17,3 +17,4 @@ Session.vim
 .netrwhist
 *.sublime-workspace
 .sensitive
+tags
