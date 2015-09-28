@@ -7,48 +7,64 @@
   editor = vim
   excludesfile = ~/.gitignore
   autocrlf = input
+  pager = bash -lc 'diff-highlight | less -r' -
 [color]
   diff = auto
   status = auto
   branch = auto
   interactive = auto
   ui = auto
+[color "branch"]
+  current = yellow reverse
+  local = yellow
+  remote = green
+[color "diff"]
+  meta = yellow bold
+  frag = magenta bold
+  old = red bold
+  new = green bold
+[color "status"]
+  added = yellow
+  changed = green
+  untracked = cyan
+[color "diff-highlight"]
+  oldNormal = "red bold"
+  oldHighlight = "red bold 52"
+  newNormal = "green bold"
+  newHighlight = "green bold 22"
 [push]
-  default = upstream
+  default = current
 [pull]
   rebase = true
 [merge]
   summary = true
-	tool = diffmerge
+  tool = opendiff
 [branch]
-	autosetuprebase = always
+  autosetuprebase = always
 [branch "master"]
-	rebase = true
+  rebase = true
 [grep]
-	extendRegexp = true
-	lineNumber = true
+  extendRegexp = true
+  lineNumber = true
 [diff]
-	tool = diffmerge
+  tool = diffmerge
 [difftool "diffmerge"]
-	cmd = diffmerge \"$LOCAL\" \"$REMOTE\"
+  cmd = diffmerge \"$LOCAL\" \"$REMOTE\"
 [mergetool "diffmerge"]
-	cmd = "diffmerge --merge --result=\"$MERGED\" \"$LOCAL\" \"$(if test -f \"$BASE\"; then echo \"$BASE\"; else echo \"$LOCAL\"; fi)\" \"$REMOTE\""
-	trustExitCode = true
+  cmd = "diffmerge --merge --result=\"$MERGED\" \"$LOCAL\" \"$(if test -f \"$BASE\"; then echo \"$BASE\"; else echo \"$LOCAL\"; fi)\" \"$REMOTE\""
+  trustExitCode = true
 [alias]
   aa = !git add --all && git status -sb
-  au = !git add -u && git status -sb
   ca = commit --amend
   ci = commit -a
   co = checkout
   cl = clone
   st = status
-  e = difftool -y
-  df = diff --ignore-space-at-eol -b -w --ignore-blank-lines
+  d = difftool -y
+  df = diff --color --color-words --abbrev
   l = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
   ll = log --graph --decorate --pretty=oneline --abbrev-commit --all
-	g = grep --break --heading --line-number
-  decrypt = !sh -c 'gitcrypt init && git reset --hard HEAD && echo "You must checkout again your current branch."'
-  create-develop-branch = !sh -c 'git push origin HEAD:refs/heads/develop && git fetch origin && git branch --track develop origin/develop && cd . && git checkout develop' -
+  g = grep --break --heading --line-number
   create-branch = !sh -c 'git update-develop && git push origin HEAD:refs/heads/$1 && git fetch origin && git branch --track $1 origin/$1 && cd . && git checkout $1' -
   delete-branch = !sh -c 'git push origin :refs/heads/$1 && git remote prune origin && git branch -D $1' -
   update-branch = pull --rebase
@@ -57,11 +73,3 @@
   checkout-branch = !sh -c 'git fetch && git checkout -b $1 origin/$1' -
   list-branches = branch -ai
   squash = rebase -i @{u}
-  pull-request-branch = !sh -c 'hub pull-request -h origin:develop' -
-  pull-request-issue = !sh -c 'hub pull-request -h origin:develop -i $1' -
-  pull-request-master = !sh -c 'git update-develop && hub pull-request -h origin:master' -
-  subtree-add = "!f() { git remote add $2 $1; git fetch $2; git-subtree add --squash -P $3 $2/master ;}; f"
-                # $1 = git url, $2 = remote name, $3 = prefix path
-  subtree-update = !sh -c 'subtree pull -P $2 $1 --squash'
-                   # $1 = remote name, $2 = prefix path
-
