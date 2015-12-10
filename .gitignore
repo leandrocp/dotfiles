@@ -18,3 +18,4 @@ Session.vim
 *.sublime-workspace
 .sensitive
 tags
+*.log

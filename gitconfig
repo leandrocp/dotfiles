@@ -36,9 +36,15 @@
   default = current
 [pull]
   rebase = true
+; http://naleid.com/blog/2013/10/29/how-to-use-p4merge-as-a-3-way-merge-tool-with-git-and-tower-dot-app
+; http://pempek.net/articles/2014/04/18/git-p4merge/
+[mergetool "p4merge"]
+  cmd = /Applications/p4merge.app/Contents/MacOS/p4merge "$BASE" "$LOCAL" "$REMOTE" "$MERGED"
+  keepTemporaries = false
+  trustExitCode = false
+  keepBackup = false
 [merge]
-  summary = true
-  tool = opendiff
+  tool = p4merge
 [branch]
   autosetuprebase = always
 [branch "master"]
@@ -50,9 +56,9 @@
   tool = diffmerge
 [difftool "diffmerge"]
   cmd = diffmerge \"$LOCAL\" \"$REMOTE\"
-[mergetool "diffmerge"]
-  cmd = "diffmerge --merge --result=\"$MERGED\" \"$LOCAL\" \"$(if test -f \"$BASE\"; then echo \"$BASE\"; else echo \"$LOCAL\"; fi)\" \"$REMOTE\""
-  trustExitCode = true
+; [mergetool "diffmerge"]
+  ; cmd = "diffmerge --merge --result=\"$MERGED\" \"$LOCAL\" \"$(if test -f \"$BASE\"; then echo \"$BASE\"; else echo \"$LOCAL\"; fi)\" \"$REMOTE\""
+  ; trustExitCode = true
 [alias]
   aa = !git add --all && git status -sb
   ca = commit --amend

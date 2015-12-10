@@ -1,17 +1,21 @@
 # PATHS
 export RBENV_ROOT="$HOME/.rbenv"
+export EXENV_ROOT="$HOME/.exenv"
 export JENV_ROOT="$HOME/.jenv"
 export M2_HOME="$HOME/apache-maven"
-export PATH="$RBENV_ROOT/bin:$JENV_ROOT/bin:$M2_HOME/bin:$PATH"
+export PATH="$RBENV_ROOT/bin:$EXENV_ROOT/bin:$JENV_ROOT/bin:$M2_HOME/bin:$PATH"
 
 # RBENV
 which rbenv > /dev/null && eval "$(rbenv init -)"
 
+# EXENV
+which exenv > /dev/null && eval "$(exenv init -)"
+
 # JENV
-which jenv  > /dev/null && eval "$(jenv init -)"
+# which jenv  > /dev/null && eval "$(jenv init -)"
 
 # HUB
-which hub   > /dev/null && eval "$(hub alias -s)"
+# which hub   > /dev/null && eval "$(hub alias -s)"
 
 # NVM
 export NVM_DIR="$HOME/.nvm"

@@ -28,7 +28,7 @@ alias d='docker'
 alias dcp='docker-compose'
 alias kb='kubectl'
 alias gc='gcloud'
-alias lt='lotus'
+alias lt='bundle exec lotus'
 
 #alias sshagent="eval `ssh-agent`; ssh-add $HOME/.ssh/id_rsa"
 
