@@ -16,8 +16,10 @@ brew update
 # Upgrade any already-installed formulae.
 brew upgrade
 
-# Brew Cask
+# Brew Extras
 brew install caskroom/cask/brew-cask
+brew tap caskroom/versions
+brew tap choppsv1/term24
 
 brew install coreutils
 brew install moreutils
@@ -31,7 +33,6 @@ brew install ack
 brew install git
 brew install rename
 brew install tree
-brew install tmux
 brew install htop-osx
 brew install hub
 brew install clang-format
@@ -44,9 +45,11 @@ brew install erlang
 
 brew cask install xquartz
 brew cask install vlc
+brew cask install iterm2-beta
 
-brew tap neovim/homebrew-neovim
-brew install --HEAD neovim
+brew install neovim/neovim/neovim
+
+brew install choppsv1/term24/tmux
 
 # Link apps
 brew linkapps
