@@ -42,7 +42,6 @@ function install() {
 
   git clone https://github.com/mururu/exenv.git ~/.exenv
   git clone https://github.com/mururu/elixir-build.git ~/.exenv/plugins/elixir-build
-
 }
 
 install
