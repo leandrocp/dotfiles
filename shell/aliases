@@ -17,9 +17,8 @@ alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
 
-alias e='$EDITOR'
-alias s='svn'
-alias g='/usr/bin/git'
+alias e='emacsclient -t'
+alias g='git'
 alias r='rails'
 alias rk='rake'
 alias b='bundle exec'
@@ -30,7 +29,7 @@ alias kb='kubectl'
 alias gc='gcloud'
 alias lt='bundle exec lotus'
 
-#alias sshagent="eval `ssh-agent`; ssh-add $HOME/.ssh/id_rsa"
+# alias sshagent="eval `ssh-agent`; ssh-add $HOME/.ssh/id_rsa"
 
 alias cr='curl -i -H "Content-Type: application/json" -H "Accept: application/json"'
 alias yt="youtube-dl -w -c -f 22/18 -o '%(title)s.%(ext)s'"

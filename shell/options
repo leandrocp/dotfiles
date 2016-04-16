@@ -9,8 +9,8 @@ export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 
 # GLOBAL
-export EDITOR="emacs"
-export GIT_EDITOR="emacs"
+export EDITOR='emacsclient -t'
+export GIT_EDITOR='emacsclient -t'
 
 # TMUX
 # https://github.com/robbyrussell/oh-my-zsh/wiki/Plugins#tmux
