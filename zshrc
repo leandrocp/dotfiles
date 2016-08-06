@@ -24,3 +24,5 @@ export TERM=xterm-256color
 # TMUX
 # [[ $- != *i* ]] && return
 # [[ -z "$TMUX" ]] && exec tmux
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
