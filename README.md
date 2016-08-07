@@ -15,6 +15,7 @@ bash apps.sh
 ```
 
 ## Dependencies
+* zsh
 * https://github.com/robbyrussell/oh-my-zsh
 * https://github.com/zsh-users/antigen
 * https://github.com/sstephenson/rbenv
