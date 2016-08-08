@@ -42,6 +42,7 @@ brew install the_silver_searcher
 brew install editorconfig
 brew install reattach-to-user-namespace
 brew install erlang
+brew install watchman
 
 brew cask install xquartz
 brew cask install vlc
@@ -50,6 +51,9 @@ brew cask install iterm2-beta
 brew install neovim/neovim/neovim
 
 brew install choppsv1/term24/tmux
+
+brew tap d12frosted/emacs-plus
+brew install emacs-plus --with-cocoa --with-gnutls --with-librsvg --with-imagemagick --with-spacemacs-icon
 
 # Link apps
 brew linkapps
