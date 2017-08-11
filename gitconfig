@@ -79,3 +79,4 @@
   checkout-branch = !sh -c 'git fetch && git checkout -b $1 origin/$1' -
   list-branches = branch -ai
   squash = rebase -i @{u}
+  up = !sh -c 'git fetch && git pull --rebase' -

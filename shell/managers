@@ -1,15 +1,15 @@
 # PATHS
 export RBENV_ROOT="$HOME/.rbenv"
-export EXENV_ROOT="$HOME/.exenv"
-#export JENV_ROOT="$HOME/.jenv"
-#export M2_HOME="$HOME/apache-maven"
+# export EXENV_ROOT="$HOME/.exenv"
+# export JENV_ROOT="$HOME/.jenv"
+# export M2_HOME="$HOME/apache-maven"
 export PATH="$RBENV_ROOT/bin:$EXENV_ROOT/bin:$PATH"
 
 # RBENV
 which rbenv > /dev/null && eval "$(rbenv init -)"
 
 # EXENV
-which exenv > /dev/null && eval "$(exenv init -)"
+# which exenv > /dev/null && eval "$(exenv init -)"
 
 # JENV
 # which jenv  > /dev/null && eval "$(jenv init -)"
@@ -22,17 +22,17 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"
 
 # AUTOJUMP
-[ -s /usr/share/autojump/autojump.sh ] && . /usr/share/autojump/autojump.sh
+# [ -s /usr/share/autojump/autojump.sh ] && . /usr/share/autojump/autojump.sh
 
 if [[ "$OSTYPE" == "darwin"* ]]; then
 
   # GOOGLE CLOUD SDK
-  if [ -d /opt/homebrew-cask/Caskroom/google-cloud-sdk/latest/google-cloud-sdk ]; then
-    source /opt/homebrew-cask/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc
-    source /opt/homebrew-cask/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc
-  fi
+  # if [ -d /opt/homebrew-cask/Caskroom/google-cloud-sdk/latest/google-cloud-sdk ]; then
+    # source /opt/homebrew-cask/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc
+    # source /opt/homebrew-cask/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc
+  # fi
 
   # DOCKER
-  export DOCKER_HOST='tcp://127.0.0.1:2375'
+  # export DOCKER_HOST='tcp://127.0.0.1:2375'
 
 fi
