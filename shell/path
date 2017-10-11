@@ -3,12 +3,7 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
 
   export JAVA_HOME=$(/usr/libexec/java_home)
 
-  export ANDROID_SDK=/usr/local/Cellar/android-sdk/22.3
-  export ANDROID_NDK=/usr/local/Cellar/android-ndk/r9c
-
   export PYTHONPATH=`brew --prefix`/lib/python2.7/site-packages
-
-  export JBOSS_HOME=/usr/local/opt/wildfly-as/libexec
 
   export GPG_BIN=/usr/local/opt/gnupg@1.4/libexec/gpgbin
 

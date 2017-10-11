@@ -16,3 +16,6 @@ export GIT_EDITOR='emacsclient -t'
 # https://github.com/robbyrussell/oh-my-zsh/wiki/Plugins#tmux
 export ZSH_TMUX_AUTOSTART="true"
 export ZSH_TMUX_AUTOSTART_ONCE="true"
+
+# oh-my-zsh
+export DISABLE_UPDATE_PROMPT=true

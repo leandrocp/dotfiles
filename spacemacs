@@ -18,17 +18,22 @@ values."
     ;; of a list then all discovered layers will be installed.
     dotspacemacs-configuration-layers
     '(
-      php
+       php
        csv
-       graphviz
        osx
-       (shell
-         :variables
-         shell-default-shell 'term
-         shell-default-term-shell "/bin/zsh")
+       (shell :variables
+         shell-default-shell 'multi-term
+         shell-default-height 30
+         shell-default-term-shell "/bin/zsh"
+         shell-default-position 'bottom)
        git
        dash
-       auto-completion
+       (auto-completion :variables
+         auto-completion-return-key-behavior 'complete
+         auto-completion-tab-key-behavior 'cycle
+         auto-completion-enable-help-tooltip t
+         auto-completion-enable-sort-by-usage t
+         auto-completion-complete-with-key-sequence-delay 0.1)
        (syntax-checking
          (setq flycheck-checkers '(javascript-eslint ruby-rubocop))
          ;; (setq flycheck-highlighting-mode 'lines)
@@ -41,8 +46,9 @@ values."
        yaml
        javascript
        sql
-       elixir
        ruby
+       (ruby :variables
+         ruby-version-manager 'rbenv)
        ruby-on-rails
        scala
        )
@@ -52,8 +58,6 @@ values."
     ;; configuration in `dotspacemacs/user-config'.
     dotspacemacs-additional-packages
     '(
-       ember-yasnippets
-       ember-mode
        editorconfig
        dumb-jump
        )
@@ -125,11 +129,11 @@ values."
     dotspacemacs-colorize-cursor-according-to-state t
     ;; Default font. `powerline-scale' allows to quickly tweak the mode-line
     ;; size to make separators look not too crappy.
-    dotspacemacs-default-font '("Fira Code"
-                                 :size 14
+    dotspacemacs-default-font '("DejaVu Sans Mono"
+                                 :size 13
                                  :weight normal
                                  :width normal
-                                 :powerline-scale 1.1)
+                                 :powerline-scale 1)
     ;; The leader key
     dotspacemacs-leader-key "SPC"
     ;; The leader key accessible in `emacs state' and `insert state'
@@ -275,6 +279,8 @@ you should place your code here."
 
   (add-hook 'prog-mode-hook 'dumb-jump-mode)
 
+  (global-company-mode)
+
   (setq neo-smart-open t)
   (setq projectile-switch-project-action 'neotree-projectile-action)
 
@@ -286,6 +292,9 @@ you should place your code here."
   (setq create-lockfiles nil)
 
   (setq flycheck-check-syntax-automatically '(mode-enabled save))
+
+  (setq neo-window-position 'right)
+  (setq neo-window-width 50)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
@@ -297,7 +306,7 @@ you should place your code here."
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (packed phpunit phpcbf php-extras php-auto-yasnippets drupal-mode php-mode winum fuzzy flycheck-credo csv-mode graphviz-dot-mode yaml-mode xterm-color ws-butler which-key web-mode web-beautify use-package tagedit spaceline powerline smeargle shell-pop sass-mode ruby-test-mode rubocop rspec-mode robe restart-emacs pug-mode projectile-rails rake inflections persp-mode pcre2el paradox spinner osx-dictionary org-plus-contrib open-junk-file neotree move-text markdown-toc markdown-mode macrostep link-hint less-css-mode js2-refactor multiple-cursors info+ indent-guide hydra hungry-delete hl-todo highlight-indentation help-fns+ helm-themes helm-projectile helm-make projectile helm-descbinds helm-dash helm-company helm-c-yasnippet helm-ag google-translate git-timemachine git-messenger git-link flycheck-pos-tip fish-mode feature-mode eyebrowse expand-region evil-surround evil-search-highlight-persist evil-nerd-commenter evil-mc evil-matchit evil-magit evil-iedit-state iedit evil-exchange eshell-z eshell-prompt-extras ensime sbt-mode scala-mode emmet-mode ember-mode editorconfig dumb-jump company-tern tern company-statistics column-enforce-mode color-identifiers-mode coffee-mode chruby bundler inf-ruby bind-key auto-yasnippet alchemist aggressive-indent ace-window ace-link ace-jump-helm-line avy auto-complete company yasnippet highlight anzu smartparens bind-map f evil undo-tree elixir-mode flycheck request helm helm-core s skewer-mode js2-mode magit magit-popup git-commit with-editor async dash spacemacs-theme window-numbering volatile-highlights vi-tilde-fringe uuidgen toc-org sql-indent slim-mode simple-httpd scss-mode rvm ruby-tools reveal-in-osx-finder rbenv rainbow-mode rainbow-identifiers rainbow-delimiters quelpa pos-tip popwin popup pkg-info pbcopy osx-trash org-bullets ob-elixir noflet multi-term mmm-mode minitest magit-gitflow lorem-ipsum livid-mode linum-relative let-alist launchctl json-mode js-doc insert-shebang ido-vertical-mode highlight-parentheses highlight-numbers hide-comnt helm-swoop helm-mode-manager helm-gitignore helm-flx helm-css-scss haml-mode goto-chg golden-ratio gitconfig-mode gitattributes-mode gh-md flycheck-mix flx-ido fill-column-indicator fancy-battery exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-numbers evil-lisp-state evil-indent-plus evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu esh-help ember-yasnippets elisp-slime-nav diminish dash-functional dash-at-point company-web company-shell clean-aindent-mode auto-highlight-symbol auto-compile adaptive-wrap ac-ispell))))
+    (slack emojify circe oauth2 websocket ht alert log4e gntp zonokai-theme zenburn-theme zen-and-art-theme underwater-theme ujelly-theme twilight-theme twilight-bright-theme twilight-anti-bright-theme toxi-theme tao-theme tangotango-theme tango-plus-theme tango-2-theme sunny-day-theme sublime-themes subatomic256-theme subatomic-theme spacegray-theme soothe-theme solarized-theme soft-stone-theme soft-morning-theme soft-charcoal-theme smyx-theme seti-theme reverse-theme railscasts-theme purple-haze-theme professional-theme planet-theme phoenix-dark-pink-theme phoenix-dark-mono-theme organic-green-theme omtose-phellack-theme oldlace-theme occidental-theme obsidian-theme noctilux-theme naquadah-theme mustang-theme monokai-theme monochrome-theme molokai-theme moe-theme minimal-theme material-theme majapahit-theme madhat2r-theme lush-theme light-soap-theme jbeans-theme jazz-theme ir-black-theme inkpot-theme heroku-theme hemisu-theme hc-zenburn-theme gruvbox-theme gruber-darker-theme grandshell-theme gotham-theme gandalf-theme flatui-theme flatland-theme farmhouse-theme espresso-theme dracula-theme django-theme darktooth-theme autothemer darkokai-theme darkmine-theme darkburn-theme dakrone-theme cyberpunk-theme color-theme-sanityinc-tomorrow color-theme-sanityinc-solarized clues-theme cherry-blossom-theme busybee-theme bubbleberry-theme birds-of-paradise-plus-theme badwolf-theme apropospriate-theme anti-zenburn-theme ample-zen-theme ample-theme alect-themes afternoon-theme company-quickhelp packed phpunit phpcbf php-extras php-auto-yasnippets drupal-mode php-mode winum fuzzy flycheck-credo csv-mode graphviz-dot-mode yaml-mode xterm-color ws-butler which-key web-mode web-beautify use-package tagedit spaceline powerline smeargle shell-pop sass-mode ruby-test-mode rubocop rspec-mode robe restart-emacs pug-mode projectile-rails rake inflections persp-mode pcre2el paradox spinner osx-dictionary org-plus-contrib open-junk-file neotree move-text markdown-toc markdown-mode macrostep link-hint less-css-mode js2-refactor multiple-cursors info+ indent-guide hydra hungry-delete hl-todo highlight-indentation help-fns+ helm-themes helm-projectile helm-make projectile helm-descbinds helm-dash helm-company helm-c-yasnippet helm-ag google-translate git-timemachine git-messenger git-link flycheck-pos-tip fish-mode feature-mode eyebrowse expand-region evil-surround evil-search-highlight-persist evil-nerd-commenter evil-mc evil-matchit evil-magit evil-iedit-state iedit evil-exchange eshell-z eshell-prompt-extras ensime sbt-mode scala-mode emmet-mode ember-mode editorconfig dumb-jump company-tern tern company-statistics column-enforce-mode color-identifiers-mode coffee-mode chruby bundler inf-ruby bind-key auto-yasnippet alchemist aggressive-indent ace-window ace-link ace-jump-helm-line avy auto-complete company yasnippet highlight anzu smartparens bind-map f evil undo-tree elixir-mode flycheck request helm helm-core s skewer-mode js2-mode magit magit-popup git-commit with-editor async dash spacemacs-theme window-numbering volatile-highlights vi-tilde-fringe uuidgen toc-org sql-indent slim-mode simple-httpd scss-mode rvm ruby-tools reveal-in-osx-finder rbenv rainbow-mode rainbow-identifiers rainbow-delimiters quelpa pos-tip popwin popup pkg-info pbcopy osx-trash org-bullets ob-elixir noflet multi-term mmm-mode minitest magit-gitflow lorem-ipsum livid-mode linum-relative let-alist launchctl json-mode js-doc insert-shebang ido-vertical-mode highlight-parentheses highlight-numbers hide-comnt helm-swoop helm-mode-manager helm-gitignore helm-flx helm-css-scss haml-mode goto-chg golden-ratio gitconfig-mode gitattributes-mode gh-md flycheck-mix flx-ido fill-column-indicator fancy-battery exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-numbers evil-lisp-state evil-indent-plus evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu esh-help ember-yasnippets elisp-slime-nav diminish dash-functional dash-at-point company-web company-shell clean-aindent-mode auto-highlight-symbol auto-compile adaptive-wrap ac-ispell))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
