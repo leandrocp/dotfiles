@@ -3,7 +3,10 @@ export RBENV_ROOT="$HOME/.rbenv"
 export PATH="$RBENV_ROOT/bin:$EXENV_ROOT/bin:$PATH"
 
 # rbenv
-which rbenv > /dev/null && eval "$(rbenv init -)"
+# which rbenv > /dev/null && eval "$(rbenv init -)"
+
+# asdf
+source /usr/local/opt/asdf/asdf.sh
 
 # NVM
 # Too slow! https://github.com/creationix/nvm/issues/1261
