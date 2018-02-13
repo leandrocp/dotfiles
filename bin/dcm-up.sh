@@ -1,4 +1,4 @@
 #!/bin/bash
 
-docker-machine start
-source dcm-ports.sh
+docker-machine start default
+source dcm-ports.sh default

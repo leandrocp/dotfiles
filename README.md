@@ -16,8 +16,7 @@ bash apps.sh
 
 ## Dependencies
 * zsh
-* https://github.com/tarjoilija/zgen
-* https://github.com/tmux/tmux/wiki
-* https://github.com/chriskempson/base16-shell
-* https://github.com/chriskempson/base16-iterm2
+* https://github.com/zsh-users/antigen
+* https://github.com/tmux/tmux
 * https://github.com/asdf-vm/asdf
+* https://github.com/dracula/dracula-theme

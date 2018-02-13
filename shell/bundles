@@ -1,24 +1,42 @@
-source "${HOME}/.zgen/zgen.zsh"
+# antigen
+source ~/.antigen/antigen.zsh
 
-if ! zgen saved; then
-    echo "Creating a zgen save"
+antigen use oh-my-zsh
 
-    zgen oh-my-zsh
+antigen bundle zsh-users/zsh-syntax-highlighting
+antigen bundle zsh-users/zsh-autosuggestions
+antigen bundle zsh-users/zsh-completions
+antigen bundle chrissicool/zsh-256color
 
-    zgen load mafredri/zsh-async
-    zgen load sindresorhus/pure
-    zgen load zsh-users/zsh-syntax-highlighting
-    zgen load zsh-users/zsh-completions src
-    zgen load zsh-users/zsh-autosuggestions
-    zgen load zsh-users/zsh-history-substring-search
+antigen theme dracula/zsh
+# antigen theme akz92/clean
+# antigen theme robbyrussell
 
-    zgen oh-my-zsh plugins/docker
-    zgen oh-my-zsh plugins/extract
-    zgen oh-my-zsh plugins/gem
-    zgen oh-my-zsh plugins/git
-    zgen oh-my-zsh plugins/gitfast
-    zgen oh-my-zsh plugins/git-extras
-    zgen oh-my-zsh plugins/jsontools
+antigen apply
 
-    zgen save
-fi
+
+# DEPRECATED zgen
+# source "${HOME}/.zgen/zgen.zsh"
+
+# if ! zgen saved; then
+#     echo "Creating a zgen save"
+
+#     zgen oh-my-zsh
+
+#     zgen load mafredri/zsh-async
+#     zgen load sindresorhus/pure
+#     zgen load zsh-users/zsh-syntax-highlighting
+#     zgen load zsh-users/zsh-completions src
+#     zgen load zsh-users/zsh-autosuggestions
+#     zgen load zsh-users/zsh-history-substring-search
+
+#     zgen oh-my-zsh plugins/docker
+#     zgen oh-my-zsh plugins/extract
+#     zgen oh-my-zsh plugins/gem
+#     zgen oh-my-zsh plugins/git
+#     zgen oh-my-zsh plugins/gitfast
+#     zgen oh-my-zsh plugins/git-extras
+#     zgen oh-my-zsh plugins/jsontools
+
+#     zgen save
+# fi

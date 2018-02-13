@@ -28,13 +28,11 @@ alias dcp='docker-compose'
 alias dcm='docker-machine'
 alias kb='kubectl'
 alias gc='gcloud'
-alias lt='bundle exec lotus'
 
 # alias sshagent="eval `ssh-agent`; ssh-add $HOME/.ssh/id_rsa"
 
 alias cr='curl -i -H "Content-Type: application/json" -H "Accept: application/json"'
 alias yt="youtube-dl -w -c -f 22/18 -o '%(title)s.%(ext)s'"
-alias ss="rsync -Cravzph -e ssh --progress --exclude '*.part' /Users/leandrocp/data/videos/ server@192.168.0.111:/mnt/data/videos/"
 
 if [[ "$OSTYPE" == "darwin"* ]]; then
 
