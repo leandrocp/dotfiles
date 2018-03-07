@@ -1,5 +1,8 @@
 # PATHS
 
+# erlang / elixir
+export ERL_AFLAGS="-kernel shell_history enabled"
+
 # asdf
 source $HOME/.asdf/asdf.sh
 
