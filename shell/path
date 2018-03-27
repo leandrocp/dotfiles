@@ -7,7 +7,7 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
 
   export GPG_BIN=/usr/local/opt/gnupg@1.4/libexec/gpgbin
 
-  export NODE_PATH=/usr/local/opt/node@6
+  export NODE_PATH=/usr/local/opt/node@8
 
   export YARN_BIN_PATH=$HOME/.config/yarn/global/node_modules/.bin/bower
 

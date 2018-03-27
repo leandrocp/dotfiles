@@ -17,7 +17,7 @@ alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
 
-alias e='emacsclient -t'
+alias e="/Applications/Emacs.app/Contents/MacOS/bin/emacsclient -c --no-wait"
 alias g='git'
 alias r='rails'
 alias rk='rake'

@@ -1,6 +1,6 @@
 [user]
-  name  = Leandro Cesquini Pereira
-  email = leandro.cesquini@gmail.com
+	name = Leandro Cesquini Pereira
+	email = leandro@leandrocp.com.br
 [github]
   user = leandrocp
 [core]
@@ -44,7 +44,7 @@
   trustExitCode = false
   keepBackup = false
 [merge]
-  tool = p4merge
+	tool = opendiff
 [branch]
   autosetuprebase = always
 [branch "master"]
@@ -53,7 +53,7 @@
   extendRegexp = true
   lineNumber = true
 [diff]
-  tool = diffmerge
+	tool = opendiff
 [difftool "diffmerge"]
   cmd = diffmerge \"$LOCAL\" \"$REMOTE\"
 ; [mergetool "diffmerge"]
@@ -80,3 +80,6 @@
   list-branches = branch -ai
   squash = rebase -i @{u}
   up = !sh -c 'git fetch && git pull --rebase' -
+  cp = cherry-pick
+[difftool]
+	prompt = false

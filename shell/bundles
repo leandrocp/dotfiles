@@ -8,9 +8,25 @@ antigen bundle zsh-users/zsh-autosuggestions
 antigen bundle zsh-users/zsh-completions
 antigen bundle chrissicool/zsh-256color
 antigen bundle extract
+antigen bundle git
+
+# Themes and prompts
+
+# antigen bundle mafredri/zsh-async
+# antigen bundle sindresorhus/pure
+
+# antigen theme https://github.com/denysdovhan/spaceship-prompt spaceship
+# SPACESHIP_HG_SHOW=false
+# SPACESHIP_HG_BRANCH_SHOW=false
+# SPACESHIP_HG_STATUS_SHOW=false
+# SPACESHIP_EXEC_TIME_SHOW=false
+# SPACESHIP_BATTERY_SHOW=false
+# SPACESHIP_VI_MODE_SHOW=false
 
 antigen theme dracula/zsh
+
 # antigen theme akz92/clean
+
 # antigen theme robbyrussell
 
 antigen apply
