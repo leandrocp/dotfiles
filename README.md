@@ -1,4 +1,10 @@
-## Install
+## Install Deps
+
+```
+git clone https://github.com/zsh-users/antigen.git ~/.antigen
+```
+
+## Install dotfiles
 
 ```
 git clone git@github.com:leandrocp/dotfiles.git ~/.dotfiles
@@ -15,6 +21,7 @@ bash apps.sh
 ```
 
 ## Dependencies
+
 * zsh
 * https://github.com/zsh-users/antigen
 * https://github.com/tmux/tmux
