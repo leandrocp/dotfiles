@@ -44,7 +44,7 @@
   trustExitCode = false
   keepBackup = false
 [merge]
-	tool = opendiff
+  tool = opendiff
 [branch]
   autosetuprebase = always
 [branch "master"]
@@ -53,7 +53,7 @@
   extendRegexp = true
   lineNumber = true
 [diff]
-	tool = opendiff
+  tool = opendiff
 [difftool "diffmerge"]
   cmd = diffmerge \"$LOCAL\" \"$REMOTE\"
 ; [mergetool "diffmerge"]
