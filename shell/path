@@ -3,7 +3,7 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
 
   export JAVA_HOME=$(/usr/libexec/java_home)
 
-  export PYTHONPATH=`brew --prefix`/lib/python2.7/site-packages
+  # export PYTHONPATH=`brew --prefix`/lib/python2.7/site-packages
 
   export GPG_BIN=/usr/local/opt/gnupg@1.4/libexec/gpgbin
 
