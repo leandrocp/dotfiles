@@ -21,3 +21,5 @@ export TERM=xterm-256color
 source ~/.bin/tmuxinator.zsh
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
+eval $(ssh-agent)

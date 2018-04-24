@@ -63,6 +63,7 @@ values."
        editorconfig
        graphql-mode
        dracula-theme
+       doom-themes
        )
     ;; A list of packages that cannot be updated.
     dotspacemacs-frozen-packages '()
@@ -154,15 +155,19 @@ values."
    ;; List of themes, the first of the list is loaded when spacemacs starts.
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
-    dotspacemacs-themes '(dracula
-                           monokai
-                           spacemacs-dark
-                           spacemacs-light
-                           solarized-light
-                           solarized-dark
-                           leuven
-                           monokai
-                           zenburn)
+    dotspacemacs-themes '(
+                          dracula
+                          doom-darcula
+                          doom-one
+                          monokai
+                          spacemacs-dark
+                          spacemacs-light
+                          solarized-light
+                          solarized-dark
+                          leuven
+                          monokai
+                          zenbur
+                         )
     ;; If non nil the cursor color matches the state color in GUI Emacs.
     dotspacemacs-colorize-cursor-according-to-state t
     ;; Default font. `powerline-scale' allows to quickly tweak the mode-line
