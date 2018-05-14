@@ -157,12 +157,13 @@ values."
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
     dotspacemacs-themes '(
-                          base16-default-dark
+                          spacemacs-dark
+                          base16-tomorrow-night
+                          base16-spacemacs
                           dracula
                           doom-darcula
                           doom-one
                           monokai
-                          spacemacs-dark
                           spacemacs-light
                           solarized-light
                           solarized-dark
