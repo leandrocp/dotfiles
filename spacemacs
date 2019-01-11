@@ -31,9 +31,9 @@ values."
      ;; List of configuration layers to load.
     dotspacemacs-configuration-layers
     '(
+       php
        emacs-lisp
        helm
-       elixir
        osx
        git
        (auto-completion :variables
@@ -44,14 +44,16 @@ values."
          auto-completion-complete-with-key-sequence-delay 0.1)
        markdown
        shell-scripts
-       html
        yaml
+       html
+       sql
        javascript
        typescript
-       sql
        ruby
        ruby-on-rails
        scala
+       erlang
+       elixir
        syntax-checking
        )
     ;; List of additional packages that will be installed without being
@@ -354,6 +356,9 @@ layers configuration.
 This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
+  (add-to-list 'default-frame-alist '(ns-transparent-titlebar . t))
+  (add-to-list 'default-frame-alist '(ns-appearance . dark))
+
   (editorconfig-mode 1)
 
   (global-git-commit-mode t)
@@ -374,7 +379,24 @@ you should place your code here."
   (setq create-lockfiles nil)
 
   ;; (setq flycheck-check-syntax-automatically '(mode-enabled save))
+  (setq-default dotspacemacs-configuration-layers
+    '((syntax-checking :variables syntax-checking-enable-by-default nil)))
 
   (setq neo-window-position 'right)
   (setq neo-window-width 50)
+  (setq neo-show-hidden-files nil)
   )
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+  '(package-selected-packages
+     (quote
+       (phpunit phpcbf php-extras php-auto-yasnippets drupal-mode php-mode treepy graphql powerline rake inflections pcre2el json-snatcher json-reformat parent-mode request haml-mode gitignore-mode flx iedit anzu goto-chg scala-mode all-the-icons memoize web-completion-data dash-functional tern pos-tip bind-map packed pkg-info epl auto-complete popup f erlang typescript-mode multiple-cursors projectile avy sbt-mode smartparens highlight evil elixir-mode flycheck yasnippet company helm helm-core skewer-mode js2-mode simple-httpd magit magit-popup git-commit ghub with-editor async markdown-mode org-plus-contrib hydra inf-ruby s bind-key dash base16-theme yaml-mode ws-butler winum which-key web-mode web-beautify volatile-highlights vi-tilde-fringe uuidgen use-package toc-org tide tagedit sql-indent spaceline smeargle slim-mode scss-mode sass-mode rvm ruby-tools ruby-test-mode rubocop rspec-mode robe reveal-in-osx-finder restart-emacs rbenv rainbow-delimiters pug-mode projectile-rails popwin persp-mode pbcopy paradox osx-trash osx-dictionary org-bullets open-junk-file ob-elixir noflet neotree move-text mmm-mode minitest markdown-toc magit-gitflow macrostep lorem-ipsum livid-mode linum-relative link-hint less-css-mode launchctl json-mode js2-refactor js-doc insert-shebang indent-guide hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation helm-themes helm-swoop helm-projectile helm-mode-manager helm-make helm-gitignore helm-flx helm-descbinds helm-css-scss helm-company helm-c-yasnippet helm-ag graphql-mode google-translate golden-ratio gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link gh-md fuzzy flycheck-pos-tip flycheck-mix flycheck-credo flx-ido fish-mode fill-column-indicator feature-mode fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu ensime emmet-mode elisp-slime-nav editorconfig dumb-jump dracula-theme doom-themes diminish company-web company-tern company-statistics company-shell company-quickhelp column-enforce-mode coffee-mode clean-aindent-mode chruby bundler auto-yasnippet auto-highlight-symbol auto-compile alchemist aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line ac-ispell))))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
