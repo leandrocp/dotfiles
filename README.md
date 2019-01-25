@@ -1,9 +1,3 @@
-## Install Deps
-
-```
-git clone https://github.com/zsh-users/antigen.git ~/.antigen
-```
-
 ## Install dotfiles
 
 ```
@@ -23,7 +17,7 @@ bash apps.sh
 ## Dependencies
 
 * zsh
-* https://github.com/zsh-users/antigen
+* zplug
 * https://github.com/tmux/tmux
 * https://github.com/asdf-vm/asdf
 * https://github.com/dracula/dracula-theme

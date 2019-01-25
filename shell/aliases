@@ -6,16 +6,14 @@ alias du='du -h'
 alias -g G='| grep -i --color'
 alias -g L='| less'
 
-alias ccat='pygmentize -O style=monokai -f terminal -g'
-
-# alias ls='ls -lh --color=tty'
-# alias ll='ls -lah --color=tty'
-# alias la='ls -A'
-# alias l='ls -CF'
-
 alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
+
+alias ls='ls -lh'
+alias ll='ls -lah'
+alias la='ls -A'
+alias l='ls -CF'
 
 alias e="/Applications/Emacs.app/Contents/MacOS/bin/emacsclient -c --no-wait"
 alias g='git'
@@ -29,19 +27,12 @@ alias dcm='docker-machine'
 alias kb='kubectl'
 alias gc='gcloud'
 
-# alias sshagent="eval `ssh-agent`; ssh-add $HOME/.ssh/id_rsa"
-
-alias cr='curl -i -H "Content-Type: application/json" -H "Accept: application/json"'
 alias yt="youtube-dl -w -c -f 22/18 -o '%(title)s.%(ext)s'"
 
 if [[ "$OSTYPE" == "darwin"* ]]; then
 
-alias cask='brew cask'
-
 fi
 
 if [[ "$OSTYPE" == "linux-gnu" ]]; then
-
-alias apt='sudo aptitude'
 
 fi
