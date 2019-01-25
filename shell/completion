@@ -1,6 +1,13 @@
 # Dir complete
 function c() { cd ~/code/$@; };
 compctl -/ -W ~/code c
+
+function dl() { cd ~/Downloads/$@; };
+compctl -/ -W ~/Downloads dl
+
+function dt() { cd ~/Desktop/$@; };
+compctl -/ -W ~/Desktop dt
+
 function h() { cd ~/$@; };
 compctl -/ -W ~/ h
 

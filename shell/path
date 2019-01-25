@@ -5,12 +5,11 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
   export GPG_BIN=/usr/local/opt/gnupg@1.4/libexec/gpgbin
   export NODE_PATH=/usr/local/opt/node@8
   export YARN_BIN_PATH=$HOME/.config/yarn/global/node_modules/.bin/bower
-  export BISON_PATH=`brew --prefix bison`
   export POSTGRES_PATH=/Applications/Postgres.app/Contents/Versions/9.6
   export POSTGRES_BIN_PATH=$POSTGRES_PATH/bin
   export POSTGRES_LIB_PATH=$POSTGRES_PATH/lib
 
-  export PATH=$HOME/.bin:./bin:./.bundle/bin:${GPG_BIN}:/usr/local/bin:/usr/local/opt/coreutils/libexec/gnubin:/usr/local/opt/python/libexec/bin:${NODE_PATH}/bin:${YARN_BIN_PATH}:${BISON_PATH}:${POSTGRES_BIN_PATH}:${POSTGRES_LIB_PATH}:/usr/local/lib:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin:/opt/local/bin
+  export PATH=$HOME/.bin:./bin:./.bundle/bin:${GPG_BIN}:/usr/local/bin:/usr/local/opt/coreutils/libexec/gnubin:/usr/local/opt/python/libexec/bin:${NODE_PATH}/bin:${YARN_BIN_PATH}:${POSTGRES_BIN_PATH}:${POSTGRES_LIB_PATH}:/usr/local/lib:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin:/opt/local/bin
 
   export MANPATH=/usr/local/opt/gnu-sed/libexec/gnuman:$MANPATH
 

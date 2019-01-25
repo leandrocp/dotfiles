@@ -19,3 +19,13 @@ export GIT_EDITOR="vim"
 
 # oh-my-zsh
 export DISABLE_UPDATE_PROMPT=true
+
+export HISTSIZE='32768';
+export HISTFILESIZE="${HISTSIZE}";
+export HISTCONTROL='ignoreboth';
+
+export LESS_TERMCAP_md="${yellow}";
+
+export MANPAGER='less -X';
+
+export GPG_TTY=$(tty);

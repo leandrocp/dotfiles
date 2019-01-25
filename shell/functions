@@ -17,26 +17,19 @@ todo() {
   git commit --allow-empty -m "TODO: $*"
 }
 
-# Docker
-# https://coderwall.com/p/ewk0mq/stop-remove-all-docker-containers
-docker-rmall() {
-  docker stop $(docker ps -a -q)
-  docker rm $(docker ps -a -q)
+cleanup() {
+  sudo rm -rfv /Volumes/*/.Trashes
+  sudo rm -rfv ~/.Trash
+  sudo rm -rfv /private/var/log/asl/*.asl
+  sqlite3 ~/Library/Preferences/com.apple.LaunchServices.QuarantineEventsV* 'delete from LSQuarantineEvent'
 }
 
-docker-rmimages() {
-  docker rmi $(docker images -qf "dangling=true")
+function web_server() {
+	local port="${1:-8000}";
+	sleep 1 && open "http://localhost:${port}/" &
+	python -m http.server ${port}
 }
 
-# Smart Ctrl-Z
-# fancy-ctrl-z () {
-#   if [[ $#BUFFER -eq 0 ]]; then
-#     BUFFER="fg"
-#     zle accept-line
-#   else
-#     zle push-input
-#     zle clear-screen
-#   fi
-# }
-# zle -N fancy-ctrl-z
-# bindkey '^Z' fancy-ctrl-z
+function tree_x() {
+	tree -aC -I '.git|node_modules|bower_components|_build' --dirsfirst "$@" | less -FRNX;
+}
