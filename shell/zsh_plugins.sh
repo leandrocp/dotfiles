@@ -2,6 +2,7 @@ source ~/.zplug/init.zsh
 
 zplug "plugins/git", from:oh-my-zsh
 zplug "plugins/extractt", from:oh-my-zsh
+# zplug "plugins/emacs", from:oh-my-zsh
 
 zplug "zsh-users/zsh-history-substring-search"
 zplug "zsh-users/zsh-autosuggestions"

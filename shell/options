@@ -20,9 +20,10 @@ export GIT_EDITOR="vim"
 # oh-my-zsh
 export DISABLE_UPDATE_PROMPT=true
 
-export HISTSIZE='32768';
-export HISTFILESIZE="${HISTSIZE}";
-export HISTCONTROL='ignoreboth';
+export HISTFILE=~/.zsh_history
+export HISTSIZE=10000
+export SAVEHIST=10000
+setopt appendhistory
 
 export LESS_TERMCAP_md="${yellow}";
 

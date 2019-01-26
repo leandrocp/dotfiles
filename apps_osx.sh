@@ -29,6 +29,7 @@ brew install reattach-to-user-namespace
 brew install tmux
 brew install gnupg@1.4
 brew insatall openssh
+brew install ctags
 
 brew cask install vlc
 brew cask install iterm2
