@@ -6,7 +6,7 @@ function install() {
   for name in *; do
     target="$HOME/.$name"
 
-    if [ "$name" != 'install.sh' ] && [ "$name" != 'README.md' ] && [ "$name" != 'oh-my-zsh' ]; then
+    if [ "$name" != 'install.sh' ] && [ "$name" != 'README.md' ] && [ "$name" != 'oh-my-zsh' ] && [ "$name" != 'vscode']; then
       rm -rf "$target"
       echo "ln -s "$PWD/$name" "$target""
       ln -s "$PWD/$name" "$target"

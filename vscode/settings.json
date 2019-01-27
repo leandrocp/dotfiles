@@ -1,0 +1,106 @@
+{
+    // -- Editor
+    "editor.fontFamily": "Hack",
+    // "editor.fontFamily": "Fira Code",
+    "editor.fontLigatures": true,
+    "editor.fontSize": 14,
+    "editor.formatOnSave": true,
+    // "editor.formatOnType": true,
+    "editor.lineNumbers": "off",
+    "editor.minimap.enabled": false,
+    "editor.insertSpaces": true,
+    "editor.wordBasedSuggestions": false,
+    "editor.trimAutoWhitespace": false,
+    "editor.acceptSuggestionOnEnter": "off",
+    // -- Files
+    "files.trimTrailingWhitespace": true,
+    // -- Vim
+    "vim.leader": "<space>",
+    "vim.sneak": true,
+    "vim.incsearch": true,
+    "vim.useSystemClipboard": true,
+    "vim.useCtrlKeys": true,
+    "vim.hlsearch": true,
+    "vim.normalModeKeyBindingsNonRecursive": [
+        {
+            "before": [
+                "leader",
+                "h"
+            ],
+            "commands": [
+                "workbench.action.previousEditor",
+            ]
+        },
+        {
+            "before": [
+                "leader",
+                "l"
+            ],
+            "commands": [
+                "workbench.action.nextEditor",
+            ]
+        },
+        {
+            "before": [
+                ">"
+            ],
+            "commands": [
+                "editor.action.indentLines"
+            ]
+        },
+        {
+            "before": [
+                "<"
+            ],
+            "commands": [
+                "editor.action.outdentLines"
+            ]
+        },
+        {
+            "before": [
+                "leader",
+                "x"
+            ],
+            "commands": [
+                "workbench.action.showCommands"
+            ]
+        },
+        {
+            "before": [
+                "leader",
+                "k"
+            ],
+            "commands": [
+                "gotoNextPreviousMember.previousMember"
+            ]
+        },
+        {
+            "before": [
+                "leader",
+                "j"
+            ],
+            "commands": [
+                "gotoNextPreviousMember.nextMember"
+            ]
+        },
+        {
+            "before": [
+                "leader",
+                "f",
+                "s"
+            ],
+            "commands": [
+                "workbench.action.files.save",
+            ]
+        }
+    ],
+    // -- Workbench
+    "workbench.colorTheme": "Dracula",
+    "workbench.fontAliasing": "antialiased",
+    "workbench.colorCustomizations": {
+        "editor.lineHighlightBackground": "#30323f",
+        "editor.lineHighlightBorder": "#30323f"
+    },
+    "workbench.editor.enablePreview": false,
+    "window.zoomLevel": 0
+}
