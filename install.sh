@@ -6,7 +6,7 @@ function install() {
   for name in *; do
     target="$HOME/.$name"
 
-    if [ "$name" != 'install.sh' ] && [ "$name" != 'README.md' ] && [ "$name" != 'oh-my-zsh' ] && [ "$name" != 'vscode']; then
+    if [ "$name" != 'install.sh' ] && [ "$name" != 'README.md' ] && [ "$name" != 'oh-my-zsh' ] && [ "$name" != 'vscode' ]; then
       rm -rf "$target"
       echo "ln -s "$PWD/$name" "$target""
       ln -s "$PWD/$name" "$target"
@@ -28,7 +28,7 @@ function install() {
 
   git clone https://github.com/asdf-vm/asdf.git ~/.asdf
 
-  git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d
+  # git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d
 }
 
 install

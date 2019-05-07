@@ -7,7 +7,7 @@
   editor = vim
   excludesfile = ~/.gitignore
   autocrlf = input
-  pager = bash -lc 'diff-highlight | less -r' -
+  #pager = bash -lc 'diff-highlight | less -r' -
 [color]
   diff = auto
   status = auto
