@@ -1,6 +1,7 @@
 ## Install dotfiles
 
 ```
+# install dependencies
 git clone git@github.com:leandrocp/dotfiles.git ~/.dotfiles
 cd ~/.dotfiles
 bash install.sh
