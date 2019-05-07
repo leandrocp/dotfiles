@@ -1,8 +1,8 @@
 {
     // -- Editor
-    "editor.fontFamily": "Hack",
+    // "editor.fontFamily": "Hack",
     // "editor.fontFamily": "Fira Code",
-    "editor.fontLigatures": true,
+    // "editor.fontLigatures": true,
     "editor.fontSize": 14,
     "editor.formatOnSave": true,
     // "editor.formatOnType": true,
@@ -59,7 +59,7 @@
         {
             "before": [
                 "leader",
-                "x"
+                "c"
             ],
             "commands": [
                 "workbench.action.showCommands"
@@ -92,15 +92,44 @@
             "commands": [
                 "workbench.action.files.save",
             ]
+        },
+        {
+            "before": [
+                "leader",
+                "o"
+            ],
+            "commands": [
+                ":nohl",
+            ]
+        },
+        {
+            "before": [
+                "s",
+            ],
+            "after": [
+                "x",
+                "i"
+            ]
         }
     ],
-    // -- Workbench
-    "workbench.colorTheme": "Dracula",
-    "workbench.fontAliasing": "antialiased",
-    "workbench.colorCustomizations": {
-        "editor.lineHighlightBackground": "#30323f",
-        "editor.lineHighlightBorder": "#30323f"
-    },
+    // "workbench.fontAliasing": "antialiased",
+    // "workbench.colorCustomizations": {
+    // "editor.lineHighlightBackground": "#30323f",
+    // "editor.lineHighlightBorder": "#30323f"
+    // },
     "workbench.editor.enablePreview": false,
-    "window.zoomLevel": 0
+    // "window.zoomLevel": 0,
+    // "window.smoothScrollingWorkaround": true,
+    "explorer.confirmDelete": false,
+    // ElixirLS,
+    "elixirLS.dialyzerEnabled": false,
+    "elixirLS.fetchDeps": false,
+    "elixirLS.suggestSpecs": false,
+    "gitlens.currentLine.enabled": false,
+    "gitlens.hovers.currentLine.over": "line",
+    "git.enableSmartCommit": true,
+    "gitlens.codeLens.enabled": false,
+    "editor.renderControlCharacters": false,
+    "window.zoomLevel": 2,
+    "workbench.colorTheme": "One Dark Pro"
 }

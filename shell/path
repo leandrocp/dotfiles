@@ -3,14 +3,13 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
 
   # export PYTHONPATH=`brew --prefix`/lib/python2.7/site-packages
   export GPG_BIN=/usr/local/opt/gnupg@1.4/libexec/gpgbin
-  export NODE_PATH=/usr/local/opt/node@8
-  export YARN_BIN_PATH=$HOME/.config/yarn/global/node_modules/.bin/bower
   export POSTGRES_PATH=/Applications/Postgres.app/Contents/Versions/9.6
   export POSTGRES_BIN_PATH=$POSTGRES_PATH/bin
   export POSTGRES_LIB_PATH=$POSTGRES_PATH/lib
   export VSCODE_BIN_PATH="/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
+  export YARN_GLOBAL_BIN_PATH=/Users/leandro/.asdf/installs/nodejs/8.15.0/.npm/bin
 
-  export PATH=$HOME/.bin:./bin:./.bundle/bin:${GPG_BIN}:/usr/local/bin:/usr/local/opt/coreutils/libexec/gnubin:/usr/local/opt/python/libexec/bin:${NODE_PATH}/bin:${YARN_BIN_PATH}:${POSTGRES_BIN_PATH}:${POSTGRES_LIB_PATH}:/usr/local/lib:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin:/opt/local/bin:${VSCODE_BIN_PATH}
+  export PATH=$HOME/.bin:./bin:./.bundle/bin:${GPG_BIN}:/usr/local/opt/php@7.2/bin:/usr/local/opt/php@7.2/sbin:/usr/local/bin:/usr/local/opt/coreutils/libexec/gnubin:/usr/local/opt/python/libexec/bin:${POSTGRES_BIN_PATH}:${POSTGRES_LIB_PATH}:/usr/local/lib:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin:/opt/local/bin:${VSCODE_BIN_PATH}:${YARN_GLOBAL_BIN_PATH}
 
   export MANPATH=/usr/local/opt/gnu-sed/libexec/gnuman:$MANPATH
 
