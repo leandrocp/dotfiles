@@ -11,7 +11,8 @@ zplug "zsh-users/zsh-syntax-highlighting", defer:2
 
 zplug "chrissicool/zsh-256color"
 zplug "kiurchv/asdf.plugin.zsh"
-zplug "dracula/zsh", as:theme
+
+zplug "/Users/leandro/.dotfiles/oh-my-zsh/custom/themes", from:local, as:theme
 
 if ! zplug check; then
     zplug install

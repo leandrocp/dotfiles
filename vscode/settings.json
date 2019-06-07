@@ -1,8 +1,7 @@
 {
     // -- Editor
-    // "editor.fontFamily": "Hack",
-    // "editor.fontFamily": "Fira Code",
-    // "editor.fontLigatures": true,
+    "editor.fontFamily": "Hack",
+    "editor.fontLigatures": false,
     "editor.fontSize": 14,
     "editor.formatOnSave": true,
     // "editor.formatOnType": true,
@@ -14,6 +13,7 @@
     "editor.acceptSuggestionOnEnter": "off",
     // -- Files
     "files.trimTrailingWhitespace": true,
+    "files.trimFinalNewlines": false,
     // -- Vim
     "vim.leader": "<space>",
     "vim.sneak": true,
@@ -130,6 +130,11 @@
     "git.enableSmartCommit": true,
     "gitlens.codeLens.enabled": false,
     "editor.renderControlCharacters": false,
-    "window.zoomLevel": 2,
-    "workbench.colorTheme": "One Dark Pro"
+    "window.zoomLevel": 0,
+    "workbench.colorTheme": "One Dark Pro",
+    "files.associations": {
+        "Dockerfile-worker": "dockerfile"
+    },
+    "workbench.sideBar.location": "left",
+    "workbench.statusBar.visible": true
 }

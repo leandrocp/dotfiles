@@ -1,5 +1,6 @@
 # ZSH BUNDLES
 source $HOME/.shell/zsh_plugins.sh
+ZSH_THEME="leandrocp"
 
 # SHELL CONFIG
 source $HOME/.sensitive
