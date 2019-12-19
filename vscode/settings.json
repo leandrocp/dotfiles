@@ -68,24 +68,6 @@
         {
             "before": [
                 "leader",
-                "k"
-            ],
-            "commands": [
-                "gotoNextPreviousMember.previousMember"
-            ]
-        },
-        {
-            "before": [
-                "leader",
-                "j"
-            ],
-            "commands": [
-                "gotoNextPreviousMember.nextMember"
-            ]
-        },
-        {
-            "before": [
-                "leader",
                 "f",
                 "s"
             ],
@@ -117,6 +99,25 @@
     // "editor.lineHighlightBackground": "#30323f",
     // "editor.lineHighlightBorder": "#30323f"
     // },
+    "workbench.colorCustomizations": {
+        "activityBar.background": "#1E2028",
+        "activityBar.border": "#1E2028",
+        "sideBar.background": "#1E2028",
+        "sideBar.border": "#1C1E26"
+    },
+    "editor.tokenColorCustomizations": {
+        "textMateRules": [
+            {
+                "name": "HTML tag brackets",
+                "scope": [
+                    "punctuation.definition.tag"
+                ],
+                "settings": {
+                    "foreground": "#BBBBBB"
+                }
+            }
+        ]
+    },
     "workbench.editor.enablePreview": false,
     // "window.zoomLevel": 0,
     // "window.smoothScrollingWorkaround": true,
@@ -131,10 +132,10 @@
     "gitlens.codeLens.enabled": false,
     "editor.renderControlCharacters": false,
     "window.zoomLevel": 0,
-    "workbench.colorTheme": "One Dark Pro",
     "files.associations": {
         "Dockerfile-worker": "dockerfile"
     },
     "workbench.sideBar.location": "left",
-    "workbench.statusBar.visible": true
+    "workbench.statusBar.visible": true,
+    "workbench.colorTheme": "Atom One Dark"
 }

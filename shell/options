@@ -9,8 +9,8 @@ export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 
 # GLOBAL
-export EDITOR="/Applications/Emacs.app/Contents/MacOS/bin/emacsclient -c --no-wait"
-export GIT_EDITOR="vim"
+export EDITOR="nvim"
+export GIT_EDITOR="nvim"
 
 # TMUX
 # https://github.com/robbyrussell/oh-my-zsh/wiki/Plugins#tmux
@@ -30,3 +30,5 @@ export LESS_TERMCAP_md="${yellow}";
 export MANPAGER='less -X';
 
 export GPG_TTY=$(tty);
+
+export FZF_DEFAULT_COMMAND='rg --files'

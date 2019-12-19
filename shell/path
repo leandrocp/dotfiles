@@ -1,9 +1,8 @@
 # MAC
 if [[ "$OSTYPE" == "darwin"* ]]; then
 
-  # export PYTHONPATH=`brew --prefix`/lib/python2.7/site-packages
-  export GPG_BIN=/usr/local/opt/gnupg@1.4/libexec/gpgbin
-  export POSTGRES_PATH=/Applications/Postgres.app/Contents/Versions/9.6
+  export GPG_BIN=/usr/local/opt/gnupg2/bin
+  export POSTGRES_PATH=/Applications/Postgres.app/Contents/Versions/latest
   export POSTGRES_BIN_PATH=$POSTGRES_PATH/bin
   export POSTGRES_LIB_PATH=$POSTGRES_PATH/lib
   export VSCODE_BIN_PATH="/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
