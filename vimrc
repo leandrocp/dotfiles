@@ -1,5 +1,5 @@
 scriptencoding utf-8
-source ~/.vim/plugins.vim
+source ~/.vimplugins
 
 let mapleader="\<SPACE>"
 set encoding=utf-8
@@ -114,7 +114,7 @@ nmap <leader>s :Rg<CR>
 nnoremap <leader><Tab> :b#<CR>
 
 " ale
-let g:ale_completion_enabled = 0
+let g:ale_completion_enabled = 1
 set completeopt=menu,menuone,preview,noselect,noinsert
 let g:ale_sign_error = '✘'
 let g:ale_sign_warning = '!'

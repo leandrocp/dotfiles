@@ -15,7 +15,6 @@ brew install moreutils
 brew install findutils
 brew install gnu-sed
 brew install wget
-brew install homebrew/dupes/openssh
 brew install ack
 brew install git
 brew install tree
@@ -24,21 +23,17 @@ brew install clang-format
 brew install ctags
 brew install ack
 brew install the_silver_searcher
+brew install fzf
+brew install ripgrep
 brew install editorconfig
 brew install reattach-to-user-namespace
 brew install tmux
-brew install gnupg@1.4
-brew insatall openssh
+brew install openssh
 brew install ctags
+brew install diff-so-fancy
 
 brew cask install vlc
 brew cask install iterm2
-
-brew tap d12frosted/emacs-plus
-brew install emacs-plus
-
-# Link apps
-brew linkapps
 
 # Remove outdated versions from the cellar.
 brew cleanup
