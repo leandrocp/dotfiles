@@ -1,10 +1,29 @@
-IEx.configure history_size: -1
+import_if_available Plug.Conn
+import_if_available Phoenix.HTML
+import_if_available Ecto.Query
+alias Ecto.Changeset
+alias Pulse.Repo
 
-IEx.configure default_prompt: "%prefix>"
-IEx.configure alive_prompt: "%prefix(%node)>"
+Application.put_env(:elixir, :ansi_enabled, true)
 
-IEx.configure colors: [
-  eval_result: [ :green, :bright ],
-  eval_result: [ :red, :bright ],
-  eval_info:   [ :cyan ],
+IEx.configure [
+  default_prompt: "%prefix>",
+  alive_prompt: "%prefix(%node)>",
+  history_size: -1,
+  inspect: [
+    pretty: true,
+    limit: 10_000
+  ],
+  colors: [
+    eval_result: [ :green, :bright ],
+    eval_result: [ :red, :bright ],
+    eval_info:   [ :cyan ],
+  ]
 ]
+
+is_elixir_module? = fn module ->
+  case module do
+    "Elixir." <> _ -> true
+    _ -> false
+  end
+end

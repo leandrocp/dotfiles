@@ -19,6 +19,7 @@ brew install ack
 brew install git
 brew install tree
 brew install htop-osx
+brew install neovim
 brew install clang-format
 brew install ctags
 brew install ack
@@ -29,11 +30,17 @@ brew install editorconfig
 brew install reattach-to-user-namespace
 brew install tmux
 brew install openssh
+brew install ssh-copy-id
 brew install ctags
 brew install diff-so-fancy
+brew install awscli
+brew install jq
+brew install pgcli
+brew install bat
+brew install hub
+brew install zplug
 
 brew cask install vlc
-brew cask install iterm2
 
 # Remove outdated versions from the cellar.
 brew cleanup

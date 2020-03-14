@@ -1,0 +1,13 @@
+{
+  "coc.preferences.formatOnSaveFiletypes": ["*"],
+  "suggest.enablePreview": true,
+  "diagnostic.virtualText": true,
+  "codeLens.enable": true,
+  "languageserver": {
+    "elixirLS": {
+    "command": "/Users/leandro/code/github/elixir-lsp/elixir-ls/release/language_server.sh",
+      "filetypes": ["elixir", "eelixir"]
+     }
+  },
+  "elixir.pathToElixirLS": "/Users/leandro/code/github/elixir-lsp/elixir-ls/release/language_server.sh"
+}

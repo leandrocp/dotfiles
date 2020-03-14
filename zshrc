@@ -14,5 +14,6 @@ source $HOME/.shell/functions
 source $HOME/.shell/completion
 
 export TERM=xterm-256color
+# export TERM=st-256color
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

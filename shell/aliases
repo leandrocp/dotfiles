@@ -1,5 +1,5 @@
-alias vi=mvim
-alias vim=mvim
+alias vi=nvim
+alias vim=nvim
 alias rm='rm -i'
 
 alias df='df -h'
@@ -17,7 +17,7 @@ alias ll='ls -lah'
 alias la='ls -A'
 alias l='ls -CF'
 
-alias e="mvim"
+alias e="nvim"
 alias g='git'
 alias r='rails'
 alias rk='rake'
@@ -29,6 +29,8 @@ alias kb='kubectl'
 alias gc='gcloud'
 
 alias yt="youtube-dl -w -c -f 22/18 -o '%(title)s.%(ext)s'"
+
+eval "$(hub alias -s)"
 
 if [[ "$OSTYPE" == "darwin"* ]]; then
 

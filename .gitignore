@@ -19,3 +19,11 @@ Session.vim
 .sensitive
 tags
 *.log
+vim/autoload
+vim/plugged
+vim/undodir
+config/coc
+config/configstore
+config/htop
+config/pgcli/history
+config/pgcli/log

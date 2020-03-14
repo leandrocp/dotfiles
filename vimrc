@@ -1,10 +1,10 @@
 scriptencoding utf-8
-source ~/.vimplugins
+source ~/.vim/plugins
 
 let mapleader="\<SPACE>"
 set encoding=utf-8
+set hidden
 set title
-" set clipboard+=unnamedplus
 set clipboard=unnamed
 set signcolumn=yes
 set shortmess+=c
@@ -15,6 +15,24 @@ set splitright
 set nojoinspaces
 set nocursorline
 set visualbell t_vb=
+set nobackup
+set nowritebackup
+set cmdheight=2
+set updatetime=30
+set statusline+=%f
+set lazyredraw
+set ignorecase smartcase
+set undodir=~/.vim/undodir
+set undofile
+set pyx=3
+
+" reload vim
+if has ('autocmd') " Remain compatible with earlier versions
+ augroup vimrc     " Source vim configuration upon save
+    autocmd! BufWritePost $MYVIMRC source % | echom "Reloaded " . $MYVIMRC | redraw
+    autocmd! BufWritePost $MYGVIMRC if has('gui_running') | so % | echom "Reloaded " . $MYGVIMRC | endif | redraw
+  augroup END
+endif " has autocmd
 
 " reload changed files on disk
 " https://unix.stackexchange.com/questions/149209/refresh-changed-content-of-file-opened-in-vim
@@ -24,65 +42,41 @@ autocmd FileChangedShellPost *
 
 " Return to last edit position when opening files
 autocmd BufReadPost *
-     \ if line("'\"") > 0 && line("'\"") <= line("$") |
-     \   exe "normal! g`\"" |
-     \ endif
+  \ if line("'\"") > 0 && line("'\"") <= line("$") |
+  \   exe "normal! g`\"" |
+  \ endif
 
-if has('gui_running')
-  " Settings for when running in a GUI
-  set transparency=0
-  set guifont=DejaVu\ Sans\ Mono\ for\ Powerline:h14
-  set guioptions+=gme " gray menu items, menu bar, gui tabs
-  set antialias
-  set guioptions=
-  autocmd! GUIEnter * set vb t_vb=
-else
-  " terminal
-  function! Term()
-    exec winheight(0)/4."split" | terminal
-  endfunction
-  nnoremap <expr> <leader>m ":call Term()\<CR>"
-  autocmd TermOpen term://* startinsert
+if exists('+termguicolors')
+  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+  set termguicolors
 endif
 
-" theme
-if (empty($TMUX))
-  if (has("nvim"))
-    "For Neovim 0.1.3 and 0.1.4 < https://github.com/neovim/neovim/pull/2198 >
-    let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-  endif
-  "For Neovim > 0.1.5 and Vim > patch 7.4.1799 < https://github.com/vim/vim/commit/61be73bb0f965a895bfb064ea3e55476ac175162 >
-  "Based on Vim patch 7.4.1770 (`guicolors` option) < https://github.com/vim/vim/commit/8a633e3427b47286869aa4b96f2bfc1fe65b25cd >
-  " < https://github.com/neovim/neovim/wiki/Following-HEAD#20160511 >
-  if (has("termguicolors"))
-    set termguicolors
-  endif
-endif
 syntax on
 colorscheme onedark
 
 " fzf
 let g:fzf_history_dir = '~/.local/share/fzf-history'
 let g:fzf_layout = { 'down': '~40%' }
-
-" vim-test
-let test#vim#term_position = "belowright"
-let test#strategy = "neovim"
+let g:fzf_buffers_jump = 1
+nnoremap <silent> <Leader>S :Rg <C-R><C-W><CR>
+command! -bang -nargs=? -complete=dir Files call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
 
 " winresizer
-let g:winresizer_start_key = '<leader>w'
+" let g:winresizer_start_key = '<C-w>'
 
 " vista
-let g:vista_fzf_preview = ['right:50%']
-let g:vista#renderer#icons = {
-\   "function": "",
-\   "variable": "",
-\  }
+let g:vista_default_executive = 'coc'
+let g:vista_sidebar_width     = 100
+let g:vista_close_on_jump     = 1
+let g:vista_keep_fzf_colors   = 1
 
 " key mapping
-inoremap jk <esc>
+inoremap jk <Esc>
+imap kj <Esc>
 nnoremap j gj
 nnoremap k gk
+nmap <leader>i :w<CR>
 
 " kb
 nnoremap <leader>j <C-w>j
@@ -105,46 +99,63 @@ nnoremap <C-l> <C-w>l
 nmap <leader>F :GFiles<CR>
 nmap <leader>f :Files<CR>
 nmap <leader>b :Buffers<CR>
-nmap <leader>y :History<CR>
+nmap <leader>h :History<CR>
 nmap <leader>a :Vista!!<CR>
-nmap <leader>i :BLines<CR>
-nmap <leader>I :Lines<CR>
+nmap <leader>e :BLines<CR>
+nmap <leader>e :Lines<CR>
 nmap <leader>s :Rg<CR>
+nmap <leader>m :Marks<CR>
 
 nnoremap <leader><Tab> :b#<CR>
 
-" ale
-let g:ale_completion_enabled = 1
-set completeopt=menu,menuone,preview,noselect,noinsert
-let g:ale_sign_error = '✘'
-let g:ale_sign_warning = '!'
-let g:ale_lint_on_enter = 0
-let g:ale_lint_on_text_changed = 'never'
-let g:ale_lint_on_insert_leave = 0
-let g:ale_lint_on_save = 1
-let g:ale_fix_on_save = 1
-" let g:ale_elixir_elixir_ls_release = '/Users/leandro/code/github/elixir-lsp/elixir-ls/release'
-let g:ale_elixir_elixir_ls_release = '/Users/leandro/code/github/JakeBecker/elixir-ls/release'
-let g:ale_elixir_elixir_ls_config = { 'elixirLS': { 'dialyzerEnabled': v:false } }
-let g:ale_sign_column_always = 1
-let g:ale_linters = {
-\   'elixir': ['elixir-ls'],
-\}
-let g:ale_fixers = {
-\   '*': ['remove_trailing_lines', 'trim_whitespace'],
-\   'elixir': ['mix_format'],
-\}
-nnoremap gd :ALEGoToDefinition<cr>
-nnoremap gr :ALEFindReferences<CR>
-nnoremap bf :ALEFix<cr>
-nnoremap K :ALEHover<cr>
-nmap <silent> <C-k> <Plug>(ale_previous_wrap)
-nmap <silent> <C-j> <Plug>(ale_next_wrap)
-inoremap <silent><expr> <Tab> pumvisible() ? "\<C-n>" : "\<TAB>"
-inoremap <silent><expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-TAB>"
+" coc
+inoremap <silent><expr> <TAB>
+	  \ pumvisible() ? coc#_select_confirm() :
+	  \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
+	  \ <SID>check_back_space() ? "\<TAB>" :
+	  \ coc#refresh()
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+let g:coc_snippet_next = '<tab>'
+
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
+
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gf <Plug>(coc-references)
+nmap <silent> gr <Plug>(coc-rename)
+nmap <silent> gl <Plug>(coc-codelens-action)
+nmap <silent> gx <Plug>(coc-fix-current)
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
+
+nnoremap <silent> gs :call <SID>show_documentation()<CR>
+
+autocmd CursorHold * silent call CocActionAsync('highlight')
+nmap <leader>rn <Plug>(coc-rename)
+
+set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
+
+" coc-snippets
+inoremap <silent><expr> <c-space> coc#refresh()
+let g:coc_snippet_next = '<tab>'
+
+" tslime
+let g:tslime_always_current_session = 1
 
 " vim-test
-let test#strategy = "iterm"
+let test#strategy = "tslime"
 let g:test#preserve_screen = 1
 nnoremap <leader>. :TestLast<CR>
 nnoremap <leader>tl :TestLast<CR>
@@ -155,3 +166,27 @@ nnoremap <leader>tv :TestVisit<CR>
 
 " terminal
 tnoremap <Esc> <C-\><C-n>
+
+" nerdtree
+let g:NERDTreeWinPos = "right"
+map <leader>o :NERDTreeToggle<CR>
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+" vim-airline
+let g:airline_theme='onedark'
+
+" tagalong
+let g:tagalong_additional_filetypes = ['eex', 'leex', 'eelixir']
+
+" zoomwintab.vim
+nnoremap <C-w><C-w> :ZoomWinTabToggle<CR>
+
+" vim-fugitive
+autocmd BufReadPost fugitive://* set bufhidden=delete
+
+" far.vim
+let g:far#source = "rgnvim"
+let g:far#ignore_files = ['~/.vim/farignore']
+let g:far#window_width = 200
+let g:far#preview_window_width = 200
+let g:far#default_file_mask = "**/*.*"

@@ -1,0 +1,76 @@
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
+call plug#begin('~/.vim/plugged')
+
+Plug 'tpope/vim-sensible'
+Plug 'rstacruz/vim-opinion'
+
+" commands
+Plug 'wellle/targets.vim'
+Plug 'tpope/vim-sleuth'
+" Plug 'tpope/vim-speeddating'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-repeat'
+Plug 'tomtom/tcomment_vim'
+
+" interface
+Plug 'liuchengxu/vista.vim'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+" Plug 'yuki-ycino/fzf-preview.vim'
+Plug 'kana/vim-textobj-user'
+Plug 'andyl/vim-textobj-elixir'
+Plug 'simeji/winresizer'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'tpope/vim-projectionist'
+Plug 'c-brenn/fuzzy-projectionist.vim'
+Plug 'kshenoy/vim-signature'
+Plug 'romainl/vim-cool'
+Plug 'yggdroot/indentline'
+Plug 'rhysd/clever-f.vim'
+Plug 'brooth/far.vim'
+Plug 'troydm/zoomwintab.vim'
+
+" theme
+Plug 'joshdick/onedark.vim'
+Plug 'chriskempson/base16-vim'
+
+" integrations
+Plug 'janko/vim-test'
+Plug 'tpope/vim-dispatch'
+" Plug 'tpope/vim-vinegar'
+Plug 'scrooloose/nerdtree'
+Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'tpope/vim-fugitive'
+Plug 'christoomey/vim-tmux-navigator'
+Plug 'tmux-plugins/vim-tmux-focus-events'
+Plug 'jgdavey/tslime.vim'
+Plug 'tpope/vim-rhubarb'
+Plug 'pechorin/any-jump.vim'
+
+" completions
+Plug 'tpope/vim-endwise'
+Plug 'rstacruz/vim-closer'
+Plug 'honza/vim-snippets'
+" Plug 'raimondi/delimitmate'
+Plug 'andrewradev/tagalong.vim'
+Plug 'andymass/vim-matchup'
+
+" languages
+Plug 'elixir-editors/vim-elixir'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'neoclide/coc-snippets', {'do': 'yarn install --frozen-lockfile'}
+Plug 'hyhugh/coc-erlang_ls', {'do': 'yarn install --frozen-lockfile'}
+Plug 'amiralies/coc-elixir', {'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc-html', {'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc-css', {'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc-tsserver', {'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc-eslint', {'do': 'yarn install --frozen-lockfile'}
+Plug 'iamcco/coc-svg', {'do': 'yarn install --frozen-lockfile'}
+
+call plug#end()
