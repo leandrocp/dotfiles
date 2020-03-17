@@ -52,13 +52,14 @@ Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'jgdavey/tslime.vim'
 Plug 'tpope/vim-rhubarb'
 Plug 'pechorin/any-jump.vim'
+Plug 'tpope/vim-eunuch'
 
 " completions
 Plug 'tpope/vim-endwise'
 Plug 'rstacruz/vim-closer'
 Plug 'honza/vim-snippets'
 " Plug 'raimondi/delimitmate'
-Plug 'andrewradev/tagalong.vim'
+" Plug 'andrewradev/tagalong.vim'
 Plug 'andymass/vim-matchup'
 
 " languages
@@ -67,10 +68,10 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'neoclide/coc-snippets', {'do': 'yarn install --frozen-lockfile'}
 Plug 'hyhugh/coc-erlang_ls', {'do': 'yarn install --frozen-lockfile'}
 Plug 'amiralies/coc-elixir', {'do': 'yarn install --frozen-lockfile'}
-Plug 'neoclide/coc-html', {'do': 'yarn install --frozen-lockfile'}
-Plug 'neoclide/coc-css', {'do': 'yarn install --frozen-lockfile'}
-Plug 'neoclide/coc-tsserver', {'do': 'yarn install --frozen-lockfile'}
-Plug 'neoclide/coc-eslint', {'do': 'yarn install --frozen-lockfile'}
-Plug 'iamcco/coc-svg', {'do': 'yarn install --frozen-lockfile'}
+" Plug 'neoclide/coc-html', {'do': 'yarn install --frozen-lockfile'}
+" Plug 'neoclide/coc-css', {'do': 'yarn install --frozen-lockfile'}
+" Plug 'neoclide/coc-tsserver', {'do': 'yarn install --frozen-lockfile'}
+" Plug 'neoclide/coc-eslint', {'do': 'yarn install --frozen-lockfile'}
+" Plug 'iamcco/coc-svg', {'do': 'yarn install --frozen-lockfile'}
 
 call plug#end()

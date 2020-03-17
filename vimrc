@@ -169,7 +169,11 @@ tnoremap <Esc> <C-\><C-n>
 
 " nerdtree
 let g:NERDTreeWinPos = "right"
-map <leader>o :NERDTreeToggle<CR>
+let g:NERDTreeWinSize = 80
+let g:NERDTreeQuitOnOpen = 1
+let g:NERDTreeMinimalUI = 1
+let g:NERDTreeAutoDeleteBuffer = 1
+map <leader>o :NERDTreeFind<CR>
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 " vim-airline
@@ -179,7 +183,7 @@ let g:airline_theme='onedark'
 let g:tagalong_additional_filetypes = ['eex', 'leex', 'eelixir']
 
 " zoomwintab.vim
-nnoremap <C-w><C-w> :ZoomWinTabToggle<CR>
+nnoremap <leader>z :ZoomWinTabToggle<CR>
 
 " vim-fugitive
 autocmd BufReadPost fugitive://* set bufhidden=delete
