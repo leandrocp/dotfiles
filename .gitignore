@@ -27,3 +27,4 @@ config/configstore
 config/htop
 config/pgcli/history
 config/pgcli/log
+config/hub

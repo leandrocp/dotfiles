@@ -12,7 +12,6 @@ Plug 'rstacruz/vim-opinion'
 " commands
 Plug 'wellle/targets.vim'
 Plug 'tpope/vim-sleuth'
-" Plug 'tpope/vim-speeddating'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'tomtom/tcomment_vim'
@@ -21,7 +20,6 @@ Plug 'tomtom/tcomment_vim'
 Plug 'liuchengxu/vista.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-" Plug 'yuki-ycino/fzf-preview.vim'
 Plug 'kana/vim-textobj-user'
 Plug 'andyl/vim-textobj-elixir'
 Plug 'simeji/winresizer'
@@ -43,7 +41,6 @@ Plug 'chriskempson/base16-vim'
 " integrations
 Plug 'janko/vim-test'
 Plug 'tpope/vim-dispatch'
-" Plug 'tpope/vim-vinegar'
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'tpope/vim-fugitive'
@@ -51,15 +48,12 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'jgdavey/tslime.vim'
 Plug 'tpope/vim-rhubarb'
-Plug 'pechorin/any-jump.vim'
 Plug 'tpope/vim-eunuch'
 
 " completions
 Plug 'tpope/vim-endwise'
 Plug 'rstacruz/vim-closer'
 Plug 'honza/vim-snippets'
-" Plug 'raimondi/delimitmate'
-" Plug 'andrewradev/tagalong.vim'
 Plug 'andymass/vim-matchup'
 
 " languages
@@ -67,11 +61,6 @@ Plug 'elixir-editors/vim-elixir'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'neoclide/coc-snippets', {'do': 'yarn install --frozen-lockfile'}
 Plug 'hyhugh/coc-erlang_ls', {'do': 'yarn install --frozen-lockfile'}
-Plug 'amiralies/coc-elixir', {'do': 'yarn install --frozen-lockfile'}
-" Plug 'neoclide/coc-html', {'do': 'yarn install --frozen-lockfile'}
-" Plug 'neoclide/coc-css', {'do': 'yarn install --frozen-lockfile'}
-" Plug 'neoclide/coc-tsserver', {'do': 'yarn install --frozen-lockfile'}
-" Plug 'neoclide/coc-eslint', {'do': 'yarn install --frozen-lockfile'}
-" Plug 'iamcco/coc-svg', {'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc-tsserver', {'do': 'yarn install --frozen-lockfile'}
 
 call plug#end()

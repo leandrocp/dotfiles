@@ -9,5 +9,21 @@
       "filetypes": ["elixir", "eelixir"]
      }
   },
-  "elixir.pathToElixirLS": "/Users/leandro/code/github/elixir-lsp/elixir-ls/release/language_server.sh"
+  "elixir.pathToElixirLS": "/Users/leandro/code/github/elixir-lsp/elixir-ls/release/language_server.sh",
+  "elixir": {
+    "command": "/Users/leandro/code/github/elixir-lsp/elixir-ls/release/language_server.sh",
+    "args": [],
+    "filetypes": ["elixir", "eelixir", "ex", "exs", "eex", "leex"],
+    "rootPatterns": ["mix.lock"],
+    "cwd": "./",
+    "trace.server": "verbose",
+    "initializationOptions": {
+      "dialyzerEnabled": true,
+      "elixirLS": {
+        "dialyzerEnabled": true,
+        "dialyzerWarningOpts": []
+      }
+    },
+    "settings": {},
+  }
 }

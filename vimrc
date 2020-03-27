@@ -106,19 +106,30 @@ nmap <leader>e :Lines<CR>
 nmap <leader>s :Rg<CR>
 nmap <leader>m :Marks<CR>
 
+" move lines
+nnoremap <C-u> :m .+1<CR>==
+nnoremap <C-i> :m .-2<CR>==
+inoremap <C-u> <ESC>:m .+1<CR>==gi
+inoremap <C-i> <ESC>:m .-2<CR>==gi
+vnoremap <C-u> :m '>+1<CR>gv=gv
+vnoremap <C-i> :m '<-2<CR>gv=gv
+
 nnoremap <leader><Tab> :b#<CR>
 
 " coc
 inoremap <silent><expr> <TAB>
-	  \ pumvisible() ? coc#_select_confirm() :
-	  \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
-	  \ <SID>check_back_space() ? "\<TAB>" :
-	  \ coc#refresh()
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
 function! s:check_back_space() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
+
+inoremap <silent><expr> <c-space> coc#refresh()
+inoremap <expr> <C-y> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
 
 let g:coc_snippet_next = '<tab>'
 
@@ -164,6 +175,10 @@ nnoremap <leader>tf :TestFile<CR>
 nnoremap <leader>ts :TestSuite<CR>
 nnoremap <leader>tv :TestVisit<CR>
 
+" tmux commands
+nmap <leader>td :Tmux mix dialyzer<CR>
+nmap <leader>tq :Tmux mix quality<CR>
+
 " terminal
 tnoremap <Esc> <C-\><C-n>
 
@@ -194,3 +209,6 @@ let g:far#ignore_files = ['~/.vim/farignore']
 let g:far#window_width = 200
 let g:far#preview_window_width = 200
 let g:far#default_file_mask = "**/*.*"
+
+" vim-matchup
+let g:matchup_matchparen_deferred = 1
