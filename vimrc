@@ -45,22 +45,14 @@ Plug 'tpope/vim-eunuch'
 " -- editing & integration
 Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-repeat'
-" Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
 Plug 'honza/vim-snippets'
 Plug 'elixir-editors/vim-elixir'
-" Plug 'neoclide/coc.nvim', {'branch': 'release'}
-" Plug 'hyhugh/coc-erlang_ls', {'do': 'yarn install --frozen-lockfile'}
-" Plug 'dense-analysis/ale'
-" Plug 'autozimu/LanguageClient-neovim', {
-"     \ 'branch': 'next',
-"     \ 'do': 'bash install.sh',
-"     \ }
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'liuchengxu/vista.vim'
 Plug 'jgdavey/tslime.vim'
-" Plug 'machakann/vim-sandwich'
 Plug 'stefandtw/quickfix-reflector.vim'
 Plug 'junegunn/vim-easy-align'
 
@@ -236,61 +228,61 @@ function! CreateCenteredFloatingWindow()
 endfunction
 
 " -- vista
-" let g:vista_default_executive = 'coc'
+let g:vista_default_executive = 'coc'
 let g:vista_sidebar_width     = 100
 let g:vista_close_on_jump     = 1
 let g:vista_keep_fzf_colors   = 1
 
 " -- coc
-" let g:coc_global_extensions = [
-"             \'coc-prettier',
-"             \'coc-snippets',
-"             \'coc-ultisnips',
-"             \'coc-syntax',
-"             \'coc-css',
-"             \'coc-html',
-"             \'coc-tsserver',
-"             \'coc-elixir'
-"             \]
+let g:coc_global_extensions = [
+            \'coc-prettier',
+            \'coc-snippets',
+            \'coc-ultisnips',
+            \'coc-syntax',
+            \'coc-css',
+            \'coc-html',
+            \'coc-tsserver',
+            \'coc-elixir'
+            \]
 
 
-" function! s:check_back_space() abort
-"   let col = col('.') - 1
-"   return !col || getline('.')[col - 1]  =~# '\s'
-" endfunction
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
 
-" function! s:show_documentation()
-"   if (index(['vim','help'], &filetype) >= 0)
-"     execute 'h '.expand('<cword>')
-"   else
-"     call CocAction('doHover')
-"   endif
-" endfunction
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
 
-" inoremap <silent><expr> <TAB>
-"       \ pumvisible() ? "\<C-n>" :
-"       \ <SID>check_back_space() ? "\<TAB>" :
-"       \ coc#refresh()
-" inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-" inoremap <silent><expr> <c-space> coc#refresh()
-" inoremap <expr> <CR> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
-" autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
-" nmap <silent> [g <Plug>(coc-diagnostic-prev)
-" nmap <silent> ]g <Plug>(coc-diagnostic-next)
-" nmap <silent> gd <Plug>(coc-definition)
-" nmap <silent> gi <Plug>(coc-implementation)
-" nmap <silent> gf <Plug>(coc-references)
-" nmap <silent> gr <Plug>(coc-rename)
-" nmap <silent> gl <Plug>(coc-codelens-action)
-" nmap <silent> gx <Plug>(coc-fix-current)
-" nnoremap <silent> gs :call <SID>show_documentation()<CR>
-" autocmd CursorHold * silent call CocActionAsync('highlight')
-" nmap <leader>rn <Plug>(coc-rename)
-" set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+inoremap <silent><expr> <c-space> coc#refresh()
+inoremap <expr> <CR> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
+autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gf <Plug>(coc-references)
+nmap <silent> gr <Plug>(coc-rename)
+nmap <silent> gl <Plug>(coc-codelens-action)
+nmap <silent> gx <Plug>(coc-fix-current)
+nnoremap <silent> gs :call <SID>show_documentation()<CR>
+autocmd CursorHold * silent call CocActionAsync('highlight')
+nmap <leader>rn <Plug>(coc-rename)
+set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
 " -- coc-snippets
-" let g:coc_snippet_next = '<tab>'
-" let g:coc_snippet_prev = '<S-Tab>'
+let g:coc_snippet_next = '<tab>'
+let g:coc_snippet_prev = '<S-Tab>'
 
 " -- tslime
 let g:tslime_always_current_session = 1
@@ -352,32 +344,3 @@ let g:lightline = {
 " -- easyalign
 xmap ga <Plug>(EasyAlign)
 nmap ga <Plug>(EasyAlign)
-
-" -- ale
-let g:ale_linters = {
-\   'elixir': ['elixir-ls', 'credo'],
-\}
-
-let g:ale_fixers = {
-\   'elixir': ['mix_format'],
-\}
-let g:ale_elixir_elixir_ls_release = '~/code/github/elixir-lsp/elixir-ls/release'
-let g:ale_completion_enabled = 1
-let g:ale_lint_on_enter = 0
-let g:ale_lint_on_text_changed = 'never'
-let g:ale_linters_explicit = 1
-let g:ale_lint_on_save = 1
-let g:ale_fix_on_save = 1
-noremap <Leader>gd :ALEGoToDefinition<CR>
-noremap <Leader>gr :ALEFindReferences<CR>
-
-" lsp
-let g:LanguageClient_loggingFile = expand('~/.vim/LanguageClient.log')
-let g:LanguageClient_loggingLevel = 'INFO'
-let g:LanguageClient_serverCommands = {
-\ 'elixir': ['~/code/github/elixir-lsp/elixir-ls/release/language_server.sh']
-\ }
-nnoremap <F5> :call LanguageClient_contextMenu()<CR>
-nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
-nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
-nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
