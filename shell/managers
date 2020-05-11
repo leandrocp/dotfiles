@@ -7,6 +7,10 @@ export KERL_BUILD_DOCS=yes
 # asdf
 source $HOME/.asdf/asdf.sh
 
+# jenv
+export PATH="$HOME/.jenv/bin:$PATH"
+eval "$(jenv init -)"
+
 if [[ "$OSTYPE" == "darwin"* ]]; then
 
 fi

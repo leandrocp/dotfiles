@@ -19,11 +19,13 @@ Plug 'andyl/vim-textobj-elixir'
 
 " -- interface
 Plug 'joshdick/onedark.vim'
+Plug 'sonph/onehalf', {'rtp': 'vim/'}
+Plug 'haishanh/night-owl.vim'
+Plug 'bluz71/vim-nightfly-guicolors'
 Plug 'chriskempson/base16-vim'
 Plug 'yggdroot/indentline'
 Plug 'simeji/winresizer'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+Plug 'itchyny/lightline.vim'
 Plug 'troydm/zoomwintab.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'psliwka/vim-smoothie'
@@ -43,17 +45,24 @@ Plug 'tpope/vim-eunuch'
 " -- editing & integration
 Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-repeat'
+" Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
 Plug 'honza/vim-snippets'
 Plug 'elixir-editors/vim-elixir'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'hyhugh/coc-erlang_ls', {'do': 'yarn install --frozen-lockfile'}
+" Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" Plug 'hyhugh/coc-erlang_ls', {'do': 'yarn install --frozen-lockfile'}
+" Plug 'dense-analysis/ale'
+" Plug 'autozimu/LanguageClient-neovim', {
+"     \ 'branch': 'next',
+"     \ 'do': 'bash install.sh',
+"     \ }
 Plug 'liuchengxu/vista.vim'
 Plug 'jgdavey/tslime.vim'
-Plug 'machakann/vim-sandwich'
+" Plug 'machakann/vim-sandwich'
 Plug 'stefandtw/quickfix-reflector.vim'
+Plug 'junegunn/vim-easy-align'
 
 call plug#end()
 
@@ -73,8 +82,6 @@ set undofile
 set pyx=3
 set emoji
 set list listchars=trail:»,tab:»-                       " use tab to navigate in list mode
-set conceallevel=2                                      " set this so we wont break indentation plugin
-let g:indentLine_setConceal = 0                         " actually fix the annoying markdown links conversion
 set backspace=indent,eol,start                          " sensible backspacing
 set foldlevel=0                                         " open all folds by default
 set inccommand=nosplit                                  " visual feedback while substituting
@@ -86,9 +93,12 @@ set title
 set termguicolors
 set cursorline
 syntax on
-colorscheme onedark
-let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+" colorscheme onehalfdark
+" colorscheme night-owl
+colorscheme nightfly
+
+" let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+" let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 " -- performance
 set nocursorcolumn
 set scrolljump=10
@@ -103,14 +113,6 @@ set cmdheight=2
 set updatetime=300
 set shortmess+=c
 set signcolumn=yes
-" -- tmux
-" if exists('$TMUX')
-"   let &t_SI .= "\ePtmux;\e\e[=1c\e\\"
-"   let &t_EI .= "\ePtmux;\e\e[=2c\e\\"
-" else
-"   let &t_SI .= "\e[=1c"
-"   let &t_EI .= "\e[=2c"
-" endif
 
 " == [ACTIONS] ==
 " -- reload vimrc
@@ -234,61 +236,61 @@ function! CreateCenteredFloatingWindow()
 endfunction
 
 " -- vista
-let g:vista_default_executive = 'coc'
+" let g:vista_default_executive = 'coc'
 let g:vista_sidebar_width     = 100
 let g:vista_close_on_jump     = 1
 let g:vista_keep_fzf_colors   = 1
 
 " -- coc
-let g:coc_global_extensions = [
-            \'coc-prettier',
-            \'coc-snippets',
-            \'coc-ultisnips',
-            \'coc-syntax',
-            \'coc-css',
-            \'coc-html',
-            \'coc-tsserver',
-            \'coc-elixir'
-            \]
+" let g:coc_global_extensions = [
+"             \'coc-prettier',
+"             \'coc-snippets',
+"             \'coc-ultisnips',
+"             \'coc-syntax',
+"             \'coc-css',
+"             \'coc-html',
+"             \'coc-tsserver',
+"             \'coc-elixir'
+"             \]
 
 
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
+" function! s:check_back_space() abort
+"   let col = col('.') - 1
+"   return !col || getline('.')[col - 1]  =~# '\s'
+" endfunction
 
-function! s:show_documentation()
-  if (index(['vim','help'], &filetype) >= 0)
-    execute 'h '.expand('<cword>')
-  else
-    call CocAction('doHover')
-  endif
-endfunction
+" function! s:show_documentation()
+"   if (index(['vim','help'], &filetype) >= 0)
+"     execute 'h '.expand('<cword>')
+"   else
+"     call CocAction('doHover')
+"   endif
+" endfunction
 
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-inoremap <silent><expr> <c-space> coc#refresh()
-inoremap <expr> <CR> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
-autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
-nmap <silent> [g <Plug>(coc-diagnostic-prev)
-nmap <silent> ]g <Plug>(coc-diagnostic-next)
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gf <Plug>(coc-references)
-nmap <silent> gr <Plug>(coc-rename)
-nmap <silent> gl <Plug>(coc-codelens-action)
-nmap <silent> gx <Plug>(coc-fix-current)
-nnoremap <silent> gs :call <SID>show_documentation()<CR>
-autocmd CursorHold * silent call CocActionAsync('highlight')
-nmap <leader>rn <Plug>(coc-rename)
-set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
+" inoremap <silent><expr> <TAB>
+"       \ pumvisible() ? "\<C-n>" :
+"       \ <SID>check_back_space() ? "\<TAB>" :
+"       \ coc#refresh()
+" inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+" inoremap <silent><expr> <c-space> coc#refresh()
+" inoremap <expr> <CR> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
+" autocmd! CompleteDone * if pumvisible() == 0 | pclose | endif
+" nmap <silent> [g <Plug>(coc-diagnostic-prev)
+" nmap <silent> ]g <Plug>(coc-diagnostic-next)
+" nmap <silent> gd <Plug>(coc-definition)
+" nmap <silent> gi <Plug>(coc-implementation)
+" nmap <silent> gf <Plug>(coc-references)
+" nmap <silent> gr <Plug>(coc-rename)
+" nmap <silent> gl <Plug>(coc-codelens-action)
+" nmap <silent> gx <Plug>(coc-fix-current)
+" nnoremap <silent> gs :call <SID>show_documentation()<CR>
+" autocmd CursorHold * silent call CocActionAsync('highlight')
+" nmap <leader>rn <Plug>(coc-rename)
+" set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
 " -- coc-snippets
-let g:coc_snippet_next = '<tab>'
-let g:coc_snippet_prev = '<S-Tab>'
+" let g:coc_snippet_next = '<tab>'
+" let g:coc_snippet_prev = '<S-Tab>'
 
 " -- tslime
 let g:tslime_always_current_session = 1
@@ -318,9 +320,6 @@ let g:NERDTreeAutoDeleteBuffer = 1
 map <leader>o :NERDTreeFind<CR>
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
-" -- vim-airline
-let g:airline_theme='onedark'
-
 " -- zoomwintab.vim
 nnoremap <leader>z :ZoomWinTabToggle<CR>
 
@@ -333,6 +332,52 @@ let g:dispatch_compilers = {
     \ "mix compile": "mix"
     \ }
 
-" -- matchparen
-let g:matchparen_timeout = 2
-let g:matchparen_insert_timeout = 2
+" -- indentLine
+let g:indentLine_setColors = 0
+let g:indentLine_setConceal = 0
+let g:vim_json_conceal = 0
+
+" -- lightline
+let g:lightline = {
+      \ 'colorscheme': 'onedark',
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'gitbranch', 'readonly', 'relativepath', 'modified' ] ]
+      \ },
+      \ 'component_function': {
+      \   'gitbranch': 'FugitiveHead'
+      \ },
+      \ }
+
+" -- easyalign
+xmap ga <Plug>(EasyAlign)
+nmap ga <Plug>(EasyAlign)
+
+" -- ale
+let g:ale_linters = {
+\   'elixir': ['elixir-ls', 'credo'],
+\}
+
+let g:ale_fixers = {
+\   'elixir': ['mix_format'],
+\}
+let g:ale_elixir_elixir_ls_release = '~/code/github/elixir-lsp/elixir-ls/release'
+let g:ale_completion_enabled = 1
+let g:ale_lint_on_enter = 0
+let g:ale_lint_on_text_changed = 'never'
+let g:ale_linters_explicit = 1
+let g:ale_lint_on_save = 1
+let g:ale_fix_on_save = 1
+noremap <Leader>gd :ALEGoToDefinition<CR>
+noremap <Leader>gr :ALEFindReferences<CR>
+
+" lsp
+let g:LanguageClient_loggingFile = expand('~/.vim/LanguageClient.log')
+let g:LanguageClient_loggingLevel = 'INFO'
+let g:LanguageClient_serverCommands = {
+\ 'elixir': ['~/code/github/elixir-lsp/elixir-ls/release/language_server.sh']
+\ }
+nnoremap <F5> :call LanguageClient_contextMenu()<CR>
+nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
+nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
+nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>

@@ -39,6 +39,9 @@ brew install pgcli
 brew install bat
 brew install hub
 brew install zplug
+brew install renameutils
+brew install dust
+brew install delta
 
 brew cask install vlc
 

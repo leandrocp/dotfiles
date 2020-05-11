@@ -7,33 +7,10 @@
   editor = vim
   excludesfile = ~/.gitignore
   autocrlf = input
-  pager = diff-so-fancy | less --tabs=4 -RFX
-[color]
-  diff = auto
-  status = auto
-  branch = auto
-  interactive = auto
-  ui = true
-[color "branch"]
-  current = yellow reverse
-  local = yellow
-  remote = green
-[color "diff"]
-  meta = yellow
-  frag = magenta bold
-  old = red bold
-  new = green bold
-  commit = yellow bold
-  whitespace = red reverse
-[color "status"]
-  added = yellow
-  changed = green
-  untracked = cyan
-[color "diff-highlight"]
-  oldNormal = red bold
-  oldHighlight = red bold 52
-  newNormal = green bold
-  newHighlight = green bold 22
+[core]
+  pager = delta --theme OneHalfDark --plus-color="#012800" --minus-color="#340001"
+[interactive]
+    diffFilter = delta --theme OneHalfDark --color-only
 [grep]
   extendRegexp = true
   lineNumber = true
