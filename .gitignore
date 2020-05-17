@@ -28,3 +28,6 @@ config/htop
 config/pgcli/history
 config/pgcli/log
 config/hub
+config/.erlyberly2
+config/mssqlcli/
+config/wireshark/

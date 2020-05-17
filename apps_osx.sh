@@ -42,6 +42,7 @@ brew install zplug
 brew install renameutils
 brew install dust
 brew install delta
+brew install aspell
 
 brew cask install vlc
 
