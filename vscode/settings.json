@@ -1,141 +1,44 @@
 {
     // -- Editor
-    "editor.fontFamily": "Hack",
     "editor.fontLigatures": false,
-    "editor.fontSize": 14,
-    "editor.formatOnSave": true,
-    // "editor.formatOnType": true,
-    "editor.lineNumbers": "off",
+    "editor.fontSize": 12,
+    "editor.formatOnSave": false,
+    "editor.formatOnType": false,
+    "editor.formatOnPaste": false,
     "editor.minimap.enabled": false,
     "editor.insertSpaces": true,
     "editor.wordBasedSuggestions": false,
     "editor.trimAutoWhitespace": false,
     "editor.acceptSuggestionOnEnter": "off",
+    "workbench.editor.enablePreview": false,
+    "workbench.startupEditor": "none",
+    // -- Explorer
+    "explorer.confirmDelete": true,
     // -- Files
     "files.trimTrailingWhitespace": true,
     "files.trimFinalNewlines": false,
-    // -- Vim
-    "vim.leader": "<space>",
-    "vim.sneak": true,
-    "vim.incsearch": true,
-    "vim.useSystemClipboard": true,
-    "vim.useCtrlKeys": true,
-    "vim.hlsearch": true,
-    "vim.normalModeKeyBindingsNonRecursive": [
-        {
-            "before": [
-                "leader",
-                "h"
-            ],
-            "commands": [
-                "workbench.action.previousEditor",
-            ]
-        },
-        {
-            "before": [
-                "leader",
-                "l"
-            ],
-            "commands": [
-                "workbench.action.nextEditor",
-            ]
-        },
-        {
-            "before": [
-                ">"
-            ],
-            "commands": [
-                "editor.action.indentLines"
-            ]
-        },
-        {
-            "before": [
-                "<"
-            ],
-            "commands": [
-                "editor.action.outdentLines"
-            ]
-        },
-        {
-            "before": [
-                "leader",
-                "c"
-            ],
-            "commands": [
-                "workbench.action.showCommands"
-            ]
-        },
-        {
-            "before": [
-                "leader",
-                "f",
-                "s"
-            ],
-            "commands": [
-                "workbench.action.files.save",
-            ]
-        },
-        {
-            "before": [
-                "leader",
-                "o"
-            ],
-            "commands": [
-                ":nohl",
-            ]
-        },
-        {
-            "before": [
-                "s",
-            ],
-            "after": [
-                "x",
-                "i"
-            ]
-        }
-    ],
-    // "workbench.fontAliasing": "antialiased",
-    // "workbench.colorCustomizations": {
-    // "editor.lineHighlightBackground": "#30323f",
-    // "editor.lineHighlightBorder": "#30323f"
-    // },
-    "workbench.colorCustomizations": {
-        "activityBar.background": "#1E2028",
-        "activityBar.border": "#1E2028",
-        "sideBar.background": "#1E2028",
-        "sideBar.border": "#1C1E26"
-    },
-    "editor.tokenColorCustomizations": {
-        "textMateRules": [
-            {
-                "name": "HTML tag brackets",
-                "scope": [
-                    "punctuation.definition.tag"
-                ],
-                "settings": {
-                    "foreground": "#BBBBBB"
-                }
-            }
-        ]
-    },
-    "workbench.editor.enablePreview": false,
-    // "window.zoomLevel": 0,
-    // "window.smoothScrollingWorkaround": true,
-    "explorer.confirmDelete": false,
-    // ElixirLS,
+    // -- ElixirLS
     "elixirLS.dialyzerEnabled": false,
     "elixirLS.fetchDeps": false,
     "elixirLS.suggestSpecs": false,
-    "gitlens.currentLine.enabled": false,
-    "gitlens.hovers.currentLine.over": "line",
-    "git.enableSmartCommit": true,
-    "gitlens.codeLens.enabled": false,
-    "editor.renderControlCharacters": false,
-    "window.zoomLevel": 0,
-    "files.associations": {
-        "Dockerfile-worker": "dockerfile"
+    // -- NeoVim
+    "vscode-neovim.neovimPath": "/usr/local/bin/nvim",
+    // -- Command Runner
+    "command-runner.commands": {
+        "mix dialyzer": "mix dialyzer"
     },
-    "workbench.sideBar.location": "left",
-    "workbench.statusBar.visible": true,
-    "workbench.colorTheme": "Atom One Dark"
+    // -- GitLens
+    "gitlens.codeLens.recentChange.enabled": false,
+    "gitlens.codeLens.authors.enabled": false,
+    "gitlens.codeLens.enabled": false,
+    "gitlens.currentLine.enabled": false,
+    "workbench.colorTheme": "dark+(elixir)",
+    // -- Vim
+    {
+        "vim.incsearch": true,
+        "vim.useSystemClipboard": true,
+        "vim.useCtrlKeys": true,
+        "vim.hlsearch": true,
+        "vim.leader": "<space>"
+    }
 }

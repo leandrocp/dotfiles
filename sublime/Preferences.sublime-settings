@@ -1,0 +1,17 @@
+{
+	"ignored_packages":
+	[
+		"Six",
+		"Vintage",
+		"Vintageous",
+	],
+	"neovintageous_build_version": 11100,
+	"vintageous_use_ctrl_keys": false,
+	"vintageous_use_super_keys": false,
+	"theme": "Adaptive.sublime-theme",
+	"color_scheme": "Packages/alchemist-theme/Alchemist.tmTheme",
+  "tab_size": 2,
+  "translate_tabs_to_spaces": true,
+	"highlight_line": true,
+	"hardware_acceleration": "opengl",
+}

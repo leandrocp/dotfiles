@@ -47,6 +47,7 @@
 ;; -------
 ;; General
 ;; -------
+(server-start)
 (setq load-prefer-newer t)                        ; Don't load outdated byte code
 (defvar comp-deferred-compilation)                ; Compile Emacs lisp into native code
 (setq comp-deferred-compilation t)
@@ -551,3 +552,17 @@
     "C-l" 'centaur-tabs-forward
   )
 )
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(doc-view-resolution 192)
+ '(package-selected-packages
+   '(general web-mode yaml-mode exunit erlang yasnippet-snippets yasnippet which-key treemacs-projectile treemacs-persp treemacs-magit treemacs-icons-dired treemacs-evil solaire-mode smex smartparens rg popwin lsp-ui ivy-posframe flx flycheck-mix flycheck-credo flycheck fast-scroll exec-path-from-shell evil-magit evil-escape evil-commentary evil-collection evil doom-themes doom-modeline diminish deadgrep dap-mode counsel-projectile counsel company-box company centaur-tabs beacon all-the-icons-ivy-rich all-the-icons ace-window auto-package-update use-package)))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )

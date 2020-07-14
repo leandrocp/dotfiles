@@ -1,3 +1,4 @@
+alias ec='emacsclient -n -c'
 alias vi=nvim
 alias vim=nvim
 alias rm='rm -i'
@@ -17,7 +18,7 @@ alias ll='ls -lah'
 alias la='ls -A'
 alias l='ls -CF'
 
-alias e="nvim"
+alias e='nvim'
 alias g='git'
 alias r='rails'
 alias rk='rake'
