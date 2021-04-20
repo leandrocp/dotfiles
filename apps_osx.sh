@@ -27,7 +27,6 @@ brew install the_silver_searcher
 brew install fzf
 brew install ripgrep
 brew install editorconfig
-brew install reattach-to-user-namespace
 brew install tmux
 brew install openssh
 brew install ssh-copy-id
@@ -43,6 +42,9 @@ brew install renameutils
 brew install dust
 brew install delta
 brew install aspell
+brew install fzy
+brew install fd
+brew install dog
 
 brew cask install vlc
 

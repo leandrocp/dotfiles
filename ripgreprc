@@ -1,0 +1,11 @@
+--smart-case
+--pretty
+
+--type-add
+web:*.{html,css,js,eex,leex}*
+
+--type-add
+tml:*.{html,eex,leex}*
+
+--type-add
+src:*.{ex,exs}*

@@ -18,8 +18,9 @@
 \timing
 
 -- Use best available output format
+--\x auto
+
 \encoding unicode
-\x auto
 \set VERBOSITY verbose
 \set HISTFILE ~/.psql_history- :DBNAME
 \set HISTCONTROL ignoredups

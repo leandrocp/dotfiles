@@ -1,6 +1,7 @@
 import_if_available Plug.Conn
 import_if_available Phoenix.HTML
 import_if_available Ecto.Query
+import_if_available Ecto.Changeset
 alias Ecto.Changeset
 alias Pulse.Repo
 
@@ -12,7 +13,11 @@ IEx.configure [
   history_size: -1,
   inspect: [
     pretty: true,
-    limit: 10_000
+    limit: 10_000,
+    printable_limit: 10_000,
+    binaries: :as_strings,
+    charlists: :as_lists,
+    width: 120
   ],
   colors: [
     eval_result: [ :green, :bright ],

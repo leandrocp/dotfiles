@@ -75,7 +75,7 @@ let g:mapleader = "\<Space>"
 let g:maplocalleader = ','
 set termguicolors
 set background=dark
-colorscheme base16-snazzy
+colorscheme embark
 " set cursorline
 set title
 set splitbelow
@@ -249,9 +249,8 @@ let g:projectionist_heuristics = {
 " -- telescope.nvim
 nnoremap <leader>ff <cmd>lua require('telescope.builtin').find_files()<cr>
 nnoremap <leader>fg <cmd>lua require('telescope.builtin').live_grep()<cr>
-nnoremap <leader>bb <cmd>lua require('telescope.builtin').buffers()<cr>
-nnoremap <leader>m <cmd>lua require('telescope.builtin').marks()<cr>
-
+nnoremap <leader>fb <cmd>lua require('telescope.builtin').buffers()<cr>
+nnoremap <leader>fm <cmd>lua require('telescope.builtin').marks()<cr>
 lua << EOF
 local actions = require('telescope.actions')
 ------------------------------
@@ -261,39 +260,30 @@ require('telescope').setup{
       i = {
         ["<C-j>"] = actions.move_selection_next,
         ["<C-k>"] = actions.move_selection_previous,
-	["<esc>"] = actions.close,
       }
     },
     file_sorter =  require'telescope.sorters'.get_fzy_sorter
-  },
-  extensions = {
-    fzy_native = {
-      override_generic_sorter = false,
-      override_file_sorter = true,
-    }
   }
 }
-
-require('telescope').load_extension('fzy_native')
 EOF
 
 " -- vim-grepper
-" let g:grepper = {}
-" runtime plugin/grepper.vim
-"     let g:grepper = { 'open': 0 }
-"     autocmd User Grepper copen
-" let g:grepper.highlight = 1
-" let g:grepper.dir = 'repo,cwd'
-" let g:grepper.repo = ['.git']
-" let g:grepper.tools = ["rg"]
-" let g:grepper.rg = {
-"   \ 'grepprg': 'rg --with-filename --no-heading --smart-case --vimgrep',
-" \ }
-" nnoremap <leader>* :Grepper -tool rg -open -switch -cword -noprompt<cr>
-" nnoremap <Leader>// :GrepperRg<Space>
-" nnoremap <Leader>/w :Grepper -tool rg -open -switch -grepprg rg --with-filename --no-heading --smart-case --vimgrep -tweb '$*'<cr>
-" nnoremap <Leader>/t :Grepper -tool rg -open -switch -grepprg rg --with-filename --no-heading --smart-case --vimgrep -ttml '$*'<cr>
-" nnoremap <Leader>/s :Grepper -tool rg -open -switch -grepprg rg --with-filename --no-heading --smart-case --vimgrep -tsrc '$*'<cr>
+let g:grepper = {}
+runtime plugin/grepper.vim
+    let g:grepper = { 'open': 0 }
+    autocmd User Grepper copen
+let g:grepper.highlight = 1
+let g:grepper.dir = 'repo,cwd'
+let g:grepper.repo = ['.git']
+let g:grepper.tools = ["rg"]
+let g:grepper.rg = {
+  \ 'grepprg': 'rg --with-filename --no-heading --smart-case --vimgrep',
+\ }
+nnoremap <leader>* :Grepper -tool rg -open -switch -cword -noprompt<cr>
+nnoremap <Leader>// :GrepperRg<Space>
+nnoremap <Leader>/w :Grepper -tool rg -open -switch -grepprg rg --with-filename --no-heading --smart-case --vimgrep -tweb '$*'<cr>
+nnoremap <Leader>/t :Grepper -tool rg -open -switch -grepprg rg --with-filename --no-heading --smart-case --vimgrep -ttml '$*'<cr>
+nnoremap <Leader>/s :Grepper -tool rg -open -switch -grepprg rg --with-filename --no-heading --smart-case --vimgrep -tsrc '$*'<cr>
 
 " -- clap
 
@@ -312,8 +302,6 @@ nnoremap <leader>tv :TestVisit<CR>
 " -- tmux commands
 nmap <leader>td :Tmux mix dialyzer<CR>
 nmap <leader>tq :Tmux mix quality<CR>
-nmap <leader>tp :Tmux mix format<CR>
-nmap <leader>tc :Tmux mix compile --all-warnings<CR>
 
 " -- undotree
 let g:undotree_WindowLayout       = 4
@@ -333,70 +321,3 @@ noremap <silent><esc> <esc>:noh<CR><esc>
 
 " -- dash.vim
 nmap <silent> <leader>d <Plug>DashSearch
-
-" -- nvim-lsp
-lua << EOF
-local nvim_lsp = require('lspconfig')
-
-nvim_lsp.elixirls.setup{
-  on_attach=require'completion'.on_attach;
-  cmd = { "/Users/leandro/code/github/elixir-lsp/elixir-ls/release/language_server.sh" };
-}
-
-nvim_lsp.sqlls.setup{
-  on_attach=require'completion'.on_attach;
-  cmd = {"sql-language-server", "up", "--method", "stdio"};
-}
-EOF
-nnoremap <silent>gd <cmd>lua vim.lsp.buf.definition()<CR>
-nnoremap <silent>K  <cmd>lua vim.lsp.buf.hover()<CR>
-
-" -- completion-nvim
-inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-set completeopt=menuone,noinsert,noselect
-set shortmess+=c
-let g:completion_trigger_keyword_length = 2
-" let g:completion_matching_strategy_list = ['exact', 'substring']
-let g:completion_matching_strategy_list = ['fuzzy', 'substring', 'exact']
-let g:completion_matching_ignore_case = 1
-let g:completion_chain_complete_list = {
-			\'default' : {
-			\	'default' : [
-			\		{'complete_items' : ['lsp', 'tmux', 'buffers', 'vim-dadbod-completion']},
-      \   {'mode': '<c-p>'},
-      \   {'mode': '<c-n>'}
-			\	],
-			\	'comment' : []
-			\}}
-" let g:completion_chain_complete_list = {
-"     \   'sql': [
-"     \    {'complete_items': ['vim-dadbod-completion']},
-"     \   ],
-"     \ }
-autocmd FileType sql setlocal omnifunc=vim_dadbod_completion#omni
-augroup completion
-  autocmd!
-  autocmd BufEnter * lua require'completion'.on_attach()
-  autocmd FileType sql let g:completion_trigger_character = ['.', '"', '`', '[']
-augroup END
-
-" -- rainbow
-let g:rainbow_active = 1
-
-" -- dadbod
-let g:db_ui_auto_execute_table_helpers = 1
-let g:db_ui_winwidth = 50
-let g:db_ui_win_position = 'right'
-let g:db_ui_save_location = '~/code/vim_db_ui_queries'
-let g:db_ui_tmp_query_location = '~/code/vim_db_ui_queries'
-let g:dbs = {
-\  'pulse_dev': 'postgres://postgres@localhost:5432/pulse_dev'
-\ }
-let g:db_ui_table_helpers = {
-\   'postgresql': {
-\     'Count': 'select count(*) from "{table}"'
-\   }
-\ }
-autocmd FileType dbui nmap <buffer> s <Plug>(DBUI_SaveQuery)
-

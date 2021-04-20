@@ -23,13 +23,7 @@ nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-l> <C-w>l
 nnoremap <C-k> <C-w>k
-nmap <leader>F :GFiles<CR>
-nmap <leader>f :Files<CR>
-nmap <leader>b :Buffers<CR>
-nmap <leader>h :History<CR>
 nmap <leader>a :Vista!!<CR>
-nmap <leader>l :Lines<CR>
-nmap <leader>s :Rg<CR>
 nmap <leader>m :Marks<CR>
 " nmap <leader>t :Vista finder<CR>
 " nnoremap <C-u> :m .+1<CR>==
@@ -43,3 +37,6 @@ nmap <S-Tab> :bprevious<CR>
 nnoremap <leader><Tab> :b#<CR>
 " disable hl with 2 esc
 noremap <silent><esc> <esc>:noh<CR><esc>
+
+nnoremap <space>pl :Mlint<CR>
+nnoremap <space>bl :Mlint %<CR>

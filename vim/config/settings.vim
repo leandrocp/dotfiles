@@ -14,7 +14,7 @@ set list listchars=trail:»,tab:»-       " use tab to navigate in list mode
 " ui
 set termguicolors
 set background=dark
-colorscheme nightfly
+colorschem onehalfdark
 syntax on
 set cursorline
 set title
@@ -25,6 +25,7 @@ set visualbell t_vb=
 set inccommand=nosplit                  " visual feedback while substituting
 let loaded_netrw = 0                    " diable netrw
 set scrolloff=10                        " Minimum number of lines to always show above/below the caret.
+set updatetime=100
 
 " os
 set clipboard+=unnamedplus

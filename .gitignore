@@ -19,9 +19,15 @@ Session.vim
 .sensitive
 tags
 *.log
+bin/nvim
+bin/vimr
 vim/autoload
 vim/plugged
 vim/undodir
+vim/pack
+vim/backup
+config/nvim/plugin
+config/nvim/site
 config/coc
 config/configstore
 config/htop
@@ -33,6 +39,11 @@ config/mssqlcli/
 config/wireshark/
 config/.isolated-storage/
 config/BHOK/
+config/Wondershare*
+config/WsSocialApp
+config/7eba963f0804
+config/gh
+config/sql-language-server
 Package Control.last-run
 Package Control.ca-list
 Package Control.ca-bundle
@@ -42,3 +53,4 @@ Package Control.ca-certs
 Package Control.merged-ca-bundle
 Package Control.user-ca-bundle
 *.crt
+.ctags.d

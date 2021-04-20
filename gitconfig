@@ -1,19 +1,28 @@
 [user]
-  name = Leandro Cesquini Pereira
-  email = leandro@leandrocp.com.br
+	name = Leandro Cesquini Pereira
+	email = leandro@leandro.io
+  username = leandrocp
+	signingkey = B087DD0D88E2F6B2A1910FEAD4AB0498F59DEADE
 [github]
   user = leandrocp
 [core]
   editor = vim
   excludesfile = ~/.gitignore
   autocrlf = input
-[core]
-  pager = delta --theme OneHalfDark --plus-color="#012800" --minus-color="#340001"
-[interactive]
-    diffFilter = delta --theme OneHalfDark --color-only
+[color]
+  ui = true
+[push]
+  default = current
+[difftool]
+  prompt = false
 [grep]
   extendRegexp = true
   lineNumber = true
+[filter "lfs"]
+  clean = git-lfs clean -- %f
+  smudge = git-lfs smudge -- %f
+  process = git-lfs filter-process
+  required = true
 [alias]
   aa = !git add --all && git status -sb
   ca = commit --amend
@@ -21,18 +30,27 @@
   co = checkout
   cl = clone
   st = status
-  df = diff --color --color-words --abbrev
+  df = diff
+  dc = diff --cached
   l = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
   ll = log --graph --decorate --pretty=oneline --abbrev-commit --all
   g = grep --break --heading --line-number
   delete-branch = !sh -c 'git push origin :refs/heads/$1 && git remote prune origin && git branch -D $1' -
   squash = rebase -i @{u}
-  up = !sh -c 'git fetch && git pull --rebase' -
+  up = !sh -c 'git set-upstream && git fetch && git pull --rebase' -
   cp = cherry-pick
-[filter "lfs"]
-  clean = git-lfs clean -- %f
-  smudge = git-lfs smudge -- %f
-  process = git-lfs filter-process
-  required = true
-[push]
-	default = current
+  set-upstream = !git branch --set-upstream-to=origin/`git symbolic-ref --short HEAD`
+	conflicted = !vim +Conflicted
+[commit]
+	gpgsign = true
+[gpg]
+	program = /usr/local/bin/gpg
+[merge]
+	tool = vim-conflicted
+[mergetool]
+	prompt = false
+	keepBackup = true
+[init]
+	defaultBranch = master
+[mergetool "vim-conflicted"]
+	cmd = vim +Conflicted

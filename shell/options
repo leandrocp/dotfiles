@@ -36,3 +36,8 @@ export GPG_TTY=$(tty);
 export FZF_DEFAULT_COMMAND='rg --files'
 
 export BAT_THEME="OneHalfDark"
+
+export RIPGREP_CONFIG_PATH=$HOME/.ripgreprc
+
+# erlang
+export KERL_BUILD_DOCS="yes"
