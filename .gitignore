@@ -44,6 +44,7 @@ config/WsSocialApp
 config/7eba963f0804
 config/gh
 config/sql-language-server
+config/efm-langserver/
 Package Control.last-run
 Package Control.ca-list
 Package Control.ca-bundle

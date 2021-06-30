@@ -311,6 +311,7 @@ nnoremap <leader>tv :TestVisit<CR>
 
 " -- tmux commands
 nmap <leader>td :Tmux mix dialyzer<CR>
+nmap <leader>tl :Tmux mix credo --strict<CR>
 nmap <leader>tq :Tmux mix quality<CR>
 nmap <leader>tp :Tmux mix format<CR>
 nmap <leader>tc :Tmux mix compile --all-warnings<CR>
@@ -335,54 +336,123 @@ noremap <silent><esc> <esc>:noh<CR><esc>
 nmap <silent> <leader>d <Plug>DashSearch
 
 " -- nvim-lsp
-lua << EOF
-local nvim_lsp = require('lspconfig')
+  " on_attach = require'completion'.on_attach;
 
-nvim_lsp.elixirls.setup{
-  on_attach=require'completion'.on_attach;
-  cmd = { "/Users/leandro/code/github/elixir-lsp/elixir-ls/release/language_server.sh" };
+" nvim_lsp.sqlls.setup{
+"   on_attach=require'completion'.on_attach;
+"   cmd = {"sql-language-server", "up", "--method", "stdio"};
+" }
+lua << EOF
+local lspconfig = require('lspconfig')
+
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities.textDocument.completion.completionItem.snippetSupport = true
+
+lspconfig.elixirls.setup {
+  cmd = { "/Users/leandro/code/github/elixir-lsp/elixir-ls/release/language_server.sh" },
+  capabilities = capabilities
 }
 
-nvim_lsp.sqlls.setup{
-  on_attach=require'completion'.on_attach;
-  cmd = {"sql-language-server", "up", "--method", "stdio"};
+lspconfig.efm.setup {
+  init_options = { documentFormatting = true },
+  capabilities = capabilities,
+  filetypes = { "elixir" }
 }
 EOF
 nnoremap <silent>gd <cmd>lua vim.lsp.buf.definition()<CR>
 nnoremap <silent>K  <cmd>lua vim.lsp.buf.hover()<CR>
 
-" -- completion-nvim
-inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-set completeopt=menuone,noinsert,noselect
-set shortmess+=c
-let g:completion_trigger_keyword_length = 2
-" let g:completion_matching_strategy_list = ['exact', 'substring']
-let g:completion_matching_strategy_list = ['fuzzy', 'substring', 'exact']
-let g:completion_matching_ignore_case = 1
-let g:completion_chain_complete_list = {
-			\'default' : {
-			\	'default' : [
-			\		{'complete_items' : ['lsp', 'tmux', 'buffers', 'vim-dadbod-completion']},
-      \   {'mode': '<c-p>'},
-      \   {'mode': '<c-n>'}
-			\	],
-			\	'comment' : []
-			\}}
-" let g:completion_chain_complete_list = {
-"     \   'sql': [
-"     \    {'complete_items': ['vim-dadbod-completion']},
-"     \   ],
-"     \ }
-autocmd FileType sql setlocal omnifunc=vim_dadbod_completion#omni
-augroup completion
-  autocmd!
-  autocmd BufEnter * lua require'completion'.on_attach()
-  autocmd FileType sql let g:completion_trigger_character = ['.', '"', '`', '[']
-augroup END
+" -- nvim-compe
+set completeopt=menuone,noselect
+let g:compe = {}
+let g:compe.enabled = v:true
+let g:compe.source = {}
+let g:compe.source.path = v:true
+let g:compe.source.buffer = v:true
+let g:compe.source.calc = v:true
+let g:compe.source.nvim_lsp = v:true
+let g:compe.source.nvim_lua = v:true
+let g:compe.source.vsnip = v:true
+let g:compe.source.spell = v:true
+inoremap <silent><expr> <C-Space> compe#complete()
+inoremap <silent><expr> <CR>      compe#confirm('<CR>')
+inoremap <silent><expr> <C-e>     compe#close('<C-e>')
+inoremap <silent><expr> <C-f>     compe#scroll({ 'delta': +4 })
+inoremap <silent><expr> <C-d>     compe#scroll({ 'delta': -4 })
+lua << EOF
+local t = function(str)
+  return vim.api.nvim_replace_termcodes(str, true, true, true)
+end
 
-" -- rainbow
-let g:rainbow_active = 1
+local check_back_space = function()
+    local col = vim.fn.col('.') - 1
+    if col == 0 or vim.fn.getline('.'):sub(col, col):match('%s') then
+        return true
+    else
+        return false
+    end
+end
+
+-- Use (s-)tab to:
+--- move to prev/next item in completion menuone
+--- jump to prev/next snippet's placeholder
+_G.tab_complete = function()
+  if vim.fn.pumvisible() == 1 then
+    return t "<C-n>"
+  elseif vim.fn.call("vsnip#available", {1}) == 1 then
+    return t "<Plug>(vsnip-expand-or-jump)"
+  elseif check_back_space() then
+    return t "<Tab>"
+  else
+    return vim.fn['compe#complete']()
+  end
+end
+_G.s_tab_complete = function()
+  if vim.fn.pumvisible() == 1 then
+    return t "<C-p>"
+  elseif vim.fn.call("vsnip#jumpable", {-1}) == 1 then
+    return t "<Plug>(vsnip-jump-prev)"
+  else
+    -- If <S-Tab> is not working in your terminal, change it to <C-h>
+    return t "<S-Tab>"
+  end
+end
+
+vim.api.nvim_set_keymap("i", "<Tab>", "v:lua.tab_complete()", {expr = true})
+vim.api.nvim_set_keymap("s", "<Tab>", "v:lua.tab_complete()", {expr = true})
+vim.api.nvim_set_keymap("i", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
+vim.api.nvim_set_keymap("s", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
+EOF
+
+" " -- completion-nvim
+" inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+" inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+" set completeopt=menuone,noinsert,noselect
+" set shortmess+=c
+" let g:completion_trigger_keyword_length = 2
+" " let g:completion_matching_strategy_list = ['exact', 'substring']
+" let g:completion_matching_strategy_list = ['fuzzy', 'substring', 'exact']
+" let g:completion_matching_ignore_case = 1
+" let g:completion_chain_complete_list = {
+" 			\'default' : {
+" 			\	'default' : [
+" 			\		{'complete_items' : ['lsp', 'tmux', 'buffers', 'vim-dadbod-completion']},
+"       \   {'mode': '<c-p>'},
+"       \   {'mode': '<c-n>'}
+" 			\	],
+" 			\	'comment' : []
+" 			\}}
+" " let g:completion_chain_complete_list = {
+" "     \   'sql': [
+" "     \    {'complete_items': ['vim-dadbod-completion']},
+" "     \   ],
+" "     \ }
+" autocmd FileType sql setlocal omnifunc=vim_dadbod_completion#omni
+" augroup completion
+"   autocmd!
+"   autocmd BufEnter * lua require'completion'.on_attach()
+"   autocmd FileType sql let g:completion_trigger_character = ['.', '"', '`', '[']
+" augroup END
 
 " -- dadbod
 let g:db_ui_auto_execute_table_helpers = 1
@@ -400,3 +470,50 @@ let g:db_ui_table_helpers = {
 \ }
 autocmd FileType dbui nmap <buffer> s <Plug>(DBUI_SaveQuery)
 
+" -- nvim-bufferline.lua
+lua << EOF
+require'bufferline'.setup{
+  options = {
+    mappings = true,
+    diagnostics = "nvim_lsp"
+  }
+}
+EOF
+
+" " -- lualine
+" lua << EOF
+" require('lualine').setup {
+"   options = {
+"     theme = 'onedark'
+"   }
+" }
+" EOF
+
+" -- nvimm-lastplace
+lua << EOF
+require'nvim-lastplace'.setup{}
+EOF
+
+"" -- nvimm-treesitter
+"lua << EOF
+"require'nvim-treesitter.configs'.setup {
+"  ensure_installed = {
+"    "javascript",
+"    "html",
+"    "css",
+"    "bash",
+"    "lua",
+"    "json",
+"    "elixir"
+"  },
+"  highlight = {
+"    enable = true
+"  },
+"  incremental_selection = {
+"    enable = true
+"  },
+"  indent = {
+"    enable = true
+"  }
+"}
+"EOF

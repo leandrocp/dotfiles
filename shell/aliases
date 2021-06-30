@@ -31,6 +31,8 @@ alias gc='gcloud'
 
 alias yt="youtube-dl -w -c -f 22/18 -o '%(title)s.%(ext)s'"
 
+alias nvim-update='asdf uninstall neovim nightly && asdf install neovim nightly'
+
 eval "$(hub alias -s)"
 
 if [[ "$OSTYPE" == "darwin"* ]]; then
