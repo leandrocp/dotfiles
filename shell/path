@@ -1,3 +1,5 @@
+# vi: ft=zsh
+
 # MAC
 if [[ "$OSTYPE" == "darwin"* ]]; then
 

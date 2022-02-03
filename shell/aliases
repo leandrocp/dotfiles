@@ -1,3 +1,5 @@
+# vi: ft=zsh
+
 alias ec='emacsclient -n -c'
 alias vi=nvim
 alias vim=nvim
@@ -29,13 +31,9 @@ alias dcm='docker-machine'
 alias kb='kubectl'
 alias gc='gcloud'
 
-alias yt="youtube-dl -w -c -f 22/18 -o '%(title)s.%(ext)s'"
-
 alias nvim-update='asdf uninstall neovim nightly && asdf install neovim nightly'
 
 eval "$(hub alias -s)"
-
-alias tf=terraform
 
 if [[ "$OSTYPE" == "darwin"* ]]; then
 

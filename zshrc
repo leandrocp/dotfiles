@@ -1,19 +1,18 @@
-# ZSH BUNDLES
-source $HOME/.shell/zsh_plugins.sh
-ZSH_THEME="leandrocp"
-# ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=1'
-# ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#fffefe"
+# oh-my-zsh
+export ZSH="$HOME/.oh-my-zsh"
+ZSH_THEME="robbyrussell"
+HIST_STAMPS="yyyy-mm-dd"
+plugins=(brew safe-paste common-aliases command-not-found fzf ripgrep git gitfast asdf last-working-dir copyfile autojump man aws terraform docker docker-compose mix)
+source $ZSH/oh-my-zsh.sh
 
-# SHELL CONFIG
+zstyle ':completion:*:*:docker:*' option-stacking yes
+zstyle ':completion:*:*:docker-*:*' option-stacking yes
+
+# user options
 source $HOME/.sensitive
+source $HOME/.shell/oh-my-zsh
 source $HOME/.shell/options
 source $HOME/.shell/path
 source $HOME/.shell/managers
 source $HOME/.shell/aliases
 source $HOME/.shell/functions
-source $HOME/.shell/completion
-
-export TERM=xterm-256color
-# export TERM=st-256color
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
