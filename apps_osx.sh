@@ -35,6 +35,7 @@ dog \
 efm-langserver \
 pandoc \
 autojump \
-vlc
+vlc \
+lazygit
 
 brew cleanup
