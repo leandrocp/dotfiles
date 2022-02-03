@@ -44,7 +44,9 @@ config/WsSocialApp
 config/7eba963f0804
 config/gh
 config/sql-language-server
-config/efm-langserver/
+config/efm-langserver
+config/joplin-desktop
+config/iterm2
 Package Control.last-run
 Package Control.ca-list
 Package Control.ca-bundle

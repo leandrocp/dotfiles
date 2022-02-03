@@ -14,14 +14,6 @@ export EDITOR="nvim"
 export GIT_EDITOR="nvim"
 export VISUAL=$EDITOR
 
-# TMUX
-# https://github.com/robbyrussell/oh-my-zsh/wiki/Plugins#tmux
-# export ZSH_TMUX_AUTOSTART="true"
-# export ZSH_TMUX_AUTOSTART_ONCE="true"
-
-# oh-my-zsh
-export DISABLE_UPDATE_PROMPT=true
-
 export HISTFILE=~/.zsh_history
 export HISTSIZE=10000
 export SAVEHIST=10000
@@ -39,5 +31,5 @@ export BAT_THEME="OneHalfDark"
 
 export RIPGREP_CONFIG_PATH=$HOME/.ripgreprc
 
-# erlang
-export KERL_BUILD_DOCS="yes"
+# elixir
+export PLUG_EDITOR='vscode://file/__FILE__:__LINE__'

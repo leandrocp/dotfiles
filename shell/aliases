@@ -35,6 +35,8 @@ alias nvim-update='asdf uninstall neovim nightly && asdf install neovim nightly'
 
 eval "$(hub alias -s)"
 
+alias tf=terraform
+
 if [[ "$OSTYPE" == "darwin"* ]]; then
 
 alias dns_reset="dscacheutil -flushcache && killall -HUP mDNSResponder"

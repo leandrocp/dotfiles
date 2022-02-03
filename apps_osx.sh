@@ -46,6 +46,7 @@ brew install fzy
 brew install fd
 brew install dog
 brew install efm-langserver
+brew install pandoc
 
 brew cask install vlc
 
