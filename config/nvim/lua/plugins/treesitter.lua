@@ -19,6 +19,20 @@ function M.config()
 		},
 		highlight = {
 			enable = true,
+			additional_vim_regex_highlighting = false,
+		},
+		context_commentstring = {
+			enable = true,
+			enable_autocmd = false,
+		},
+		autopairs = {
+			enable = true,
+		},
+		rainbow = {
+			enable = true,
+			disable = { "html" },
+			extended_mode = false,
+			max_file_lines = nil,
 		},
 		indent = {
 			enable = true,
