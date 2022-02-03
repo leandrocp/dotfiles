@@ -17,6 +17,12 @@ vim.cmd([[
     autocmd TextYankPost * silent! lua vim.highlight.on_yank()
   augroup end
 
+  augroup cursor_off
+    autocmd!
+    autocmd WinLeave * set nocursorline
+    autocmd WinEnter * set cursorline
+  augroup end
+
   augroup _stop_comment_new_lines
     autocmd!
     autocmd BufEnter * set fo-=c fo-=r fo-=o
