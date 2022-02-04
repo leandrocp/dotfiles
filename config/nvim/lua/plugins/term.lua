@@ -38,11 +38,6 @@ function M.config()
 		lazygit:toggle()
 	end
 
-	local htop = Terminal:new({ cmd = "htop", hidden = true })
-	function _htop_toggle()
-		htop:toggle()
-	end
-
 	local iex = Terminal:new({ cmd = "iex", hidden = true })
 	function _iex_toggle()
 		iex:toggle()

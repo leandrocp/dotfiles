@@ -22,8 +22,8 @@ function M.config()
 
 	local diff = {
 		"diff",
-		colored = false,
-		symbols = { added = " ", modified = " ", removed = " " }, -- changes diff symbols
+		colored = true,
+		symbols = { added = "+", modified = "~", removed = "-" },
 		cond = hide_in_width,
 	}
 
@@ -36,8 +36,7 @@ function M.config()
 
 	local filetype = {
 		"filetype",
-		icons_enabled = false,
-		icon = nil,
+		icons_enabled = true,
 	}
 
 	local branch = {
@@ -51,7 +50,6 @@ function M.config()
 		padding = 0,
 	}
 
-	-- cool function for progress
 	local progress = function()
 		local current_line = vim.fn.line(".")
 		local total_lines = vim.fn.line("$")
@@ -61,25 +59,20 @@ function M.config()
 		return chars[index]
 	end
 
-	local spaces = function()
-		return "spaces: " .. vim.api.nvim_buf_get_option(0, "shiftwidth")
-	end
-
 	plugin.setup({
 		options = {
 			icons_enabled = true,
-			theme = "edge",
+			theme = "dracula",
 			component_separators = { left = "", right = "" },
 			section_separators = { left = "", right = "" },
 			disabled_filetypes = { "alpha", "dashboard", "NvimTree", "Outline" },
 			always_divide_middle = true,
 		},
 		sections = {
-			lualine_a = { branch, diagnostics },
-			lualine_b = { mode },
-			lualine_c = {},
-			-- lualine_x = { "encoding", "fileformat", "filetype" },
-			lualine_x = { diff, spaces, "encoding", filetype },
+			lualine_a = { mode },
+			lualine_a = { branch },
+			lualine_c = { diagnostics },
+			lualine_x = { filetype, "encoding" },
 			lualine_y = { location },
 			lualine_z = { progress },
 		},
