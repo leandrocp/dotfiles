@@ -55,11 +55,10 @@ function M.config()
 		},
 
 		r = {
-			name = "rerminal",
-			t = { "<cmd>lua _htop_toggle()<cr>", "htop" },
-			i = { "<cmd>lua _iex_toggle()<cr>", "iex" },
-			m = { "<cmd>lua _mix_toggle()<cr>", "mix" },
-			s = { "<cmd>lua _phx_toggle()<cr>", "phx.server" },
+			name = "terminal",
+			i = { "<cmd>lua _iex()<cr>", "iex" },
+			m = { "<cmd>lua _mix()<cr>", "mix" },
+			p = { "<cmd>lua _phx()<cr>", "phx.server" },
 			f = { "<cmd>ToggleTerm direction=float<cr>", "float" },
 			h = { "<cmd>ToggleTerm size=20 direction=horizontal<cr>", "horizontal" },
 			v = { "<cmd>ToggleTerm size=80 direction=vertical<cr>", "vertical" },
@@ -140,26 +139,18 @@ function M.config()
 			name = "search",
 			r = { "<cmd>lua require('telescope.builtin').resume()<cr>", "resume" },
 			f = { "<cmd>lua require('telescope.builtin').find_files()<cr>", "files" },
-			g = { "<cmd>lua require('telescope.builtin').live_grep()<cr>", "grep" },
+			g = { "<cmd>lua require('telescope.builtin').git_files()<cr>", "git files" },
+			a = { "<cmd>lua require('telescope.builtin').live_grep()<cr>", "all" },
+			c = { "<cmd>lua require('telescope.builtin').grep_string()<cr>", "under cursor" },
 			b = { "<cmd>lua require('telescope.builtin').buffers()<cr>", "buffers" },
 			m = { "<cmd>lua require('telescope.builtin').marks()<cr>", "marks" },
 			s = { "<cmd>lua require('telescope.builtin').search_history()<cr>", "history" },
-			c = { "<cmd>lua require('telescope.builtin').command_history()<cr>", "command history" },
+			h = { "<cmd>lua require('telescope.builtin').command_history()<cr>", "command history" },
 			r = {
 				name = "replace",
 				t = { "<cmd>lua require('spectre').open()<cr>", "toggle" },
 				w = { "<cmd>lua require('spectre').open_visual({select_word=true})<cr>", "current word" },
 			},
-		},
-
-		m = {
-			name = "terminal",
-			i = { "<cmd>lua _iex()<cr>", "iex" },
-			m = { "<cmd>lua _mix()<cr>", "mix" },
-			p = { "<cmd>lua _phx()<cr>", "phx.server" },
-			f = { "<cmd>ToggleTerm direction=float<cr>", "Float" },
-			h = { "<cmd>ToggleTerm size=10 direction=horizontal<cr>", "Horizontal" },
-			v = { "<cmd>ToggleTerm size=80 direction=vertical<cr>", "Vertical" },
 		},
 	}
 

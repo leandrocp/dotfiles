@@ -27,13 +27,6 @@ function M.config()
 		cond = hide_in_width,
 	}
 
-	local mode = {
-		"mode",
-		fmt = function(str)
-			return "-- " .. str .. " --"
-		end,
-	}
-
 	local filetype = {
 		"filetype",
 		icons_enabled = true,
@@ -69,8 +62,8 @@ function M.config()
 			always_divide_middle = true,
 		},
 		sections = {
-			lualine_a = { mode },
-			lualine_a = { branch },
+			lualine_a = { "mode" },
+			lualine_b = { branch },
 			lualine_c = { diagnostics },
 			lualine_x = { filetype, "encoding" },
 			lualine_y = { location },

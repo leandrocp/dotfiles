@@ -12,6 +12,7 @@ function M.config()
 			border = "curved",
 			winblend = 0,
 		},
+		shade_terminals = false,
 	})
 
 	function _G.set_terminal_keymaps()

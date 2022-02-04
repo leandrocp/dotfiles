@@ -94,17 +94,14 @@ return packer.startup(function(use)
 		end,
 		requires = {
 			{
-				-- Parenthesis highlighting
 				"p00f/nvim-ts-rainbow",
 				after = "nvim-treesitter",
 			},
 			{
-				-- Autoclose tags
 				"windwp/nvim-ts-autotag",
 				after = "nvim-treesitter",
 			},
 			{
-				-- Context based commenting
 				"JoosepAlviste/nvim-ts-context-commentstring",
 				after = "nvim-treesitter",
 			},
@@ -251,8 +248,6 @@ return packer.startup(function(use)
 
 	use("windwp/nvim-spectre")
 
-	-- use({ 'rmehri01/onenord.nvim', config = function() require('onenord').load() end })
-
 	use("rafamadriz/neon")
 
 	use("sainnhe/sonokai")
@@ -267,7 +262,6 @@ return packer.startup(function(use)
 		end,
 	})
 
-	-- CMP
 	use({
 		"hrsh7th/nvim-cmp",
 		config = function()
@@ -281,10 +275,10 @@ return packer.startup(function(use)
 	use("hrsh7th/cmp-nvim-lsp")
 	use("saadparwaiz1/cmp_luasnip")
 	use("L3MON4D3/LuaSnip")
+	use("rafamadriz/friendly-snippets")
 
-	-- LSP
-	use("neovim/nvim-lspconfig") -- enable LSP
-	use("williamboman/nvim-lsp-installer") -- simple to use language server installer
+	use("neovim/nvim-lspconfig")
+	use("williamboman/nvim-lsp-installer")
 
 	if PACKER_BOOTSTRAP then
 		require("packer").sync()
