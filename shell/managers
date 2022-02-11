@@ -1,8 +1,8 @@
 # vi: ft=zsh
 
-# erlang / elixir
 export ERL_AFLAGS="-kernel shell_history enabled"
 export KERL_BUILD_DOCS=yes
 
-# asdf
 source $HOME/.asdf/asdf.sh
+
+eval "$(fasd --init auto)"

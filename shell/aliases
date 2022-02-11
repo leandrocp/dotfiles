@@ -22,14 +22,6 @@ alias l='ls -CF'
 
 alias e='nvim'
 alias g='git'
-alias r='rails'
-alias rk='rake'
-alias b='bundle exec'
-alias d='docker'
-alias dcp='docker-compose'
-alias dcm='docker-machine'
-alias kb='kubectl'
-alias gc='gcloud'
 
 alias nvim-update='asdf uninstall neovim nightly && asdf install neovim nightly'
 

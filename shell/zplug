@@ -1,0 +1,25 @@
+# vi: ft=zsh
+
+source ~/.zplug/init.zsh
+
+zplug 'zplug/zplug', hook-build:'zplug --self-manage'
+zplug "mafredri/zsh-async", from:"github", use:"async.zsh"
+# zplug 'dracula/zsh', as:theme
+zplug "sindresorhus/pure", use:pure.zsh, from:github, as:theme
+zplug "plugins/extractt", from:oh-my-zsh
+zplug "plugins/git", from:oh-my-zsh
+# zplug "plugins/asdf", from:oh-my-zsh
+# zplug "clvv/fasd", as:command
+# zplug "zsh-users/zsh-completions"
+# zplug "zsh-users/zsh-autosuggestions"
+# zplug "zsh-users/zsh-syntax-highlighting"
+# zplug "zsh-users/zsh-history-substring-search"
+
+if ! zplug check --verbose; then
+    printf "Install? [y/N]: "
+    if read -q; then
+        echo; zplug install
+    fi
+fi
+
+zplug load
