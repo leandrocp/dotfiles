@@ -6,31 +6,26 @@ function M.config()
 		return
 	end
 
-	local hide_in_width = function()
-		return vim.fn.winwidth(0) > 80
-	end
-
 	local diagnostics = {
 		"diagnostics",
-		sources = { "nvim_diagnostic" },
-		sections = { "error", "warn" },
+		sources = { "nvim_diagnostic", "nvim_lsp" },
+		sections = { "error", "warn", "hint" },
 		symbols = { error = "e", warn = "w" },
-		colored = false,
-		update_in_insert = false,
-		always_visible = true,
-	}
-
-	local diff = {
-		"diff",
 		colored = true,
-		symbols = { added = "+", modified = "~", removed = "-" },
-		cond = hide_in_width,
+		update_in_insert = false,
+		always_visible = false,
 	}
 
 	local filetype = {
 		"filetype",
 		icons_enabled = true,
 	}
+
+    local filename = {
+      "filename",
+      file_status = true,
+      path = 1,
+    }
 
 	local branch = {
 		"branch",
@@ -65,7 +60,7 @@ function M.config()
 			lualine_a = { "mode" },
 			lualine_b = { branch },
 			lualine_c = { diagnostics },
-			lualine_x = { filetype, "encoding" },
+			lualine_x = { filetype, filename, "encoding" },
 			lualine_y = { location },
 			lualine_z = { progress },
 		},
@@ -78,7 +73,7 @@ function M.config()
 			lualine_z = {},
 		},
 		tabline = {},
-		extensions = {},
+		extensions = { "nvim-tree", "toggleterm" },
 	})
 end
 

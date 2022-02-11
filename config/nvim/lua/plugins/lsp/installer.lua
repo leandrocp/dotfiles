@@ -4,10 +4,14 @@ if not status_ok then
 end
 
 local servers = {
-	"bashls",
 	"sumneko_lua",
 	"erlangls",
 	"elixirls",
+    "tailwindcss",
+    "terraformls",
+    "tslint",
+    "dockerls",
+    "yamlls"
 }
 
 for _, name in pairs(servers) do
@@ -24,12 +28,12 @@ lsp_installer.on_server_ready(function(server)
 	local opts = {}
 
 	if server.name == "sumneko_lua" then
-		local sumneko_opts = require("plugins.lsp.settings.sumneko_lua")
+		local sumneko_opts = require("plugins.lsp.settings.lua")
 		opts = vim.tbl_deep_extend("force", sumneko_opts, opts)
 	end
 
 	if server.name == "elixirls" then
-		local elixirls_opts = require("plugins.lsp.settings.elixirls")
+		local elixirls_opts = require("plugins.lsp.settings.elixir")
 		opts = vim.tbl_deep_extend("force", elixirls_opts, opts)
 	end
 

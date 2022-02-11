@@ -165,7 +165,7 @@ return packer.startup(function(use)
 	use({
 		"ethanholz/nvim-lastplace",
 		config = function()
-			require("nvim-lastplace")
+			require("nvim-lastplace").setup()
 		end,
 	})
 
@@ -206,7 +206,7 @@ return packer.startup(function(use)
 	use({
 		"vim-test/vim-test",
 		config = function()
-			require("plugins.test")
+			require("plugins.test").config()
 		end,
 	})
 
@@ -235,7 +235,7 @@ return packer.startup(function(use)
 	use({
 		"nacro90/numb.nvim",
 		config = function()
-			require("numb")
+			require("numb").setup()
 		end,
 	})
 
@@ -279,6 +279,21 @@ return packer.startup(function(use)
 
 	use("neovim/nvim-lspconfig")
 	use("williamboman/nvim-lsp-installer")
+
+	use("mfussenegger/nvim-dap")
+	use({
+		"rcarriga/nvim-dap-ui",
+		config = function()
+			require("dapui").setup()
+		end,
+	})
+  
+  	use({
+		"folke/trouble.nvim",
+		config = function()
+			require("trouble").setup()
+		end,
+	})
 
 	if PACKER_BOOTSTRAP then
 		require("packer").sync()
