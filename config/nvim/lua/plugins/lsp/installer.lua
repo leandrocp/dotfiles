@@ -7,11 +7,11 @@ local servers = {
 	"sumneko_lua",
 	"erlangls",
 	"elixirls",
-    "tailwindcss",
-    "terraformls",
-    "tslint",
-    "dockerls",
-    "yamlls"
+	"tailwindcss",
+	"terraformls",
+	"tslint",
+	"dockerls",
+	"yamlls",
 }
 
 for _, name in pairs(servers) do

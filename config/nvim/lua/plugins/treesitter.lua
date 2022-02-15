@@ -11,16 +11,16 @@ function M.config()
 			"lua",
 			"html",
 			"css",
-            "scss",
-            "javascript",
+			"scss",
+			"javascript",
 			"json",
 			"jsonc",
 			"bash",
 			"erlang",
 			"elixir",
-            "eex",
-            "heex",
-            "dockerfile"
+			"eex",
+			"heex",
+			"dockerfile",
 		},
 		highlight = {
 			enable = true,
@@ -40,7 +40,7 @@ function M.config()
 			max_file_lines = nil,
 		},
 		indent = {
-			enable = false
+			enable = false,
 		},
 		autotag = {
 			enable = true,

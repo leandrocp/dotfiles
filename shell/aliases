@@ -15,10 +15,7 @@ alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
 
-alias ls='ls -lh'
-alias ll='ls -lah'
-alias la='ls -A'
-alias l='ls -CF'
+alias l='exa --long --icons --sort modified'
 
 alias e='nvim'
 alias g='git'

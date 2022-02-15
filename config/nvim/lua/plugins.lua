@@ -36,9 +36,16 @@ return packer.startup(function(use)
 
 	use("nvim-lua/plenary.nvim")
 
-	use("Mofiqul/dracula.nvim")
-
-	use("EdenEast/nightfox.nvim")
+	use({
+		"navarasu/onedark.nvim",
+		config = function()
+			local theme = require("onedark")
+			theme.load()
+			theme.setup({
+				style = "warm",
+			})
+		end,
+	})
 
 	use("tpope/vim-sensible")
 
@@ -116,6 +123,8 @@ return packer.startup(function(use)
 			require("plugins.telescope").config()
 		end,
 	})
+  
+	use("windwp/nvim-spectre")
 
 	use({
 		"nvim-telescope/telescope-fzf-native.nvim",
@@ -201,16 +210,12 @@ return packer.startup(function(use)
 
 	use("elixir-editors/vim-elixir")
 
-	use("christoomey/vim-tmux-navigator")
-
 	use({
 		"vim-test/vim-test",
 		config = function()
 			require("plugins.test").config()
 		end,
 	})
-
-	use("jgdavey/tslime.vim")
 
 	use("danilamihailov/beacon.nvim")
 
@@ -246,14 +251,6 @@ return packer.startup(function(use)
 		end,
 	})
 
-	use("windwp/nvim-spectre")
-
-	use("rafamadriz/neon")
-
-	use("sainnhe/sonokai")
-
-	use("sainnhe/edge")
-
 	use({
 		"lewis6991/gitsigns.nvim",
 		event = "BufRead",
@@ -287,8 +284,8 @@ return packer.startup(function(use)
 			require("dapui").setup()
 		end,
 	})
-  
-  	use({
+
+	use({
 		"folke/trouble.nvim",
 		config = function()
 			require("trouble").setup()

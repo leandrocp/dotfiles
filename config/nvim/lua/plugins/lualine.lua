@@ -21,11 +21,11 @@ function M.config()
 		icons_enabled = true,
 	}
 
-    local filename = {
-      "filename",
-      file_status = true,
-      path = 1,
-    }
+	local filename = {
+		"filename",
+		file_status = true,
+		path = 1,
+	}
 
 	local branch = {
 		"branch",
@@ -50,7 +50,7 @@ function M.config()
 	plugin.setup({
 		options = {
 			icons_enabled = true,
-			theme = "dracula",
+			theme = "onedark",
 			component_separators = { left = "", right = "" },
 			section_separators = { left = "", right = "" },
 			disabled_filetypes = { "alpha", "dashboard", "NvimTree", "Outline" },

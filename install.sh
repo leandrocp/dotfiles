@@ -20,6 +20,8 @@ function install() {
   git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 
   git clone https://github.com/asdf-vm/asdf.git ~/.asdf
+
+  wget https://raw.githubusercontent.com/gjmveloso/iTerm-OneDark-Pro/master/OneDark-Pro.itermcolors -O ~/.shell/OneDark-Pro.itermcolors
 }
 
 install
