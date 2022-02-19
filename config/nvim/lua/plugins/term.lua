@@ -29,12 +29,7 @@ function M.config()
 
 	local Terminal = require("toggleterm.terminal").Terminal
 
-	local lazygit = Terminal:new({
-		cmd = "lazygit",
-		dir = "git_dir",
-		direction = "float",
-	})
-
+	local lazygit = Terminal:new({ cmd = "lazygit", dir = "git_dir", direction = "float" })
 	function _lazygit_toggle()
 		lazygit:toggle()
 	end
@@ -50,7 +45,7 @@ function M.config()
 	end
 
 	local phx = Terminal:new({ cmd = "iex -S mix phx.server", hidden = true })
-	function _mix_toggle()
+	function _phx_toggle()
 		phx:toggle()
 	end
 end

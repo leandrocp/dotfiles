@@ -123,7 +123,7 @@ return packer.startup(function(use)
 			require("plugins.telescope").config()
 		end,
 	})
-  
+
 	use("windwp/nvim-spectre")
 
 	use({

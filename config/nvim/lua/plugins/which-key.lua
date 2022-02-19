@@ -56,9 +56,9 @@ function M.config()
 
 		r = {
 			name = "terminal",
-			i = { "<cmd>lua _iex()<cr>", "iex" },
-			m = { "<cmd>lua _mix()<cr>", "mix" },
-			p = { "<cmd>lua _phx()<cr>", "phx.server" },
+			i = { "<cmd>lua _iex_toggle()<cr>", "iex" },
+			m = { "<cmd>lua _mix_toggle()<cr>", "mix" },
+			p = { "<cmd>lua _phx_toggle()<cr>", "phx.server" },
 			f = { "<cmd>ToggleTerm direction=float<cr>", "float" },
 			h = { "<cmd>ToggleTerm size=20 direction=horizontal<cr>", "horizontal" },
 			v = { "<cmd>ToggleTerm size=80 direction=vertical<cr>", "vertical" },
