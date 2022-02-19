@@ -1,28 +1,23 @@
 # vi: ft=zsh
 
-alias ec='emacsclient -n -c'
+alias nvim=lvim
 alias vi=nvim
 alias vim=nvim
-alias rm='rm -i'
-
-alias df='df -h'
-alias du='du -h'
-
-alias -g G='| grep -i --color'
-alias -g L='| less'
-
-alias ..='cd ..'
-alias ...='cd ../..'
-alias ....='cd ../../..'
-
-alias l='exa --long --icons --sort modified'
-
 alias e='nvim'
 alias g='git'
 
-alias nvim-update='asdf uninstall neovim nightly && asdf install neovim nightly'
+alias rm='rm -i'
+alias df='df -h'
+alias du='du -h'
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+alias ls='exa --icons --sort modified'
+alias ll='exa --long --icons --sort modified'
+alias -g G='| grep -i --color'
+alias -g L='| less'
 
-eval "$(hub alias -s)"
+alias nvim-update='asdf uninstall neovim nightly && asdf install neovim nightly'
 
 if [[ "$OSTYPE" == "darwin"* ]]; then
 
