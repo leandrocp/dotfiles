@@ -12,6 +12,14 @@ function M.config()
 		},
 	}
 
+	local vopts = {
+		prefix = "<leader>",
+	}
+
+	local vmappings = {
+		["/"] = { "<ESC><CMD>lua require('Comment.api').toggle_linewise_op(vim.fn.visualmode())<CR>", "Comment" },
+	}
+
 	local opts = {
 		prefix = "<leader>",
 	}
@@ -28,6 +36,7 @@ function M.config()
 			"<cmd>lua require('telescope.builtin').find_files(require('telescope.themes').get_dropdown{previewer = false})<cr>",
 			"find files",
 		},
+		["/"] = { "<cmd>lua require('Comment.api').toggle_current_linewise()<CR>", "comment" },
 
 		["1"] = { "<cmd>BufferLineGoToBuffer 1<cr>", "tab 1" },
 		["2"] = { "<cmd>BufferLineGoToBuffer 2<cr>", "tab 2" },
@@ -40,6 +49,31 @@ function M.config()
 		["9"] = { "<cmd>BufferLineGoToBuffer 9<cr>", "tab 9" },
 
 		-- ["P"] = { "<cmd>lua require('telescope').extensions.projects.projects()<cr>", "Projects" },
+
+		b = {
+			name = "Buffers",
+			j = { "<cmd>BufferLinePick<cr>", "Jump" },
+			f = { "<cmd>Telescope buffers<cr>", "Find" },
+			b = { "<cmd>BufferLineCyclePrev<cr>", "Previous" },
+			-- w = { "<cmd>BufferWipeout<cr>", "Wipeout" }, -- TODO: implement this for bufferline
+			e = {
+				"<cmd>BufferLinePickClose<cr>",
+				"Pick which buffer to close",
+			},
+			h = { "<cmd>BufferLineCloseLeft<cr>", "Close all to the left" },
+			l = {
+				"<cmd>BufferLineCloseRight<cr>",
+				"Close all to the right",
+			},
+			D = {
+				"<cmd>BufferLineSortByDirectory<cr>",
+				"Sort by directory",
+			},
+			L = {
+				"<cmd>BufferLineSortByExtension<cr>",
+				"Sort by language",
+			},
+		},
 
 		e = {
 			name = "execute",
@@ -140,11 +174,10 @@ function M.config()
 		s = {
 			name = "search",
 			s = { "<cmd>lua require('telescope.builtin').resume()<cr>", "resume" },
-			f = { "<cmd>lua require('telescope.builtin').find_files()<cr>", "files" },
-			g = { "<cmd>lua require('telescope.builtin').git_files()<cr>", "git files" },
-			a = { "<cmd>lua require('telescope.builtin').live_grep()<cr>", "all" },
-			u = { "<cmd>lua require('telescope.builtin').grep_string()<cr>", "under cursor" },
-			b = { "<cmd>lua require('telescope.builtin').buffers()<cr>", "buffers" },
+			f = { "<cmd>lua require('telescope.builtin').find_files()<cr>", "find file" },
+			g = { "<cmd>lua require('telescope.builtin').git_files()<cr>", "find git files" },
+			t = { "<cmd>lua require('telescope.builtin').live_grep()<cr>", "text" },
+			u = { "<cmd>lua require('telescope.builtin').grep_string()<cr>", "search under cursor" },
 			m = { "<cmd>lua require('telescope.builtin').marks()<cr>", "marks" },
 			h = { "<cmd>lua require('telescope.builtin').search_history()<cr>", "history" },
 			c = { "<cmd>lua require('telescope.builtin').command_history()<cr>", "command history" },
@@ -172,6 +205,7 @@ function M.config()
 
 	plugin.setup(setup)
 	plugin.register(mappings, opts)
+	plugin.register(vmappings, vopts)
 end
 
 return M

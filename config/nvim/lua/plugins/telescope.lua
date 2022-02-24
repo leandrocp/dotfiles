@@ -8,6 +8,7 @@ function M.config()
 
 	local actions = require("telescope.actions")
 	plugin.load_extension("fzf")
+	plugin.load_extension("projects")
 
 	plugin.setup({
 		defaults = {

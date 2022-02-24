@@ -73,10 +73,16 @@ return packer.startup(function(use)
 		end,
 	})
 
-	--use("ahmedkhalf/project.nvim")
+	use({
+		"ahmedkhalf/project.nvim",
+		config = function()
+			require("project_nvim").setup({})
+		end,
+	})
 
 	use({
 		"folke/which-key.nvim",
+		event = "BufWinEnter",
 		config = function()
 			require("plugins.which-key").config()
 		end,
@@ -146,6 +152,7 @@ return packer.startup(function(use)
 
 	use({
 		"akinsho/bufferline.nvim",
+		event = "BufWinEnter",
 		config = function()
 			require("plugins.bufferline").config()
 		end,
@@ -193,6 +200,7 @@ return packer.startup(function(use)
 
 	use({
 		"akinsho/nvim-toggleterm.lua",
+		event = "BufWinEnter",
 		config = function()
 			require("plugins.term").config()
 		end,
@@ -245,6 +253,14 @@ return packer.startup(function(use)
 	})
 
 	use({
+		"rcarriga/nvim-notify",
+		event = "BufRead",
+		config = function()
+			require("notify").setup()
+		end,
+	})
+
+	use({
 		"karb94/neoscroll.nvim",
 		config = function()
 			require("neoscroll").setup()
@@ -275,6 +291,7 @@ return packer.startup(function(use)
 	use("rafamadriz/friendly-snippets")
 
 	use("neovim/nvim-lspconfig")
+	use("jose-elias-alvarez/null-ls.nvim")
 	use("williamboman/nvim-lsp-installer")
 
 	use("mfussenegger/nvim-dap")
