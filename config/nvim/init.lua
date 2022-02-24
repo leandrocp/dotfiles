@@ -1,0 +1,7 @@
+require("impatient")
+require("settings")
+require("keymaps")
+require("plugins")
+require("autocommands")
+require("plugins.lsp")
+-- require("plugins.project")

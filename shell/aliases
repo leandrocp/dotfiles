@@ -1,6 +1,5 @@
 # vi: ft=zsh
 
-alias nvim=lvim
 alias vi=nvim
 alias vim=nvim
 alias e='nvim'
