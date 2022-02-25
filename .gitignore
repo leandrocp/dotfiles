@@ -19,7 +19,8 @@ Session.vim
 .sensitive
 tags
 *.log
-config/nvim
+!config/nvim/config.lua
+config/nvim/**
 config/pgcli/history
 config/pgcli/log
 config/hub
