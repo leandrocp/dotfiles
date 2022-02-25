@@ -22,6 +22,9 @@ function install() {
   git clone https://github.com/asdf-vm/asdf.git ~/.asdf
 
   wget https://raw.githubusercontent.com/gjmveloso/iTerm-OneDark-Pro/master/OneDark-Pro.itermcolors -O ~/.shell/OneDark-Pro.itermcolors
+
+  export LUNARVIM_BASE_DIR="$HOME/.config/nvim"
+  bash <(curl -s https://raw.githubusercontent.com/lunarvim/lunarvim/master/utils/installer/install.sh)
 }
 
 install
