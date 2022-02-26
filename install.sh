@@ -6,7 +6,7 @@ function install() {
   for name in *; do
     target="$HOME/.$name"
 
-    if [ "$name" != 'install.sh' ] && [ "$name" != 'README.md' ] && [ "$name" != 'oh-my-zsh' ] && [ "$name" != 'vscode' ] && [ "$name" != 'emacs.d' ]; then
+    if [ "$name" != 'install.sh' ] && [ "$name" != 'README.md' ] && [ "$name" != 'lvim.config.lua' ]; then
       rm -rf "$target"
       echo "ln -s "$PWD/$name" "$target""
       ln -s "$PWD/$name" "$target"
@@ -25,6 +25,7 @@ function install() {
 
   export LUNARVIM_BASE_DIR="$HOME/.config/nvim"
   bash <(curl -s https://raw.githubusercontent.com/lunarvim/lunarvim/master/utils/installer/install.sh)
+  ln -s $HOME/.dotfiles/lvim.config.lua $HOME/.config/nvim/config.lua
 }
 
 install
