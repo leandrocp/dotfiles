@@ -6,7 +6,6 @@
 [github]
   user = leandrocp
 [core]
-  editor = nvim
   excludesfile = ~/.gitignore
   autocrlf = input
 [color]

@@ -1,8 +1,8 @@
 # vi: ft=zsh
 
-alias vi=nvim
-alias vim=nvim
-alias e='nvim'
+alias vi=lvim
+alias vim=lvim
+alias e='lvim'
 alias g='git'
 
 alias rm='rm -i'
