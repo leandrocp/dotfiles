@@ -6,8 +6,11 @@ vim.opt.lazyredraw = true
 vim.opt.guifont = "FiraCode Nerd Font Mono:h14"
 lvim.log.level = "warn"
 lvim.format_on_save = false
-lvim.colorscheme = "onedarker"
+lvim.colorscheme = "onedarkpro"
 lvim.leader = "space"
+lvim.lsp.automatic_servers_installation = true
+lvim.builtin.terminal.shade_terminals = false
+lvim.builtin.terminal.shading_factor = 3
 lvim.builtin.telescope.defaults.path_display.shorten = nil
 lvim.builtin.dashboard.active = true
 lvim.builtin.notify.active = true
@@ -33,6 +36,7 @@ lvim.builtin.treesitter.ensure_installed = {
 lvim.builtin.treesitter.ignore_install = { "haskell" }
 lvim.builtin.treesitter.highlight.enabled = true
 lvim.builtin.terminal.direction = "horizontal"
+lvim.builtin.project.silent_chdir = false
 -- lvim.builtin.terminal.execs[#lvim.builtin.terminal.execs + 1] = { "iex", "xi", "iex" }
 
 -- ***********
@@ -101,45 +105,63 @@ lvim.builtin.which_key.mappings["e"] = {
 -- 	},
 -- }
 
+-- *********
+-- Languages
+-- *********
 local parser_configs = require("nvim-treesitter.parsers").get_parser_configs()
-parser_configs.hcl = {
-  filetype = "hcl", "terraform",
-}
+local formatters = require("lvim.lsp.null-ls.formatters")
+
+formatters.setup({
+	{ exe = "stylua", filetypes = { "lua" } },
+	-- { exe = "terraform", filetypes = { "terraform", "tf" } },
+	{ exe = "rustfmt", filetypes = { "rust", "rs" } },
+})
+
+parser_configs.hcl = { filetype = "hcl", "terraform" }
 
 -- ***********
 -- Keybindings
 -- ***********
 lvim.plugins = {
+	-- {
+	--   "navarasu/onedark.nvim",
+	--   config = function()
+	--     local theme = require("onedark")
+	--     theme.load()
+	--     theme.setup {
+	--       style = "warm",
+	--     }
+	--   end,
+	-- },
 	{
-		"navarasu/onedark.nvim",
+		"olimorris/onedarkpro.nvim",
 		config = function()
-			local theme = require("onedark")
+			local theme = require("onedarkpro")
 			theme.load()
-			theme.setup({
-				style = "warm",
-			})
+			theme.setup()
 		end,
 	},
-	{ "tpope/vim-repeat" },
-	{
-		"nathom/filetype.nvim",
-		config = function()
-			require("filetype").setup({
-				overrides = {
-					extensions = {
-						exs = "elixir",
-						leex = "eelixir",
-						heex = "eelixir",
-					},
-					literal = {
-						["mix.lock"] = "elixir",
-					},
-				},
-			})
 
-			vim.g.did_load_filetypes = 1
-		end,
-	},
+	{ "tpope/vim-repeat" },
+	-- {
+	-- 	"nathom/filetype.nvim",
+	-- 	config = function()
+	-- 		require("filetype").setup({
+	-- 			overrides = {
+	-- 				extensions = {
+	-- 					exs = "elixir",
+	-- 					leex = "eelixir",
+	-- 					heex = "eelixir",
+	-- 				},
+	-- 				literal = {
+	-- 					["mix.lock"] = "elixir",
+	-- 				},
+	-- 			},
+	-- 		})
+
+	-- 		vim.g.did_load_filetypes = 1
+	-- 	end,
+	-- },
 	{
 		"ethanholz/nvim-lastplace",
 		event = "BufRead",
@@ -181,6 +203,14 @@ lvim.plugins = {
     let test#strategy = "neovim"
     let g:test#preserve_screen = 1
     ]])
+		end,
+	},
+	{
+		"max397574/better-escape.nvim",
+		config = function()
+			require("better_escape").setup({
+        mapping = {"kj"}
+      })
 		end,
 	},
 	{

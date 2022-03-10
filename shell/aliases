@@ -11,12 +11,14 @@ alias du='du -h'
 alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
+alias l='ls'
 alias ls='exa --icons --sort modified'
 alias ll='exa --long --icons --sort modified'
 alias -g G='| grep -i --color'
 alias -g L='| less'
 
 alias nvim-update='asdf uninstall neovim nightly && asdf install neovim nightly'
+alias tf='terraform'
 
 if [[ "$OSTYPE" == "darwin"* ]]; then
 

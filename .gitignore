@@ -36,6 +36,7 @@ config/sql-language-server
 config/efm-langserver
 config/joplin-desktop
 config/iterm2
+config/exercism
 Package Control.last-run
 Package Control.ca-list
 Package Control.ca-bundle
