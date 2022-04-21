@@ -1,18 +1,31 @@
 -- ********
 -- Settings
 -- ********
-vim.opt.timeoutlen = 500
-vim.opt.lazyredraw = true
+-- vim.opt.timeoutlen = 500
+-- vim.opt.lazyredraw = true
 vim.opt.guifont = "FiraCode Nerd Font Mono:h14"
 lvim.log.level = "warn"
 lvim.format_on_save = false
 lvim.colorscheme = "onedarkpro"
 lvim.leader = "space"
+lvim.builtin.lualine.style = "lvim"
+lvim.builtin.lualine.theme = "onedark"
+lvim.builtin.lualine.sections.lualine_b = {
+	"branch",
+	{
+		"filename",
+		file_status = true,
+		path = 1,
+		shorting_target = 40,
+	},
+	"location",
+}
+lvim.builtin.lualine.sections.lualine_c = { "diff" }
 lvim.lsp.automatic_servers_installation = true
 lvim.builtin.terminal.shade_terminals = false
 lvim.builtin.terminal.shading_factor = 3
-lvim.builtin.telescope.defaults.path_display.shorten = nil
-lvim.builtin.dashboard.active = true
+lvim.builtin.terminal.persist_size = true
+lvim.builtin.telescope.defaults.path_display = { shorten = 10 }
 lvim.builtin.notify.active = true
 lvim.builtin.terminal.active = true
 lvim.builtin.nvimtree.setup.view.side = "left"
@@ -28,7 +41,7 @@ lvim.builtin.treesitter.ensure_installed = {
 	"elixir",
 	"eex",
 	"heex",
-	"rust",
+	-- "rust",
 	"toml",
 	"yaml",
 	"dockerfile",
@@ -52,6 +65,16 @@ lvim.keys.normal_mode = {
 	["<S-Tab>"] = ":bprevious<CR>",
 }
 
+-- https://github.com/mrjones2014/smart-splits.nvim
+-- vim.keymap.set("n", "<A-h>", require("smart-splits").resize_left)
+-- vim.keymap.set("n", "<A-j>", require("smart-splits").resize_down)
+-- vim.keymap.set("n", "<A-k>", require("smart-splits").resize_up)
+-- vim.keymap.set("n", "<A-l>", require("smart-splits").resize_right)
+-- vim.keymap.set("n", "<C-h>", require("smart-splits").move_cursor_left)
+-- vim.keymap.set("n", "<C-j>", require("smart-splits").move_cursor_down)
+-- vim.keymap.set("n", "<C-k>", require("smart-splits").move_cursor_up)
+-- vim.keymap.set("n", "<C-l>", require("smart-splits").move_cursor_right)
+
 lvim.builtin.which_key.mappings["w"] = {
 	name = "Window",
 	j = { "<cmd>split<cr>", "Split Down" },
@@ -59,6 +82,10 @@ lvim.builtin.which_key.mappings["w"] = {
 	w = { "<cmd>InteractiveWindow<cr>", "Interactive" },
 	p = { "<cmd>BufferLinePick<cr>", "Pick" },
 }
+
+lvim.builtin.which_key.mappings["P"] = { "<cmd>Telescope projects<CR>", "Projects" }
+
+lvim.builtin.which_key.mappings["m"] = { "<cmd>Telescope marks<CR>", "Marks" }
 
 lvim.builtin.which_key.mappings["t"] = {
 	name = "Test",
@@ -70,18 +97,18 @@ lvim.builtin.which_key.mappings["t"] = {
 }
 
 lvim.builtin.which_key.mappings["ss"] = {
-	"cmd>lua require('telescope.builtin').resume()<cr>",
+	"<cmd>lua require('telescope.builtin').resume()<cr>",
 	"Resume",
 }
 
-lvim.builtin.which_key.mappings["su"] = {
+lvim.builtin.which_key.mappings["sw"] = {
 	"<cmd>lua require('telescope.builtin').grep_string()<cr>",
-	"Search under cursor",
+	"Current Word",
 }
 
-lvim.builtin.which_key.mappings["sr"] = {
+lvim.builtin.which_key.mappings["sg"] = {
 	name = "Replace",
-	t = { "<cmd>lua require('spectre').open()<cr>", "Open" },
+	o = { "<cmd>lua require('spectre').open()<cr>", "Open" },
 	w = { "<cmd>lua require('spectre').open_visual({select_word=true})<cr>", "Current word" },
 }
 
@@ -90,6 +117,7 @@ lvim.builtin.which_key.mappings["e"] = {
 	t = { "<cmd>NvimTreeToggle<cr>", "Toggle" },
 	f = { "<cmd>NvimTreeFindFile<cr>", "Find file" },
 	r = { "<cmd>NvimTreeRefresh<cr>", "Refresh" },
+	s = { "<cmd>SymbolsOutline<cr>", "Symbols" },
 }
 
 -- lvim.builtin.which_key.mappings["x"] = {
@@ -108,41 +136,36 @@ lvim.builtin.which_key.mappings["e"] = {
 -- *********
 -- Languages
 -- *********
-local parser_configs = require("nvim-treesitter.parsers").get_parser_configs()
 local formatters = require("lvim.lsp.null-ls.formatters")
 
 formatters.setup({
 	{ exe = "stylua", filetypes = { "lua" } },
-	-- { exe = "terraform", filetypes = { "terraform", "tf" } },
 	{ exe = "rustfmt", filetypes = { "rust", "rs" } },
 })
-
-parser_configs.hcl = { filetype = "hcl", "terraform" }
 
 -- ***********
 -- Keybindings
 -- ***********
 lvim.plugins = {
-	-- {
-	--   "navarasu/onedark.nvim",
-	--   config = function()
-	--     local theme = require("onedark")
-	--     theme.load()
-	--     theme.setup {
-	--       style = "warm",
-	--     }
-	--   end,
-	-- },
 	{
-		"olimorris/onedarkpro.nvim",
+		"navarasu/onedark.nvim",
 		config = function()
-			local theme = require("onedarkpro")
+			local theme = require("onedark")
+			theme.setup({
+				style = "warmer",
+			})
 			theme.load()
-			theme.setup()
 		end,
 	},
-
-	{ "tpope/vim-repeat" },
+	-- {
+	-- 	"olimorris/onedarkpro.nvim",
+	-- 	config = function()
+	-- 		local theme = require("onedarkpro")
+	-- 		theme.load()
+	-- 		theme.setup()
+	-- 	end,
+	-- },
+	-- { "tpope/vim-repeat" },
 	-- {
 	-- 	"nathom/filetype.nvim",
 	-- 	config = function()
@@ -205,12 +228,29 @@ lvim.plugins = {
     ]])
 		end,
 	},
+	-- {
+	-- 	"max397574/better-escape.nvim",
+	-- 	config = function()
+	-- 		require("better_escape").setup({
+	-- 			mapping = { "kj" },
+	-- 		})
+	-- 	end,
+	-- },
 	{
-		"max397574/better-escape.nvim",
+		"mrjones2014/smart-splits.nvim",
+	},
+	{
+		"chentau/marks.nvim",
 		config = function()
-			require("better_escape").setup({
-        mapping = {"kj"}
-      })
+			require("marks").setup({})
+		end,
+	},
+	{
+		"simrat39/symbols-outline.nvim",
+		config = function()
+			vim.g.symbols_outline = {
+				auto_preview = false,
+			}
 		end,
 	},
 	{

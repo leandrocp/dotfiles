@@ -21,6 +21,7 @@ tags
 *.log
 config/nvim
 config/lvim
+config/lvim.old
 config/pgcli/history
 config/pgcli/log
 config/hub
