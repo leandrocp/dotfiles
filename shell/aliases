@@ -4,6 +4,7 @@ alias vi=lvim
 alias vim=lvim
 alias e='lvim'
 alias g='git'
+alias gg='lazygit'
 
 alias rm='rm -i'
 alias df='df -h'

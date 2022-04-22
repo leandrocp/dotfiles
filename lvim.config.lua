@@ -9,7 +9,7 @@ lvim.format_on_save = false
 lvim.colorscheme = "onedarkpro"
 lvim.leader = "space"
 lvim.builtin.lualine.style = "lvim"
-lvim.builtin.lualine.theme = "onedark"
+lvim.builtin.lualine.theme = "onedarkpro"
 lvim.builtin.lualine.sections.lualine_b = {
 	"branch",
 	{
@@ -22,12 +22,18 @@ lvim.builtin.lualine.sections.lualine_b = {
 }
 lvim.builtin.lualine.sections.lualine_c = { "diff" }
 lvim.lsp.automatic_servers_installation = true
+lvim.builtin.terminal.active = true
 lvim.builtin.terminal.shade_terminals = false
 lvim.builtin.terminal.shading_factor = 3
 lvim.builtin.terminal.persist_size = true
+lvim.builtin.terminal.direction = "horizontal"
+-- lvim.builtin.terminal.execs[#lvim.builtin.terminal.execs + 1] = { "iex", "xi", "iex" }
 lvim.builtin.telescope.defaults.path_display = { shorten = 10 }
+lvim.builtin.telescope.on_config_done = function()
+	local telescope = require("telescope")
+	telescope.load_extension("fzf")
+end
 lvim.builtin.notify.active = true
-lvim.builtin.terminal.active = true
 lvim.builtin.nvimtree.setup.view.side = "left"
 lvim.builtin.nvimtree.show_icons.git = 0
 lvim.builtin.treesitter.ensure_installed = {
@@ -47,10 +53,8 @@ lvim.builtin.treesitter.ensure_installed = {
 	"dockerfile",
 }
 lvim.builtin.treesitter.ignore_install = { "haskell" }
-lvim.builtin.treesitter.highlight.enabled = true
-lvim.builtin.terminal.direction = "horizontal"
+lvim.builtin.treesitter.rainbow.enable = true
 lvim.builtin.project.silent_chdir = false
--- lvim.builtin.terminal.execs[#lvim.builtin.terminal.execs + 1] = { "iex", "xi", "iex" }
 
 -- ***********
 -- Keybindings
@@ -65,16 +69,6 @@ lvim.keys.normal_mode = {
 	["<S-Tab>"] = ":bprevious<CR>",
 }
 
--- https://github.com/mrjones2014/smart-splits.nvim
--- vim.keymap.set("n", "<A-h>", require("smart-splits").resize_left)
--- vim.keymap.set("n", "<A-j>", require("smart-splits").resize_down)
--- vim.keymap.set("n", "<A-k>", require("smart-splits").resize_up)
--- vim.keymap.set("n", "<A-l>", require("smart-splits").resize_right)
--- vim.keymap.set("n", "<C-h>", require("smart-splits").move_cursor_left)
--- vim.keymap.set("n", "<C-j>", require("smart-splits").move_cursor_down)
--- vim.keymap.set("n", "<C-k>", require("smart-splits").move_cursor_up)
--- vim.keymap.set("n", "<C-l>", require("smart-splits").move_cursor_right)
-
 lvim.builtin.which_key.mappings["w"] = {
 	name = "Window",
 	j = { "<cmd>split<cr>", "Split Down" },
@@ -84,8 +78,6 @@ lvim.builtin.which_key.mappings["w"] = {
 }
 
 lvim.builtin.which_key.mappings["P"] = { "<cmd>Telescope projects<CR>", "Projects" }
-
-lvim.builtin.which_key.mappings["m"] = { "<cmd>Telescope marks<CR>", "Marks" }
 
 lvim.builtin.which_key.mappings["t"] = {
 	name = "Test",
@@ -148,23 +140,21 @@ formatters.setup({
 -- ***********
 lvim.plugins = {
 	{
-		"navarasu/onedark.nvim",
+		"olimorris/onedarkpro.nvim",
 		config = function()
-			local theme = require("onedark")
-			theme.setup({
-				style = "warmer",
-			})
+			local theme = require("onedarkpro")
 			theme.load()
+			theme.setup({
+				options = {
+					terminal_colors = true,
+				},
+			})
 		end,
 	},
-	-- {
-	-- 	"olimorris/onedarkpro.nvim",
-	-- 	config = function()
-	-- 		local theme = require("onedarkpro")
-	-- 		theme.load()
-	-- 		theme.setup()
-	-- 	end,
-	-- },
+	{
+		"nvim-telescope/telescope-fzf-native.nvim",
+		run = "make",
+	},
 	-- { "tpope/vim-repeat" },
 	-- {
 	-- 	"nathom/filetype.nvim",
@@ -223,10 +213,14 @@ lvim.plugins = {
 		"vim-test/vim-test",
 		config = function()
 			vim.cmd([[
-    let test#strategy = "neovim"
     let g:test#preserve_screen = 1
+    let test#strategy = "kitty"
     ]])
 		end,
+	},
+	{
+		"knubie/vim-kitty-navigator",
+		run = "cp *.py ~/.config/kitty/"
 	},
 	-- {
 	-- 	"max397574/better-escape.nvim",
@@ -238,11 +232,16 @@ lvim.plugins = {
 	-- },
 	{
 		"mrjones2014/smart-splits.nvim",
-	},
-	{
-		"chentau/marks.nvim",
 		config = function()
-			require("marks").setup({})
+			local plugin = require("smart-splits")
+			vim.keymap.set("n", "<A-h>", plugin.resize_left)
+			vim.keymap.set("n", "<A-j>", plugin.resize_down)
+			vim.keymap.set("n", "<A-k>", plugin.resize_up)
+			vim.keymap.set("n", "<A-l>", plugin.resize_right)
+			vim.keymap.set("n", "<C-h>", plugin.move_cursor_left)
+			vim.keymap.set("n", "<C-j>", plugin.move_cursor_down)
+			vim.keymap.set("n", "<C-k>", plugin.move_cursor_up)
+			vim.keymap.set("n", "<C-l>", plugin.move_cursor_right)
 		end,
 	},
 	{
@@ -252,6 +251,9 @@ lvim.plugins = {
 				auto_preview = false,
 			}
 		end,
+	},
+	{
+		"p00f/nvim-ts-rainbow",
 	},
 	{
 		"tpope/vim-projectionist",
