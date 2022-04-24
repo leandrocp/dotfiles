@@ -28,7 +28,13 @@ lvim.builtin.terminal.shading_factor = 3
 lvim.builtin.terminal.persist_size = true
 lvim.builtin.terminal.direction = "horizontal"
 -- lvim.builtin.terminal.execs[#lvim.builtin.terminal.execs + 1] = { "iex", "xi", "iex" }
-lvim.builtin.telescope.defaults.path_display = { shorten = 10 }
+lvim.builtin.telescope.defaults = {
+	path_display = { shorten = 10 },
+	layout_strategy = "vertical",
+	layout_config = {
+		width = 0.9,
+	},
+}
 lvim.builtin.telescope.on_config_done = function()
 	local telescope = require("telescope")
 	telescope.load_extension("fzf")
@@ -88,14 +94,31 @@ lvim.builtin.which_key.mappings["t"] = {
 	v = { "<cmd>TestVisit<cr>", "Visit" },
 }
 
-lvim.builtin.which_key.mappings["ss"] = {
-	"<cmd>lua require('telescope.builtin').resume()<cr>",
-	"Resume",
+lvim.builtin.which_key.mappings["ss"] = { "<cmd>lua require('telescope.builtin').resume()<cr>", "Resume" }
+lvim.builtin.which_key.mappings["sw"] = { "<cmd>lua require('telescope.builtin').grep_string()<cr>", "Current Word" }
+
+lvim.builtin.which_key.mappings["F"] = {
+	name = "Find File",
+	e = {
+		"<cmd>lua require('telescope.builtin').find_files({ find_command = {'rg', '--files', '-g', '*.{ex,exs}'}})<CR>",
+		"Elixir",
+	},
+	t = {
+		"<cmd>lua require('telescope.builtin').find_files({ find_command = {'rg', '--files', '-g', '*.{html,eex,leex,heex}'}})<CR>",
+		"Templates",
+	},
 }
 
-lvim.builtin.which_key.mappings["sw"] = {
-	"<cmd>lua require('telescope.builtin').grep_string()<cr>",
-	"Current Word",
+lvim.builtin.which_key.mappings["S"] = {
+	name = "Special Search",
+	e = {
+		"<cmd>lua require('telescope.builtin').live_grep({ additional_args = function() return {'-g*.{ex,exs}'} end })<CR>",
+		"Elixir",
+	},
+	t = {
+		"<cmd>lua require('telescope.builtin').live_grep({ additional_args = function() return {'-g*.{html,eex,leex,heex}'} end })<CR>",
+		"Templates",
+	},
 }
 
 lvim.builtin.which_key.mappings["sg"] = {
@@ -220,7 +243,7 @@ lvim.plugins = {
 	},
 	{
 		"knubie/vim-kitty-navigator",
-		run = "cp *.py ~/.config/kitty/"
+		run = "cp *.py ~/.config/kitty/",
 	},
 	-- {
 	-- 	"max397574/better-escape.nvim",

@@ -1,11 +1,10 @@
 --smart-case
---pretty
 
 --type-add
-web:*.{html,css,js,eex,leex}*
+web:*.{html,css,js,eex,leex,heex}*
 
 --type-add
-tml:*.{html,eex,leex}*
+tml:*.{html,eex,leex,heex}*
 
 --type-add
-src:*.{ex,exs}*
+elixir:*.{ex,exs}*
