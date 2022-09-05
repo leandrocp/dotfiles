@@ -4,12 +4,14 @@
 -- vim.opt.timeoutlen = 500
 -- vim.opt.lazyredraw = true
 vim.opt.guifont = "FiraCode Nerd Font Mono:h14"
+vim.opt.laststatus = 3
 lvim.log.level = "warn"
 lvim.format_on_save = false
 lvim.colorscheme = "onedarkpro"
 lvim.leader = "space"
 lvim.builtin.lualine.style = "lvim"
 lvim.builtin.lualine.theme = "onedarkpro"
+lvim.builtin.lualine.options.globalstatus = true
 lvim.builtin.lualine.sections.lualine_b = {
 	"branch",
 	{
@@ -18,30 +20,40 @@ lvim.builtin.lualine.sections.lualine_b = {
 		path = 1,
 		shorting_target = 40,
 	},
-	"location",
 }
-lvim.builtin.lualine.sections.lualine_c = { "diff" }
+lvim.builtin.lualine.sections.lualine_c = {
+	"location",
+	"diff",
+}
 lvim.lsp.automatic_servers_installation = true
 lvim.builtin.terminal.active = true
 lvim.builtin.terminal.shade_terminals = false
 lvim.builtin.terminal.shading_factor = 3
 lvim.builtin.terminal.persist_size = true
 lvim.builtin.terminal.direction = "horizontal"
--- lvim.builtin.terminal.execs[#lvim.builtin.terminal.execs + 1] = { "iex", "xi", "iex" }
 lvim.builtin.telescope.defaults = {
 	path_display = { shorten = 10 },
 	layout_strategy = "vertical",
 	layout_config = {
 		width = 0.9,
 	},
+	pickers = {
+		live_grep = {
+			on_input_filter_cb = function(prompt)
+				-- AND operator for live_grep like how fzf handles spaces with wildcards in rg
+				-- https://www.reddit.com/r/neovim/comments/udx0fi/telescopebuiltinlive_grep_and_operator
+				return { prompt = prompt:gsub("%s", ".*") }
+			end,
+		},
+	},
 }
-lvim.builtin.telescope.on_config_done = function()
-	local telescope = require("telescope")
-	telescope.load_extension("fzf")
-end
+-- lvim.builtin.telescope.on_config_done = function()
+-- local telescope = require("telescope")
+-- telescope.load_extension("fzf")
+-- end
 lvim.builtin.notify.active = true
 lvim.builtin.nvimtree.setup.view.side = "left"
-lvim.builtin.nvimtree.show_icons.git = 0
+-- lvim.builtin.nvimtree.show_icons.git = 0
 lvim.builtin.treesitter.ensure_installed = {
 	"bash",
 	"json",
@@ -57,6 +69,7 @@ lvim.builtin.treesitter.ensure_installed = {
 	"toml",
 	"yaml",
 	"dockerfile",
+  "python"
 }
 lvim.builtin.treesitter.ignore_install = { "haskell" }
 lvim.builtin.treesitter.rainbow.enable = true
@@ -135,19 +148,6 @@ lvim.builtin.which_key.mappings["e"] = {
 	s = { "<cmd>SymbolsOutline<cr>", "Symbols" },
 }
 
--- lvim.builtin.which_key.mappings["x"] = {
--- 	name = "Execute",
--- 	m = {
--- 		name = "mix",
--- 		c = { "<cmd>Tmux mix compile --all-warnings<cr>", "compile" },
--- 		s = { "<cmd>Tmux iex -S mix phx.server<cr>", "phx.server" },
--- 		d = { "<cmd>Tmux mix dialyzer<cr>", "dialyzer" },
--- 		l = { "<cmd>Tmux mix credo --strict<cr>", "credo" },
--- 		q = { "<cmd>Tmux quality<cr>", "quality" },
--- 		f = { "<cmd>Tmux mix format<cr>", "format" },
--- 	},
--- }
-
 -- *********
 -- Languages
 -- *********
@@ -168,36 +168,18 @@ lvim.plugins = {
 			local theme = require("onedarkpro")
 			theme.load()
 			theme.setup({
+				dark_theme = "onedark_vivid",
 				options = {
 					terminal_colors = true,
 				},
 			})
 		end,
 	},
-	{
-		"nvim-telescope/telescope-fzf-native.nvim",
-		run = "make",
-	},
-	-- { "tpope/vim-repeat" },
 	-- {
-	-- 	"nathom/filetype.nvim",
-	-- 	config = function()
-	-- 		require("filetype").setup({
-	-- 			overrides = {
-	-- 				extensions = {
-	-- 					exs = "elixir",
-	-- 					leex = "eelixir",
-	-- 					heex = "eelixir",
-	-- 				},
-	-- 				literal = {
-	-- 					["mix.lock"] = "elixir",
-	-- 				},
-	-- 			},
-	-- 		})
-
-	-- 		vim.g.did_load_filetypes = 1
-	-- 	end,
+	-- "nvim-telescope/telescope-fzf-native.nvim",
+	-- run = "make",
 	-- },
+	{ "tpope/vim-repeat" },
 	{
 		"ethanholz/nvim-lastplace",
 		event = "BufRead",
@@ -399,3 +381,18 @@ let g:projectionist_heuristics = {
 		end,
 	},
 }
+
+vim.cmd([[
+" Better ESC
+" https://www.reddit.com/r/vim/comments/ufgrl8/journey_to_the_ultimate_imap_jk_esc
+let g:esc_j_lasttime = 0
+let g:esc_k_lasttime = 0
+function! JKescape(key)
+	if a:key=='j' | let g:esc_j_lasttime = reltimefloat(reltime()) | endif
+	if a:key=='k' | let g:esc_k_lasttime = reltimefloat(reltime()) | endif
+	let l:timediff = abs(g:esc_j_lasttime - g:esc_k_lasttime)
+	return (l:timediff <= 0.05 && l:timediff >=0.001) ? "\b\e" : a:key
+endfunction
+inoremap <expr> j JKescape('j')
+inoremap <expr> k JKescape('k')
+]])
