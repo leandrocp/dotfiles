@@ -25,7 +25,7 @@ lvim.builtin.lualine.sections.lualine_c = {
 	"location",
 	"diff",
 }
-lvim.lsp.automatic_servers_installation = true
+lvim.lsp.automatic_configuration = true
 lvim.builtin.terminal.active = true
 lvim.builtin.terminal.shade_terminals = false
 lvim.builtin.terminal.shading_factor = 3
