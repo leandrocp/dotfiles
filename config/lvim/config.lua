@@ -177,12 +177,6 @@ lvim.plugins = {
 	},
 	{ "tpope/vim-repeat" },
 	{
-		"phaazon/hop.nvim",
-		config = function()
-			require("hop").setup()
-		end,
-	},
-	{
 		"ethanholz/nvim-lastplace",
 		event = "BufRead",
 		config = function()
