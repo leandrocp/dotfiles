@@ -177,6 +177,14 @@ lvim.plugins = {
 	},
 	{ "tpope/vim-repeat" },
 	{
+		"phaazon/hop.nvim",
+		event = "BufRead",
+		config = function()
+			require("hop").setup()
+			vim.api.nvim_set_keymap("n", "f", ":HopChar2<cr>", { silent = true })
+		end,
+	},
+	{
 		"ethanholz/nvim-lastplace",
 		event = "BufRead",
 		config = function()
