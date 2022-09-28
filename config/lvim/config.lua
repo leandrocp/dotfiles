@@ -69,7 +69,7 @@ lvim.builtin.treesitter.ensure_installed = {
 	"toml",
 	"yaml",
 	"dockerfile",
-  "python"
+	"python",
 }
 lvim.builtin.treesitter.ignore_install = { "haskell" }
 lvim.builtin.treesitter.rainbow.enable = true
@@ -175,11 +175,13 @@ lvim.plugins = {
 			})
 		end,
 	},
-	-- {
-	-- "nvim-telescope/telescope-fzf-native.nvim",
-	-- run = "make",
-	-- },
 	{ "tpope/vim-repeat" },
+	{
+		"phaazon/hop.nvim",
+		config = function()
+			require("hop").setup()
+		end,
+	},
 	{
 		"ethanholz/nvim-lastplace",
 		event = "BufRead",
@@ -194,6 +196,13 @@ lvim.plugins = {
 				},
 				lastplace_open_folds = true,
 			})
+		end,
+	},
+	{
+		"andymass/vim-matchup",
+		event = "CursorMoved",
+		config = function()
+			vim.g.matchup_matchparen_offscreen = { method = "popup" }
 		end,
 	},
 	{
@@ -218,9 +227,9 @@ lvim.plugins = {
 		"vim-test/vim-test",
 		config = function()
 			vim.cmd([[
-    let g:test#preserve_screen = 1
-    let test#strategy = "kitty"
-    ]])
+        let g:test#preserve_screen = 1
+        let test#strategy = "kitty"
+      ]])
 		end,
 	},
 	{
@@ -259,6 +268,12 @@ lvim.plugins = {
 	},
 	{
 		"p00f/nvim-ts-rainbow",
+	},
+	{
+		"gen740/SmoothCursor.nvim",
+		config = function()
+			require("smoothcursor").setup()
+		end,
 	},
 	{
 		"tpope/vim-projectionist",

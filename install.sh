@@ -24,8 +24,6 @@ function install() {
   wget https://raw.githubusercontent.com/gjmveloso/iTerm-OneDark-Pro/master/OneDark-Pro.itermcolors -O ~/.shell/OneDark-Pro.itermcolors
 
   bash <(curl -s https://raw.githubusercontent.com/lunarvim/lunarvim/master/utils/installer/install.sh)
-  rm -f "$HOME/.config/lvim/config.lua"
-  ln -s "$HOME/.dotfiles/lvim.config.lua $HOME/.config/lvim/config.lua"
 }
 
 install

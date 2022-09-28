@@ -20,7 +20,7 @@ Session.vim
 tags
 *.log
 config/nvim
-config/lvim
+config/lvim/plugin
 config/lvim.old
 config/pgcli/history
 config/pgcli/log
