@@ -1,14 +1,14 @@
--- ********
--- Settings
--- ********
--- vim.opt.timeoutlen = 500
--- vim.opt.lazyredraw = true
 vim.opt.guifont = "FiraCode Nerd Font Mono:h14"
 vim.opt.laststatus = 3
+vim.opt.relativenumber = true
+vim.opt.scrolloff = 10
+
 lvim.log.level = "warn"
-lvim.format_on_save = false
-lvim.colorscheme = "onedarkpro"
 lvim.leader = "space"
+lvim.format_on_save.enabled = false
+lvim.colorscheme = "onedarkpro"
+
+lvim.builtin.breadcrumbs.active = false
 lvim.builtin.lualine.style = "lvim"
 lvim.builtin.lualine.theme = "onedarkpro"
 lvim.builtin.lualine.options.globalstatus = true
@@ -25,18 +25,31 @@ lvim.builtin.lualine.sections.lualine_c = {
 	"location",
 	"diff",
 }
+
 lvim.lsp.automatic_configuration = true
-lvim.builtin.terminal.active = true
-lvim.builtin.terminal.shade_terminals = false
-lvim.builtin.terminal.shading_factor = 3
-lvim.builtin.terminal.persist_size = true
-lvim.builtin.terminal.direction = "horizontal"
+lvim.lsp.diagnostics.virtual_text = false
+
+lvim.builtin.terminal.active = false
+
 lvim.builtin.telescope.defaults = {
 	path_display = { shorten = 10 },
 	layout_strategy = "vertical",
-	layout_config = {
-		width = 0.9,
-	},
+	-- layout_config = {
+	-- 	width = 0.9,
+	-- },
+	-- layout_config = {
+	-- 	horizontal = {
+	-- 		prompt_position = "top",
+	-- 		preview_width = 0.55,
+	-- 		results_width = 0.8,
+	-- 	},
+	-- 	vertical = {
+	-- 		mirror = false,
+	-- 	},
+	-- 	width = 0.87,
+	-- 	height = 0.80,
+	-- 	preview_cutoff = 120,
+	-- },
 	pickers = {
 		live_grep = {
 			on_input_filter_cb = function(prompt)
@@ -47,13 +60,7 @@ lvim.builtin.telescope.defaults = {
 		},
 	},
 }
--- lvim.builtin.telescope.on_config_done = function()
--- local telescope = require("telescope")
--- telescope.load_extension("fzf")
--- end
-lvim.builtin.notify.active = true
-lvim.builtin.nvimtree.setup.view.side = "left"
--- lvim.builtin.nvimtree.show_icons.git = 0
+
 lvim.builtin.treesitter.ensure_installed = {
 	"bash",
 	"json",
@@ -65,19 +72,17 @@ lvim.builtin.treesitter.ensure_installed = {
 	"elixir",
 	"eex",
 	"heex",
-	-- "rust",
 	"toml",
 	"yaml",
 	"dockerfile",
 	"python",
 }
 lvim.builtin.treesitter.ignore_install = { "haskell" }
+lvim.builtin.treesitter.highlight.enable = true
 lvim.builtin.treesitter.rainbow.enable = true
+
 lvim.builtin.project.silent_chdir = false
 
--- ***********
--- Keybindings
--- ***********
 local keymap = vim.api.nvim_set_keymap
 
 keymap("n", ";", ":", { noremap = true })
@@ -95,6 +100,8 @@ lvim.builtin.which_key.mappings["w"] = {
 	w = { "<cmd>InteractiveWindow<cr>", "Interactive" },
 	p = { "<cmd>BufferLinePick<cr>", "Pick" },
 }
+
+lvim.builtin.which_key.mappings["bd"] = { "<cmd>TroubleToggle document_diagnostics<cr>", "Diagnostics" }
 
 lvim.builtin.which_key.mappings["P"] = { "<cmd>Telescope projects<CR>", "Projects" }
 
@@ -148,9 +155,6 @@ lvim.builtin.which_key.mappings["e"] = {
 	s = { "<cmd>SymbolsOutline<cr>", "Symbols" },
 }
 
--- *********
--- Languages
--- *********
 local formatters = require("lvim.lsp.null-ls.formatters")
 
 formatters.setup({
@@ -158,9 +162,6 @@ formatters.setup({
 	{ exe = "rustfmt", filetypes = { "rust", "rs" } },
 })
 
--- ***********
--- Keybindings
--- ***********
 lvim.plugins = {
 	{
 		"olimorris/onedarkpro.nvim",
@@ -176,14 +177,6 @@ lvim.plugins = {
 		end,
 	},
 	{ "tpope/vim-repeat" },
-	{
-		"phaazon/hop.nvim",
-		event = "BufRead",
-		config = function()
-			require("hop").setup()
-			vim.api.nvim_set_keymap("n", "f", ":HopChar2<cr>", { silent = true })
-		end,
-	},
 	{
 		"ethanholz/nvim-lastplace",
 		event = "BufRead",
@@ -276,6 +269,10 @@ lvim.plugins = {
 		config = function()
 			require("smoothcursor").setup()
 		end,
+	},
+	{
+		"folke/trouble.nvim",
+		cmd = "TroubleToggle",
 	},
 	{
 		"tpope/vim-projectionist",
