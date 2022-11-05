@@ -41,6 +41,7 @@ config/joplin-desktop
 config/iterm2
 config/exercism
 config/htop
+config/gtk-2.0
 Package Control.last-run
 Package Control.ca-list
 Package Control.ca-bundle
