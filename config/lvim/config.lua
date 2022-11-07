@@ -12,6 +12,7 @@ lvim.builtin.alpha.active = false
 lvim.builtin.illuminate.active = false
 lvim.builtin.breadcrumbs.active = false
 lvim.builtin.indentlines.active = false
+
 lvim.builtin.lualine.style = "lvim"
 lvim.builtin.lualine.theme = "onedarkpro"
 lvim.builtin.lualine.options.globalstatus = true
@@ -29,28 +30,14 @@ lvim.builtin.lualine.sections.lualine_c = {
 	"diff",
 }
 
-lvim.lsp.automatic_configuration = true
 lvim.lsp.diagnostics.virtual_text = false
 
 lvim.builtin.telescope.defaults = {
 	path_display = { shorten = 10 },
 	layout_strategy = "vertical",
-	-- layout_config = {
-	-- 	width = 0.9,
-	-- },
-	-- layout_config = {
-	-- 	horizontal = {
-	-- 		prompt_position = "top",
-	-- 		preview_width = 0.55,
-	-- 		results_width = 0.8,
-	-- 	},
-	-- 	vertical = {
-	-- 		mirror = false,
-	-- 	},
-	-- 	width = 0.87,
-	-- 	height = 0.80,
-	-- 	preview_cutoff = 120,
-	-- },
+	layout_config = {
+		width = 0.9,
+	},
 	pickers = {
 		live_grep = {
 			on_input_filter_cb = function(prompt)
