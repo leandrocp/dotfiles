@@ -8,7 +8,10 @@ lvim.leader = "space"
 lvim.format_on_save.enabled = false
 lvim.colorscheme = "onedarkpro"
 
+lvim.builtin.alpha.active = false
+lvim.builtin.illuminate.active = false
 lvim.builtin.breadcrumbs.active = false
+lvim.builtin.indentlines.active = false
 lvim.builtin.lualine.style = "lvim"
 lvim.builtin.lualine.theme = "onedarkpro"
 lvim.builtin.lualine.options.globalstatus = true
@@ -28,8 +31,6 @@ lvim.builtin.lualine.sections.lualine_c = {
 
 lvim.lsp.automatic_configuration = true
 lvim.lsp.diagnostics.virtual_text = false
-
-lvim.builtin.terminal.active = false
 
 lvim.builtin.telescope.defaults = {
 	path_display = { shorten = 10 },
