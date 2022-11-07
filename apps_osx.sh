@@ -16,15 +16,12 @@ htop-osx \
 ack \
 fzf \
 ripgrep \
-editorconfig \
-tmux \
 openssh \
 ssh-copy-id \
 awscli \
 jq \
 pgcli \
 bat \
-hub \
 zplug \
 renameutils \
 dust \
@@ -37,9 +34,11 @@ pandoc \
 autojump \
 vlc \
 lazygit \
-fasd
+fasd \
+zsh
 
 brew tap homebrew/cask-fonts
 brew install --cask font-hack-nerd-font
+brew install --cask font-jetbrains-mono-nerd-font
 
 brew cleanup

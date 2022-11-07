@@ -1,4 +1,4 @@
-vim.opt.guifont = "FiraCode Nerd Font Mono:h14"
+vim.opt.guifont = "Hack Nerd Font Mono:h14"
 vim.opt.laststatus = 3
 vim.opt.relativenumber = true
 vim.opt.scrolloff = 10
