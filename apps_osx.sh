@@ -35,7 +35,8 @@ autojump \
 vlc \
 lazygit \
 fasd \
-zsh
+zsh \
+kitty
 
 brew tap homebrew/cask-fonts
 brew install --cask font-hack-nerd-font

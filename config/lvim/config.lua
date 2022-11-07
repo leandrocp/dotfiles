@@ -170,7 +170,7 @@ lvim.plugins = {
 			local theme = require("onedarkpro")
 			theme.load()
 			theme.setup({
-				dark_theme = "onedark_vivid",
+				caching = true,
 				options = {
 					terminal_colors = true,
 				},
