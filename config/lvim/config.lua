@@ -5,7 +5,6 @@ vim.opt.scrolloff = 10
 
 lvim.log.level = "warn"
 lvim.leader = "space"
-lvim.format_on_save.enabled = false
 lvim.colorscheme = "onedarkpro"
 
 lvim.builtin.alpha.active = false
@@ -34,10 +33,10 @@ lvim.lsp.diagnostics.virtual_text = false
 
 lvim.builtin.telescope.defaults = {
 	path_display = { shorten = 10 },
-	layout_strategy = "vertical",
-	layout_config = {
-		width = 0.9,
-	},
+	-- layout_strategy = "vertical",
+	-- layout_config = {
+	-- 	width = 0.9,
+	-- },
 	pickers = {
 		live_grep = {
 			on_input_filter_cb = function(prompt)
@@ -48,6 +47,7 @@ lvim.builtin.telescope.defaults = {
 		},
 	},
 }
+lvim.builtin.telescope.pickers.find_files.previewer = nil -- https://github.com/LunarVim/LunarVim/issues/3351#issuecomment-1295331841
 
 lvim.builtin.treesitter.ensure_installed = {
 	"bash",
@@ -219,14 +219,14 @@ lvim.plugins = {
 		"knubie/vim-kitty-navigator",
 		run = "cp *.py ~/.config/kitty/",
 	},
-	-- {
-	-- 	"max397574/better-escape.nvim",
-	-- 	config = function()
-	-- 		require("better_escape").setup({
-	-- 			mapping = { "kj" },
-	-- 		})
-	-- 	end,
-	-- },
+	{
+		"max397574/better-escape.nvim",
+		config = function()
+			require("better_escape").setup({
+				mapping = { "kj" },
+			})
+		end,
+	},
 	{
 		"mrjones2014/smart-splits.nvim",
 		config = function()
@@ -383,18 +383,3 @@ let g:projectionist_heuristics = {
 		end,
 	},
 }
-
-vim.cmd([[
-" Better ESC
-" https://www.reddit.com/r/vim/comments/ufgrl8/journey_to_the_ultimate_imap_jk_esc
-let g:esc_j_lasttime = 0
-let g:esc_k_lasttime = 0
-function! JKescape(key)
-	if a:key=='j' | let g:esc_j_lasttime = reltimefloat(reltime()) | endif
-	if a:key=='k' | let g:esc_k_lasttime = reltimefloat(reltime()) | endif
-	let l:timediff = abs(g:esc_j_lasttime - g:esc_k_lasttime)
-	return (l:timediff <= 0.05 && l:timediff >=0.001) ? "\b\e" : a:key
-endfunction
-inoremap <expr> j JKescape('j')
-inoremap <expr> k JKescape('k')
-]])
