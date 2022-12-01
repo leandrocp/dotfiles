@@ -36,7 +36,9 @@ vlc \
 lazygit \
 fasd \
 zsh \
-kitty
+kitty \
+lua \
+rust
 
 brew tap homebrew/cask-fonts
 brew install --cask font-hack-nerd-font
