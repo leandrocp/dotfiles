@@ -38,7 +38,9 @@ fasd \
 zsh \
 kitty \
 lua \
-rust
+rust \
+starship \
+exa
 
 brew tap homebrew/cask-fonts
 brew install --cask font-hack-nerd-font

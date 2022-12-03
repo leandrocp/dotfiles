@@ -1,8 +1,8 @@
 [user]
-	name = Leandro Cesquini Pereira
-	email = leandro@leandro.io
+  name = Leandro Cesquini Pereira
+  email = leandro@leandro.io
   username = leandrocp
-	signingkey = B087DD0D88E2F6B2A1910FEAD4AB0498F59DEADE
+  signingkey = B087DD0D88E2F6B2A1910FEAD4AB0498F59DEADE
 [github]
   user = leandrocp
 [core]
@@ -39,17 +39,17 @@
   up = !sh -c 'git set-upstream && git fetch && git pull --rebase' -
   cp = cherry-pick
   set-upstream = !git branch --set-upstream-to=origin/`git symbolic-ref --short HEAD`
-	conflicted = !vim +Conflicted
+  conflicted = !vim +Conflicted
 [commit]
-	gpgsign = true
+  gpgsign = true
 [gpg]
-	program = /usr/local/bin/gpg
+  program = /usr/local/bin/gpg
 [merge]
-	tool = vim-conflicted
+  tool = vim-conflicted
 [mergetool]
-	prompt = false
-	keepBackup = true
+  prompt = false
+  keepBackup = true
 [init]
-	defaultBranch = master
+  defaultBranch = master
 [mergetool "vim-conflicted"]
-	cmd = vim +Conflicted
+  cmd = vim +Conflicted
