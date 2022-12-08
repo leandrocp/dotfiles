@@ -7,6 +7,10 @@ lvim.log.level = "warn"
 lvim.leader = "space"
 lvim.colorscheme = "onedarkpro"
 
+lvim.format_on_save = {
+  enabled = false
+}
+
 lvim.builtin.alpha.active = false
 lvim.builtin.illuminate.active = false
 lvim.builtin.breadcrumbs.active = false

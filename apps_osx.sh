@@ -5,6 +5,7 @@ brew upgrade
 
 brew install \
 coreutils \
+autoconf \
 moreutils \
 findutils \
 gnu-sed \
@@ -40,7 +41,12 @@ kitty \
 lua \
 rust \
 starship \
-exa
+exa \
+muzzle \
+slack \
+maccy \
+rectangle \
+macdown
 
 brew tap homebrew/cask-fonts
 brew install --cask font-hack-nerd-font
