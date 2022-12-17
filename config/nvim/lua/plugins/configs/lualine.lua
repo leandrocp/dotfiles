@@ -6,7 +6,10 @@ end
 
 local options = {
   options = {
-    globalstatus = true
+    component_separators = '|',
+    section_separators = '',
+    globalstatus = true,
+    icons_enabled = false
   }
 }
 

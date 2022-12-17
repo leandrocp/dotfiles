@@ -1,13 +1,17 @@
-local keymap = vim.api.nvim_set_keymap
+vim.keymap.set("n", ";", ":", { noremap = true })
+vim.keymap.set("n", "<C-s>", ":w<CR>", { noremap = true })
+vim.keymap.set("n", "<C-d>", "<C-d>zz", { noremap = true })
+vim.keymap.set("n", "<C-u>", "<C-u>zz", { noremap = true })
+vim.keymap.set("n", "<Tab>", ":bnext<CR>", { noremap = true })
+vim.keymap.set("n", "<S-Tab>", ":bprevious<CR>", { noremap = true })
+vim.keymap.set("n", "n", "nzzzv", { noremap = true })
+vim.keymap.set('n', 'N', 'Nzzzv', { noremap = true })
+vim.keymap.set("n", "J", "mzJ`z")
+vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
+vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 
-keymap("n", ";", ":", { noremap = true })
-keymap("n", "<C-s>", ":w<CR>", { noremap = true })
-keymap("n", "<C-d>", "<C-d>zz", { noremap = true })
-keymap("n", "<C-u>", "<C-u>zz", { noremap = true })
-keymap("n", "<Tab>", ":bnext<CR>", { noremap = true })
-keymap("n", "<S-Tab>", ":bprevious<CR>", { noremap = true })
-keymap("n", "n", "nzzzv", { noremap = true })
-keymap('n', 'N', 'Nzzzv', { noremap = true })
+vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
+vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
 -- smart-splits.nvim
 local ss =require("smart-splits")
