@@ -9,8 +9,8 @@ export LANG=en_US.UTF-8
 
 # EDITOR
 export ALTERNATE_EDITOR=""
-export EDITOR="lvim"
-export GIT_EDITOR="lvim"
+export EDITOR="nvim"
+export GIT_EDITOR="nvim"
 export VISUAL=$EDITOR
 
 export HISTFILE=~/.zsh_history

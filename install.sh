@@ -6,7 +6,7 @@ function install() {
   for name in *; do
     target="$HOME/.$name"
 
-    if [ "$name" != 'install.sh' ] && [ "$name" != 'README.md' ] && [ "$name" != 'lvim.config.lua' ]; then
+    if [ "$name" != 'install.sh' ] && [ "$name" != 'README.md' ]; then
       rm -rf "$target"
       echo "ln -s "$PWD/$name" "$target""
       ln -s "$PWD/$name" "$target"

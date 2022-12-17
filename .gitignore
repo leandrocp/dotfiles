@@ -20,9 +20,6 @@ Session.vim
 tags
 *.log
 config/nvim/plugin/packer_compiled.lua
-config/lvim/plugin
-config/lvim/ignore
-config/lvim.old
 config/pgcli/history
 config/pgcli/log
 config/hub
