@@ -48,6 +48,8 @@ lsp.set_preferences({
   }
 })
 
+lsp.setup()
+
 vim.diagnostic.config({
   virtual_text = true,
   signs = true,
@@ -56,5 +58,3 @@ vim.diagnostic.config({
   severity_sort = false,
   float = true,
 })
-
-lsp.setup()
