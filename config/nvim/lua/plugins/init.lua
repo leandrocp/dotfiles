@@ -14,7 +14,13 @@ local packer_bootstrap = ensure_packer()
 return require('packer').startup(function(use)
   use 'wbthomason/packer.nvim'
 
-  use 'olimorris/onedarkpro.nvim'
+  -- use 'olimorris/onedarkpro.nvim'
+  use {
+    'navarasu/onedark.nvim',
+    config = function()
+      require('onedark').load()
+    end
+  }
 
   use 'nvim-lua/plenary.nvim'
 
@@ -26,8 +32,6 @@ return require('packer').startup(function(use)
       require("dressing").setup()
     end
   }
-
-  use 'nvim-tree/nvim-web-devicons'
 
   use {
     'akinsho/bufferline.nvim',

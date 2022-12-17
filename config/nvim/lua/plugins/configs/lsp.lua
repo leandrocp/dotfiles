@@ -7,16 +7,32 @@ end
 lsp.preset('recommended')
 
 local cmp = require('cmp')
-local cmp_select = { behavior = cmp.SelectBehavior.Select }
+local luasnip = require('luasnip')
 
-local cmp_mappings = lsp.defaults.cmp_mappings({
-  ['<C-Space>'] = cmp.mapping.complete(),
-  ['<CR>'] = cmp.mapping.confirm {
+local cmp_mappings = cmp.mapping.preset.insert({
+  ['<CR>'] = nil,
+  ['<C-y>'] = cmp.mapping.confirm {
     behavior = cmp.ConfirmBehavior.Replace,
-    select = true,
+    select = false,
   },
-  ['<Tab>'] = cmp.mapping.select_next_item(cmp_select),
-  ['<S-Tab>'] = cmp.mapping.select_prev_item(cmp_select),
+  ['<Tab>'] = cmp.mapping(function(fallback)
+    if cmp.visible() then
+      cmp.select_next_item()
+    elseif luasnip.expand_or_jumpable() then
+      luasnip.expand_or_jump()
+    else
+      fallback()
+    end
+  end, { 'i', 's' }),
+  ['<S-Tab>'] = cmp.mapping(function(fallback)
+    if cmp.visible() then
+      cmp.select_prev_item()
+    elseif luasnip.jumpable(-1) then
+      luasnip.jump(-1)
+    else
+      fallback()
+    end
+  end, { 'i', 's' }),
 })
 
 lsp.setup_nvim_cmp({
