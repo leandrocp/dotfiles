@@ -28,10 +28,10 @@ vim.keymap.set('n', '<A-h>', ss.resize_left)
 vim.keymap.set('n', '<A-j>', ss.resize_down)
 vim.keymap.set('n', '<A-k>', ss.resize_up)
 vim.keymap.set('n', '<A-l>', ss.resize_right)
-vim.keymap.set('n', '<C-h>', ss.move_cursor_left)
-vim.keymap.set('n', '<C-j>', ss.move_cursor_down)
-vim.keymap.set('n', '<C-k>', ss.move_cursor_up)
-vim.keymap.set('n', '<C-l>', ss.move_cursor_right)
+vim.keymap.set('n', '<C-h>', "<cmd>KittyNavigateLeft<cr>")
+vim.keymap.set('n', '<C-j>', "<cmd>KittyNavigateDown<cr>")
+vim.keymap.set('n', '<C-k>', "<cmd>KittyNavigateUp<cr>")
+vim.keymap.set('n', '<C-l>', "<cmd>KittyNavigateRight<cr>")
 
 local present, wk = pcall(require, "which-key")
 
@@ -78,11 +78,26 @@ local mapping_opts = {
   nowait = true,
 }
 
+local function project_files()
+  local opts = {}
+  if vim.loop.fs_stat(".git") then
+    opts.show_untracked = true
+    require("telescope.builtin").git_files(opts)
+  else
+    local client = vim.lsp.get_active_clients()[1]
+    if client then
+      opts.cwd = client.config.root_dir
+    end
+    require("telescope.builtin").find_files(opts)
+  end
+end
+
 local mappings = {
   -- ["w"] = { "<cmd>w!<CR>", "Save" },
   c = { "<cmd>BufDel<CR>", "Close Buffer" },
 
-  f = { "<cmd>Telescope find_files<cr>", "Find File" },
+  f = { project_files, "Find File" },
+  ["<space>"] = { project_files, "Find File" },
 
   s = {
     name = "Search",

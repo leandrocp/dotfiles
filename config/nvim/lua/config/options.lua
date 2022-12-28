@@ -5,6 +5,7 @@ vim.g.maplocalleader = ' '
 
 vim.o.laststatus = 3
 vim.o.showmode = false
+vim.o.title = true
 
 vim.o.clipboard = "unnamedplus"
 vim.o.autoread = true
@@ -34,6 +35,8 @@ vim.o.splitright = true
 vim.o.termguicolors = true
 vim.o.timeoutlen = 400
 vim.o.undofile = true
+vim.o.wrap = false
+vim.opt.spelllang = { "en" }
 
 -- interval for writing swap file to disk, also used by gitsigns
 vim.o.updatetime = 200

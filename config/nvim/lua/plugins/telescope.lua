@@ -1,25 +1,8 @@
-local function project_files()
-  local opts = {}
-  if vim.loop.fs_stat(".git") then
-    opts.show_untracked = true
-    require("telescope.builtin").git_files(opts)
-  else
-    local client = vim.lsp.get_active_clients()[1]
-    if client then
-      opts.cwd = client.config.root_dir
-    end
-    require("telescope.builtin").find_files(opts)
-  end
-end
-
 return {
   "nvim-telescope/telescope.nvim",
   cmd = { "Telescope" },
   dependencies = {
     { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
-  },
-  keys = {
-    { "<leader><space>", project_files, desc = "Project Files" },
   },
   config = function()
     local telescope = require("telescope")

@@ -91,6 +91,7 @@ return {
 
   {
     "knubie/vim-kitty-navigator",
+    cmd = { "KittyNavigateLeft", "KittyNavigateDown", "KittyNavigateUp", "KittyNavigateRight" },
     build = "cp *.py ~/.config/kitty/",
   },
 }
