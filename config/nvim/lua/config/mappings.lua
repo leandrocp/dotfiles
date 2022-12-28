@@ -1,20 +1,29 @@
+-- commands with ;
 vim.keymap.set("n", ";", ":", { noremap = true })
+
+-- save buffer
 vim.keymap.set("n", "<C-s>", ":w<CR>", { noremap = true })
+vim.keymap.set("i", "<C-s>", "<cmd>:w<cr><esc>")
+
+-- center buffer on jumps
 vim.keymap.set("n", "<C-d>", "<C-d>zz", { noremap = true })
 vim.keymap.set("n", "<C-u>", "<C-u>zz", { noremap = true })
-vim.keymap.set("n", "<Tab>", ":bnext<CR>", { noremap = true })
-vim.keymap.set("n", "<S-Tab>", ":bprevious<CR>", { noremap = true })
 vim.keymap.set("n", "n", "nzzzv", { noremap = true })
 vim.keymap.set('n', 'N', 'Nzzzv', { noremap = true })
+
+-- navigate with tab
+vim.keymap.set("n", "<Tab>", ":bnext<CR>", { noremap = true })
+vim.keymap.set("n", "<S-Tab>", ":bprevious<CR>", { noremap = true })
+
+-- better JK
 vim.keymap.set("n", "J", "mzJ`z")
 vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
-
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
 -- smart-splits.nvim
-local ss =require("smart-splits")
+local ss = require("smart-splits")
 vim.keymap.set('n', '<A-h>', ss.resize_left)
 vim.keymap.set('n', '<A-j>', ss.resize_down)
 vim.keymap.set('n', '<A-k>', ss.resize_up)
@@ -87,7 +96,9 @@ local mappings = {
 
   b = {
     name = "Buffer",
-    f = { "<cmd>LspZeroFormat<cr>", "Format" }
+    f = { "<cmd>LspZeroFormat<cr>", "Format" },
+    u = { "<cmd>UndotreeToggle<cr>", "Undo Tree" },
+    s = { "<cmd>SymbolsOutline<cr>", "Symbols" }
   },
 
   g = {
@@ -133,8 +144,8 @@ local mappings = {
   },
 
   p = {
-    name = "Packer",
-    s = { "<cmd>PackerSync<cr>", "Sync" }
+    name = "Plugins",
+    l = { "<cmd>Lazy<cr>", "Manage" }
   },
 
   w = {

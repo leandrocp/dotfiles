@@ -1,9 +1,9 @@
-local api = vim.api
+vim.cmd([[autocmd FileType markdown setlocal spell]])
 
 -- highlight yanked region
-api.nvim_create_autocmd({ "TextYankPost" }, {
+vim.api.nvim_create_autocmd({ "TextYankPost" }, {
   pattern = "*",
-  group = api.nvim_create_augroup("highlight_yank", { clear = true }),
+  group = vim.api.nvim_create_augroup("highlight_yank", { clear = true }),
   callback = function()
     vim.highlight.on_yank { higroup = "Search", timeout = 200 }
   end,

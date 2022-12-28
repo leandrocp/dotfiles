@@ -33,6 +33,8 @@ return require('packer').startup(function(use)
     end
   }
 
+  use 'mbbill/undotree'
+
   use {
     'akinsho/bufferline.nvim',
     config = function()
