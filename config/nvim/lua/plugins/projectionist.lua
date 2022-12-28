@@ -1,8 +1,8 @@
-local M = {
+return {
   "tpope/vim-projectionist",
-}
-
-vim.cmd([[
+  event = "BufReadPost",
+  init = function()
+    vim.cmd([[
 let g:projectionist_heuristics = {
   \ "mix.exs": {
     \ 'apps/*/mix.exs': { 'type': 'app' },
@@ -116,6 +116,6 @@ let g:projectionist_heuristics = {
     \ }
    \ }
   \ }
-  ]])
-
-return M
+  ]] )
+  end
+}

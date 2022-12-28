@@ -23,13 +23,16 @@ return {
     cmd = "UndotreeToggle"
   },
 
-  "ojroques/nvim-bufdel",
+  {
+    "ojroques/nvim-bufdel",
+    event = "BufReadPost"
+  },
 
   "folke/which-key.nvim",
 
   {
     "chentoast/marks.nvim",
-    event = "BufRead",
+    event = "BufReadPost",
     config = function()
       require("marks").setup()
     end
@@ -37,7 +40,7 @@ return {
 
   {
     "tpope/vim-repeat",
-    event = "BufRead"
+    event = "BufReadPost"
   },
 
   {
@@ -55,7 +58,7 @@ return {
 
   {
     "windwp/nvim-autopairs",
-    event = "BufRead",
+    event = "BufReadPost",
     config = function()
       require("nvim-autopairs").setup()
     end
@@ -63,7 +66,7 @@ return {
 
   {
     "numToStr/Comment.nvim",
-    event = "BufRead",
+    event = "BufReadPost",
     config = function()
       require("Comment").setup({
         pre_hook = require("ts_context_commentstring.integrations.comment_nvim").create_pre_hook(),
@@ -74,8 +77,8 @@ return {
   "JoosepAlviste/nvim-ts-context-commentstring",
 
   {
-  "romainl/vim-cool",
-    event = "BufRead"
+    "romainl/vim-cool",
+    event = "BufReadPost"
   },
 
   {
