@@ -149,11 +149,11 @@ local mappings = {
   },
 
   w = {
-    name = "Window",
+    name = "Windows",
     j = { "<cmd>split<cr>", "Split Down" },
     l = { "<cmd>vsp<cr>", "Split Right" },
-    w = { "<cmd>InteractiveWindow<cr>", "Interactive" },
-    p = { "<cmd>BufferLinePick<cr>", "Pick" },
+    m = { "<cmd>WindowsMaximize<cr>", "Maximize" },
+    e = { "<cmd>WindowsEqualize<cr>", "Equalize" },
   }
 }
 
