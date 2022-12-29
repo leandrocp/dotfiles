@@ -1,8 +1,5 @@
 vim.cmd [[colorscheme onedark]]
 
-vim.g.mapleader = ' '
-vim.g.maplocalleader = ' '
-
 vim.o.laststatus = 3
 vim.o.showmode = false
 vim.o.title = true
@@ -37,6 +34,8 @@ vim.o.timeoutlen = 400
 vim.o.undofile = true
 vim.o.wrap = false
 vim.opt.spelllang = { "en" }
+
+vim.g.mkdp_filetypes = { "markdown" }
 
 -- interval for writing swap file to disk, also used by gitsigns
 vim.o.updatetime = 200

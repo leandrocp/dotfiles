@@ -158,6 +158,8 @@ local mappings = {
     s = { "<cmd>TestSuite<cr>", "Suite" },
   },
 
+  u = { "<cmd>UndotreeToggle<CR>", "Undo Tree" },
+
   p = {
     name = "Plugins",
     l = { "<cmd>Lazy<cr>", "Manage" }

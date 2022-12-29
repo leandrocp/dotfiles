@@ -9,10 +9,14 @@ return {
 
   "nvim-lua/plenary.nvim",
 
-  "tpope/vim-sleuth",
+  {
+    "tpope/vim-sleuth",
+    event = "VeryLazy",
+  },
 
   {
     "stevearc/dressing.nvim",
+    event = "VeryLazy",
     config = function()
       require("dressing").setup()
     end
@@ -73,8 +77,6 @@ return {
       })
     end
   },
-
-  "JoosepAlviste/nvim-ts-context-commentstring",
 
   {
     "romainl/vim-cool",
