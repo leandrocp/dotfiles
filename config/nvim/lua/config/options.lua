@@ -1,7 +1,7 @@
 vim.o.laststatus = 3
 vim.o.showmode = false
 vim.o.title = true
-vim.o.titlestring = "%<%F%="
+vim.o.titlestring = '%f'
 
 vim.o.clipboard = "unnamedplus"
 vim.o.autoread = true

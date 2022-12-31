@@ -47,9 +47,7 @@ return {
   {
     "stevearc/dressing.nvim",
     event = "VeryLazy",
-    config = function()
-      require("dressing").setup()
-    end
+    config = true
   },
 
   {
@@ -67,9 +65,7 @@ return {
   {
     "chentoast/marks.nvim",
     event = "BufReadPost",
-    config = function()
-      require("marks").setup()
-    end
+    config = true
   },
 
   {
@@ -85,17 +81,13 @@ return {
   {
     "stevearc/aerial.nvim",
     cmd = { "AerialToggle" },
-    config = function()
-      require("aerial").setup()
-    end
+    config = true
   },
 
   {
     "windwp/nvim-autopairs",
     event = "BufReadPost",
-    config = function()
-      require("nvim-autopairs").setup()
-    end
+    config = true
   },
 
   {
@@ -116,9 +108,7 @@ return {
   {
     "windwp/nvim-spectre",
     event = "VeryLazy",
-    config = function()
-      require("spectre").setup()
-    end,
+    config = true
   },
 
   {
@@ -146,9 +136,6 @@ return {
   {
     "folke/trouble.nvim",
     cmd = { "Trouble", "TroubleToggle" },
-    config = function()
-      require("trouble").setup {
-      }
-    end
+    config = true
   },
 }
