@@ -4,11 +4,17 @@ return {
   config = function()
     require("lualine").setup({
       options = {
-        theme = 'onedark',
+        theme = 'catppuccin',
         icons_enabled = false,
         component_separators = '|',
         section_separators = '',
         globalstatus = true,
+      },
+      sections = {
+        lualine_c = {
+          "filename",
+          { "aerial", sep = " > " }
+        }
       }
     })
   end

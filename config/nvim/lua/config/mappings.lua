@@ -93,10 +93,8 @@ local function project_files()
 end
 
 local mappings = {
-  -- ["w"] = { "<cmd>w!<CR>", "Save" },
   c = { "<cmd>BufDel<CR>", "Close Buffer" },
 
-  f = { project_files, "Find File" },
   ["<space>"] = { project_files, "Find File" },
 
   s = {
@@ -113,7 +111,7 @@ local mappings = {
     name = "Buffer",
     f = { "<cmd>LspZeroFormat<cr>", "Format" },
     u = { "<cmd>UndotreeToggle<cr>", "Undo Tree" },
-    s = { "<cmd>SymbolsOutline<cr>", "Symbols" }
+    s = { "<cmd>AerialToggle<cr>", "Symbols" }
   },
 
   g = {
@@ -152,10 +150,16 @@ local mappings = {
 
   t = {
     name = "Test",
-    l = { "<cmd>TestLast<cr>", "Last" },
-    n = { "<cmd>TestNearest<cr>", "Nearest" },
-    f = { "<cmd>TestFile<cr>", "File" },
-    s = { "<cmd>TestSuite<cr>", "Suite" },
+    -- l = { "<cmd>TestLast<cr>", "Last" },
+    -- n = { "<cmd>TestNearest<cr>", "Nearest" },
+    -- f = { "<cmd>TestFile<cr>", "File" },
+    -- s = { "<cmd>TestSuite<cr>", "Suite" },
+    a = { "<cmd>lua require('neotest').run.attach()<cr>", "Attach" },
+    f = { "<cmd>lua require('neotest').run.run(vim.fn.expand(\"%\"))<cr>", "File" },
+    n = { "<cmd>lua require('neotest').run.run()<cr>", "Nearest" },
+    s = { "<cmd>lua require('neotest').summary.toggle()<cr>", "Summary" },
+    p = { "<cmd>lua require('neotest').output_panel.toggle()<cr>", "Panel" },
+    o = { "<cmd>lua require('neotest').output.open({ enter = true })<cr>", "Output" },
   },
 
   u = { "<cmd>UndotreeToggle<CR>", "Undo Tree" },

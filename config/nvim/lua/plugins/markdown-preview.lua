@@ -1,6 +1,7 @@
 return {
   "iamcco/markdown-preview.nvim",
   cmd = "MarkdownPreview",
+  ft = { "markdown" },
   init = function()
     vim.g.mkdp_filetypes = { "markdown" }
   end,

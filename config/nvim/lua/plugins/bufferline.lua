@@ -1,8 +1,8 @@
 return {
   "akinsho/nvim-bufferline.lua",
   event = "BufAdd",
+  dependencies = { "catppuccin/nvim" },
   config = function()
-
     require("bufferline").setup({
       options = {
         diagnostics = "nvim_lsp",
@@ -16,6 +16,12 @@ return {
           },
           {
             filetype = "NvimTree",
+            text = "Explorer",
+            highlight = "PanelHeading",
+            padding = 1,
+          },
+          {
+            filetype = "neo-tree",
             text = "Explorer",
             highlight = "PanelHeading",
             padding = 1,
@@ -39,6 +45,7 @@ return {
           },
         },
       },
+      highlights = require("catppuccin.groups.integrations.bufferline").get()
     })
   end
 }

@@ -1,13 +1,43 @@
 return {
+  -- {
+  --   "navarasu/onedark.nvim",
+  --   lazy = false,
+  --   config = function()
+  --     require("onedark").load()
+  --   end
+  -- },
+
   {
-    "navarasu/onedark.nvim",
+    "catppuccin/nvim",
+    name = "catppuccin",
     lazy = false,
+    priority = 1000,
     config = function()
-      require("onedark").load()
+      require("catppuccin").setup({
+        flavour = "macchiato",
+        integrations = {
+          cmp = true,
+          gitsigns = true,
+          mason = true,
+          neotree = true,
+          nvimtree = true,
+          treesitter = true,
+          telescope = true,
+          lsp_trouble = true,
+          which_key = true,
+          native_lsp = {
+            enabled = true
+          }
+        }
+      })
+
+      vim.cmd.colorscheme "catppuccin"
     end
   },
 
   "nvim-lua/plenary.nvim",
+
+  "kyazdani42/nvim-web-devicons",
 
   {
     "tpope/vim-sleuth",
@@ -53,11 +83,11 @@ return {
   },
 
   {
-    "simrat39/symbols-outline.nvim",
-    cmd = "SymbolsOutline",
+    "stevearc/aerial.nvim",
+    cmd = { "AerialToggle" },
     config = function()
-      require("symbols-outline").setup()
-    end,
+      require("aerial").setup()
+    end
   },
 
   {
@@ -95,5 +125,30 @@ return {
     "knubie/vim-kitty-navigator",
     cmd = { "KittyNavigateLeft", "KittyNavigateDown", "KittyNavigateUp", "KittyNavigateRight" },
     build = "cp *.py ~/.config/kitty/",
+  },
+
+  {
+    "nvim-neotest/neotest",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "nvim-treesitter/nvim-treesitter",
+      "jfpedroza/neotest-elixir",
+    },
+    config = function()
+      require("neotest").setup({
+        adapters = {
+          require("neotest-elixir")
+        }
+      })
+    end
+  },
+
+  {
+    "folke/trouble.nvim",
+    cmd = { "Trouble", "TroubleToggle" },
+    config = function()
+      require("trouble").setup {
+      }
+    end
   },
 }
