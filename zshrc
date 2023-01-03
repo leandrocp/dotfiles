@@ -1,5 +1,5 @@
 source $HOME/.sensitive
-source $HOME/.shell/zplug
+source $HOME/.shell/znap
 source $HOME/.shell/options
 source $HOME/.shell/path
 source $HOME/.shell/managers

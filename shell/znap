@@ -1,0 +1,27 @@
+# vi: ft=zsh
+
+[[ -f ~/.zsh-snap/znap.zsh ]] || git clone --depth 1 -- https://github.com/marlonrichert/zsh-snap.git ~/.zsh-snap
+
+source ~/.zsh-snap/znap.zsh
+
+export ZSH_CACHE_DIR="$HOME/.cache/zsh"
+
+znap source mafredri/zsh-async async.zsh
+
+znap eval starship 'starship init zsh --print-full-init'
+znap prompt
+
+znap source sorin-ionescu/prezto modules/history
+znap source sorin-ionescu/prezto modules/completion
+
+znap eval gh-completion 'gh completion -s zsh'
+
+ZSH_AUTOSUGGEST_STRATEGY=( history )
+znap source zsh-users/zsh-autosuggestions
+znap source zsh-users/zsh-history-substring-search
+
+znap source ohmyzsh/ohmyzsh plugins/fasd
+znap source ohmyzsh/ohmyzsh plugins/extract
+
+ZSH_HIGHLIGHT_HIGHLIGHTERS=( main brackets )
+znap source zsh-users/zsh-syntax-highlighting

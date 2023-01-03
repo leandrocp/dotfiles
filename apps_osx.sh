@@ -46,7 +46,8 @@ muzzle \
 slack \
 maccy \
 rectangle \
-joplin
+joplin \
+gh
 
 brew tap homebrew/cask-fonts
 brew install --cask font-hack-nerd-font
