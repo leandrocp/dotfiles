@@ -111,6 +111,11 @@ return {
     config = true
   },
 
+  -- {
+  --   "roobert/search-replace.nvim",
+  --   config = true
+  -- },
+
   {
     "knubie/vim-kitty-navigator",
     cmd = { "KittyNavigateLeft", "KittyNavigateDown", "KittyNavigateUp", "KittyNavigateRight" },

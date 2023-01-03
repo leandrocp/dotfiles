@@ -2,8 +2,9 @@ return {
   "nvim-telescope/telescope.nvim",
   cmd = { "Telescope" },
   dependencies = {
+    { "stevearc/aerial.nvim" },
     { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
-    { "stevearc/aerial.nvim" }
+    { "nvim-telescope/telescope-github.nvim" },
   },
   config = function()
     local telescope = require("telescope")
@@ -74,7 +75,7 @@ return {
         }
       },
 
-      extensions_list = { "themes", "terms", "fzf", "aerial" },
+      extensions_list = { "themes", "terms", "fzf", "aerial", "gh" },
 
     }
 
