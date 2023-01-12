@@ -132,5 +132,13 @@ return {
       "nvim-lua/plenary.nvim"
     },
     config = true
-  }
+  },
+
+  {
+    "echasnovski/mini.jump",
+    event = "VeryLazy",
+    config = function()
+      require("mini.jump").setup {}
+    end,
+  },
 }
