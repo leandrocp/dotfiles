@@ -30,6 +30,7 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
     "DressingSelect",
     "Jaq",
   },
+  group = vim.api.nvim_create_augroup("buffer_mappings", {}),
   callback = function()
     vim.keymap.set("n", "q", "<cmd>close<cr>", { buffer = true })
     vim.opt_local.buflisted = false
