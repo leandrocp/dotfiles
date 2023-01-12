@@ -19,7 +19,6 @@ return {
           cmp = true,
           gitsigns = true,
           mason = true,
-          neotree = true,
           nvimtree = true,
           treesitter = true,
           telescope = true,
@@ -79,12 +78,6 @@ return {
   },
 
   {
-    "stevearc/aerial.nvim",
-    cmd = { "AerialToggle" },
-    config = true
-  },
-
-  {
     "windwp/nvim-autopairs",
     event = "BufReadPost",
     config = true
@@ -110,11 +103,6 @@ return {
     event = "VeryLazy",
     config = true
   },
-
-  -- {
-  --   "roobert/search-replace.nvim",
-  --   config = true
-  -- },
 
   {
     "knubie/vim-kitty-navigator",
@@ -143,4 +131,12 @@ return {
     cmd = { "Trouble", "TroubleToggle" },
     config = true
   },
+
+  {
+    "ThePrimeagen/harpoon",
+    dependencies = {
+      "nvim-lua/plenary.nvim"
+    },
+    config = true
+  }
 }

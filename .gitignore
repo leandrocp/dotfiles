@@ -19,26 +19,6 @@ Session.vim
 .sensitive
 tags
 *.log
-config/nvim/plugin/packer_compiled.lua
-config/pgcli/history
-config/pgcli/log
-config/hub
-config/.erlyberly2
-config/mssqlcli/
-config/wireshark/
-config/.isolated-storage/
-config/BHOK/
-config/Wondershare*
-config/WsSocialApp
-config/7eba963f0804
-config/gh
-config/sql-language-server
-config/efm-langserver
-config/joplin-desktop
-config/iterm2
-config/exercism
-config/htop
-config/gtk-2.0
 Package Control.last-run
 Package Control.ca-list
 Package Control.ca-bundle

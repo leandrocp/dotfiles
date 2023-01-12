@@ -13,6 +13,8 @@ return {
           "lua",
           "json",
           "javascript",
+          "html",
+          "css",
           "erlang",
           "elixir",
           "eex",

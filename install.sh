@@ -1,25 +1,47 @@
 #!/bin/sh
 
-# https://github.com/thoughtbot/dotfiles/blob/master/install.sh
+function link_root() {
+  echo "$HOME links"
 
-function install() {
   for name in *; do
     target="$HOME/.$name"
 
-    if [ "$name" != 'install.sh' ] && [ "$name" != 'README.md' ]; then
+    if [ "$name" != 'install.sh' ] && [ "$name" != 'README.md' ] && [ "$name" != 'config' ]; then
       rm -rf "$target"
       echo "ln -s "$PWD/$name" "$target""
       ln -s "$PWD/$name" "$target"
     fi
   done
-
-  touch ~/.sensitive
-
-  git clone https://github.com/asdf-vm/asdf.git ~/.asdf
-
-  curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | zsh
-
-  bash <(curl -s https://raw.githubusercontent.com/lunarvim/lunarvim/master/utils/installer/install.sh)
 }
 
-install
+function link_config() {
+  echo "$HOME/.config links"
+
+  for name in config/*; do
+    target="$HOME/.$name"
+
+    rm -rf "$target"
+    echo "ln -s "$PWD/$name" "$target""
+    ln -s "$PWD/$name" "$target"
+  done
+}
+
+function bootstrap() {
+  echo "bootstrap"
+
+  echo "touch ~/.sensitive"
+  touch ~/.sensitive
+
+  echo "homebrew"
+  [[ -f /opt/homebrew/bin/brew ]] || /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+  source apps_osx.sh
+
+  echo "asdf"
+  [[ -f ~/.asdf/asdf.sh ]] || git clone https://github.com/asdf-vm/asdf.git ~/.asdf
+  source asdf.sh
+}
+
+link_root
+link_config
+bootstrap

@@ -1,55 +1,24 @@
 #!/usr/bin/env bash
 
-brew update
-brew upgrade
+# https://github.com/Homebrew/install
 
-brew install \
-coreutils \
-autoconf \
-moreutils \
-findutils \
-gnu-sed \
-wget \
-ack \
-git \
-tree \
-htop-osx \
-ack \
-fzf \
-ripgrep \
-openssh \
-ssh-copy-id \
-awscli \
-jq \
-pgcli \
-bat \
-zplug \
-renameutils \
-dust \
-aspell \
-fzy \
-fd \
-dog \
-efm-langserver \
-pandoc \
-autojump \
-vlc \
-lazygit \
-fasd \
-zsh \
-kitty \
-lua \
-rust \
-starship \
-exa \
-muzzle \
-slack \
-maccy \
-rectangle \
-joplin \
-gh
+function brew_install() {
+  if brew ls --versions "$1"; then brew upgrade "$1"; else brew install "$1"; fi
+}
+
+brew update
+
+packages=(\
+autoconf openssl coreutils renameutils dust fd dog autojump openjdk wxwidgets lazygit fasd gh libxslt fop z \
+ripgrep zsh kitty lua rust starship exa muzzle slack maccy rectangle joplin \
+)
+
+for i in "${packages[@]}"
+do
+  brew_install "$i"
+done
 
 brew tap homebrew/cask-fonts
-brew install --cask font-hack-nerd-font
+brew install --force --cask font-hack-nerd-font
 
 brew cleanup

@@ -2,15 +2,25 @@ return {
   "nvim-telescope/telescope.nvim",
   cmd = { "Telescope" },
   dependencies = {
-    { "stevearc/aerial.nvim" },
-    { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
-    { "nvim-telescope/telescope-github.nvim" },
+    {
+      "nvim-telescope/telescope-fzf-native.nvim",
+      build = "make",
+      config = function()
+        require("telescope").load_extension("fzf")
+      end
+    },
+    -- {
+    --   "nvim-telescope/telescope-github.nvim",
+    --   config = function()
+    --     require("telescope").load_extension("gh")
+    --   end
+    -- }
   },
   config = function()
     local telescope = require("telescope")
     local actions = require("telescope.actions")
 
-    local options = {
+    telescope.setup({
       defaults = {
         vimgrep_arguments = {
           "rg",
@@ -61,30 +71,12 @@ return {
             ["q"] = actions.close,
           },
           i = {
+            ["<esc>"] = actions.close,
             ["<C-j>"] = { actions.move_selection_next, type = "action", opts = { nowait = true, silent = true } },
             ["<C-k>"] = { actions.move_selection_previous, type = "action", opts = { nowait = true, silent = true } },
           },
         },
       },
-
-      extensions = {
-        fzf = {
-          fuzzy = true,
-          override_generic_sorter = true,
-          override_file_sorter = true,
-        }
-      },
-
-      extensions_list = { "themes", "terms", "fzf", "aerial", "gh" },
-
-    }
-
-    telescope.setup(options)
-
-    pcall(function()
-      for _, ext in ipairs(options.extensions_list) do
-        telescope.load_extension(ext)
-      end
-    end)
+    })
   end,
 }

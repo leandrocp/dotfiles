@@ -2,7 +2,9 @@
 
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
+source $HOME/.asdf/asdf.sh
+
+source /opt/homebrew/etc/profile.d/z.sh
+
 export ERL_AFLAGS="-kernel shell_history enabled"
 export KERL_BUILD_DOCS=yes
-
-source $HOME/.asdf/asdf.sh

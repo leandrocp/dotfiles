@@ -33,6 +33,13 @@ vim.keymap.set('n', '<C-j>', "<cmd>KittyNavigateDown<cr>")
 vim.keymap.set('n', '<C-k>', "<cmd>KittyNavigateUp<cr>")
 vim.keymap.set('n', '<C-l>', "<cmd>KittyNavigateRight<cr>")
 
+vim.keymap.set("n", "<A-J>", ":m .+1<CR>==", { noremap = true, silent = true })
+vim.keymap.set("n", "<A-K>", ":m .-2<CR>==", { noremap = true, silent = true })
+vim.keymap.set("i", "<A-J>", "<Esc>:m .+1<CR>==gi", { noremap = true, silent = true })
+vim.keymap.set("i", "<A-K>", "<Esc>:m .-2<CR>==gi", { noremap = true, silent = true })
+vim.keymap.set("v", "<A-J>", ":m '>+1<CR>gv=gv", { noremap = true, silent = true })
+vim.keymap.set("v", "<A-K>", ":m '<-2<CR>gv=gv", { noremap = true, silent = true })
+
 local present, wk = pcall(require, "which-key")
 
 if not present then
@@ -93,26 +100,18 @@ local function project_files()
 end
 
 local mappings = {
-  c = { "<cmd>BufDel<CR>", "Close Buffer" },
-
-  ["<space>"] = { project_files, "Find File" },
-
-  s = {
-    name = "Search",
-    s = { "<cmd>lua require('telescope.builtin').resume()<cr>", "Resume" },
-    f = { "<cmd>Telescope find_files<cr>", "Find File" },
-    t = { "<cmd>Telescope live_grep<cr>", "Text" },
-    w = { "<cmd>lua require('telescope.builtin').grep_string()<cr>", "Current Word" },
-    r = { "<cmd>lua require('spectre').open()<cr>", "Replace" },
-    R = { "<cmd>lua require('spectre').open_visual({select_word=true})<cr>", "Replace Current word" },
-  },
-
   b = {
     name = "Buffer",
     f = { "<cmd>LspZeroFormat<cr>", "Format" },
     u = { "<cmd>UndotreeToggle<cr>", "Undo Tree" },
-    s = { "<cmd>AerialToggle<cr>", "Symbols" }
+    s = { "<cmd>Telescope lsp_document_symbols<cr>", "Symbols" },
+    m = { "<cmd>lua require('harpoon.mark').add_file()<cr>", "Mark" },
+    b = { "<cmd>lua require('harpoon.ui').toggle_quick_menu()<cr>", "Marks" },
   },
+
+  c = { "<cmd>BufDel<CR>", "Close Buffer" },
+
+  f = { project_files, "Find File" },
 
   g = {
     name = "Git",
@@ -141,6 +140,8 @@ local mappings = {
     },
   },
 
+  j = { "<cmd>lua require('harpoon.ui').toggle_quick_menu()<cr>", "Jump to Marks" },
+
   n = {
     name = "Navigate",
     t = { "<cmd>NvimTreeToggle<cr>", "Tree" },
@@ -148,26 +149,33 @@ local mappings = {
     m = { "<cmd>lua require('telescope.builtin').marks()<cr>", "Marks" },
   },
 
+  p = { "<cmd>Lazy<cr>", "Plugins" },
+
+  s = {
+    name = "Search",
+    s = { "<cmd>lua require('telescope.builtin').resume()<cr>", "Resume" },
+    f = { "<cmd>Telescope find_files<cr>", "Find File" },
+    t = { "<cmd>Telescope live_grep<cr>", "Text" },
+    w = { "<cmd>lua require('telescope.builtin').grep_string()<cr>", "Current Word" },
+    r = { "<cmd>lua require('spectre').open()<cr>", "Replace" },
+    R = { "<cmd>lua require('spectre').open_visual({select_word=true})<cr>", "Replace Current word" },
+  },
+
   t = {
     name = "Test",
-    -- l = { "<cmd>TestLast<cr>", "Last" },
-    -- n = { "<cmd>TestNearest<cr>", "Nearest" },
-    -- f = { "<cmd>TestFile<cr>", "File" },
-    -- s = { "<cmd>TestSuite<cr>", "Suite" },
-    a = { "<cmd>lua require('neotest').run.attach()<cr>", "Attach" },
-    f = { "<cmd>lua require('neotest').run.run(vim.fn.expand(\"%\"))<cr>", "File" },
-    n = { "<cmd>lua require('neotest').run.run()<cr>", "Nearest" },
-    s = { "<cmd>lua require('neotest').summary.toggle()<cr>", "Summary" },
-    p = { "<cmd>lua require('neotest').output_panel.toggle()<cr>", "Panel" },
-    o = { "<cmd>lua require('neotest').output.open({ enter = true })<cr>", "Output" },
+    l = { "<cmd>TestLast<cr>", "Last" },
+    n = { "<cmd>TestNearest<cr>", "Nearest" },
+    f = { "<cmd>TestFile<cr>", "File" },
+    s = { "<cmd>TestSuite<cr>", "Suite" },
+    -- a = { "<cmd>lua require('neotest').run.attach()<cr>", "Attach" },
+    -- f = { "<cmd>lua require('neotest').run.run(vim.fn.expand(\"%\"))<cr>", "File" },
+    -- n = { "<cmd>lua require('neotest').run.run()<cr>", "Nearest" },
+    -- s = { "<cmd>lua require('neotest').summary.toggle()<cr>", "Summary" },
+    -- p = { "<cmd>lua require('neotest').output_panel.toggle()<cr>", "Panel" },
+    -- o = { "<cmd>lua require('neotest').output.open({ enter = true })<cr>", "Output" },
   },
 
   u = { "<cmd>UndotreeToggle<CR>", "Undo Tree" },
-
-  p = {
-    name = "Plugins",
-    l = { "<cmd>Lazy<cr>", "Manage" }
-  },
 
   w = {
     name = "Windows",

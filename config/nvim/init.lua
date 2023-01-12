@@ -9,7 +9,6 @@
 
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
-vim.keymap.set('n', '<C-k>', "<cmd>KittyNavigateUp<cr>")
 
 require("config.lazy")
 require("config.options")
@@ -21,3 +20,8 @@ vim.api.nvim_create_autocmd("User", {
     require("config.mappings")
   end,
 })
+
+vim.keymap.set('n', '<C-h>', "<cmd>KittyNavigateLeft<cr>")
+vim.keymap.set('n', '<C-j>', "<cmd>KittyNavigateDown<cr>")
+vim.keymap.set('n', '<C-k>', "<cmd>KittyNavigateUp<cr>")
+vim.keymap.set('n', '<C-l>', "<cmd>KittyNavigateRight<cr>")
