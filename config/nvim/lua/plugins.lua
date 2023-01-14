@@ -141,4 +141,14 @@ return {
       require("mini.jump").setup {}
     end,
   },
+
+  {
+    "luukvbaal/statuscol.nvim",
+    event = "UIEnter",
+    config = function()
+      require("statuscol").setup({
+        setopt = true,
+      })
+    end
+  },
 }

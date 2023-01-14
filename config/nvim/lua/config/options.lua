@@ -1,47 +1,48 @@
-vim.o.laststatus = 3
-vim.o.showmode = false
-vim.o.title = true
-vim.o.titlestring = '%f'
+vim.opt.laststatus = 3
+vim.opt.showmode = false
+vim.opt.title = true
+vim.opt.titlestring = '%f'
 
-vim.o.clipboard = "unnamedplus"
-vim.o.autoread = true
-vim.o.cursorline = true
+vim.opt.clipboard = "unnamedplus"
+vim.opt.autoread = true
+vim.opt.cursorline = true
 
 -- Indenting
-vim.o.expandtab = true
-vim.o.shiftwidth = 2
-vim.o.smartindent = true
-vim.o.tabstop = 2
-vim.o.softtabstop = 2
+vim.opt.expandtab = true
+vim.opt.shiftwidth = 2
+vim.opt.smartindent = true
+vim.opt.tabstop = 2
+vim.opt.softtabstop = 2
 
-vim.o.ignorecase = true
-vim.o.smartcase = true
-vim.o.mouse = "a"
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
+vim.opt.mouse = "a"
+vim.opt.mousemodel = "extend"
 
 -- Numbers
-vim.o.number = true
-vim.o.numberwidth = 2
-vim.o.ruler = false
-vim.o.relativenumber = true
-vim.o.scrolloff = 20
+vim.opt.number = true
+vim.opt.numberwidth = 2
+vim.opt.ruler = false
+vim.opt.relativenumber = true
+vim.opt.scrolloff = 20
 
-vim.o.signcolumn = "yes"
-vim.o.splitbelow = true
-vim.o.splitright = true
-vim.o.termguicolors = true
-vim.o.timeoutlen = 400
-vim.o.undofile = true
-vim.o.wrap = false
+vim.opt.signcolumn = "yes"
+vim.opt.splitbelow = true
+vim.opt.splitright = true
+vim.opt.termguicolors = true
+vim.opt.timeoutlen = 400
+vim.opt.undofile = true
+vim.opt.wrap = false
 vim.opt.spelllang = { "en" }
 
 vim.g.mkdp_filetypes = { "markdown" }
 
 -- interval for writing swap file to disk, also used by gitsigns
-vim.o.updatetime = 200
+vim.opt.updatetime = 200
 
 -- go to previous/next line with h,l,left arrow and right arrow
 -- when cursor reaches end/beginning of line
--- vim.o.whichwrap:append "<>[]hl"
+-- vim.opt.whichwrap:append "<>[]hl"
 
 -- disable some builtin vim plugins
 local default_plugins = {
