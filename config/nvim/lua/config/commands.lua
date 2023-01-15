@@ -24,16 +24,18 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
     "floaterm",
     "lspinfo",
     "lir",
+    "lspinfo",
     "lsp-installer",
     "null-ls-info",
     "tsplayground",
     "DressingSelect",
     "Jaq",
+    "notify",
   },
   group = vim.api.nvim_create_augroup("buffer_mappings", {}),
   callback = function()
-    vim.keymap.set("n", "q", "<cmd>close<cr>", { buffer = true })
-    vim.opt_local.buflisted = false
+    vim.keymap.set("n", "q", "<cmd>close<cr>", { buffer = event.buf, silent = true })
+    vim.bo[event.buf].buflisted = false
   end,
 })
 
@@ -42,4 +44,12 @@ vim.api.nvim_create_autocmd({ "VimResized" }, {
   pattern = "*",
   group = vim.api.nvim_create_augroup("auto_resize", {}),
   command = "tabdo wincmd =",
+})
+
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = { "gitcommit", "markdown" },
+  callback = function()
+    vim.opt_local.wrap = true
+    vim.opt_local.spell = true
+  end,
 })

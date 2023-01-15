@@ -69,7 +69,7 @@ return {
 
   {
     "tpope/vim-repeat",
-    event = "BufReadPost"
+    event = "VeryLazy"
   },
 
   {
@@ -123,7 +123,7 @@ return {
   {
     "folke/trouble.nvim",
     cmd = { "Trouble", "TroubleToggle" },
-    config = true
+    opts = { use_diagnostic_signs = true }
   },
 
   {
@@ -135,14 +135,6 @@ return {
   },
 
   {
-    "echasnovski/mini.jump",
-    event = "VeryLazy",
-    config = function()
-      require("mini.jump").setup {}
-    end,
-  },
-
-  {
     "luukvbaal/statuscol.nvim",
     event = "UIEnter",
     config = function()
@@ -150,5 +142,48 @@ return {
         setopt = true,
       })
     end
+  },
+
+  {
+    "rcarriga/nvim-notify",
+    opts = {
+      timeout = 3000,
+      max_height = function()
+        return math.floor(vim.o.lines * 0.75)
+      end,
+      max_width = function()
+        return math.floor(vim.o.columns * 0.75)
+      end,
+    },
+  },
+
+  {
+    "SmiteshP/nvim-navic",
+    init = function()
+      vim.g.navic_silence = true
+      require("util").on_attach(function(client, buffer)
+        if client.server_capabilities.documentSymbolProvider then
+          require("nvim-navic").attach(client, buffer)
+        end
+      end)
+    end,
+    opts = {
+      highlight = true,
+      depth_limit = 3
+    },
+  },
+
+  {
+    "ggandor/flit.nvim",
+    dependencies = {
+      "ggandor/leap.nvim",
+      config = function()
+        require('leap').add_default_mappings()
+      end
+    },
+    event = "VeryLazy",
+    opts = {
+      labeled_modes = "nv"
+    }
   },
 }

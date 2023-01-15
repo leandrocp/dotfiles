@@ -1,7 +1,7 @@
 -- nvim config
 --
 -- https://github.com/nvim-lua/kickstart.nvim
--- https://github.com/folke/dot
+-- https://github.com/LazyVim/LazyVim
 -- https://github.com/NvChad/NvChad
 -- https://github.com/LunarVim/LunarVim
 -- https://github.com/ThePrimeagen/init.lua

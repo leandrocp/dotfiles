@@ -1,50 +1,46 @@
-vim.opt.laststatus = 3
-vim.opt.showmode = false
-vim.opt.title = true
-vim.opt.titlestring = '%f'
+local opt = vim.opt
 
-vim.opt.clipboard = "unnamedplus"
-vim.opt.autoread = true
-vim.opt.cursorline = true
+opt.autoread = true
+opt.clipboard = "unnamedplus"
+opt.cmdheight = 1
+opt.completeopt = "menu,menuone,noselect"
+opt.confirm = true
+opt.cursorline = true
+opt.expandtab = true
+opt.hidden = true
+opt.ignorecase = true
+opt.ignorecase = true
+opt.laststatus = 3
+opt.mouse = "a"
+opt.mousemodel = "extend"
+opt.number = true
+opt.numberwidth = 2
+opt.relativenumber = true
+opt.ruler = false
+opt.scrolloff = 20
+opt.signcolumn = "yes"
+opt.smartcase = true
+opt.smartindent = true
+opt.shiftwidth = 2
+opt.showmode = false
+opt.softtabstop = 2
+opt.spelllang = { "en" }
+opt.splitbelow = true
+opt.splitright = true
+opt.tabstop = 2
+opt.termguicolors = true
+opt.timeoutlen = 300
+opt.title = true
+opt.titlestring = '%f'
+opt.undofile = true
+opt.updatetime = 200
+opt.winminwidth = 5
+opt.wrap = false
 
--- Indenting
-vim.opt.expandtab = true
-vim.opt.shiftwidth = 2
-vim.opt.smartindent = true
-vim.opt.tabstop = 2
-vim.opt.softtabstop = 2
-
-vim.opt.ignorecase = true
-vim.opt.smartcase = true
-vim.opt.mouse = "a"
-vim.opt.mousemodel = "extend"
-
--- Numbers
-vim.opt.number = true
-vim.opt.numberwidth = 2
-vim.opt.ruler = false
-vim.opt.relativenumber = true
-vim.opt.scrolloff = 20
-
-vim.opt.signcolumn = "yes"
-vim.opt.splitbelow = true
-vim.opt.splitright = true
-vim.opt.termguicolors = true
-vim.opt.timeoutlen = 400
-vim.opt.undofile = true
-vim.opt.wrap = false
-vim.opt.spelllang = { "en" }
 
 vim.g.mkdp_filetypes = { "markdown" }
 
--- interval for writing swap file to disk, also used by gitsigns
-vim.opt.updatetime = 200
-
--- go to previous/next line with h,l,left arrow and right arrow
--- when cursor reaches end/beginning of line
--- vim.opt.whichwrap:append "<>[]hl"
-
--- disable some builtin vim plugins
+-- disable built-in vim plugins
 local default_plugins = {
   "2html_plugin",
   "getscript",

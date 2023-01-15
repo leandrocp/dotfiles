@@ -2,8 +2,7 @@
 vim.keymap.set("n", ";", ":", { noremap = true })
 
 -- save buffer
-vim.keymap.set("n", "<C-s>", ":w<CR>", { noremap = true })
-vim.keymap.set("i", "<C-s>", "<cmd>:w<cr><esc>")
+vim.keymap.set({ "i", "v", "n", "s" }, "<C-s>", "<cmd>w<cr><esc>", { desc = "Save file" })
 
 -- center buffer on jumps
 vim.keymap.set("n", "<C-d>", "<C-d>zz", { noremap = true })
@@ -47,6 +46,8 @@ if not present then
 end
 
 local options = {
+  key_labels = { ["<leader>"] = "SPC" },
+
   icons = {
     breadcrumb = "»",
     separator = "  ",
@@ -72,6 +73,10 @@ local options = {
     i = { "j", "k" },
     v = { "j", "k" },
   },
+
+  plugins = {
+    spelling = true
+  }
 }
 
 wk.setup(options)
@@ -100,6 +105,8 @@ local function project_files()
 end
 
 local mappings = {
+  [":"] = { "<cmd>Telescope command_history<cr>", "Command History" },
+
   b = {
     name = "Buffer",
     f = { "<cmd>LspZeroFormat<cr>", "Format" },
@@ -107,9 +114,12 @@ local mappings = {
     s = { "<cmd>Telescope lsp_document_symbols<cr>", "Symbols" },
     m = { "<cmd>lua require('harpoon.mark').add_file()<cr>", "Mark" },
     b = { "<cmd>lua require('harpoon.ui').toggle_quick_menu()<cr>", "Marks" },
+    t = { "<cmd>TroubleToggle document_diagnostics<cr>", "Trouble" },
   },
 
   c = { "<cmd>BufDel<CR>", "Close Buffer" },
+
+  e = { "<cmd>NvimTreeFindFile<cr>", "Explorer" },
 
   f = { project_files, "Find File" },
 
@@ -144,8 +154,7 @@ local mappings = {
 
   n = {
     name = "Navigate",
-    t = { "<cmd>NvimTreeToggle<cr>", "Tree" },
-    f = { "<cmd>NvimTreeFindFile<cr>", "Tree File" },
+    t = { "<cmd>TodoTelescope<cr>", "Todo" },
     m = { "<cmd>lua require('telescope.builtin').marks()<cr>", "Marks" },
   },
 
