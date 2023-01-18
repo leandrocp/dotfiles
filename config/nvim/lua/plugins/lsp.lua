@@ -18,13 +18,40 @@ return {
     -- Snippets
     { "L3MON4D3/LuaSnip" },
     { "rafamadriz/friendly-snippets" },
+
+    -- Colors
+    {
+      "roobert/tailwindcss-colorizer-cmp.nvim",
+      dependencies =
+      {
+        "NvChad/nvim-colorizer.lua",
+        config = true
+      },
+      event = "VeryLazy",
+      config = true
+    },
+
   },
   config = function()
     local lsp = require("lsp-zero")
     local cmp = require('cmp')
     -- local luasnip = require('luasnip')
+    local root_pattern = require('lspconfig.util').root_pattern
 
     lsp.preset('recommended')
+
+    lsp.configure('tailwindcss', {
+      root_dir = root_pattern(
+        'tailwind.config.js',
+        'tailwind.config.ts',
+        'postcss.config.js',
+        'postcss.config.ts',
+        'package.json',
+        'node_modules',
+        '.git',
+        'priv/assets/tailwind.config.js'
+      )
+    })
 
     local cmp_mappings = cmp.mapping.preset.insert({
       ["<C-k>"] = cmp.mapping.select_prev_item(),
@@ -55,29 +82,6 @@ return {
           fallback()
         end
       end, { "i", "s", }),
-      -- ['<CR>'] = nil,
-      -- ['<Tab>'] = cmp.mapping.confirm {
-      --   behavior = cmp.ConfirmBehavior.Replace,
-      --   select = false,
-      -- },
-      -- ['<C-j>'] = cmp.mapping(function(fallback)
-      --   if cmp.visible() then
-      --     cmp.select_next_item()
-      --   elseif luasnip.expand_or_jumpable() then
-      --     luasnip.expand_or_jump()
-      --   else
-      --     fallback()
-      --   end
-      -- end, { 'i', 's' }),
-      -- ['<C-k>'] = cmp.mapping(function(fallback)
-      --   if cmp.visible() then
-      --     cmp.select_prev_item()
-      --   elseif luasnip.jumpable(-1) then
-      --     luasnip.jump(-1)
-      --   else
-      --     fallback()
-      --   end
-      -- end, { 'i', 's' }),
     })
 
     lsp.setup_nvim_cmp({

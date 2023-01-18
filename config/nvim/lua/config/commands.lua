@@ -1,13 +1,13 @@
 vim.cmd([[autocmd FileType markdown setlocal spell]])
 
--- highlight yanked region
-vim.api.nvim_create_autocmd({ "TextYankPost" }, {
-  pattern = "*",
-  group = vim.api.nvim_create_augroup("highlight_yank", { clear = true }),
-  callback = function()
-    vim.highlight.on_yank { higroup = "Search", timeout = 200 }
-  end,
-})
+-- -- highlight yanked region
+-- vim.api.nvim_create_autocmd({ "TextYankPost" }, {
+--   pattern = "*",
+--   group = vim.api.nvim_create_augroup("highlight_yank", { clear = true }),
+--   callback = function()
+--     vim.highlight.on_yank { higroup = "Search", timeout = 200 }
+--   end,
+-- })
 
 -- reload changed file
 vim.api.nvim_create_autocmd({ "BufEnter", "CursorHold", "CursorHoldI", "FocusGained" }, {
@@ -31,9 +31,10 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
     "DressingSelect",
     "Jaq",
     "notify",
+    "spectre_panel",
   },
   group = vim.api.nvim_create_augroup("buffer_mappings", {}),
-  callback = function()
+  callback = function(event)
     vim.keymap.set("n", "q", "<cmd>close<cr>", { buffer = event.buf, silent = true })
     vim.bo[event.buf].buflisted = false
   end,

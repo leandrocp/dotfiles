@@ -53,3 +53,11 @@
   defaultBranch = master
 [mergetool "vim-conflicted"]
   cmd = vim +Conflicted
+[maintenance]
+	repo = /Users/leandro/.config/zsh-config/ohmyzsh
+	repo = /Users/leandro/.config/zsh-config/prezto
+	repo = /Users/leandro/.config/zsh-config/zsh-async
+	repo = /Users/leandro/.config/zsh-config/zsh-autosuggestions
+	repo = /Users/leandro/.config/zsh-config/zsh-history-substring-search
+	repo = /Users/leandro/.config/zsh-config/zsh-snap
+	repo = /Users/leandro/.config/zsh-config/zsh-syntax-highlighting

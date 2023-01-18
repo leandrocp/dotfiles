@@ -11,7 +11,7 @@ brew update
 packages=(\
 autoconf openssl coreutils automake renameutils dust fd dog autojump openjdk wxwidgets \
 lazygit fasd gh libxslt fop z ripgrep zsh kitty lua rust starship exa \
-muzzle slack maccy rectangle joplin \
+muzzle slack maccy rectangle joplin pgcli \
 )
 
 for i in "${packages[@]}"

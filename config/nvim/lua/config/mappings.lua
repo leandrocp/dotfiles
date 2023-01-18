@@ -192,7 +192,9 @@ local mappings = {
     l = { "<cmd>vsp<cr>", "Split Right" },
     m = { "<cmd>WindowsMaximize<cr>", "Maximize" },
     e = { "<cmd>WindowsEqualize<cr>", "Equalize" },
-  }
+  },
+
+  y = { "<cmd>:lua require('telescope').extensions.yank_history.yank_history()<cr>", "Yank history" },
 }
 
 wk.register(mappings, mapping_opts)

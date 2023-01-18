@@ -14,7 +14,7 @@ return {
         component_separators = '|',
         section_separators = '',
         globalstatus = true,
-        disabled_filetypes = { "lazy", "spectre_panel" }
+        disabled_filetypes = { "lazy", "spectre_panel", "lspinfo" }
       },
       sections = {
         lualine_c = {
