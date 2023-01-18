@@ -29,3 +29,5 @@ Package Control.merged-ca-bundle
 Package Control.user-ca-bundle
 *.crt
 .ctags.d
+/config/pgcli/history
+/config/pgcli/log
