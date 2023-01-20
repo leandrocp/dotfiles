@@ -158,7 +158,9 @@ local mappings = {
     m = { "<cmd>lua require('telescope.builtin').marks()<cr>", "Marks" },
   },
 
-  p = { "<cmd>Lazy<cr>", "Plugins" },
+  p = { "<cmd>Telescope projects<cr>", "Projects" },
+
+  P = { "<cmd>Lazy<cr>", "Plugins" },
 
   s = {
     name = "Search",

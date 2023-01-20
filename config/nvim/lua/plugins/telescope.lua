@@ -1,6 +1,6 @@
 return {
   "nvim-telescope/telescope.nvim",
-  cmd = { "Telescope" },
+  event = "VeryLazy",
   dependencies = {
     {
       "nvim-telescope/telescope-fzf-native.nvim",
@@ -15,6 +15,17 @@ return {
     --     require("telescope").load_extension("gh")
     --   end
     -- }
+    {
+      "ahmedkhalf/project.nvim",
+      config = function()
+        require("project_nvim").setup({
+          detection_methods = { "pattern" },
+          patterns = { ".git", "Makefile", "package.json", "mix.exs", "Cargo.toml" },
+        })
+
+        require("telescope").load_extension("projects")
+      end
+    }
   },
   config = function()
     local telescope = require("telescope")

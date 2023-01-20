@@ -4,6 +4,7 @@ return {
   dependencies = { "catppuccin/nvim" },
   opts = {
     options = {
+      separator_style = "thin",
       diagnostics = "nvim_lsp",
       always_show_bufferline = false,
       offsets = {

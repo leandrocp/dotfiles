@@ -1,4 +1,4 @@
 neovim nightly
-elixir 1.14.2-otp-25
+elixir main
 erlang 25.2
 nodejs 19.4.0
