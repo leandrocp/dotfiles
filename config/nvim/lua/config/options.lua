@@ -45,7 +45,6 @@ opt.wildmode = "longest:full,full"
 opt.winminwidth = 5
 opt.wrap = false
 
-
 vim.g.mkdp_filetypes = { "markdown" }
 
 -- disable built-in vim plugins

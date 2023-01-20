@@ -43,7 +43,7 @@ vim.api.nvim_create_autocmd({ "VimResized" }, {
 })
 
 vim.api.nvim_create_autocmd("FileType", {
-  pattern = { "gitcommit", "markdown" },
+  pattern = { "gitcommit", "*.txt", "*.md", "*.tex" },
   callback = function()
     vim.opt_local.wrap = true
     vim.opt_local.spell = true
@@ -51,3 +51,8 @@ vim.api.nvim_create_autocmd("FileType", {
 })
 
 vim.cmd "autocmd BufEnter * ++nested if winnr('$') == 1 && bufname() == 'NvimTree_' . tabpagenr() | quit | endif"
+
+-- strip trailing whitespaces on save
+vim.api.nvim_create_autocmd("BufWritePre", {
+  command = "%s/\\s\\+$//e",
+})
