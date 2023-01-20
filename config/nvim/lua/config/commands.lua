@@ -1,5 +1,3 @@
-vim.cmd([[autocmd FileType markdown setlocal spell]])
-
 -- -- highlight yanked region
 -- vim.api.nvim_create_autocmd({ "TextYankPost" }, {
 --   pattern = "*",
@@ -10,10 +8,7 @@ vim.cmd([[autocmd FileType markdown setlocal spell]])
 -- })
 
 -- reload changed file
-vim.api.nvim_create_autocmd({ "BufEnter", "CursorHold", "CursorHoldI", "FocusGained" }, {
-  pattern = "*",
-  command = "if mode() != 'c' | checktime | endif",
-})
+vim.api.nvim_create_autocmd({ "FocusGained", "TermClose", "TermLeave" }, { command = "checktime" })
 
 -- map q to close
 vim.api.nvim_create_autocmd({ "FileType" }, {
@@ -42,9 +37,9 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
 
 -- auto resize
 vim.api.nvim_create_autocmd({ "VimResized" }, {
-  pattern = "*",
-  group = vim.api.nvim_create_augroup("auto_resize", {}),
-  command = "tabdo wincmd =",
+  callback = function()
+    vim.cmd("tabdo wincmd =")
+  end,
 })
 
 vim.api.nvim_create_autocmd("FileType", {
