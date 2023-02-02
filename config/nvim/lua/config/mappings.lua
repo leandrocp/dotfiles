@@ -107,6 +107,8 @@ end
 local mappings = {
   [":"] = { "<cmd>Telescope command_history<cr>", "Command History" },
 
+  ["<leader>"] = { "<cmd>Telescope buffers<cr>", "Buffers" },
+
   b = {
     name = "Buffer",
     f = { "<cmd>LspZeroFormat<cr>", "Format" },
