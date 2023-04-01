@@ -121,7 +121,7 @@ local mappings = {
 
   c = { "<cmd>BufDel<CR>", "Close Buffer" },
 
-  e = { "<cmd>NvimTreeFindFile<cr>", "Explorer" },
+  e = { "<cmd>NvimTreeFocus<cr>", "Explorer" },
 
   f = { project_files, "Find File" },
 

@@ -17,9 +17,11 @@ alias ls='exa --icons --sort modified'
 alias ll='exa --long --icons --sort modified'
 alias -g G='| grep -i --color'
 alias -g L='| less'
+alias -g C='| pbcopy'
+alias tf='terraform'
 
 alias nvim-update='asdf uninstall neovim nightly && asdf install neovim nightly && asdf global neovim nightly'
-alias tf='terraform'
+alias elixir-update='asdf uninstall elixir latest; asdf install elixir latest; asdf global elixir latest'
 
 if [[ "$OSTYPE" == "darwin"* ]]; then
 

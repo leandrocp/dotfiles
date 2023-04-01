@@ -212,4 +212,18 @@ return {
       }
     },
   },
+
+  {
+    "echasnovski/mini.misc",
+    lazy = false,
+    version = "*",
+    config = function(_, opts)
+      require("mini.misc").setup(opts)
+
+      require("mini.misc").setup_auto_root({
+        ".git",
+        "mix.lock"
+      })
+    end,
+  },
 }

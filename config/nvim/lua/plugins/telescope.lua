@@ -18,7 +18,7 @@ return {
       config = function()
         require("project_nvim").setup({
           detection_methods = { "pattern" },
-          patterns = { ".git", "Makefile", "package.json", "mix.exs", "Cargo.toml" },
+          patterns = { ".git", "Makefile", "mix.lock", "Cargo.toml" },
         })
       end
     }

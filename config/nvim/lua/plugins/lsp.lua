@@ -1,6 +1,6 @@
 return {
   "VonHeikemen/lsp-zero.nvim",
-  event = "BufReadPre",
+  branch = 'v1.x',
   dependencies = {
     -- LSP Support
     { "neovim/nvim-lspconfig" },
@@ -8,12 +8,12 @@ return {
     { "williamboman/mason-lspconfig.nvim" },
 
     -- Autocompletion
-    { "hrsh7th/nvim-cmp" },
-    { "hrsh7th/cmp-buffer" },
-    { "hrsh7th/cmp-path" },
-    { "saadparwaiz1/cmp_luasnip" },
-    { "hrsh7th/cmp-nvim-lsp" },
-    { "hrsh7th/cmp-nvim-lua" },
+    { 'hrsh7th/nvim-cmp' },
+    { 'hrsh7th/cmp-nvim-lsp' },
+    { 'hrsh7th/cmp-buffer' },
+    { 'hrsh7th/cmp-path' },
+    { 'saadparwaiz1/cmp_luasnip' },
+    { 'hrsh7th/cmp-nvim-lua' },
 
     -- Snippets
     { "L3MON4D3/LuaSnip" },
@@ -33,12 +33,19 @@ return {
 
   },
   config = function()
-    local lsp = require("lsp-zero")
-    local cmp = require('cmp')
-    -- local luasnip = require('luasnip')
-    local root_pattern = require('lspconfig.util').root_pattern
+    local lsp = require('lsp-zero').preset({
+      name = 'recommended',
+      set_lsp_keymaps = {preserve_mappings = false, omit = {'<C-k>'}},
+      sign_icons = {
+        error = 'E',
+        warn = 'W',
+        hint = 'H',
+        info = 'I'
+      }
+    })
 
-    lsp.preset('recommended')
+    local cmp = require('cmp')
+    local root_pattern = require('lspconfig.util').root_pattern
 
     lsp.configure('tailwindcss', {
       root_dir = root_pattern(
@@ -61,7 +68,7 @@ return {
       ["<C-Space>"] = cmp.mapping.complete(),
       ['<CR>'] = cmp.mapping.confirm {
         behavior = cmp.ConfirmBehavior.Replace,
-        select = true,
+        select = false,
       },
       ["<C-c>"] = cmp.mapping.close(),
       ["<Tab>"] = cmp.mapping(function(fallback)
@@ -87,21 +94,15 @@ return {
     lsp.setup_nvim_cmp({
       mapping = cmp_mappings,
       sources = {
-        { name = 'path' },
+        { name = "luasnip" },
         { name = 'nvim_lsp', keyword_length = 3 },
         { name = 'buffer', keyword_length = 3 },
+        { name = "nvim_lua" },
+        { name = "path" },
       }
     })
 
-    lsp.set_preferences({
-      sign_icons = {
-        error = 'E',
-        warn = 'W',
-        hint = 'H',
-        info = 'I'
-      }
-    })
-
+    lsp.nvim_workspace()
     lsp.setup()
 
     vim.diagnostic.config({
