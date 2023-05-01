@@ -7,6 +7,9 @@ alias Pulse.Repo
 
 Application.put_env(:elixir, :ansi_enabled, true)
 
+# Change behavior of dbg/1 to stop prying when in IEx
+Application.put_env(:elixir, :dbg_callback, {Macro, :dbg, []})
+
 IEx.configure [
   default_prompt: "%prefix>",
   alive_prompt: "%prefix(%node)>",
