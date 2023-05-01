@@ -7,16 +7,16 @@ return {
       width = 35,
     },
     update_focused_file = {
-      enable = true
+      enable = true,
     },
     renderer = {
       indent_markers = {
-        enable = true
+        enable = true,
       },
-      special_files = { "Cargo.toml", "Makefile", "README.md", "readme.md", "mix.exs", "mix.lock" }
+      special_files = { "Cargo.toml", "Makefile", "README.md", "readme.md", "mix.exs", "mix.lock" },
     },
     git = {
-      ignore = false
+      ignore = false,
     },
-  }
+  },
 }

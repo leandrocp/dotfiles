@@ -8,36 +8,69 @@ vim.keymap.set({ "i", "v", "n", "s" }, "<C-s>", "<cmd>w<cr><esc>", { desc = "Sav
 vim.keymap.set("n", "<C-d>", "<C-d>zz", { noremap = true })
 vim.keymap.set("n", "<C-u>", "<C-u>zz", { noremap = true })
 vim.keymap.set("n", "n", "nzzzv", { noremap = true })
-vim.keymap.set('n', 'N', 'Nzzzv', { noremap = true })
+vim.keymap.set("n", "N", "Nzzzv", { noremap = true })
 
--- navigate with tab
-vim.keymap.set("n", "<Tab>", ":bnext<CR>", { noremap = true })
-vim.keymap.set("n", "<S-Tab>", ":bprevious<CR>", { noremap = true })
-
--- better JK
+-- better jk
 vim.keymap.set("n", "J", "mzJ`z")
-vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
-vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
+vim.keymap.set("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
+vim.keymap.set("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
+-- better indenting
+vim.keymap.set("v", "<", "<gv")
+vim.keymap.set("v", ">", ">gv")
+
+-- https://github.com/mhinz/vim-galore#saner-behavior-of-n-and-n
+vim.keymap.set("n", "n", "'Nn'[v:searchforward]", { expr = true, desc = "Next search result" })
+vim.keymap.set("x", "n", "'Nn'[v:searchforward]", { expr = true, desc = "Next search result" })
+vim.keymap.set("o", "n", "'Nn'[v:searchforward]", { expr = true, desc = "Next search result" })
+vim.keymap.set("n", "N", "'nN'[v:searchforward]", { expr = true, desc = "Prev search result" })
+vim.keymap.set("x", "N", "'nN'[v:searchforward]", { expr = true, desc = "Prev search result" })
+vim.keymap.set("o", "N", "'nN'[v:searchforward]", { expr = true, desc = "Prev search result" })
+
 -- smart-splits.nvim
 local ss = require("smart-splits")
-vim.keymap.set('n', '<A-h>', ss.resize_left)
-vim.keymap.set('n', '<A-j>', ss.resize_down)
-vim.keymap.set('n', '<A-k>', ss.resize_up)
-vim.keymap.set('n', '<A-l>', ss.resize_right)
-vim.keymap.set('n', '<C-h>', "<cmd>KittyNavigateLeft<cr>")
-vim.keymap.set('n', '<C-j>', "<cmd>KittyNavigateDown<cr>")
-vim.keymap.set('n', '<C-k>', "<cmd>KittyNavigateUp<cr>")
-vim.keymap.set('n', '<C-l>', "<cmd>KittyNavigateRight<cr>")
+vim.keymap.set("n", "<A-h>", ss.resize_left)
+vim.keymap.set("n", "<A-j>", ss.resize_down)
+vim.keymap.set("n", "<A-k>", ss.resize_up)
+vim.keymap.set("n", "<A-l>", ss.resize_right)
+vim.keymap.set("n", "<C-h>", "<cmd>KittyNavigateLeft<cr>")
+vim.keymap.set("n", "<C-j>", "<cmd>KittyNavigateDown<cr>")
+vim.keymap.set("n", "<C-k>", "<cmd>KittyNavigateUp<cr>")
+vim.keymap.set("n", "<C-l>", "<cmd>KittyNavigateRight<cr>")
 
+-- navigation
+-- tabs
+vim.keymap.set("n", "<Tab>", "<cmd>tabn<cr>", { noremap = true, desc = "Next tab" })
+vim.keymap.set("n", "<S-Tab>", "<cmd>tabp<cr>", { noremap = true, desc = "Prev tab" })
+-- buffers
+vim.keymap.set("n", "<S-h>", "<cmd>BufferLineCyclePrev<cr>", { desc = "Prev tab" })
+-- kitty integration
+vim.keymap.set("n", "<C-h>", "<cmd>KittyNavigateLeft<cr>")
+vim.keymap.set("n", "<C-j>", "<cmd>KittyNavigateDown<cr>")
+vim.keymap.set("n", "<C-k>", "<cmd>KittyNavigateUp<cr>")
+vim.keymap.set("n", "<C-l>", "<cmd>KittyNavigateRight<cr>")
+-- jump
+vim.keymap.set('n', 'n', 'nzzzv') -- center screen
+vim.keymap.set('n', 'N', 'Nzzzv')
+vim.keymap.set('n', '*', '*N')    -- do not jump forward
+-- vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = "Next diagnostic" })
+-- vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = "Prev diagnostic" })
+
+-- move lines
 vim.keymap.set("n", "<A-J>", ":m .+1<CR>==", { noremap = true, silent = true })
 vim.keymap.set("n", "<A-K>", ":m .-2<CR>==", { noremap = true, silent = true })
 vim.keymap.set("i", "<A-J>", "<Esc>:m .+1<CR>==gi", { noremap = true, silent = true })
 vim.keymap.set("i", "<A-K>", "<Esc>:m .-2<CR>==gi", { noremap = true, silent = true })
 vim.keymap.set("v", "<A-J>", ":m '>+1<CR>gv=gv", { noremap = true, silent = true })
 vim.keymap.set("v", "<A-K>", ":m '<-2<CR>gv=gv", { noremap = true, silent = true })
+
+-- goto next/prev
+vim.keymap.set("n", "]g", "<cmd>lua require 'gitsigns'.next_hunk({navigation_message = false})<cr>",
+  { desc = "Next git hunk" })
+vim.keymap.set("n", "[g", "<cmd>lua require 'gitsigns'.prev_hunk({navigation_message = false})<cr>",
+  { desc = "Prev git hunk" })
 
 local present, wk = pcall(require, "which-key")
 
@@ -47,36 +80,29 @@ end
 
 local options = {
   key_labels = { ["<leader>"] = "SPC" },
-
   icons = {
     breadcrumb = "»",
     separator = "  ",
     group = "+",
   },
-
   popup_mappings = {
     scroll_down = "<c-d>",
     scroll_up = "<c-u>",
   },
-
   window = {
     border = "none",
   },
-
   layout = {
     spacing = 6,
   },
-
   hidden = { "<silent>", "<cmd>", "<Cmd>", "<CR>", "call", "lua", "^:", "^ " },
-
   triggers_blacklist = {
     i = { "j", "k" },
     v = { "j", "k" },
   },
-
   plugins = {
-    spelling = true
-  }
+    spelling = true,
+  },
 }
 
 wk.setup(options)
@@ -105,31 +131,30 @@ local function project_files()
 end
 
 local mappings = {
-  [":"] = { "<cmd>Telescope command_history<cr>", "Command History" },
-
-  ["<leader>"] = { "<cmd>Telescope buffers<cr>", "Buffers" },
-
+  ["1"] = { "<cmd>lua require('harpoon.ui').nav_file(1)<cr>", "Harpoon file 1" },
+  ["2"] = { "<cmd>lua require('harpoon.ui').nav_file(2)<cr>", "Harpoon file 2" },
+  ["3"] = { "<cmd>lua require('harpoon.ui').nav_file(3)<cr>", "Harpoon file 3" },
+  ["4"] = { "<cmd>lua require('harpoon.ui').nav_file(4)<cr>", "Harpoon file 4" },
+  ["5"] = { "<cmd>lua require('harpoon.ui').nav_file(5)<cr>", "Harpoon file 5" },
+  ["6"] = { "<cmd>lua require('harpoon.ui').nav_file(6)<cr>", "Harpoon file 6" },
+  ["7"] = { "<cmd>lua require('harpoon.ui').nav_file(7)<cr>", "Harpoon file 7" },
+  ["8"] = { "<cmd>lua require('harpoon.ui').nav_file(8)<cr>", "Harpoon file 8" },
+  ["9"] = { "<cmd>lua require('harpoon.ui').nav_file(9)<cr>", "Harpoon file 9" },
+  [";"] = { "<cmd>Telescope command_history<cr>", "Command History" },
+  ["/"] = { "<cmd>Telescope live_grep<cr>", "Grep" },
   b = {
     name = "Buffer",
     f = { "<cmd>LspZeroFormat<cr>", "Format" },
     u = { "<cmd>UndotreeToggle<cr>", "Undo Tree" },
     s = { "<cmd>Telescope lsp_document_symbols<cr>", "Symbols" },
-    m = { "<cmd>lua require('harpoon.mark').add_file()<cr>", "Mark" },
-    b = { "<cmd>lua require('harpoon.ui').toggle_quick_menu()<cr>", "Marks" },
     t = { "<cmd>TroubleToggle document_diagnostics<cr>", "Trouble" },
   },
-
   c = { "<cmd>BufDel<CR>", "Close Buffer" },
-
   e = { "<cmd>NvimTreeFocus<cr>", "Explorer" },
-
   f = { project_files, "Find File" },
-
   g = {
     name = "Git",
     g = { "<cmd>LazyGit<cr>", "Lazygit" },
-    j = { "<cmd>lua require 'gitsigns'.next_hunk({navigation_message = false})<cr>", "Next Hunk" },
-    k = { "<cmd>lua require 'gitsigns'.prev_hunk({navigation_message = false})<cr>", "Prev Hunk" },
     l = { "<cmd>lua require 'gitsigns'.blame_line()<cr>", "Blame" },
     p = { "<cmd>lua require 'gitsigns'.preview_hunk()<cr>", "Preview Hunk" },
     r = { "<cmd>lua require 'gitsigns'.reset_hunk()<cr>", "Reset Hunk" },
@@ -151,45 +176,48 @@ local mappings = {
       "Git Diff",
     },
   },
-
-  j = { "<cmd>lua require('harpoon.ui').toggle_quick_menu()<cr>", "Jump to Marks" },
-
+  h = { "<cmd>lua require('harpoon.ui').nav_prev()<cr>", "Harpoon prev" },
+  j = { "<cmd>lua require('harpoon.ui').toggle_quick_menu()<cr>", "Harpoon menu" },
+  l = { "<cmd>lua require('harpoon.ui').nav_next()<cr>", "Harpoon next" },
+  m = { "<cmd>lua require('harpoon.mark').add_file()<cr>", "Harpoon mark" },
   n = {
     name = "Navigate",
     t = { "<cmd>TodoTelescope<cr>", "Todo" },
     m = { "<cmd>lua require('telescope.builtin').marks()<cr>", "Marks" },
+    n = { "<cmd>$tabnew<cr>", "New tab" },
+    c = { "<cmd>tabclose<cr>", "Close tab" },
+    o = { "<cmd>tabonly<cr>", "Only tab" },
+    h = { "<cmd>-tabmove<cr>", "Move tab left" },
+    l = { "<cmd>+tabmove<cr>", "Move tab right" },
   },
-
+  o = {
+    name = "Tools",
+    o = { "<cmd>OutputPanel<cr>", "OutputPanel" },
+    l = { "<cmd>Lazy<cr>", "Lazy" },
+    m = { "<cmd>Mason<cr>", "Mason" },
+    M = { "<cmd>MasonLog<cr>", "MasonLog" },
+    n = { "<cmd>NullLsInstall<cr>", "NullLsInstall" },
+    N = { "<cmd>NullLsInfo<cr>", "NullLsInfo" },
+    s = { "<cmd>LspInstall<cr>", "LspInstall" },
+    S = { "<cmd>LspInfo<cr>", "LspInfo" },
+  },
   p = { "<cmd>Telescope projects<cr>", "Projects" },
-
-  P = { "<cmd>Lazy<cr>", "Plugins" },
-
+  r = { "<cmd>lua require('telescope.builtin').resume()<cr>", "Resume Search" },
   s = {
     name = "Search",
-    s = { "<cmd>lua require('telescope.builtin').resume()<cr>", "Resume" },
     f = { "<cmd>Telescope find_files<cr>", "Find File" },
-    t = { "<cmd>Telescope live_grep<cr>", "Text" },
     w = { "<cmd>lua require('telescope.builtin').grep_string()<cr>", "Current Word" },
     r = { "<cmd>lua require('spectre').open()<cr>", "Replace" },
     R = { "<cmd>lua require('spectre').open_visual({select_word=true})<cr>", "Replace Current word" },
   },
-
   t = {
     name = "Test",
     l = { "<cmd>TestLast<cr>", "Last" },
     n = { "<cmd>TestNearest<cr>", "Nearest" },
     f = { "<cmd>TestFile<cr>", "File" },
     s = { "<cmd>TestSuite<cr>", "Suite" },
-    -- a = { "<cmd>lua require('neotest').run.attach()<cr>", "Attach" },
-    -- f = { "<cmd>lua require('neotest').run.run(vim.fn.expand(\"%\"))<cr>", "File" },
-    -- n = { "<cmd>lua require('neotest').run.run()<cr>", "Nearest" },
-    -- s = { "<cmd>lua require('neotest').summary.toggle()<cr>", "Summary" },
-    -- p = { "<cmd>lua require('neotest').output_panel.toggle()<cr>", "Panel" },
-    -- o = { "<cmd>lua require('neotest').output.open({ enter = true })<cr>", "Output" },
   },
-
   u = { "<cmd>UndotreeToggle<CR>", "Undo Tree" },
-
   w = {
     name = "Windows",
     j = { "<cmd>split<cr>", "Split Down" },
@@ -197,7 +225,6 @@ local mappings = {
     m = { "<cmd>WindowsMaximize<cr>", "Maximize" },
     e = { "<cmd>WindowsEqualize<cr>", "Equalize" },
   },
-
   y = { "<cmd>:lua require('telescope').extensions.yank_history.yank_history()<cr>", "Yank history" },
 }
 

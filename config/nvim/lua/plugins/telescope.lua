@@ -20,8 +20,8 @@ return {
           detection_methods = { "pattern" },
           patterns = { ".git", "Makefile", "mix.lock", "Cargo.toml" },
         })
-      end
-    }
+      end,
+    },
   },
   config = function()
     local telescope = require("telescope")

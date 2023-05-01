@@ -27,5 +27,5 @@ return {
         augend.semver.alias.semver,
       },
     })
-  end
+  end,
 }

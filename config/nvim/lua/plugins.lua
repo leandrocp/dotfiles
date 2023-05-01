@@ -25,13 +25,13 @@ return {
           lsp_trouble = true,
           which_key = true,
           native_lsp = {
-            enabled = true
-          }
-        }
+            enabled = true,
+          },
+        },
       })
 
-      vim.cmd.colorscheme "catppuccin"
-    end
+      vim.cmd.colorscheme("catppuccin")
+    end,
   },
 
   "nvim-lua/plenary.nvim",
@@ -46,17 +46,17 @@ return {
   {
     "stevearc/dressing.nvim",
     event = "VeryLazy",
-    config = true
+    config = true,
   },
 
   {
     "mbbill/undotree",
-    cmd = "UndotreeToggle"
+    cmd = "UndotreeToggle",
   },
 
   {
     "ojroques/nvim-bufdel",
-    event = "BufReadPost"
+    event = "BufReadPost",
   },
 
   "folke/which-key.nvim",
@@ -64,17 +64,17 @@ return {
   {
     "chentoast/marks.nvim",
     event = "BufReadPost",
-    config = true
+    config = true,
   },
 
   {
     "tpope/vim-repeat",
-    event = "VeryLazy"
+    event = "VeryLazy",
   },
 
   {
     "kdheepak/lazygit.nvim",
-    cmd = "LazyGit"
+    cmd = "LazyGit",
   },
 
   {
@@ -84,18 +84,18 @@ return {
       require("Comment").setup({
         pre_hook = require("ts_context_commentstring.integrations.comment_nvim").create_pre_hook(),
       })
-    end
+    end,
   },
 
   {
     "romainl/vim-cool",
-    event = "BufReadPost"
+    event = "BufReadPost",
   },
 
   {
     "windwp/nvim-spectre",
     event = "VeryLazy",
-    config = true
+    config = true,
   },
 
   {
@@ -114,28 +114,28 @@ return {
     config = function()
       require("neotest").setup({
         adapters = {
-          require("neotest-elixir")
-        }
+          require("neotest-elixir"),
+        },
       })
-    end
+    end,
   },
 
   {
     "folke/trouble.nvim",
     cmd = { "Trouble", "TroubleToggle" },
-    opts = { use_diagnostic_signs = true }
+    opts = { use_diagnostic_signs = true },
   },
 
   {
     "ThePrimeagen/harpoon",
     dependencies = {
-      "nvim-lua/plenary.nvim"
+      "nvim-lua/plenary.nvim",
     },
     opts = {
       menu = {
         width = vim.api.nvim_win_get_width(0) - 60,
-      }
-    }
+      },
+    },
   },
 
   {
@@ -145,7 +145,7 @@ return {
       require("statuscol").setup({
         setopt = true,
       })
-    end
+    end,
   },
 
   {
@@ -173,7 +173,7 @@ return {
     end,
     opts = {
       highlight = true,
-      depth_limit = 3
+      depth_limit = 3,
     },
   },
 
@@ -182,13 +182,13 @@ return {
     dependencies = {
       "ggandor/leap.nvim",
       config = function()
-        require('leap').add_default_mappings()
-      end
+        require("leap").add_default_mappings()
+      end,
     },
     event = "VeryLazy",
     opts = {
-      labeled_modes = "nv"
-    }
+      labeled_modes = "nv",
+    },
   },
 
   {
@@ -205,11 +205,11 @@ return {
     end,
     opts = {
       ring = {
-        storage = "sqlite"
+        storage = "sqlite",
       },
       highlight = {
-        timer = 200
-      }
+        timer = 200,
+      },
     },
   },
 
@@ -222,8 +222,16 @@ return {
 
       require("mini.misc").setup_auto_root({
         ".git",
-        "mix.lock"
+        "mix.lock",
       })
     end,
   },
+
+  {
+    "mhanberg/output-panel.nvim",
+    event = "VeryLazy",
+    config = function()
+      require("output_panel").setup()
+    end
+  }
 }

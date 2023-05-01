@@ -3,19 +3,19 @@ return {
   event = "BufReadPost",
   init = function()
     vim.g.projectionist_heuristics = {
-      ['package.json'] = {
-        ['package.json'] = { alternate = { 'package-lock.json' } },
-        ['package-lock.json'] = { alternate = { 'package.json' } },
+      ["package.json"] = {
+        ["package.json"] = { alternate = { "package-lock.json" } },
+        ["package-lock.json"] = { alternate = { "package.json" } },
       },
-      ['mix.exs'] = {
-        ['mix.exs'] = { alternate = { 'mix.lock' } },
-        ['mix.lock'] = { alternate = { 'mix.exs' } },
+      ["mix.exs"] = {
+        ["mix.exs"] = { alternate = { "mix.lock" } },
+        ["mix.lock"] = { alternate = { "mix.exs" } },
         ["lib/*.ex"] = {
           type = "source",
           alternate = "test/{}_test.exs",
           template = {
             "defmodule {camelcase|capitalize|dot} do",
-            "end"
+            "end",
           },
         },
         ["test/*_test.exs"] = {
@@ -28,8 +28,8 @@ return {
             "  alias {camelcase|capitalize|dot}",
             "end",
           },
-        }
+        },
       },
     }
-  end
+  end,
 }

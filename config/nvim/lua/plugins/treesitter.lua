@@ -11,7 +11,6 @@ return {
       require("nvim-treesitter.configs").setup({
         ensure_installed = {
           "bash",
-          "help",
           "markdown",
           "markdown_inline",
           "regex",
@@ -24,7 +23,7 @@ return {
           "erlang",
           "elixir",
           "eex",
-          "heex"
+          "heex",
         },
 
         highlight = {
@@ -51,6 +50,6 @@ return {
           },
         },
       })
-    end
-  }
+    end,
+  },
 }

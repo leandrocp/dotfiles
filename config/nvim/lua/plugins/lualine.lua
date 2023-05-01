@@ -1,7 +1,7 @@
 return {
   "nvim-lualine/lualine.nvim",
   dependencies = {
-    "SmiteshP/nvim-navic"
+    "SmiteshP/nvim-navic",
   },
   event = "VeryLazy",
   config = function()
@@ -9,20 +9,24 @@ return {
 
     require("lualine").setup({
       options = {
-        theme = 'catppuccin',
+        theme = "catppuccin",
         icons_enabled = false,
-        component_separators = '|',
-        section_separators = '',
+        component_separators = "|",
+        section_separators = "",
         globalstatus = true,
-        disabled_filetypes = { "lazy", "spectre_panel", "lspinfo" }
+        disabled_filetypes = { "lazy", "spectre_panel", "lspinfo" },
       },
       sections = {
         lualine_c = {
-          "filename",
+          "tabs",
+          {
+            "filename",
+            path = 1
+          },
           { navic.get_location, cond = navic.is_available },
-        }
+        },
       },
-      extensions = { "quickfix", "nvim-tree" }
+      extensions = { "quickfix", "nvim-tree" },
     })
-  end
+  end,
 }

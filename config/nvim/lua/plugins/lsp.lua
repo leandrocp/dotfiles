@@ -1,117 +1,164 @@
 return {
-  "VonHeikemen/lsp-zero.nvim",
-  branch = 'v1.x',
+  'VonHeikemen/lsp-zero.nvim',
+  branch = 'v2.x',
+  lazy = false,
   dependencies = {
-    -- LSP Support
-    { "neovim/nvim-lspconfig" },
-    { "williamboman/mason.nvim" },
-    { "williamboman/mason-lspconfig.nvim" },
-
-    -- Autocompletion
+    { 'neovim/nvim-lspconfig' },
+    {
+      'williamboman/mason.nvim',
+      build = function()
+        pcall(vim.cmd, 'MasonUpdate')
+      end,
+    },
+    { 'williamboman/mason-lspconfig.nvim' },
     { 'hrsh7th/nvim-cmp' },
     { 'hrsh7th/cmp-nvim-lsp' },
-    { 'hrsh7th/cmp-buffer' },
-    { 'hrsh7th/cmp-path' },
-    { 'saadparwaiz1/cmp_luasnip' },
-    { 'hrsh7th/cmp-nvim-lua' },
+    { "hrsh7th/cmp-buffer" },
+    { "hrsh7th/cmp-path" },
+    { "hrsh7th/cmp-cmdline" },
+    { 'L3MON4D3/LuaSnip' },
 
-    -- Snippets
-    { "L3MON4D3/LuaSnip" },
-    { "rafamadriz/friendly-snippets" },
+    { "jose-elias-alvarez/null-ls.nvim" },
+    { "jay-babu/mason-null-ls.nvim", },
 
-    -- Colors
-    {
-      "roobert/tailwindcss-colorizer-cmp.nvim",
-      dependencies =
-      {
-        "NvChad/nvim-colorizer.lua",
-        config = true
-      },
-      event = "VeryLazy",
-      config = true
-    },
-
+    { "SmiteshP/nvim-navic" },
   },
   config = function()
-    local lsp = require('lsp-zero').preset({
-      name = 'recommended',
-      set_lsp_keymaps = {preserve_mappings = false, omit = {'<C-k>'}},
-      sign_icons = {
-        error = 'E',
-        warn = 'W',
-        hint = 'H',
-        info = 'I'
+    local lsp = require('lsp-zero').preset({})
+
+    lsp.ensure_installed({
+      'lua_ls',
+      'elixirls',
+      'eslint',
+    })
+
+    lsp.on_attach(function(client, bufnr)
+      lsp.default_keymaps({
+        buffer = bufnr,
+        preserve_mappings = false,
+        omit = { "<C-k>" }
+      })
+
+      vim.keymap.set({ 'n', 'x' }, 'gt', function()
+        vim.lsp.buf.format({ async = true, timeout_ms = 10000 })
+      end, { desc = "format" })
+
+      if client.server_capabilities.documentSymbolProvider then
+        require('nvim-navic').attach(client, bufnr)
+      end
+    end)
+
+    require('lspconfig').lua_ls.setup(lsp.nvim_lua_ls())
+
+    require('lspconfig').elixirls.setup({
+      cmd = { vim.fn.expand('~/code/github/elixir-lsp/elixir-ls/release/language_server.sh') },
+      settings = {
+        fetchDeps = false,
+        dialyzerEnabled = false,
+        enableTestLenses = false,
       }
     })
 
-    local cmp = require('cmp')
-    local root_pattern = require('lspconfig.util').root_pattern
-
-    lsp.configure('tailwindcss', {
-      root_dir = root_pattern(
-        'tailwind.config.js',
-        'tailwind.config.ts',
-        'postcss.config.js',
-        'postcss.config.ts',
-        'package.json',
-        'node_modules',
-        '.git',
-        'priv/assets/tailwind.config.js'
-      )
-    })
-
-    local cmp_mappings = cmp.mapping.preset.insert({
-      ["<C-k>"] = cmp.mapping.select_prev_item(),
-      ["<C-j>"] = cmp.mapping.select_next_item(),
-      ["<C-d>"] = cmp.mapping.scroll_docs(-4),
-      ["<C-f>"] = cmp.mapping.scroll_docs(4),
-      ["<C-Space>"] = cmp.mapping.complete(),
-      ['<CR>'] = cmp.mapping.confirm {
-        behavior = cmp.ConfirmBehavior.Replace,
-        select = false,
+    require('lspconfig').eslint.setup({
+      filestypes = { 'javascript', 'typescript', },
+      settings = {
+        format = { enable = true },
+        lint = { enable = true },
       },
-      ["<C-c>"] = cmp.mapping.close(),
-      ["<Tab>"] = cmp.mapping(function(fallback)
-        if cmp.visible() then
-          cmp.select_next_item()
-        elseif require("luasnip").expand_or_jumpable() then
-          vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<Plug>luasnip-expand-or-jump", true, true, true), "")
-        else
-          fallback()
-        end
-      end, { "i", "s", }),
-      ["<S-Tab>"] = cmp.mapping(function(fallback)
-        if cmp.visible() then
-          cmp.select_prev_item()
-        elseif require("luasnip").jumpable(-1) then
-          vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<Plug>luasnip-jump-prev", true, true, true), "")
-        else
-          fallback()
-        end
-      end, { "i", "s", }),
     })
 
-    lsp.setup_nvim_cmp({
-      mapping = cmp_mappings,
-      sources = {
-        { name = "luasnip" },
-        { name = 'nvim_lsp', keyword_length = 3 },
-        { name = 'buffer', keyword_length = 3 },
-        { name = "nvim_lua" },
-        { name = "path" },
+    lsp.format_mapping('gq', {
+      format_opts = {
+        async = false,
+        timeout_ms = 10000,
+      },
+      servers = {
+        ['null-ls'] = {
+          'lua',
+          'elixir',
+          'eex',
+          'heex',
+          'surface',
+          'javascript',
+          'typescript',
+          'rust'
+        },
       }
     })
 
-    lsp.nvim_workspace()
     lsp.setup()
 
-    vim.diagnostic.config({
-      virtual_text = true,
-      signs = true,
-      update_in_insert = false,
-      underline = true,
-      severity_sort = false,
-      float = true,
+    local cmp = require('cmp')
+
+    cmp.setup({
+      mapping = {
+        ["<C-k>"] = cmp.mapping.select_prev_item(),
+        ["<C-j>"] = cmp.mapping.select_next_item(),
+        ["<C-d>"] = cmp.mapping.scroll_docs(-4),
+        ["<C-f>"] = cmp.mapping.scroll_docs(4),
+        ["<C-Space>"] = cmp.mapping.complete(),
+        ["<CR>"] = cmp.mapping.confirm({
+          behavior = cmp.ConfirmBehavior.Replace,
+          select = false,
+        }),
+        ["<C-c>"] = cmp.mapping.close(),
+        ["<Tab>"] = cmp.mapping(function(fallback)
+          if cmp.visible() then
+            cmp.select_next_item()
+          elseif require("luasnip").expand_or_jumpable() then
+            vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<Plug>luasnip-expand-or-jump", true, true, true), "")
+          else
+            fallback()
+          end
+        end, { "i", "s" }),
+        ["<S-Tab>"] = cmp.mapping(function(fallback)
+          if cmp.visible() then
+            cmp.select_prev_item()
+          elseif require("luasnip").jumpable(-1) then
+            vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<Plug>luasnip-jump-prev", true, true, true), "")
+          else
+            fallback()
+          end
+        end, { "i", "s" }),
+      }
+    })
+
+    cmp.setup.cmdline('/', {
+      mapping = cmp.mapping.preset.cmdline(),
+      sources = {
+        { name = 'buffer' }
+      }
+    })
+
+    -- `:` cmdline setup.
+    cmp.setup.cmdline(':', {
+      mapping = cmp.mapping.preset.cmdline(),
+      sources = cmp.config.sources({
+        { name = 'path' }
+      }, {
+        {
+          name = 'cmdline',
+          option = {
+            ignore_cmds = { 'Man', '!' }
+          }
+        }
+      })
+    })
+
+    local null_ls = require('null-ls')
+    local mason_null_ls = require('mason-null-ls')
+
+    null_ls.setup({
+      sources = {
+        null_ls.builtins.formatting.prettierd,
+        null_ls.builtins.diagnostics.eslint,
+        null_ls.builtins.formatting.stylua,
+      }
+    })
+
+    mason_null_ls.setup({
+      ensure_installed = nil,
+      automatic_installation = true,
     })
   end
 }
