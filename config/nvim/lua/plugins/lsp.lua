@@ -131,19 +131,19 @@ return {
     })
 
     -- `:` cmdline setup.
-    cmp.setup.cmdline(':', {
-      mapping = cmp.mapping.preset.cmdline(),
-      sources = cmp.config.sources({
-        { name = 'path' }
-      }, {
-        {
-          name = 'cmdline',
-          option = {
-            ignore_cmds = { 'Man', '!' }
-          }
-        }
-      })
-    })
+    -- cmp.setup.cmdline(':', {
+    --   mapping = cmp.mapping.preset.cmdline(),
+    --   sources = cmp.config.sources({
+    --     { name = 'path' }
+    --   }, {
+    --     {
+    --       name = 'cmdline',
+    --       option = {
+    --         ignore_cmds = { 'Man', '!' }
+    --       }
+    --     }
+    --   })
+    -- })
 
     local null_ls = require('null-ls')
     local mason_null_ls = require('mason-null-ls')

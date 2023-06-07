@@ -1,32 +1,34 @@
 # vi: ft=zsh
 
-# SHELL
+# shell
 PROFILE="$HOME/.zshrc"
 
-# LOCALE
+# locale
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 
-# EDITOR
+# editor
 export ALTERNATE_EDITOR=""
 export EDITOR="nvim"
 export GIT_EDITOR="nvim"
 export VISUAL=$EDITOR
 
+# history
 export HISTFILE=~/.zsh_history
 export HISTSIZE=10000
 export SAVEHIST=10000
 setopt appendhistory
 
+# tools
 export MANPAGER='less -X';
-
 export GPG_TTY=$(tty);
-
 export FZF_DEFAULT_COMMAND='rg --files'
-
 export BAT_THEME="OneHalfDark"
-
 export RIPGREP_CONFIG_PATH=$HOME/.ripgreprc
+
+# erlang
+export ERL_AFLAGS="-kernel shell_history enabled"
+export KERL_BUILD_DOCS=yes
 
 # elixir
 export PLUG_EDITOR='vscode://file/__FILE__:__LINE__'

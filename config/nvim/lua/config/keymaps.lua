@@ -44,8 +44,6 @@ vim.keymap.set("n", "<C-l>", "<cmd>KittyNavigateRight<cr>")
 -- tabs
 vim.keymap.set("n", "<Tab>", "<cmd>tabn<cr>", { noremap = true, desc = "Next tab" })
 vim.keymap.set("n", "<S-Tab>", "<cmd>tabp<cr>", { noremap = true, desc = "Prev tab" })
--- buffers
-vim.keymap.set("n", "<S-h>", "<cmd>BufferLineCyclePrev<cr>", { desc = "Prev tab" })
 -- kitty integration
 vim.keymap.set("n", "<C-h>", "<cmd>KittyNavigateLeft<cr>")
 vim.keymap.set("n", "<C-j>", "<cmd>KittyNavigateDown<cr>")
@@ -55,8 +53,25 @@ vim.keymap.set("n", "<C-l>", "<cmd>KittyNavigateRight<cr>")
 vim.keymap.set('n', 'n', 'nzzzv') -- center screen
 vim.keymap.set('n', 'N', 'Nzzzv')
 vim.keymap.set('n', '*', '*N')    -- do not jump forward
--- vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = "Next diagnostic" })
--- vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = "Prev diagnostic" })
+
+-- hlslens
+-- vim.api.nvim_set_keymap('n', 'n', [[<Cmd>execute('normal! ' . v:count1 . 'n')<CR><Cmd>lua require('hlslens').start()<CR>]], { noremap = true, silent = true })
+-- vim.api.nvim_set_keymap('n', 'N', [[<Cmd>execute('normal! ' . v:count1 . 'N')<CR><Cmd>lua require('hlslens').start()<CR>]], { noremap = true, silent = true })
+-- vim.api.nvim_set_keymap('n', '*', [[*<Cmd>lua require('hlslens').start()<CR>]], { noremap = true, silent = true })
+-- vim.api.nvim_set_keymap('n', '#', [[#<Cmd>lua require('hlslens').start()<CR>]], { noremap = true, silent = true })
+-- vim.api.nvim_set_keymap('n', 'g*', [[g*<Cmd>lua require('hlslens').start()<CR>]], { noremap = true, silent = true })
+-- vim.api.nvim_set_keymap('n', 'g#', [[g#<Cmd>lua require('hlslens').start()<CR>]], { noremap = true, silent = true })
+
+-- context
+vim.keymap.set("n", "[c", function()
+  require("treesitter-context").go_to_context()
+end, { silent = true })
+
+-- git chuncks
+vim.keymap.set("n", "]g", "<cmd>lua require 'gitsigns'.next_hunk({navigation_message = false})<cr>",
+  { desc = "Next git hunk" })
+vim.keymap.set("n", "[g", "<cmd>lua require 'gitsigns'.prev_hunk({navigation_message = false})<cr>",
+  { desc = "Prev git hunk" })
 
 -- move lines
 vim.keymap.set("n", "<A-J>", ":m .+1<CR>==", { noremap = true, silent = true })
@@ -65,12 +80,6 @@ vim.keymap.set("i", "<A-J>", "<Esc>:m .+1<CR>==gi", { noremap = true, silent = t
 vim.keymap.set("i", "<A-K>", "<Esc>:m .-2<CR>==gi", { noremap = true, silent = true })
 vim.keymap.set("v", "<A-J>", ":m '>+1<CR>gv=gv", { noremap = true, silent = true })
 vim.keymap.set("v", "<A-K>", ":m '<-2<CR>gv=gv", { noremap = true, silent = true })
-
--- goto next/prev
-vim.keymap.set("n", "]g", "<cmd>lua require 'gitsigns'.next_hunk({navigation_message = false})<cr>",
-  { desc = "Next git hunk" })
-vim.keymap.set("n", "[g", "<cmd>lua require 'gitsigns'.prev_hunk({navigation_message = false})<cr>",
-  { desc = "Prev git hunk" })
 
 local present, wk = pcall(require, "which-key")
 
@@ -142,6 +151,7 @@ local mappings = {
   ["9"] = { "<cmd>lua require('harpoon.ui').nav_file(9)<cr>", "Harpoon file 9" },
   [";"] = { "<cmd>Telescope command_history<cr>", "Command History" },
   ["/"] = { "<cmd>Telescope live_grep<cr>", "Grep" },
+  [","] = { "<cmd>Telescope buffers<cr>", "Buffers" },
   b = {
     name = "Buffer",
     f = { "<cmd>LspZeroFormat<cr>", "Format" },

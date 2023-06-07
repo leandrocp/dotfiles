@@ -1,6 +1,6 @@
 return {
   "ethanholz/nvim-lastplace",
-  event = "BufRead",
+  event = { "BufRead", "BufWinEnter" },
   config = function()
     require("nvim-lastplace").setup({
       lastplace_ignore_buftype = { "quickfix", "nofile", "help" },

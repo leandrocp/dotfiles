@@ -1,28 +1,29 @@
 # vi: ft=zsh
 
-[[ -f ~/.config/zsh-config/zsh-snap/znap.zsh ]] || git clone --depth 1 -- https://github.com/marlonrichert/zsh-snap.git ~/.config/zsh-config/zsh-snap
+[[ -r ~/.config/zsh-config/znap/znap.zsh ]] || git clone --depth 1 -- https://github.com/marlonrichert/zsh-snap.git ~/.config/zsh-config/znap
 
-source ~/.config/zsh-config/zsh-snap/znap.zsh
+source ~/.config/zsh-config/znap/znap.zsh
 
-export ZSH_CACHE_DIR="$HOME/.cache/zsh"
+ZSH_AUTOSUGGEST_STRATEGY=( history )
+ZSH_HIGHLIGHT_HIGHLIGHTERS=( main brackets pattern cursor )
 
 znap source mafredri/zsh-async async.zsh
 
-znap eval starship 'starship init zsh --print-full-init'
-znap prompt
+znap source zsh-users/zsh-completions
+znap source zsh-users/zsh-autosuggestions
+znap source zsh-users/zsh-history-substring-search
+
+# znap source marlonrichert/zsh-autocomplete
 
 znap source sorin-ionescu/prezto modules/history
 znap source sorin-ionescu/prezto modules/completion
 
-ZSH_AUTOSUGGEST_STRATEGY=( history )
-znap source zsh-users/zsh-autosuggestions
-znap source zsh-users/zsh-history-substring-search
-
 znap source ohmyzsh/ohmyzsh plugins/asdf
-znap source ohmyzsh/ohmyzsh plugins/fasd
 znap source ohmyzsh/ohmyzsh plugins/extract
 
-ZSH_HIGHLIGHT_HIGHLIGHTERS=( main brackets )
-znap source zsh-users/zsh-syntax-highlighting
+znap source jeffreytse/zsh-vi-mode
 
-znap eval gh-completion 'gh completion -s zsh'
+znap source zdharma-continuum/fast-syntax-highlighting
+
+znap eval starship 'starship init zsh --print-full-init'
+znap prompt

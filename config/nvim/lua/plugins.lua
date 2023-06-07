@@ -131,11 +131,11 @@ return {
     dependencies = {
       "nvim-lua/plenary.nvim",
     },
-    opts = {
-      menu = {
-        width = vim.api.nvim_win_get_width(0) - 60,
-      },
-    },
+    -- opts = {
+    --   menu = {
+    --     width = vim.api.nvim_win_get_width(0) - 60,
+    --   },
+    -- },
   },
 
   {
@@ -232,6 +232,31 @@ return {
     event = "VeryLazy",
     config = function()
       require("output_panel").setup()
-    end
-  }
+    end,
+  },
+
+  -- {
+  --   "kevinhwang91/nvim-hlslens",
+  --   event = "VeryLazy",
+  --   opts = {
+  --     calm_down = true,
+  --     virt_priority = 0,
+  --   },
+  -- },
+
+  {
+    "kylechui/nvim-surround",
+    version = "*",
+    event = "VeryLazy",
+    config = function()
+      require("nvim-surround").setup({
+        -- Configuration here, or leave empty to use defaults
+      })
+    end,
+  },
+  {
+    "LunarVim/bigfile.nvim",
+    event = { "BufReadPre", "FileReadPre" },
+    config = true,
+  },
 }

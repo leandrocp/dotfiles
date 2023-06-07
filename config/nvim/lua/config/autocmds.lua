@@ -26,7 +26,7 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
     "Jaq",
     "notify",
     "spectre_panel",
-    "outputpanel"
+    "outputpanel",
   },
   callback = function(event)
     vim.keymap.set("n", "q", "<cmd>close<cr>", { buffer = event.buf, silent = true })
@@ -59,7 +59,7 @@ vim.api.nvim_create_autocmd("BufWritePre", {
   command = "%s/\\s\\+$//e",
 })
 
--- Auto create dir when saving a file, in case some intermediate directory does not exist
+-- auto create dir when saving a file, in case some intermediate directory does not exist
 vim.api.nvim_create_autocmd({ "BufWritePre" }, {
   group = augroup("auto_create_dir"),
   callback = function(event)
@@ -68,5 +68,14 @@ vim.api.nvim_create_autocmd({ "BufWritePre" }, {
     end
     local file = vim.loop.fs_realpath(event.match) or event.match
     vim.fn.mkdir(vim.fn.fnamemodify(file, ":p:h"), "p")
+  end,
+})
+
+-- open telescope on startup
+vim.api.nvim_create_autocmd("VimEnter", {
+  callback = function()
+    if #vim.fn.argv() == 0 then
+      vim.cmd("silent! lua require ('telescope.builtin').find_files()")
+    end
   end,
 })
