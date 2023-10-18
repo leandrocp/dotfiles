@@ -73,13 +73,13 @@ vim.keymap.set("n", "]g", "<cmd>lua require 'gitsigns'.next_hunk({navigation_mes
 vim.keymap.set("n", "[g", "<cmd>lua require 'gitsigns'.prev_hunk({navigation_message = false})<cr>",
   { desc = "Prev git hunk" })
 
--- move lines
-vim.keymap.set("n", "<A-J>", ":m .+1<CR>==", { noremap = true, silent = true })
-vim.keymap.set("n", "<A-K>", ":m .-2<CR>==", { noremap = true, silent = true })
-vim.keymap.set("i", "<A-J>", "<Esc>:m .+1<CR>==gi", { noremap = true, silent = true })
-vim.keymap.set("i", "<A-K>", "<Esc>:m .-2<CR>==gi", { noremap = true, silent = true })
-vim.keymap.set("v", "<A-J>", ":m '>+1<CR>gv=gv", { noremap = true, silent = true })
-vim.keymap.set("v", "<A-K>", ":m '<-2<CR>gv=gv", { noremap = true, silent = true })
+-- -- move lines
+-- vim.keymap.set("n", "<A-J>", ":m .+1<CR>==", { noremap = true, silent = true })
+-- vim.keymap.set("n", "<A-K>", ":m .-2<CR>==", { noremap = true, silent = true })
+-- vim.keymap.set("i", "<A-J>", "<Esc>:m .+1<CR>==gi", { noremap = true, silent = true })
+-- vim.keymap.set("i", "<A-K>", "<Esc>:m .-2<CR>==gi", { noremap = true, silent = true })
+-- vim.keymap.set("v", "<A-J>", ":m '>+1<CR>gv=gv", { noremap = true, silent = true })
+-- vim.keymap.set("v", "<A-K>", ":m '<-2<CR>gv=gv", { noremap = true, silent = true })
 
 local present, wk = pcall(require, "which-key")
 
@@ -89,28 +89,8 @@ end
 
 local options = {
   key_labels = { ["<leader>"] = "SPC" },
-  icons = {
-    breadcrumb = "»",
-    separator = "  ",
-    group = "+",
-  },
-  popup_mappings = {
-    scroll_down = "<c-d>",
-    scroll_up = "<c-u>",
-  },
-  window = {
-    border = "none",
-  },
   layout = {
     spacing = 6,
-  },
-  hidden = { "<silent>", "<cmd>", "<Cmd>", "<CR>", "call", "lua", "^:", "^ " },
-  triggers_blacklist = {
-    i = { "j", "k" },
-    v = { "j", "k" },
-  },
-  plugins = {
-    spelling = true,
   },
 }
 
@@ -140,15 +120,6 @@ local function project_files()
 end
 
 local mappings = {
-  ["1"] = { "<cmd>lua require('harpoon.ui').nav_file(1)<cr>", "Harpoon file 1" },
-  ["2"] = { "<cmd>lua require('harpoon.ui').nav_file(2)<cr>", "Harpoon file 2" },
-  ["3"] = { "<cmd>lua require('harpoon.ui').nav_file(3)<cr>", "Harpoon file 3" },
-  ["4"] = { "<cmd>lua require('harpoon.ui').nav_file(4)<cr>", "Harpoon file 4" },
-  ["5"] = { "<cmd>lua require('harpoon.ui').nav_file(5)<cr>", "Harpoon file 5" },
-  ["6"] = { "<cmd>lua require('harpoon.ui').nav_file(6)<cr>", "Harpoon file 6" },
-  ["7"] = { "<cmd>lua require('harpoon.ui').nav_file(7)<cr>", "Harpoon file 7" },
-  ["8"] = { "<cmd>lua require('harpoon.ui').nav_file(8)<cr>", "Harpoon file 8" },
-  ["9"] = { "<cmd>lua require('harpoon.ui').nav_file(9)<cr>", "Harpoon file 9" },
   [";"] = { "<cmd>Telescope command_history<cr>", "Command History" },
   ["/"] = { "<cmd>Telescope live_grep<cr>", "Grep" },
   [","] = { "<cmd>Telescope buffers<cr>", "Buffers" },
@@ -186,10 +157,6 @@ local mappings = {
       "Git Diff",
     },
   },
-  h = { "<cmd>lua require('harpoon.ui').nav_prev()<cr>", "Harpoon prev" },
-  j = { "<cmd>lua require('harpoon.ui').toggle_quick_menu()<cr>", "Harpoon menu" },
-  l = { "<cmd>lua require('harpoon.ui').nav_next()<cr>", "Harpoon next" },
-  m = { "<cmd>lua require('harpoon.mark').add_file()<cr>", "Harpoon mark" },
   n = {
     name = "Navigate",
     t = { "<cmd>TodoTelescope<cr>", "Todo" },
@@ -232,8 +199,7 @@ local mappings = {
     name = "Windows",
     j = { "<cmd>split<cr>", "Split Down" },
     l = { "<cmd>vsp<cr>", "Split Right" },
-    m = { "<cmd>WindowsMaximize<cr>", "Maximize" },
-    e = { "<cmd>WindowsEqualize<cr>", "Equalize" },
+    z = { "<cmd>lua require('maximize').toggle()<cr>", "Zoom" },
   },
   y = { "<cmd>:lua require('telescope').extensions.yank_history.yank_history()<cr>", "Yank history" },
 }

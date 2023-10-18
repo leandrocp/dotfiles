@@ -8,22 +8,16 @@ ZSH_AUTOSUGGEST_STRATEGY=( history )
 ZSH_HIGHLIGHT_HIGHLIGHTERS=( main brackets pattern cursor )
 
 znap source mafredri/zsh-async async.zsh
-
+znap source jeffreytse/zsh-vi-mode
+znap source zdharma-continuum/fast-syntax-highlighting
 znap source zsh-users/zsh-completions
 znap source zsh-users/zsh-autosuggestions
 znap source zsh-users/zsh-history-substring-search
-
-# znap source marlonrichert/zsh-autocomplete
-
-znap source sorin-ionescu/prezto modules/history
-znap source sorin-ionescu/prezto modules/completion
-
-znap source ohmyzsh/ohmyzsh plugins/asdf
 znap source ohmyzsh/ohmyzsh plugins/extract
 
-znap source jeffreytse/zsh-vi-mode
-
-znap source zdharma-continuum/fast-syntax-highlighting
+# znap source sorin-ionescu/prezto modules/history
+# znap source sorin-ionescu/prezto modules/completion
+# znap source marlonrichert/zsh-autocomplete
 
 znap eval starship 'starship init zsh --print-full-init'
 znap prompt

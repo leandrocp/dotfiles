@@ -1,6 +1,8 @@
 # vi: ft=zsh
 
 eval "$(/opt/homebrew/bin/brew shellenv)"
-source /opt/homebrew/opt/asdf/libexec/asdf.sh
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+eval "$(zoxide init zsh --cmd j)"
+eval "$(~/.bin/rtx activate zsh)"
+
 FPATH="/opt/homebrew/share/zsh/site-functions:${FPATH}"
-source /opt/homebrew/etc/profile.d/z.sh

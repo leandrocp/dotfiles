@@ -1,11 +1,14 @@
 return {
   "nvim-telescope/telescope.nvim",
-  version = false, -- telescope did only one release, so use HEAD for now
+  version = false,
   event = "VeryLazy",
   dependencies = {
+    -- {
+    --   "nvim-telescope/telescope-fzf-native.nvim",
+    --   build = "make",
+    -- },
     {
-      "nvim-telescope/telescope-fzf-native.nvim",
-      build = "make",
+      "natecraddock/telescope-zf-native.nvim"
     },
     -- {
     --   "nvim-telescope/telescope-github.nvim",
@@ -50,20 +53,21 @@ return {
         set_env = { ["COLORTERM"] = "truecolor" }, -- default = nil,
         mappings = {
           n = {
-            ["q"] = actions.close,
+            ["<c-d>"] = actions.delete_buffer + actions.move_to_top,
           },
           i = {
-            ["<esc>"] = actions.close,
+            -- ["<esc>"] = actions.close,
             ["<C-j>"] = { actions.move_selection_next, type = "action", opts = { nowait = true, silent = true } },
             ["<C-k>"] = { actions.move_selection_previous, type = "action", opts = { nowait = true, silent = true } },
             ["<C-[>"] = actions.cycle_history_next,
             ["<C-]>"] = actions.cycle_history_prev,
+            ["<c-d>"] = actions.delete_buffer + actions.move_to_top,
           },
         },
       },
     })
 
-    telescope.load_extension("fzf")
+    telescope.load_extension("zf-native")
     telescope.load_extension("projects")
   end,
 }

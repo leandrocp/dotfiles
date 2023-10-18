@@ -6,7 +6,7 @@ return {
     dependencies = {
       "nvim-treesitter/nvim-treesitter-textobjects",
       "JoosepAlviste/nvim-ts-context-commentstring",
-      'nvim-treesitter/nvim-treesitter-context',
+      "nvim-treesitter/nvim-treesitter-context",
     },
     config = function()
       require("nvim-treesitter.configs").setup({
@@ -25,6 +25,7 @@ return {
           "elixir",
           "eex",
           "heex",
+          "rust"
         },
 
         highlight = {

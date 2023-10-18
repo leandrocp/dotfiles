@@ -1,12 +1,4 @@
 return {
-  -- {
-  --   "navarasu/onedark.nvim",
-  --   lazy = false,
-  --   config = function()
-  --     require("onedark").load()
-  --   end
-  -- },
-
   {
     "catppuccin/nvim",
     name = "catppuccin",
@@ -59,12 +51,13 @@ return {
     event = "BufReadPost",
   },
 
-  "folke/which-key.nvim",
-
   {
-    "chentoast/marks.nvim",
-    event = "BufReadPost",
-    config = true,
+    "folke/which-key.nvim",
+    event = "VeryLazy",
+    init = function()
+      vim.o.timeout = true
+      vim.o.timeoutlen = 300
+    end,
   },
 
   {
@@ -105,37 +98,9 @@ return {
   },
 
   {
-    "nvim-neotest/neotest",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-      "nvim-treesitter/nvim-treesitter",
-      "jfpedroza/neotest-elixir",
-    },
-    config = function()
-      require("neotest").setup({
-        adapters = {
-          require("neotest-elixir"),
-        },
-      })
-    end,
-  },
-
-  {
     "folke/trouble.nvim",
     cmd = { "Trouble", "TroubleToggle" },
     opts = { use_diagnostic_signs = true },
-  },
-
-  {
-    "ThePrimeagen/harpoon",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-    },
-    -- opts = {
-    --   menu = {
-    --     width = vim.api.nvim_win_get_width(0) - 60,
-    --   },
-    -- },
   },
 
   {
@@ -178,20 +143,6 @@ return {
   },
 
   {
-    "ggandor/flit.nvim",
-    dependencies = {
-      "ggandor/leap.nvim",
-      config = function()
-        require("leap").add_default_mappings()
-      end,
-    },
-    event = "VeryLazy",
-    opts = {
-      labeled_modes = "nv",
-    },
-  },
-
-  {
     "gbprod/yanky.nvim",
     dependencies = "kkharji/sqlite.lua",
     event = "VeryLazy",
@@ -217,14 +168,24 @@ return {
     "echasnovski/mini.misc",
     lazy = false,
     version = "*",
-    config = function(_, opts)
-      require("mini.misc").setup(opts)
+    config = function()
+      require("mini.misc").setup()
 
       require("mini.misc").setup_auto_root({
         ".git",
         "mix.lock",
+        "Makefile",
       })
+
+      require("mini.misc").setup_restore_cursor()
     end,
+  },
+
+  {
+    "echasnovski/mini.move",
+    event = "VeryLazy",
+    version = "*",
+    config = true,
   },
 
   {
@@ -235,28 +196,79 @@ return {
     end,
   },
 
-  -- {
-  --   "kevinhwang91/nvim-hlslens",
-  --   event = "VeryLazy",
-  --   opts = {
-  --     calm_down = true,
-  --     virt_priority = 0,
-  --   },
-  -- },
+  {
+    "kevinhwang91/nvim-hlslens",
+    event = "VeryLazy",
+    opts = {
+      calm_down = true,
+      virt_priority = 0,
+    },
+  },
 
   {
     "kylechui/nvim-surround",
     version = "*",
     event = "VeryLazy",
-    config = function()
-      require("nvim-surround").setup({
-        -- Configuration here, or leave empty to use defaults
-      })
-    end,
+    config = true,
   },
+
   {
     "LunarVim/bigfile.nvim",
     event = { "BufReadPre", "FileReadPre" },
     config = true,
+  },
+
+  {
+    "tzachar/highlight-undo.nvim",
+    config = function()
+      require("highlight-undo").setup({
+        hlgroup = "HighlightUndo",
+        duration = 300,
+        keymaps = {
+          { "n", "u", "undo", {} },
+          { "n", "<C-r>", "redo", {} },
+        },
+      })
+    end,
+  },
+
+  {
+    "cpea2506/relative-toggle.nvim",
+    event = "VeryLazy",
+    config = true,
+  },
+
+  {
+    "kevinhwang91/nvim-bqf",
+    dependencies = {
+      "nvim-treesitter/nvim-treesitter",
+    },
+    event = { "BufRead", "BufNew" },
+    config = true,
+  },
+
+  {
+    "norcalli/nvim-colorizer.lua",
+    event = "VeryLazy",
+  },
+
+  { "nvim-treesitter/playground", cmd = "TSPlaygroundToggle" },
+
+  {
+    "smoka7/multicursors.nvim",
+    event = "VeryLazy",
+    dependencies = {
+      "smoka7/hydra.nvim",
+    },
+    opts = {},
+    cmd = { "MCstart", "MCvisual", "MCclear", "MCpattern", "MCvisualPattern", "MCunderCursor" },
+  },
+
+  {
+    "declancm/maximize.nvim",
+    config = true,
+    opts = {
+      default_keymaps = false,
+    },
   },
 }

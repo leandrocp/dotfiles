@@ -8,3 +8,6 @@ tml:*.{html,eex,leex,heex}*
 
 --type-add
 elixir:*.{ex,exs}*
+
+--type-add
+rust:*.{rs}*

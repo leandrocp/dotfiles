@@ -14,12 +14,12 @@ opt.grepprg = "rg --vimgrep"
 opt.hidden = true
 opt.ignorecase = true
 opt.ignorecase = true
-opt.iskeyword:append("-") -- treats words with `-` as single words
+opt.iskeyword:append('$', '@', '-', '_')
 opt.laststatus = 3
 opt.mouse = "a"
 opt.mousemodel = "extend"
 opt.number = true
-opt.numberwidth = 3
+opt.numberwidth = 5
 opt.relativenumber = true
 opt.ruler = false
 opt.scrolloff = 20

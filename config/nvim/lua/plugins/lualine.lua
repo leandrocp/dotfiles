@@ -1,3 +1,7 @@
+local function maximize_status()
+  return vim.t.maximized and "   " or ""
+end
+
 return {
   "nvim-lualine/lualine.nvim",
   dependencies = {
@@ -21,9 +25,10 @@ return {
           "tabs",
           {
             "filename",
-            path = 1
+            path = 1,
           },
           { navic.get_location, cond = navic.is_available },
+          { maximize_status },
         },
       },
       extensions = { "quickfix", "nvim-tree" },

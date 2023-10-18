@@ -1,4 +1,5 @@
 neovim nightly
-elixir 1.14.2-otp-25
-erlang 25.2
+elixir 1.15.0-otp-25
+erlang 25.3.2.2
 nodejs lts
+rust stable

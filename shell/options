@@ -31,4 +31,6 @@ export ERL_AFLAGS="-kernel shell_history enabled"
 export KERL_BUILD_DOCS=yes
 
 # elixir
-export PLUG_EDITOR='vscode://file/__FILE__:__LINE__'
+export ELIXIR_EDITOR="nvim +__LINE__ __FILE__"
+export PLUG_EDITOR=$ELIXIR_EDITOR
+export ECTO_EDITOR=$ELIXIR_EDITOR

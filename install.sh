@@ -37,9 +37,9 @@ function bootstrap() {
   eval "$(/opt/homebrew/bin/brew shellenv)"
   source apps_osx.sh
 
-  echo "asdf"
-  [[ -f ~/.asdf/asdf.sh ]] || git clone https://github.com/asdf-vm/asdf.git ~/.asdf
-  source asdf.sh
+  echo "rtx"
+  curl https://rtx.pub/rtx-latest-macos-arm64 > ~/.bin/rtx
+  chmod +x ~/.bin/rtx
 }
 
 link_root

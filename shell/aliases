@@ -3,8 +3,10 @@
 alias vi=nvim
 alias vim=nvim
 alias e='nvim'
+alias up='brew upgrade && rtx self-update && znap pull && nvim-update && brew cleanup'
 alias g='git'
 alias gg='lazygit'
+alias tf='terraform'
 
 alias rm='rm -i'
 alias df='df -h'
@@ -18,19 +20,10 @@ alias ll='exa --long --icons --sort modified'
 alias -g G='| grep -i --color'
 alias -g L='| less'
 alias -g C='| pbcopy'
-alias tf='terraform'
 
-alias nvim-update='asdf uninstall neovim nightly && asdf install neovim nightly && asdf global neovim nightly'
-alias elixir-update='asdf uninstall elixir latest; asdf install elixir latest; asdf global elixir latest'
+alias nvim-update='rtx install neovim@nightly -f'
+alias elixir-update='rtx install elixir@main-otp-26 -f'
+alias rust-update='rtx install rust@stable -f'
 
-if [[ "$OSTYPE" == "darwin"* ]]; then
-
+alias asdf=rtx
 alias dns_reset="dscacheutil -flushcache && killall -HUP mDNSResponder"
-
-fi
-
-if [[ "$OSTYPE" == "linux-gnu" ]]; then
-
-alias apt='aptitude'
-
-fi

@@ -64,3 +64,4 @@
 	repo = /Users/leandro/.config/zsh-config/zsh-users/zsh-syntax-highlighting
 	repo = /Users/leandro/.config/zsh-config/marlonrichert/zsh-autocomplete
 	repo = /Users/leandro/.config/zsh-config/zsh-users/zsh-completions
+	repo = /Users/leandro/.config/zsh-config/jeffreytse/zsh-vi-mode

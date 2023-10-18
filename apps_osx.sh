@@ -10,8 +10,8 @@ brew update
 
 packages=(\
 autoconf openssl coreutils automake renameutils dust fd dog autojump openjdk wxwidgets \
-lazygit fasd gh libxslt fop z ripgrep zsh kitty lua rust starship exa \
-muzzle slack maccy rectangle joplin pgcli \
+lazygit gh libxslt fop ripgrep zsh kitty lua starship exa \
+muzzle slack maccy rectangle joplin pgcli btop zoxide fzf \
 )
 
 for i in "${packages[@]}"
@@ -21,5 +21,7 @@ done
 
 brew tap homebrew/cask-fonts
 brew install --force --cask font-hack-nerd-font
+
+$(brew --prefix)/opt/fzf/install
 
 brew cleanup
