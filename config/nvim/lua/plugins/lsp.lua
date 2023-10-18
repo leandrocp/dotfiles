@@ -40,7 +40,7 @@ return {
 
     lsp.ensure_installed({
       "lua_ls",
-      "elixirls",
+      -- "elixirls",
       "eslint",
       "rust_analyzer",
     })
@@ -63,16 +63,16 @@ return {
 
     require("lspconfig").lua_ls.setup(lsp.nvim_lua_ls())
 
-    require("lspconfig").elixirls.setup({
-      cmd = { vim.fn.expand("~/code/github/elixir-lsp/elixir-ls/release/language_server.sh") },
-      settings = {
-        fetchDeps = false,
-        dialyzerEnabled = false,
-        enableTestLenses = false,
-        suggestSpecs = false,
-        autoInsertRequiredAlias = false,
-      },
-    })
+    -- require("lspconfig").elixirls.setup({
+    --   cmd = { vim.fn.expand("~/code/github/elixir-lsp/elixir-ls/release/language_server.sh") },
+    --   settings = {
+    --     fetchDeps = false,
+    --     dialyzerEnabled = false,
+    --     enableTestLenses = false,
+    --     suggestSpecs = false,
+    --     autoInsertRequiredAlias = false,
+    --   },
+    -- })
 
     require("lspconfig").eslint.setup({
       filestypes = { "javascript", "typescript" },
