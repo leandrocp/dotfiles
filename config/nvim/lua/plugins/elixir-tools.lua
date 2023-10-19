@@ -15,8 +15,10 @@ return {
       elixirls = {
         enable = true,
         settings = elixirls.settings({
+          fetchDeps = false,
           dialyzerEnabled = false,
-          enableTestLenses = false,
+          suggestSpecs = false,
+          autoInsertRequiredAlias = false,
         }),
         on_attach = function(client, bufnr)
           -- vim.keymap.set("n", "<space>fp", ":ElixirFromPipe<cr>", { buffer = true, noremap = true })

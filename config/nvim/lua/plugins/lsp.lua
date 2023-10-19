@@ -1,179 +1,135 @@
+-- https://github.com/VonHeikemen/lsp-zero.nvim/blob/v3.x/doc/md/guides/lazy-loading-with-lazy-nvim.md
+
 return {
-  "VonHeikemen/lsp-zero.nvim",
-  branch = "v2.x",
-  lazy = false,
-  dependencies = {
-    { "neovim/nvim-lspconfig" },
-    {
-      "williamboman/mason.nvim",
-      build = function()
-        pcall(vim.cmd, "MasonUpdate")
-      end,
-    },
-    { "williamboman/mason-lspconfig.nvim" },
-    { "hrsh7th/nvim-cmp" },
-    { "hrsh7th/cmp-nvim-lsp" },
-    { "hrsh7th/cmp-buffer" },
-    { "hrsh7th/cmp-path" },
-    { "hrsh7th/cmp-cmdline" },
-    { "L3MON4D3/LuaSnip" },
-
-    {
-      "jay-babu/mason-null-ls.nvim",
-      event = { "BufReadPre", "BufNewFile" },
-      dependencies = {
-        "williamboman/mason.nvim",
-        "nvimtools/none-ls.nvim",
-      },
-      config = function()
-        require("mason").setup()
-        require("mason-null-ls").setup({
-          handlers = {},
-        })
-      end,
-    },
-
-    { "SmiteshP/nvim-navic" },
+  {
+    'VonHeikemen/lsp-zero.nvim',
+    branch = 'v3.x',
+    lazy = true,
+    config = false,
+    init = function()
+      -- Disable automatic setup, we are doing it manually
+      vim.g.lsp_zero_extend_cmp = 0
+      vim.g.lsp_zero_extend_lspconfig = 0
+    end,
   },
-  config = function()
-    local lsp = require("lsp-zero").preset({})
+  {
+    'williamboman/mason.nvim',
+    lazy = false,
+    config = true,
+  },
 
-    lsp.ensure_installed({
-      "lua_ls",
-      -- "elixirls",
-      "eslint",
-      "rust_analyzer",
-    })
+  -- https://github.com/VonHeikemen/lsp-zero.nvim/blob/v3.x/doc/md/autocomplete.md
+  {
+    'hrsh7th/nvim-cmp',
+    event = 'InsertEnter',
+    dependencies = {
+      { 'hrsh7th/cmp-buffer' },
+      { "hrsh7th/cmp-path" },
+      { "hrsh7th/cmp-cmdline" },
+      { 'L3MON4D3/LuaSnip' },
+    },
+    config = function()
+      local lsp_zero = require('lsp-zero')
+      lsp_zero.extend_cmp()
 
-    lsp.on_attach(function(client, bufnr)
-      lsp.default_keymaps({
-        buffer = bufnr,
-        preserve_mappings = false,
-        omit = { "<C-k>" },
+      local cmp = require('cmp')
+      local cmp_action = lsp_zero.cmp_action()
+
+      cmp.setup({
+        sources = {
+          { name = 'nvim_lsp' },
+          { name = 'buffer' },
+          { name = 'path' },
+        },
+        formatting = lsp_zero.cmp_format(),
+        mapping = cmp.mapping.preset.insert({
+          ["<C-k>"] = cmp.mapping.select_prev_item(),
+          ["<C-j>"] = cmp.mapping.select_next_item(),
+          ["<C-d>"] = cmp.mapping.scroll_docs(-4),
+          ["<C-f>"] = cmp.mapping.scroll_docs(4),
+          ["<C-Space>"] = cmp.mapping.complete(),
+          ["<CR>"] = cmp.mapping.confirm({
+            behavior = cmp.ConfirmBehavior.Replace,
+            select = false,
+          }),
+          ["<C-c>"] = cmp.mapping.close(),
+          ['<Tab>'] = cmp_action.luasnip_supertab(),
+          ['<S-Tab>'] = cmp_action.luasnip_shift_supertab(),
+          -- ["<Tab>"] = cmp.mapping(function(fallback)
+          --   if cmp.visible() then
+          --     cmp.select_next_item()
+          --   elseif require("luasnip").expand_or_jumpable() then
+          --     vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<Plug>luasnip-expand-or-jump", true, true, true), "")
+          --   else
+          --     fallback()
+          --   end
+          -- end, { "i", "s" }),
+          -- ["<S-Tab>"] = cmp.mapping(function(fallback)
+          --   if cmp.visible() then
+          --     cmp.select_prev_item()
+          --   elseif require("luasnip").jumpable(-1) then
+          --     vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<Plug>luasnip-jump-prev", true, true, true), "")
+          --   else
+          --     fallback()
+          --   end
+          -- end, { "i", "s" }),
+        })
       })
 
-      vim.keymap.set({ "n", "x" }, "gt", function()
-        vim.lsp.buf.format({ async = true, timeout_ms = 10000 })
-      end, { desc = "format" })
-
-      if client.server_capabilities.documentSymbolProvider then
-        require("nvim-navic").attach(client, bufnr)
-      end
-    end)
-
-    require("lspconfig").lua_ls.setup(lsp.nvim_lua_ls())
-
-    -- require("lspconfig").elixirls.setup({
-    --   cmd = { vim.fn.expand("~/code/github/elixir-lsp/elixir-ls/release/language_server.sh") },
-    --   settings = {
-    --     fetchDeps = false,
-    --     dialyzerEnabled = false,
-    --     enableTestLenses = false,
-    --     suggestSpecs = false,
-    --     autoInsertRequiredAlias = false,
-    --   },
-    -- })
-
-    require("lspconfig").eslint.setup({
-      filestypes = { "javascript", "typescript" },
-      settings = {
-        format = { enable = true },
-        lint = { enable = true },
-      },
-    })
-
-    lsp.format_mapping("gq", {
-      format_opts = {
-        async = false,
-        timeout_ms = 10000,
-      },
-      servers = {
-        ["null-ls"] = {
-          "lua",
-          "elixir",
-          "eex",
-          "heex",
-          "surface",
-          "javascript",
-          "typescript",
-          "rust",
+      cmp.setup.cmdline("/", {
+        mapping = cmp.mapping.preset.cmdline(),
+        sources = {
+          { name = "buffer" },
         },
-      },
-    })
+      })
+    end
+  },
 
-    lsp.setup()
+  -- LSP
+  {
+    'neovim/nvim-lspconfig',
+    cmd = { 'LspInfo', 'LspInstall', 'LspStart' },
+    event = { 'BufReadPre', 'BufNewFile' },
+    dependencies = {
+      { 'hrsh7th/cmp-nvim-lsp' },
+      { 'williamboman/mason-lspconfig.nvim' },
+      { "SmiteshP/nvim-navic" },
+      { 'simrat39/rust-tools.nvim' }
+    },
+    config = function()
+      local lsp_zero = require('lsp-zero')
+      lsp_zero.extend_lspconfig()
 
-    local cmp = require("cmp")
+      lsp_zero.on_attach(function(client, bufnr)
+        -- see :help lsp-zero-keybindings
+        lsp_zero.default_keymaps({ buffer = bufnr })
 
-    cmp.setup({
-      mapping = {
-        ["<C-k>"] = cmp.mapping.select_prev_item(),
-        ["<C-j>"] = cmp.mapping.select_next_item(),
-        ["<C-d>"] = cmp.mapping.scroll_docs(-4),
-        ["<C-f>"] = cmp.mapping.scroll_docs(4),
-        ["<C-Space>"] = cmp.mapping.complete(),
-        ["<CR>"] = cmp.mapping.confirm({
-          behavior = cmp.ConfirmBehavior.Replace,
-          select = false,
-        }),
-        ["<C-c>"] = cmp.mapping.close(),
-        ["<Tab>"] = cmp.mapping(function(fallback)
-          if cmp.visible() then
-            cmp.select_next_item()
-          elseif require("luasnip").expand_or_jumpable() then
-            vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<Plug>luasnip-expand-or-jump", true, true, true), "")
-          else
-            fallback()
+        if client.server_capabilities.documentSymbolProvider then
+          require('nvim-navic').attach(client, bufnr)
+        end
+      end)
+
+      require('mason-lspconfig').setup({
+        ensure_installed = { 'rust_analyzer' },
+        handlers = {
+          lsp_zero.default_setup,
+          lua_ls = function()
+            local lua_opts = lsp_zero.nvim_lua_ls()
+            require('lspconfig').lua_ls.setup(lua_opts)
+          end,
+          rust_analyzer = function()
+            local rust_tools = require('rust-tools')
+
+            rust_tools.setup({
+              server = {
+                on_attach = function(client, bufnr)
+                  -- vim.keymap.set('n', '<leader>ca', rust_tools.hover_actions.hover_actions, { buffer = bufnr })
+                end
+              }
+            })
           end
-        end, { "i", "s" }),
-        ["<S-Tab>"] = cmp.mapping(function(fallback)
-          if cmp.visible() then
-            cmp.select_prev_item()
-          elseif require("luasnip").jumpable(-1) then
-            vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<Plug>luasnip-jump-prev", true, true, true), "")
-          else
-            fallback()
-          end
-        end, { "i", "s" }),
-      },
-    })
-
-    cmp.setup.cmdline("/", {
-      mapping = cmp.mapping.preset.cmdline(),
-      sources = {
-        { name = "buffer" },
-      },
-    })
-
-    -- `:` cmdline setup.
-    -- cmp.setup.cmdline(':', {
-    --   mapping = cmp.mapping.preset.cmdline(),
-    --   sources = cmp.config.sources({
-    --     { name = 'path' }
-    --   }, {
-    --     {
-    --       name = 'cmdline',
-    --       option = {
-    --         ignore_cmds = { 'Man', '!' }
-    --       }
-    --     }
-    --   })
-    -- })
-
-    local null_ls = require("null-ls")
-    local mason_null_ls = require("mason-null-ls")
-
-    null_ls.setup({
-      sources = {
-        null_ls.builtins.formatting.prettierd,
-        null_ls.builtins.diagnostics.eslint,
-        null_ls.builtins.formatting.stylua,
-      },
-    })
-
-    mason_null_ls.setup({
-      ensure_installed = nil,
-      automatic_installation = true,
-    })
-  end,
+        }
+      })
+    end
+  }
 }
