@@ -1,0 +1,52 @@
+// Zed settings
+//
+// For information on how to configure Zed, see the Zed
+// documentation: https://zed.dev/docs/configuring-zed
+//
+// To see all of Zed's default settings without changing your
+// custom settings, run the `open default settings` command
+// from the command palette or from `Zed` application menu.
+{
+  "telemetry": {
+    "metrics": false,
+    "diagnostics": false
+  },
+  "terminal": {
+    "font_family": "Hack Nerd Font Mono",
+    "copy_on_select": true
+  },
+  "vim_mode": true,
+  "buffer_font_family": "Hack Nerd Font Mono",
+  "buffer_font_size": 15,
+  "cursor_blink": false,
+  "relative_line_numbers": true,
+  "scrollbar": {
+    "show": "never"
+  },
+  "format_on_save": "off",
+  // next-ls
+  // "elixir": {
+  //   "lsp": "next_ls"
+  // },
+  // "languages": {
+  //   "Elixir": {
+  //     "lsp": "next_ls"
+  //   }
+  // },
+  // "language_overrides": {
+  //   "elixir": {
+  //     "lsp": "next_ls"
+  //   }
+  // }
+  // https://github.com/zed-industries/community/issues/2095
+  // "elixir": {
+  //   "lsp": {
+  //     "local": {
+  //       "path": "/Users/leandro/code/elixir-ls/language_server.sh",
+  //       "arguments": [
+  //         ""
+  //       ]
+  //     }
+  //   }
+  // }
+}

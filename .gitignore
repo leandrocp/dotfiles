@@ -31,3 +31,5 @@ Package Control.user-ca-bundle
 .ctags.d
 /config/pgcli/history
 /config/pgcli/log
+/config/zed/embeddings
+/config/zed/conversations
