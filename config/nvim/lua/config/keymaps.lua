@@ -125,7 +125,6 @@ local mappings = {
   [","] = { "<cmd>Telescope buffers<cr>", "Buffers" },
   b = {
     name = "Buffer",
-    f = { "<cmd>LspZeroFormat<cr>", "Format" },
     u = { "<cmd>UndotreeToggle<cr>", "Undo Tree" },
     s = { "<cmd>Telescope lsp_document_symbols<cr>", "Symbols" },
     t = { "<cmd>TroubleToggle document_diagnostics<cr>", "Trouble" },

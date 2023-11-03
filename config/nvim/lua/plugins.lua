@@ -68,6 +68,10 @@ return {
   {
     "kdheepak/lazygit.nvim",
     cmd = "LazyGit",
+    config = function()
+      vim.g.lazygit_use_neovim_remote = false
+      vim.g.lazygit_floating_window_use_plenary = 1
+    end
   },
 
   {
@@ -225,7 +229,7 @@ return {
         hlgroup = "HighlightUndo",
         duration = 300,
         keymaps = {
-          { "n", "u", "undo", {} },
+          { "n", "u",     "undo", {} },
           { "n", "<C-r>", "redo", {} },
         },
       })
