@@ -60,8 +60,11 @@ vim.keymap.set("n", "<A-l>", ss.resize_right)
 
 -- navigation
 -- tabs
-vim.keymap.set("n", "<Tab>", "<cmd>tabn<cr>", { noremap = true, desc = "Next tab" })
-vim.keymap.set("n", "<S-Tab>", "<cmd>tabp<cr>", { noremap = true, desc = "Prev tab" })
+vim.keymap.set("n", "]t", "<cmd>tabn<cr>", { noremap = true, desc = "Next tab" })
+vim.keymap.set("n", "[t", "<cmd>tabp<cr>", { noremap = true, desc = "Prev tab" })
+-- marks (harpoon)
+vim.keymap.set("n", "<Tab>", "<cmd>lua require('harpoon.ui').nav_next()<cr>", { noremap = true, desc = "Next mark" })
+vim.keymap.set("n", "<S-Tab>", "<cmd>lua require('harpoon.ui').nav_prev()<cr>", { noremap = true, desc = "Prev mark" })
 -- kitty integration
 vim.keymap.set("n", "<C-h>", "<cmd>KittyNavigateLeft<cr>")
 vim.keymap.set("n", "<C-j>", "<cmd>KittyNavigateDown<cr>")
@@ -133,6 +136,12 @@ local mappings = {
   [";"] = { "<cmd>Telescope command_history<cr>", "Command History" },
   ["/"] = { "<cmd>Telescope live_grep<cr>", "Grep" },
   [","] = { "<cmd>Telescope buffers<cr>", "Buffers" },
+  m = { "<cmd>lua require('harpoon.ui').toggle_quick_menu()<cr>", "Marked Files" },
+  ["1"] = { "<cmd>lua require('harpoon.ui').nav_file(1)<cr>", "Marked file 1" },
+  ["2"] = { "<cmd>lua require('harpoon.ui').nav_file(2)<cr>", "Marked file 2" },
+  ["3"] = { "<cmd>lua require('harpoon.ui').nav_file(3)<cr>", "Marked file 3" },
+  ["4"] = { "<cmd>lua require('harpoon.ui').nav_file(4)<cr>", "Marked file 4" },
+  ["5"] = { "<cmd>lua require('harpoon.ui').nav_file(5)<cr>", "Marked file 5" },
   b = {
     name = "Buffer",
     f = { "<cmd>lua vim.lsp.buf.format({ async = true })<cr>", "Format" },
@@ -169,11 +178,9 @@ local mappings = {
   },
   n = {
     name = "Navigate",
-    t = { "<cmd>TodoTelescope<cr>", "Todo" },
-    m = { "<cmd>lua require('telescope.builtin').marks()<cr>", "Marks" },
-    n = { "<cmd>$tabnew<cr>", "New tab" },
+    m = { "<cmd>lua require('harpoon.mark').add_file()<cr>", "Mark File" },
+    t = { "<cmd>$tabnew<cr>", "New tab" },
     c = { "<cmd>tabclose<cr>", "Close tab" },
-    o = { "<cmd>tabonly<cr>", "Only tab" },
     h = { "<cmd>-tabmove<cr>", "Move tab left" },
     l = { "<cmd>+tabmove<cr>", "Move tab right" },
   },
@@ -188,7 +195,11 @@ local mappings = {
     s = { "<cmd>LspInstall<cr>", "LspInstall" },
     S = { "<cmd>LspInfo<cr>", "LspInfo" },
   },
-  p = { "<cmd>Telescope projects<cr>", "Projects" },
+  p = {
+    name = "Project",
+    o = { "<cmd>Telescope projects<cr>", "Open" },
+    t = { "<cmd>TodoTelescope<cr>", "Todo List" },
+  },
   r = { "<cmd>lua require('telescope.builtin').resume()<cr>", "Resume Search" },
   s = {
     name = "Search",
