@@ -38,8 +38,7 @@ function bootstrap() {
   source apps_osx.sh
 
   echo "rtx"
-  curl https://rtx.pub/rtx-latest-macos-arm64 > ~/.bin/rtx
-  chmod +x ~/.bin/rtx
+  curl https://mise.jdx.dev/install.sh | sh
 }
 
 link_root

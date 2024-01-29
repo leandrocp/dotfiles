@@ -21,6 +21,28 @@ vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 vim.keymap.set("v", "<", "<gv")
 vim.keymap.set("v", ">", ">gv")
 
+-- smart dd
+-- don't replace yank register if deleting empty line in NORMAL MODE
+local function smart_dd_normal()
+  if vim.api.nvim_get_current_line():match("^%s*$") then
+    return "\"_dd"
+  else
+    return "dd"
+  end
+end
+-- don't replace yank register if deleting empty line in VISUAL MODE
+local function smart_dd_visual()
+  local l, _c = unpack(vim.api.nvim_win_get_cursor(0))
+  for _, line in ipairs(vim.api.nvim_buf_get_lines(0, l - 1, l, true)) do
+    if line:match("^%s*$") then
+      return "\"_d"
+    end
+  end
+  return "d"
+end
+vim.keymap.set("v", "d", smart_dd_visual, { noremap = true, expr = true })
+vim.keymap.set("n", "dd", smart_dd_normal, { noremap = true, expr = true })
+
 -- https://github.com/mhinz/vim-galore#saner-behavior-of-n-and-n
 vim.keymap.set("n", "n", "'Nn'[v:searchforward]", { expr = true, desc = "Next search result" })
 vim.keymap.set("x", "n", "'Nn'[v:searchforward]", { expr = true, desc = "Next search result" })
@@ -35,10 +57,6 @@ vim.keymap.set("n", "<A-h>", ss.resize_left)
 vim.keymap.set("n", "<A-j>", ss.resize_down)
 vim.keymap.set("n", "<A-k>", ss.resize_up)
 vim.keymap.set("n", "<A-l>", ss.resize_right)
-vim.keymap.set("n", "<C-h>", "<cmd>KittyNavigateLeft<cr>")
-vim.keymap.set("n", "<C-j>", "<cmd>KittyNavigateDown<cr>")
-vim.keymap.set("n", "<C-k>", "<cmd>KittyNavigateUp<cr>")
-vim.keymap.set("n", "<C-l>", "<cmd>KittyNavigateRight<cr>")
 
 -- navigation
 -- tabs
@@ -54,13 +72,9 @@ vim.keymap.set('n', 'n', 'nzzzv') -- center screen
 vim.keymap.set('n', 'N', 'Nzzzv')
 vim.keymap.set('n', '*', '*N')    -- do not jump forward
 
--- hlslens
--- vim.api.nvim_set_keymap('n', 'n', [[<Cmd>execute('normal! ' . v:count1 . 'n')<CR><Cmd>lua require('hlslens').start()<CR>]], { noremap = true, silent = true })
--- vim.api.nvim_set_keymap('n', 'N', [[<Cmd>execute('normal! ' . v:count1 . 'N')<CR><Cmd>lua require('hlslens').start()<CR>]], { noremap = true, silent = true })
--- vim.api.nvim_set_keymap('n', '*', [[*<Cmd>lua require('hlslens').start()<CR>]], { noremap = true, silent = true })
--- vim.api.nvim_set_keymap('n', '#', [[#<Cmd>lua require('hlslens').start()<CR>]], { noremap = true, silent = true })
--- vim.api.nvim_set_keymap('n', 'g*', [[g*<Cmd>lua require('hlslens').start()<CR>]], { noremap = true, silent = true })
--- vim.api.nvim_set_keymap('n', 'g#', [[g#<Cmd>lua require('hlslens').start()<CR>]], { noremap = true, silent = true })
+-- diagnostics
+vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous diagnostic message' })
+vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next diagnostic message' })
 
 -- context
 vim.keymap.set("n", "[c", function()
@@ -72,14 +86,6 @@ vim.keymap.set("n", "]g", "<cmd>lua require 'gitsigns'.next_hunk({navigation_mes
   { desc = "Next git hunk" })
 vim.keymap.set("n", "[g", "<cmd>lua require 'gitsigns'.prev_hunk({navigation_message = false})<cr>",
   { desc = "Prev git hunk" })
-
--- -- move lines
--- vim.keymap.set("n", "<A-J>", ":m .+1<CR>==", { noremap = true, silent = true })
--- vim.keymap.set("n", "<A-K>", ":m .-2<CR>==", { noremap = true, silent = true })
--- vim.keymap.set("i", "<A-J>", "<Esc>:m .+1<CR>==gi", { noremap = true, silent = true })
--- vim.keymap.set("i", "<A-K>", "<Esc>:m .-2<CR>==gi", { noremap = true, silent = true })
--- vim.keymap.set("v", "<A-J>", ":m '>+1<CR>gv=gv", { noremap = true, silent = true })
--- vim.keymap.set("v", "<A-K>", ":m '<-2<CR>gv=gv", { noremap = true, silent = true })
 
 local present, wk = pcall(require, "which-key")
 
@@ -105,17 +111,21 @@ local mapping_opts = {
   nowait = true,
 }
 
+local is_inside_work_tree = {}
 local function project_files()
+  local builtin = require("telescope.builtin")
   local opts = {}
-  if vim.loop.fs_stat(".git") then
-    opts.show_untracked = true
-    require("telescope.builtin").git_files(opts)
+
+  local cwd = vim.fn.getcwd()
+  if is_inside_work_tree[cwd] == nil then
+    vim.fn.system("git rev-parse --is-inside-work-tree")
+    is_inside_work_tree[cwd] = vim.v.shell_error == 0
+  end
+
+  if is_inside_work_tree[cwd] then
+    builtin.git_files(opts)
   else
-    local client = vim.lsp.get_active_clients()[1]
-    if client then
-      opts.cwd = client.config.root_dir
-    end
-    require("telescope.builtin").find_files(opts)
+    builtin.find_files(opts)
   end
 end
 
@@ -125,6 +135,7 @@ local mappings = {
   [","] = { "<cmd>Telescope buffers<cr>", "Buffers" },
   b = {
     name = "Buffer",
+    f = { "<cmd>lua vim.lsp.buf.format({ async = true })<cr>", "Format" },
     u = { "<cmd>UndotreeToggle<cr>", "Undo Tree" },
     s = { "<cmd>Telescope lsp_document_symbols<cr>", "Symbols" },
     t = { "<cmd>TroubleToggle document_diagnostics<cr>", "Trouble" },

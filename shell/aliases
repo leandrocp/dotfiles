@@ -3,7 +3,7 @@
 alias vi=nvim
 alias vim=nvim
 alias e='nvim'
-alias up='brew upgrade && rtx self-update && znap pull && nvim-update && brew cleanup'
+alias up='brew upgrade; mise self-update; znap pull; nvim-update; brew cleanup'
 alias g='git'
 alias gg='lazygit'
 alias tf='terraform'
@@ -21,9 +21,9 @@ alias -g G='| grep -i --color'
 alias -g L='| less'
 alias -g C='| pbcopy'
 
-alias nvim-update='rtx install neovim@nightly -f'
-alias elixir-update='rtx install elixir@main-otp-26 -f'
-alias rust-update='rtx install rust@stable -f'
+alias nvim-update='mise install neovim@nightly -f'
+alias elixir-update='mise install elixir@main-otp-26 -f'
+alias rust-update='mise install rust@stable -f'
 
-alias asdf=rtx
+alias asdf='mise'
 alias dns_reset="dscacheutil -flushcache && killall -HUP mDNSResponder"

@@ -4,6 +4,3 @@ neovim = "nightly"
 erlang = "latest"
 elixir = "main-otp-26"
 rust = "stable"
-
-[settings]
-experimental = true

@@ -12,6 +12,7 @@ return {
       vim.g.lsp_zero_extend_lspconfig = 0
     end,
   },
+
   {
     'williamboman/mason.nvim',
     lazy = false,
@@ -26,18 +27,25 @@ return {
       { 'hrsh7th/cmp-buffer' },
       { "hrsh7th/cmp-path" },
       { "hrsh7th/cmp-cmdline" },
-      { 'L3MON4D3/LuaSnip' },
+      {
+        'L3MON4D3/LuaSnip',
+        version = "v2.*",
+        build = "make install_jsregexp"
+      },
     },
     config = function()
       local lsp_zero = require('lsp-zero')
-      lsp_zero.extend_cmp()
-
       local cmp = require('cmp')
       local cmp_action = lsp_zero.cmp_action()
+
+      require("luasnip.loaders.from_vscode").lazy_load()
+
+      lsp_zero.extend_cmp()
 
       cmp.setup({
         sources = {
           { name = 'nvim_lsp' },
+          { name = 'luasnip' },
           { name = 'buffer' },
           { name = 'path' },
         },
@@ -55,24 +63,6 @@ return {
           ["<C-c>"] = cmp.mapping.close(),
           ['<Tab>'] = cmp_action.luasnip_supertab(),
           ['<S-Tab>'] = cmp_action.luasnip_shift_supertab(),
-          -- ["<Tab>"] = cmp.mapping(function(fallback)
-          --   if cmp.visible() then
-          --     cmp.select_next_item()
-          --   elseif require("luasnip").expand_or_jumpable() then
-          --     vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<Plug>luasnip-expand-or-jump", true, true, true), "")
-          --   else
-          --     fallback()
-          --   end
-          -- end, { "i", "s" }),
-          -- ["<S-Tab>"] = cmp.mapping(function(fallback)
-          --   if cmp.visible() then
-          --     cmp.select_prev_item()
-          --   elseif require("luasnip").jumpable(-1) then
-          --     vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<Plug>luasnip-jump-prev", true, true, true), "")
-          --   else
-          --     fallback()
-          --   end
-          -- end, { "i", "s" }),
         })
       })
 
@@ -102,7 +92,12 @@ return {
 
       lsp_zero.on_attach(function(client, bufnr)
         -- see :help lsp-zero-keybindings
-        lsp_zero.default_keymaps({ buffer = bufnr })
+        -- lsp_zero.default_keymaps({ buffer = bufnr })
+
+        lsp_zero.default_keymaps({
+          buffer = bufnr,
+          preserve_mappings = false
+        })
 
         if client.server_capabilities.documentSymbolProvider then
           require('nvim-navic').attach(client, bufnr)

@@ -78,9 +78,7 @@ return {
     "numToStr/Comment.nvim",
     event = "BufReadPost",
     config = function()
-      require("Comment").setup({
-        pre_hook = require("ts_context_commentstring.integrations.comment_nvim").create_pre_hook(),
-      })
+      require("Comment").setup()
     end,
   },
 
@@ -192,13 +190,13 @@ return {
     config = true,
   },
 
-  {
-    "mhanberg/output-panel.nvim",
-    event = "VeryLazy",
-    config = function()
-      require("output_panel").setup()
-    end,
-  },
+  -- {
+  --   "mhanberg/output-panel.nvim",
+  --   event = "VeryLazy",
+  --   config = function()
+  --     require("output_panel").setup()
+  --   end,
+  -- },
 
   {
     "kevinhwang91/nvim-hlslens",
@@ -274,5 +272,10 @@ return {
     opts = {
       default_keymaps = false,
     },
+  },
+
+  {
+    "j-hui/fidget.nvim",
+    config = true
   },
 }
