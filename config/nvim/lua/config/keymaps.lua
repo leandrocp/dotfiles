@@ -49,8 +49,16 @@ vim.keymap.set("n", "<A-l>", ss.resize_right)
 
 -- navigation
 -- tabs
+vim.keymap.set("n", "<leader>wt", "<cmd>$tabnew<cr>", { noremap = true, desc = "New tab" })
+vim.keymap.set("n", "<leader>wc", "<cmd>tabclose<cr>", { noremap = true, desc = "Close tab" })
 vim.keymap.set("n", "]t", "<cmd>tabn<cr>", { noremap = true, desc = "Next tab" })
 vim.keymap.set("n", "[t", "<cmd>tabp<cr>", { noremap = true, desc = "Prev tab" })
+
+--     t = { "<cmd>$tabnew<cr>", "New tab" },
+--     c = { "<cmd>tabclose<cr>", "Close tab" },
+--     h = { "<cmd>-tabmove<cr>", "Move tab left" },
+--     l = { "<cmd>+tabmove<cr>", "Move tab right" },
+--
 -- kitty integration
 vim.keymap.set("n", "<C-h>", "<cmd>KittyNavigateLeft<cr>")
 vim.keymap.set("n", "<C-j>", "<cmd>KittyNavigateDown<cr>")
@@ -70,55 +78,5 @@ vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "Go to next [D]iagn
 -- vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, { desc = "Show diagnostic [E]rror messages" })
 -- vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uickfix list" })
 
-
-
--- local present, wk = pcall(require, "which-key")
---
--- if not present then
---   return
--- end
---
--- local options = {
---   key_labels = { ["<leader>"] = "SPC" },
---   layout = {
---     spacing = 6,
---   },
--- }
---
--- wk.setup(options)
---
--- local mapping_opts = {
---   mode = "n",
---   prefix = "<leader>",
---   buffer = nil,
---   silent = true,
---   noremap = true,
---   nowait = true,
--- }
---
--- local mappings = {
---   n = {
---     name = "Navigate",
---     m = { "<cmd>lua require('harpoon.mark').add_file()<cr>", "Mark File" },
---     t = { "<cmd>$tabnew<cr>", "New tab" },
---     c = { "<cmd>tabclose<cr>", "Close tab" },
---     h = { "<cmd>-tabmove<cr>", "Move tab left" },
---     l = { "<cmd>+tabmove<cr>", "Move tab right" },
---   },
---   o = {
---     name = "Tools",
---     o = { "<cmd>OutputPanel<cr>", "OutputPanel" },
---     l = { "<cmd>Lazy<cr>", "Lazy" },
---     m = { "<cmd>Mason<cr>", "Mason" },
---     M = { "<cmd>MasonLog<cr>", "MasonLog" },
---     n = { "<cmd>NullLsInstall<cr>", "NullLsInstall" },
---     N = { "<cmd>NullLsInfo<cr>", "NullLsInfo" },
---     s = { "<cmd>LspInstall<cr>", "LspInstall" },
---     S = { "<cmd>LspInfo<cr>", "LspInfo" },
---   },
---   w = {
---     name = "Windows",
---   },
--- }
---
--- wk.register(mappings, mapping_opts)
+-- tools
+vim.keymap.set("n", "<leader>ol", "<cmd>Lazy<cr>", { desc = "Lazy" })

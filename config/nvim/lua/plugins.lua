@@ -22,6 +22,7 @@ return {
 
   {
     "echasnovski/mini.nvim",
+    event = "VeryLazy",
     keys = {
       {
         "<leader>c",

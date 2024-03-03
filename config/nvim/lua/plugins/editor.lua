@@ -35,11 +35,6 @@ return {
   "kyazdani42/nvim-web-devicons",
 
   {
-    "farmergreg/vim-lastplace",
-    event = "BufReadPost",
-  },
-
-  {
     "declancm/maximize.nvim",
     config = true,
     keys = {

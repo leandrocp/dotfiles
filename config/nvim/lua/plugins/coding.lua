@@ -41,10 +41,10 @@ return {
       ]])
     end,
     keys = {
-      { "<leader>tn", "<cmd>TestNearest<cr>", desc = "Test Nearest" },
-      { "<leader>tf", "<cmd>TestFile<cr>", desc = "Test File" },
-      { "<leader>ts", "<cmd>TestSuite<cr>", desc = "Test Suite" },
-      { "<leader>tl", "<cmd>TestLast<cr>", desc = "Test Last" },
+      { "<leader>tn", "<cmd>TestNearest<cr>", desc = "Test fearest" },
+      { "<leader>tf", "<cmd>TestFile<cr>", desc = "Test file" },
+      { "<leader>ts", "<cmd>TestSuite<cr>", desc = "Test suite" },
+      { "<leader>tl", "<cmd>TestLast<cr>", desc = "Test last" },
       {
         "<leader>td",
         function()
@@ -53,7 +53,7 @@ return {
           -- revert to mix test so it doesn't affect other cmds
           vim.g["test#elixir#exunit#executable"] = "mix test"
         end,
-        desc = "Test Debug",
+        desc = "Test debug",
       },
     },
   },

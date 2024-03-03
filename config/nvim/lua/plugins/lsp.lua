@@ -3,6 +3,12 @@ return {
     "neovim/nvim-lspconfig",
     cmd = { "LspInfo", "LspInstall", "LspStart" },
     event = { "BufReadPre", "BufNewFile" },
+    keys = {
+      { "<leader>op", "<cmd>LspInstall<cr>", desc = "LspInstall" },
+      { "<leader>oP", "<cmd>LspInfo<cr>", desc = "LspInfo" },
+      { "<leader>om", "<cmd>Mason<cr>", desc = "Mason" },
+      { "<leader>oM", "<cmd>MasonLog<cr>", desc = "Mason log" },
+    },
     dependencies = {
       "williamboman/mason.nvim",
       "williamboman/mason-lspconfig.nvim",
@@ -22,7 +28,7 @@ return {
           map("gI", require("telescope.builtin").lsp_implementations, "Goto implementation")
           map("<leader>D", require("telescope.builtin").lsp_type_definitions, "Type definition")
           map("<leader>ds", require("telescope.builtin").lsp_document_symbols, "Document symbols")
-          map("<leader>cs", require("telescope.builtin").lsp_dynamic_workspace_symbols, "Symbols")
+          map("<leader>S", require("telescope.builtin").lsp_dynamic_workspace_symbols, "Workspace symbols")
           map("<leader>cr", vim.lsp.buf.rename, "Rename")
           map("<leader>ca", vim.lsp.buf.code_action, "Action")
           map("K", vim.lsp.buf.hover, "Hover Documentation")
@@ -95,12 +101,24 @@ return {
         build = (function()
           return "make install_jsregexp"
         end)(),
+        dependencies = {
+          {
+            "rafamadriz/friendly-snippets",
+            config = function()
+              require("luasnip.loaders.from_vscode").lazy_load()
+            end,
+          },
+        },
+        opts = {
+          history = true,
+          delete_check_events = "TextChanged",
+        },
       },
-      "saadparwaiz1/cmp_luasnip",
       "hrsh7th/cmp-nvim-lsp",
       "hrsh7th/cmp-buffer",
       "hrsh7th/cmp-cmdline",
       "hrsh7th/cmp-path",
+      "saadparwaiz1/cmp_luasnip",
       {
         "zbirenbaum/copilot-cmp",
         dependencies = "copilot.lua",
@@ -124,9 +142,9 @@ return {
         },
         completion = { completeopt = "menu,menuone,noinsert" },
         mapping = cmp.mapping.preset.insert({
-          ["<C-j>"] = cmp.mapping.select_next_item(),
-          ["<C-k>"] = cmp.mapping.select_prev_item(),
-          ["<C-Cr>"] = cmp.mapping.confirm({ select = true }),
+          ["<C-j>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
+          ["<C-k>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
+          ["<C-CR>"] = cmp.mapping.confirm({ select = true }),
           ["<C-Space>"] = cmp.mapping.complete({}),
           ["<C-l>"] = cmp.mapping(function()
             if luasnip.expand_or_locally_jumpable() then
@@ -148,6 +166,11 @@ return {
           { name = "buffer" },
           { name = "path" },
         },
+        experimental = {
+          ghost_text = {
+            hl_group = "CmpGhostText",
+          },
+        },
       })
 
       cmp.setup.cmdline("/", {
@@ -155,6 +178,12 @@ return {
         sources = {
           { name = "buffer" },
         },
+      })
+
+      cmp.setup.cmdline(":", {
+        sources = cmp.config.sources({
+          { name = "path" },
+        }, { { name = "cmdline" } }),
       })
     end,
   },
