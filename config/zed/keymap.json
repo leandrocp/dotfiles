@@ -1,35 +1,46 @@
 [
+  // normal & visual mode
   {
     "context": "Editor && VimControl && !VimWaiting && !menu",
-    "bindings": {
-      // put key-bindings here if you want them to work in normal & visual mode
-    }
+    "bindings": {}
   },
+  // normal mode
   {
     "context": "Editor && vim_mode == normal && !VimWaiting && !menu",
     "bindings": {
-      // put key-bindings here if you want them to work only in normal mode
-      ";": "command_palette::Toggle"
+      ";": "command_palette::Toggle",
+      "] d": "editor::GoToDiagnostic",
+      "[ d": "editor::GoToPrevDiagnostic",
+      "space f": "file_finder::Toggle",
+      "space t .": "task::Rerun",
+      "ctrl-h": ["workspace::ActivatePaneInDirection", "Left"],
+      "ctrl-l": ["workspace::ActivatePaneInDirection", "Right"],
+      "ctrl-k": ["workspace::ActivatePaneInDirection", "Up"],
+      "ctrl-j": ["workspace::ActivatePaneInDirection", "Down"],
+      "g c c": "editor::ToggleComments"
     }
   },
+  // visual, visual line & visual block modes
   {
     "context": "Editor && vim_mode == visual && !VimWaiting && !menu",
     "bindings": {
-      // visual, visual line & visual block modes
+      "g c": "editor::ToggleComments"
     }
   },
+  // insert mode
   {
     "context": "Editor && vim_mode == insert && !menu",
     "bindings": {
-      // put key-bindings here if you want them to work in insert mode
-      "kj": [
-        "vim::SwitchMode",
-        "Normal"
-      ],
-      "k+j": [
-        "vim::SwitchMode",
-        "Normal"
-      ],
+      "k j": "vim::NormalBefore"
+    }
+  },
+  {
+    "context": "Dock",
+    "bindings": {
+      "ctrl-h": ["workspace::ActivatePaneInDirection", "Left"],
+      "ctrl-l": ["workspace::ActivatePaneInDirection", "Right"],
+      "ctrl-k": ["workspace::ActivatePaneInDirection", "Up"],
+      "ctrl-j": ["workspace::ActivatePaneInDirection", "Down"]
     }
   }
 ]

@@ -16,6 +16,8 @@ opt.ignorecase = true
 opt.ignorecase = true
 opt.iskeyword:append('$', '@', '-', '_')
 opt.laststatus = 3
+opt.list = true
+opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
 opt.mouse = "a"
 opt.mousemodel = "extend"
 opt.number = true
@@ -43,7 +45,7 @@ opt.timeoutlen = 300
 opt.title = true
 opt.titlestring = "%f"
 opt.undofile = true
-opt.updatetime = 200
+opt.updatetime = 250
 opt.wildmode = "longest:full,full"
 opt.winminwidth = 5
 opt.wrap = false

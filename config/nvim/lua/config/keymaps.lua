@@ -25,22 +25,11 @@ vim.keymap.set("v", ">", ">gv")
 -- don't replace yank register if deleting empty line in NORMAL MODE
 local function smart_dd_normal()
   if vim.api.nvim_get_current_line():match("^%s*$") then
-    return "\"_dd"
+    return '"_dd'
   else
     return "dd"
   end
 end
--- don't replace yank register if deleting empty line in VISUAL MODE
-local function smart_dd_visual()
-  local l, _c = unpack(vim.api.nvim_win_get_cursor(0))
-  for _, line in ipairs(vim.api.nvim_buf_get_lines(0, l - 1, l, true)) do
-    if line:match("^%s*$") then
-      return "\"_d"
-    end
-  end
-  return "d"
-end
-vim.keymap.set("v", "d", smart_dd_visual, { noremap = true, expr = true })
 vim.keymap.set("n", "dd", smart_dd_normal, { noremap = true, expr = true })
 
 -- https://github.com/mhinz/vim-galore#saner-behavior-of-n-and-n
@@ -71,13 +60,13 @@ vim.keymap.set("n", "<C-j>", "<cmd>KittyNavigateDown<cr>")
 vim.keymap.set("n", "<C-k>", "<cmd>KittyNavigateUp<cr>")
 vim.keymap.set("n", "<C-l>", "<cmd>KittyNavigateRight<cr>")
 -- jump
-vim.keymap.set('n', 'n', 'nzzzv') -- center screen
-vim.keymap.set('n', 'N', 'Nzzzv')
-vim.keymap.set('n', '*', '*N')    -- do not jump forward
+vim.keymap.set("n", "n", "nzzzv") -- center screen
+vim.keymap.set("n", "N", "Nzzzv")
+vim.keymap.set("n", "*", "*N") -- do not jump forward
 
 -- diagnostics
-vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous diagnostic message' })
-vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next diagnostic message' })
+vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "Go to previous diagnostic message" })
+vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "Go to next diagnostic message" })
 
 -- context
 vim.keymap.set("n", "[c", function()
@@ -85,10 +74,18 @@ vim.keymap.set("n", "[c", function()
 end, { silent = true })
 
 -- git chuncks
-vim.keymap.set("n", "]g", "<cmd>lua require 'gitsigns'.next_hunk({navigation_message = false})<cr>",
-  { desc = "Next git hunk" })
-vim.keymap.set("n", "[g", "<cmd>lua require 'gitsigns'.prev_hunk({navigation_message = false})<cr>",
-  { desc = "Prev git hunk" })
+vim.keymap.set(
+  "n",
+  "]g",
+  "<cmd>lua require 'gitsigns'.next_hunk({navigation_message = false})<cr>",
+  { desc = "Next git hunk" }
+)
+vim.keymap.set(
+  "n",
+  "[g",
+  "<cmd>lua require 'gitsigns'.prev_hunk({navigation_message = false})<cr>",
+  { desc = "Prev git hunk" }
+)
 
 local present, wk = pcall(require, "which-key")
 
@@ -144,7 +141,7 @@ local mappings = {
   ["5"] = { "<cmd>lua require('harpoon.ui').nav_file(5)<cr>", "Marked file 5" },
   b = {
     name = "Buffer",
-    f = { "<cmd>lua vim.lsp.buf.format({ async = true })<cr>", "Format" },
+    -- f = { "<cmd>lua vim.lsp.buf.format({ async = true })<cr>", "Format" },
     u = { "<cmd>UndotreeToggle<cr>", "Undo Tree" },
     s = { "<cmd>Telescope lsp_document_symbols<cr>", "Symbols" },
     t = { "<cmd>TroubleToggle document_diagnostics<cr>", "Trouble" },
@@ -208,13 +205,7 @@ local mappings = {
     r = { "<cmd>lua require('spectre').open()<cr>", "Replace" },
     R = { "<cmd>lua require('spectre').open_visual({select_word=true})<cr>", "Replace Current word" },
   },
-  t = {
-    name = "Test",
-    l = { "<cmd>TestLast<cr>", "Last" },
-    n = { "<cmd>TestNearest<cr>", "Nearest" },
-    f = { "<cmd>TestFile<cr>", "File" },
-    s = { "<cmd>TestSuite<cr>", "Suite" },
-  },
+  t = { name = "Test" },
   u = { "<cmd>UndotreeToggle<CR>", "Undo Tree" },
   w = {
     name = "Windows",

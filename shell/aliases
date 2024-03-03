@@ -3,7 +3,7 @@
 alias vi=nvim
 alias vim=nvim
 alias e='nvim'
-alias up='brew upgrade; mise self-update; znap pull; nvim-update; brew cleanup'
+alias up='brew upgrade; mise self-update --yes; znap pull; nvim-update; brew cleanup'
 alias g='git'
 alias gg='lazygit'
 alias tf='terraform'

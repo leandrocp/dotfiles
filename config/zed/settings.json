@@ -7,6 +7,7 @@
 // custom settings, run the `open default settings` command
 // from the command palette or from `Zed` application menu.
 {
+  "theme": "One Light",
   "telemetry": {
     "metrics": false,
     "diagnostics": false
@@ -24,6 +25,22 @@
     "show": "never"
   },
   "format_on_save": "off",
+  "lsp": {
+    "rust-analyzer": {
+      "initialization_options": {
+        "inlayHints": {
+          "maxLength": null,
+          "lifetimeElisionHints": {
+            "useParameterNames": true,
+            "enable": "skip_trivial"
+          },
+          "closureReturnTypeHints": {
+            "enable": "always"
+          }
+        }
+      }
+    }
+  }
   // next-ls
   // "elixir": {
   //   "lsp": "next_ls"
