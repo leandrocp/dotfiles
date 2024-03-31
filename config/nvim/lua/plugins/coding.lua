@@ -30,14 +30,14 @@ return {
 
   {
     "vim-test/vim-test",
-    cmd = { "TestNearest", "TestClass", "TestFile", "TestSuite", "TestLast", "TestVisit" },
+    cmd = { "TestNearest", "TestFile", "TestSuite", "TestLast" },
     init = function()
       vim.cmd([[
         let g:test#preserve_screen = 1
         let g:test#echo_command = 0
-        let test#strategy = "kitty"
+        let test#strategy = "wezterm"
 
-        let g:test#elixir#exunit#options = "--trace"
+        " let g:test#elixir#exunit#options = "--trace"
       ]])
     end,
     keys = {
@@ -72,37 +72,33 @@ return {
     },
   },
 
-  {
-    "elixir-tools/elixir-tools.nvim",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-    },
-    version = "*",
-    event = { "BufReadPre", "BufNewFile" },
-    config = function()
-      local elixir = require("elixir")
-      local elixirls = require("elixir.elixirls")
-
-      elixir.setup({
-        nextls = { enable = false },
-        credo = {},
-        elixirls = {
-          enable = true,
-          settings = elixirls.settings({
-            fetchDeps = false,
-            dialyzerEnabled = false,
-            suggestSpecs = false,
-            autoInsertRequiredAlias = false,
-          }),
-          on_attach = function(client, bufnr)
-            -- vim.keymap.set("n", "<space>fp", ":ElixirFromPipe<cr>", { buffer = true, noremap = true })
-            -- vim.keymap.set("n", "<space>tp", ":ElixirToPipe<cr>", { buffer = true, noremap = true })
-            -- vim.keymap.set("v", "<space>em", ":ElixirExpandMacro<cr>", { buffer = true, noremap = true })
-          end,
-        },
-      })
-    end,
-  },
+  -- {
+  --   "elixir-tools/elixir-tools.nvim",
+  --   dependencies = {
+  --     "nvim-lua/plenary.nvim",
+  --   },
+  --   version = "*",
+  --   event = { "BufReadPre", "BufNewFile" },
+  --   config = function()
+  --     local elixir = require("elixir")
+  --     local elixirls = require("elixir.elixirls")
+  --
+  --     elixir.setup({
+  --       nextls = { enable = true },
+  --       credo = { enable = false },
+  --       elixirls = {
+  --         enable = true,
+  --         settings = elixirls.settings({
+  --           fetchDeps = false,
+  --           dialyzerEnabled = false,
+  --           suggestSpecs = false,
+  --           autoInsertRequiredAlias = false,
+  --           enableTestLeads = false,
+  --         }),
+  --       },
+  --     })
+  --   end,
+  -- },
 
   {
     "stevearc/conform.nvim",
@@ -164,4 +160,47 @@ return {
   },
 
   { "nvim-treesitter/playground", cmd = "TSPlaygroundToggle" },
+
+  {
+    "mrcjkb/rustaceanvim",
+    version = "^4",
+    ft = { "rust" },
+    opts = {
+      server = {
+        on_attach = function(_, bufnr)
+          -- vim.keymap.set("n", "<leader>cR", function()
+          --   vim.cmd.RustLsp("codeAction")
+          -- end, { desc = "Code Action", buffer = bufnr })
+          -- vim.keymap.set("n", "<leader>dr", function()
+          --   vim.cmd.RustLsp("debuggables")
+          -- end, { desc = "Rust debuggables", buffer = bufnr })
+        end,
+        default_settings = {
+          ["rust-analyzer"] = {
+            cargo = {
+              allFeatures = true,
+              loadOutDirsFromCheck = true,
+              runBuildScripts = true,
+            },
+            checkOnSave = {
+              allFeatures = true,
+              command = "clippy",
+              extraArgs = { "--no-deps" },
+            },
+            procMacro = {
+              enable = true,
+              ignored = {
+                ["async-trait"] = { "async_trait" },
+                ["napi-derive"] = { "napi" },
+                ["async-recursion"] = { "async_recursion" },
+              },
+            },
+          },
+        },
+      },
+    },
+    config = function(_, opts)
+      vim.g.rustaceanvim = vim.tbl_deep_extend("keep", vim.g.rustaceanvim or {}, opts or {})
+    end,
+  },
 }

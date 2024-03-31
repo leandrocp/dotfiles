@@ -37,8 +37,8 @@ function bootstrap() {
   eval "$(/opt/homebrew/bin/brew shellenv)"
   source apps_osx.sh
 
-  echo "rtx"
-  curl https://mise.jdx.dev/install.sh | sh
+  echo "mise"
+  curl https://mise.run | sh
 }
 
 link_root

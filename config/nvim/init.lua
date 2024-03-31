@@ -26,7 +26,9 @@ vim.opt.rtp:prepend(lazypath)
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
-require("lazy").setup("plugins")
 require("config.options")
+require("lazy").setup("plugins")
 require("config.autocmds")
 require("config.keymaps")
+
+vim.cmd.colorscheme("catppuccin-macchiato")

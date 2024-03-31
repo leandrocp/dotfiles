@@ -23,13 +23,15 @@ return {
           "vim",
           "vimdoc",
           "bash",
+          "regex",
           "markdown",
           "markdown_inline",
-          "regex",
-          "lua",
           "yaml",
+          "toml",
           "json",
+          "lua",
           "javascript",
+          "typescript",
           "html",
           "css",
           "erlang",
@@ -37,6 +39,7 @@ return {
           "eex",
           "heex",
           "rust",
+          "svelte",
         },
 
         auto_install = true,
@@ -139,10 +142,10 @@ return {
             -- Use if you want more granular movements
             -- Make it even more gradual by adding multiple queries and regex.
             goto_next = {
-              ["]d"] = "@conditional.outer",
+              ["]o"] = "@conditional.outer",
             },
             goto_previous = {
-              ["[d"] = "@conditional.outer",
+              ["[o"] = "@conditional.outer",
             },
           },
         },

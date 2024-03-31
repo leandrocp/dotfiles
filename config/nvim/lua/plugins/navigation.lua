@@ -25,13 +25,14 @@ return {
       "nvim-lua/plenary.nvim",
       { "nvim-telescope/telescope-ui-select.nvim" },
       { "nvim-tree/nvim-web-devicons" },
-      {
-        "nvim-telescope/telescope-fzf-native.nvim",
-        build = "make",
-        cond = function()
-          return vim.fn.executable("make") == 1
-        end,
-      },
+      { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
+      -- {
+      --   "nvim-telescope/telescope-fzf-native.nvim",
+      --   build = "make",
+      --   cond = function()
+      --     return vim.fn.executable("make") == 1
+      --   end,
+      -- },
       -- {
       --   "nvim-telescope/telescope-github.nvim",
       --   config = function()
@@ -70,7 +71,7 @@ return {
             height = 0.80,
             preview_cutoff = 120,
           },
-          file_ignore_patterns = { "node_modules", ".elixir_ls", "_build" },
+          file_ignore_patterns = { "node_modules", ".elixir_ls", ".elixir-tools", "_build" },
           path_display = { "truncate" },
           set_env = { ["COLORTERM"] = "truecolor" }, -- default = nil,
           mappings = {
@@ -95,15 +96,17 @@ return {
         },
       })
 
-      pcall(require("telescope").load_extension, "fzf")
-      pcall(require("telescope").load_extension, "ui-select")
-      pcall(require("telescope").load_extension, "projects")
+      pcall(telescope.load_extension, "fzf")
+      pcall(telescope.load_extension, "ui-select")
+      pcall(telescope.load_extension, "projects")
 
       local builtin = require("telescope.builtin")
       vim.keymap.set("n", "<leader>r", builtin.resume, { desc = "Resume search" })
       vim.keymap.set("n", "<leader>;", builtin.command_history, { desc = "Command history" })
       vim.keymap.set("n", "<leader>/", builtin.live_grep, { desc = "Grep" })
-      vim.keymap.set("n", "<leader>,", builtin.buffers, { desc = "Buffers" })
+      vim.keymap.set("n", "<leader>,", function()
+        builtin.buffers({ sort_mru = true, sort_lastused = true })
+      end, { desc = "Buffers" })
       vim.keymap.set("n", "<leader>f", project_files, { desc = "Find file" })
       vim.keymap.set("n", "<leader>sh", builtin.help_tags, { desc = "Help" })
       vim.keymap.set("n", "<leader>sk", builtin.keymaps, { desc = "Keymaps" })
@@ -166,38 +169,26 @@ return {
     end,
   },
 
-  --   e = { "<cmd>NvimTreeFocus<cr>", "Explorer" },
-  -- {
-  --   "nvim-tree/nvim-tree.lua",
-  --   cmd = { "NvimTreeFocus", "NvimTreeToggle", "NvimTreeFindFile" },
-  --   opts = {
-  --     view = {
-  --       adaptive_size = true,
-  --       width = 35,
-  --     },
-  --     update_focused_file = {
-  --       enable = true,
-  --     },
-  --     renderer = {
-  --       indent_markers = {
-  --         enable = true,
-  --       },
-  --       special_files = { "Cargo.toml", "Makefile", "README.md", "readme.md", "mix.exs", "mix.lock" },
-  --     },
-  --     git = {
-  --       ignore = false,
-  --     },
-  --   },
-  -- },
-
   {
     "stevearc/oil.nvim",
-    cmd = { "Oil" },
-    keys = {
-      { "<leader>e", "<cmd>Oil<cr>", desc = "Explorer" },
-    },
-    opts = {},
     dependencies = { "nvim-tree/nvim-web-devicons" },
+    opts = {
+      view_options = {
+        show_hidden = true,
+      },
+      float = {
+        padding = 10,
+      },
+    },
+    keys = {
+      {
+        "-",
+        function()
+          require("oil").open_float()
+        end,
+        desc = "Explorer",
+      },
+    },
   },
 
   {

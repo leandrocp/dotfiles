@@ -34,3 +34,4 @@ Package Control.user-ca-bundle
 /config/zed/embeddings
 /config/zed/conversations
 /config/lazygit/state.yml
+*.tmp*

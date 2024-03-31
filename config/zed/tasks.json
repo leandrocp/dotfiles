@@ -1,15 +1,9 @@
 [
   {
-    "label": "mix test",
-    "command": "mix",
-    "args": ["test"],
-    "use_new_terminal": false,
-    "allow_concurrent_runs": false
-  },
-  {
-    "label": "mix test --failed",
-    "command": "mix",
-    "args": ["test", "--failed"],
+    "label": "Lazygit",
+    "command": "lazygit",
+    "args": [],
+    "env": {},
     "use_new_terminal": false,
     "allow_concurrent_runs": false
   }

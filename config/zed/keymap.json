@@ -1,4 +1,43 @@
 [
+  {
+    "bindings": {
+      "ctrl-k": "menu::SelectPrev",
+      "ctrl-j": "menu::SelectNext"
+    }
+  },
+  {
+    "context": "Editor",
+    "bindings": {
+      "ctrl-k": "editor::MoveUp",
+      "ctrl-j": "editor::MoveDown"
+    }
+  },
+  {
+    "context": "ProjectPanel && not_editing",
+    "bindings": {
+      "a": "project_panel::NewFile",
+      "x": "project_panel::Cut",
+      "c": "project_panel::Copy",
+      "p": "project_panel::Paste",
+      "r": "project_panel::Rename",
+      "d": "project_panel::Delete"
+    }
+  },
+  {
+    "context": "Editor && vim_mode == normal && vim_operator == none && !VimWaiting && !(showing_completions || showing_code_actions)",
+    "bindings": {
+      "space g g": ["task::Spawn", { "task_name": "Lazygit" }],
+      "space t s": ["task::Spawn", { "task_name": "Elixir: test suite" }],
+      "space t t": ["task::Spawn", { "task_name": "Elixir: test file" }],
+      "space t n": [
+        "task::Spawn",
+        { "task_name": "Elixir: test at current line" }
+      ],
+      "space t l": "task::Rerun",
+      "[ t": "pane::ActivatePrevItem",
+      "] t": "pane::ActivateNextItem"
+    }
+  },
   // normal & visual mode
   {
     "context": "Editor && VimControl && !VimWaiting && !menu",
@@ -9,14 +48,23 @@
     "context": "Editor && vim_mode == normal && !VimWaiting && !menu",
     "bindings": {
       ";": "command_palette::Toggle",
-      "] d": "editor::GoToDiagnostic",
-      "[ d": "editor::GoToPrevDiagnostic",
-      "space f": "file_finder::Toggle",
-      "space t .": "task::Rerun",
+      "ctrl-\\": "pane::SplitRight",
+      "ctrl--": "pane::SplitDown",
       "ctrl-h": ["workspace::ActivatePaneInDirection", "Left"],
       "ctrl-l": ["workspace::ActivatePaneInDirection", "Right"],
       "ctrl-k": ["workspace::ActivatePaneInDirection", "Up"],
       "ctrl-j": ["workspace::ActivatePaneInDirection", "Down"],
+      "-": "workspace::ToggleLeftDock",
+      "space f": "file_finder::Toggle",
+      "space /": "workspace::NewSearch",
+      "space d f": "editor::Format",
+      "shift-k": "editor::Hover",
+      "ctrl-o": "pane::GoBack",
+      "ctrl-i": "pane::GoForward",
+      "] d": "editor::GoToDiagnostic",
+      "[ d": "editor::GoToPrevDiagnostic",
+      "] g": "editor::GoToHunk",
+      "[ g": "editor::GoToPrevHunk",
       "g c c": "editor::ToggleComments"
     }
   },
@@ -31,7 +79,21 @@
   {
     "context": "Editor && vim_mode == insert && !menu",
     "bindings": {
-      "k j": "vim::NormalBefore"
+      "k j": ["vim::SwitchMode", "Normal"]
+    }
+  },
+  // completion mode
+  {
+    "context": "Editor && showing_completions",
+    "bindings": {
+      "ctrl-o": "editor::ConfirmCompletion"
+    }
+  },
+  {
+    "context": "Editor && (showing_code_actions || showing_completions)",
+    "bindings": {
+      "ctrl-k": "editor::ContextMenuPrev",
+      "ctrl-j": "editor::ContextMenuNext"
     }
   },
   {

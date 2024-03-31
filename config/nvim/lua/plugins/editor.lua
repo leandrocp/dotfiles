@@ -2,28 +2,38 @@ return {
   {
     "catppuccin/nvim",
     name = "catppuccin",
-    lazy = false,
-    priority = 1000,
-    config = function()
-      require("catppuccin").setup({
-        flavour = "macchiato",
-        integrations = {
-          cmp = true,
-          gitsigns = true,
-          mason = true,
-          nvimtree = true,
-          treesitter = true,
-          telescope = true,
-          lsp_trouble = true,
-          which_key = true,
-          native_lsp = {
-            enabled = true,
+    lazy = true,
+    opts = {
+      integrations = {
+        cmp = true,
+        flash = true,
+        gitsigns = true,
+        headlines = true,
+        illuminate = true,
+        leap = true,
+        lsp_trouble = true,
+        mason = true,
+        markdown = true,
+        mini = true,
+        native_lsp = {
+          enabled = true,
+          underlines = {
+            errors = { "undercurl" },
+            hints = { "undercurl" },
+            warnings = { "undercurl" },
+            information = { "undercurl" },
           },
         },
-      })
-
-      vim.cmd.colorscheme("catppuccin")
-    end,
+        neotest = true,
+        noice = true,
+        notify = true,
+        semantic_tokens = true,
+        telescope = true,
+        treesitter = true,
+        treesitter_context = true,
+        which_key = true,
+      },
+    },
   },
 
   {
@@ -74,8 +84,8 @@ return {
           vim.keymap.set(mode, l, r, { buffer = buffer, desc = desc })
         end
 
-        map("n", "]c", gs.next_hunk, "Next change")
-        map("n", "[c", gs.prev_hunk, "Prev change")
+        map("n", "]g", gs.next_hunk, "Next git chunk")
+        map("n", "[g", gs.prev_hunk, "Prev git chunk")
         map({ "n", "v" }, "<leader>gs", ":Gitsigns stage_hunk<CR>", "Stage change")
         map({ "n", "v" }, "<leader>gr", ":Gitsigns reset_hunk<CR>", "Reset change")
         map("n", "<leader>gU", gs.undo_stage_hunk, "Undo stage change")

@@ -1,10 +1,11 @@
 os:
-  edit: 'nvim --server "$NVIM" --remote-tab {{filename}}'
-  editAtLine: 'nvim --server "$NVIM" --remote-tab {{filename}}; [ -z "$NVIM" ] || nvim --server "$NVIM" --remote-send ":{{line}}<CR>"'
-  editAtLineAndWait: 'nvim +{{line}} {{filename}}'
+  # edit: 'nvim --server "$NVIM" --remote-tab {{filename}}'
+  # editAtLine: 'nvim --server "$NVIM" --remote-tab {{filename}}; [ -z "$NVIM" ] || nvim --server "$NVIM" --remote-send ":{{line}}<CR>"'
+  # editAtLineAndWait: 'nvim +{{line}} {{filename}}'
+  edit: 'zed {{filename}}'
 promptToReturnFromSubprocess: false
 gui:
-  # https://github.com/catppuccin/lazygit/blob/main/themes/macchiato/macchiato-blue.yml
+  # https://github.com/catppuccin/lazygit/blob/30bff2e6d14ca12a09d71e5ce4e6a086b3e48aa6/themes/macchiato/blue.yml
   theme:
     activeBorderColor:
       - '#8aadf4'
@@ -14,8 +15,6 @@ gui:
     optionsTextColor:
       - '#8aadf4'
     selectedLineBgColor:
-      - '#363a4f'
-    selectedRangeBgColor:
       - '#363a4f'
     cherryPickedCommitBgColor:
       - '#494d64'

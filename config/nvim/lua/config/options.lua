@@ -14,10 +14,10 @@ opt.grepprg = "rg --vimgrep"
 opt.hidden = true
 opt.ignorecase = true
 opt.ignorecase = true
-opt.iskeyword:append('$', '@', '-', '_')
+opt.iskeyword:append({ "_", "-" })
 opt.laststatus = 3
 opt.list = true
-opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
+opt.listchars = { tab = "» ", trail = "·", nbsp = "␣" }
 opt.mouse = "a"
 opt.mousemodel = "extend"
 opt.number = true

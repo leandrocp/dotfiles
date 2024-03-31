@@ -15,7 +15,15 @@ return {
       "WhoIsSethDaniel/mason-tool-installer.nvim",
       { "j-hui/fidget.nvim", opts = {} },
     },
+    opts = {
+      diagnostics = {
+        underline = true,
+      },
+    },
     config = function()
+      local lspconfig = require("lspconfig")
+      local configs = require("lspconfig.configs")
+
       vim.api.nvim_create_autocmd("LspAttach", {
         group = vim.api.nvim_create_augroup("leandrocp-lsp-attach", { clear = true }),
         callback = function(event)
@@ -23,12 +31,14 @@ return {
             vim.keymap.set("n", keys, func, { buffer = event.buf, desc = desc })
           end
 
-          map("gd", require("telescope.builtin").lsp_definitions, "Goto definition")
-          map("gr", require("telescope.builtin").lsp_references, "Goto references")
-          map("gI", require("telescope.builtin").lsp_implementations, "Goto implementation")
-          map("<leader>D", require("telescope.builtin").lsp_type_definitions, "Type definition")
-          map("<leader>ds", require("telescope.builtin").lsp_document_symbols, "Document symbols")
-          map("<leader>S", require("telescope.builtin").lsp_dynamic_workspace_symbols, "Workspace symbols")
+          local telescope_builtin = require("telescope.builtin")
+
+          map("gd", telescope_builtin.lsp_definitions, "Goto definition")
+          map("gr", telescope_builtin.lsp_references, "Goto references")
+          map("gI", telescope_builtin.lsp_implementations, "Goto implementation")
+          map("<leader>sD", telescope_builtin.lsp_type_definitions, "Type definition")
+          map("<leader>ds", telescope_builtin.lsp_document_symbols, "Document symbols")
+          map("<leader>S", telescope_builtin.lsp_dynamic_workspace_symbols, "Workspace symbols")
           map("<leader>cr", vim.lsp.buf.rename, "Rename")
           map("<leader>ca", vim.lsp.buf.code_action, "Action")
           map("K", vim.lsp.buf.hover, "Hover Documentation")
@@ -52,7 +62,27 @@ return {
       local capabilities = vim.lsp.protocol.make_client_capabilities()
       capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
 
+      local lexical_config = {
+        filetypes = { "elixir", "eelixir", "heex", "surface" },
+        cmd = { "/Users/leandro/code/github/lexical-lsp/lexical/_build/dev/package/lexical/bin/start_lexical.sh" },
+        settings = {},
+      }
+
+      -- if not configs.lexical then
+      --   configs.lexical = {
+      --     default_config = {
+      --       filetypes = lexical_config.filetypes,
+      --       cmd = lexical_config.cmd,
+      --       root_dir = function(fname)
+      --         return lspconfig.util.root_pattern("mix.exs", ".git")(fname) or vim.loop.os_homedir()
+      --       end,
+      --       settings = lexical_config.settings,
+      --     },
+      --   }
+      -- end
+
       local servers = {
+        marksman = {},
         lua_ls = {
           settings = {
             Lua = {
@@ -70,13 +100,21 @@ return {
             },
           },
         },
+        -- lexical = lexical_config,
       }
+
+      lspconfig.lexical.setup({})
 
       require("mason").setup()
 
       local ensure_installed = vim.tbl_keys(servers or {})
       vim.list_extend(ensure_installed, {
+        "markdownlint",
+        "marksman",
         "stylua",
+        "eslint_d",
+        "prettierd",
+        "lexical",
       })
       require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 
@@ -144,7 +182,7 @@ return {
         mapping = cmp.mapping.preset.insert({
           ["<C-j>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
           ["<C-k>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
-          ["<C-CR>"] = cmp.mapping.confirm({ select = true }),
+          ["<C-o>"] = cmp.mapping.confirm({ select = true }),
           ["<C-Space>"] = cmp.mapping.complete({}),
           ["<C-l>"] = cmp.mapping(function()
             if luasnip.expand_or_locally_jumpable() then

@@ -8,7 +8,7 @@ ZSH_AUTOSUGGEST_STRATEGY=( history )
 ZSH_HIGHLIGHT_HIGHLIGHTERS=( main brackets pattern cursor )
 
 znap source mafredri/zsh-async async.zsh
-znap source jeffreytse/zsh-vi-mode
+# znap source jeffreytse/zsh-vi-mode
 znap source zdharma-continuum/fast-syntax-highlighting
 znap source zsh-users/zsh-completions
 znap source zsh-users/zsh-autosuggestions

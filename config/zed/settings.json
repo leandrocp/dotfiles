@@ -1,13 +1,5 @@
-// Zed settings
-//
-// For information on how to configure Zed, see the Zed
-// documentation: https://zed.dev/docs/configuring-zed
-//
-// To see all of Zed's default settings without changing your
-// custom settings, run the `open default settings` command
-// from the command palette or from `Zed` application menu.
 {
-  "theme": "One Light",
+  "theme": "Catppuccin Macchiato",
   "telemetry": {
     "metrics": false,
     "diagnostics": false
@@ -17,6 +9,10 @@
     "copy_on_select": true
   },
   "vim_mode": true,
+  "vim": {
+    "use_multiline_find": true,
+    "use_smartcase_find": true
+  },
   "buffer_font_family": "Hack Nerd Font Mono",
   "buffer_font_size": 15,
   "cursor_blink": false,
@@ -25,7 +21,17 @@
     "show": "never"
   },
   "format_on_save": "off",
+  "ensure_final_newline_on_save": false,
+  "use_autoclose": false,
   "lsp": {
+    "elixir": {
+      "lsp": {
+        "local": {
+          "path": "/Users/leandro/code/github/lexical-lsp/lexical/_build/dev/package/lexical/bin/start_lexical.sh",
+          "arguments": []
+        }
+      }
+    },
     "rust-analyzer": {
       "initialization_options": {
         "inlayHints": {
@@ -41,29 +47,4 @@
       }
     }
   }
-  // next-ls
-  // "elixir": {
-  //   "lsp": "next_ls"
-  // },
-  // "languages": {
-  //   "Elixir": {
-  //     "lsp": "next_ls"
-  //   }
-  // },
-  // "language_overrides": {
-  //   "elixir": {
-  //     "lsp": "next_ls"
-  //   }
-  // }
-  // https://github.com/zed-industries/community/issues/2095
-  // "elixir": {
-  //   "lsp": {
-  //     "local": {
-  //       "path": "/Users/leandro/code/elixir-ls/language_server.sh",
-  //       "arguments": [
-  //         ""
-  //       ]
-  //     }
-  //   }
-  // }
 }
