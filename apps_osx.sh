@@ -2,13 +2,14 @@
 
 # https://github.com/Homebrew/install
 
-function brew_install() {
-  if brew ls --versions "$1"; then brew upgrade "$1"; else brew install "$1"; fi
-}
+# https://passepartoutvpn.app
+# https://zed.dev/releases/preview
 
 brew update
+brew tap homebrew/cask-fonts
 
 packages=(\
+1password \
 autoconf \
 automake \
 bat \
@@ -16,20 +17,32 @@ btop \
 cmake \
 cmark-gfm \
 coreutils \
+dash \
+devutils \
+discord \
+docker \
 dust \
 exa \
 fd \
+font-hack-nerd-font \
 fzf \
 gcc \
 gh \
 gnu-sed \
 lazygit \
+macdown \
+muzzle \
+obsidian \
 openssl \
 pgcli \
+proton-mail \
+protonmail-bridge \
+raycast \
 renameutils \
 ripgrep \
 slack \
 starship \
+tableplus \
 wxwidgets \
 zoxide \
 zsh \
@@ -37,11 +50,10 @@ zsh \
 
 for i in "${packages[@]}"
 do
-  brew_install "$i"
+  brew install "$i"
 done
 
-brew tap homebrew/cask-fonts
-brew install --force --cask font-hack-nerd-font
+brew install --cask dash
 
 $(brew --prefix)/opt/fzf/install
 
