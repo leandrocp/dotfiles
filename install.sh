@@ -29,9 +29,6 @@ function link_config() {
 function bootstrap() {
   echo "bootstrap"
 
-  echo "touch ~/.sensitive"
-  touch ~/.sensitive
-
   echo "homebrew"
   [[ -f /opt/homebrew/bin/brew ]] || /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
   eval "$(/opt/homebrew/bin/brew shellenv)"

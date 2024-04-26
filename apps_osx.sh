@@ -9,9 +9,30 @@ function brew_install() {
 brew update
 
 packages=(\
-autoconf openssl coreutils automake renameutils dust fd dog autojump openjdk wxwidgets \
-lazygit gh libxslt fop ripgrep zsh kitty lua starship exa \
-muzzle slack maccy rectangle joplin pgcli btop zoxide fzf \
+autoconf \
+automake \
+bat \
+btop \
+cmake \
+cmark-gfm \
+coreutils \
+dust \
+exa \
+fd \
+fzf \
+gcc \
+gh \
+gnu-sed \
+lazygit \
+openssl \
+pgcli \
+renameutils \
+ripgrep \
+slack \
+starship \
+wxwidgets \
+zoxide \
+zsh \
 )
 
 for i in "${packages[@]}"
