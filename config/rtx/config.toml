@@ -1,6 +1,0 @@
-[tools]
-nodejs = "lts"
-neovim = "nightly"
-erlang = "latest"
-elixir = "main-otp-26"
-rust = "stable"
