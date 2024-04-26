@@ -1,12 +1,19 @@
+// references
+// https://github.com/mrnugget/dotfiles/blob/master/zed_settings.json
+
 {
-  "theme": "Catppuccin Macchiato",
+  "theme": "Catppuccin Frappé - No Italics",
+  "ui_font_family": "Zed Sans",
   "telemetry": {
     "metrics": false,
     "diagnostics": false
   },
   "terminal": {
     "font_family": "Hack Nerd Font Mono",
-    "copy_on_select": true
+    "copy_on_select": true,
+    "env": {
+      "GIT_EDITOR": "zed --wait"
+    }
   },
   "vim_mode": true,
   "vim": {
@@ -14,15 +21,28 @@
     "use_smartcase_find": true
   },
   "buffer_font_family": "Hack Nerd Font Mono",
-  "buffer_font_size": 15,
+  "buffer_font_size": 14,
   "cursor_blink": false,
   "relative_line_numbers": true,
   "scrollbar": {
     "show": "never"
   },
+  "inlay_hints": {
+    "enabled": true
+  },
+  "git": {
+    "inline_blame": {
+      "enabled": false
+    }
+  },
   "format_on_save": "off",
   "ensure_final_newline_on_save": false,
   "use_autoclose": false,
+  "languages": {
+    "Markdown": {
+      "soft_wrap": "none"
+    }
+  },
   "lsp": {
     "elixir": {
       "lsp": {
@@ -43,7 +63,8 @@
           "closureReturnTypeHints": {
             "enable": "always"
           }
-        }
+        },
+        "linkedProjects": ["Cargo.toml", "native/comrak_nif/Cargo.toml"]
       }
     }
   }

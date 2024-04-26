@@ -1,8 +1,17 @@
+// references
+// https://github.com/mrnugget/dotfiles/blob/master/zed_keymap.json
+
 [
   {
     "bindings": {
       "ctrl-k": "menu::SelectPrev",
       "ctrl-j": "menu::SelectNext"
+    }
+  },
+  {
+    "context": "Workspace",
+    "bindings": {
+      "ctrl-s": "workspace::Save"
     }
   },
   {
@@ -13,8 +22,19 @@
     }
   },
   {
+    "context": "EmptyPane || SharedScreen",
+    "bindings": {
+      ";": "command_palette::Toggle",
+      "space f": "file_finder::Toggle"
+    }
+  },
+  {
     "context": "ProjectPanel && not_editing",
     "bindings": {
+      ";": "command_palette::Toggle",
+      "escape": "workspace::ToggleLeftDock",
+      "o": "project_panel::ExpandSelectedEntry",
+      "-": "project_panel::CollapseSelectedEntry",
       "a": "project_panel::NewFile",
       "x": "project_panel::Cut",
       "c": "project_panel::Copy",
@@ -24,76 +44,10 @@
     }
   },
   {
-    "context": "Editor && vim_mode == normal && vim_operator == none && !VimWaiting && !(showing_completions || showing_code_actions)",
+    "context": "Terminal",
     "bindings": {
-      "space g g": ["task::Spawn", { "task_name": "Lazygit" }],
-      "space t s": ["task::Spawn", { "task_name": "Elixir: test suite" }],
-      "space t t": ["task::Spawn", { "task_name": "Elixir: test file" }],
-      "space t n": [
-        "task::Spawn",
-        { "task_name": "Elixir: test at current line" }
-      ],
-      "space t l": "task::Rerun",
-      "[ t": "pane::ActivatePrevItem",
-      "] t": "pane::ActivateNextItem"
-    }
-  },
-  // normal & visual mode
-  {
-    "context": "Editor && VimControl && !VimWaiting && !menu",
-    "bindings": {}
-  },
-  // normal mode
-  {
-    "context": "Editor && vim_mode == normal && !VimWaiting && !menu",
-    "bindings": {
-      ";": "command_palette::Toggle",
-      "ctrl-\\": "pane::SplitRight",
-      "ctrl--": "pane::SplitDown",
-      "ctrl-h": ["workspace::ActivatePaneInDirection", "Left"],
-      "ctrl-l": ["workspace::ActivatePaneInDirection", "Right"],
-      "ctrl-k": ["workspace::ActivatePaneInDirection", "Up"],
-      "ctrl-j": ["workspace::ActivatePaneInDirection", "Down"],
-      "-": "workspace::ToggleLeftDock",
-      "space f": "file_finder::Toggle",
-      "space /": "workspace::NewSearch",
-      "space d f": "editor::Format",
-      "shift-k": "editor::Hover",
-      "ctrl-o": "pane::GoBack",
-      "ctrl-i": "pane::GoForward",
-      "] d": "editor::GoToDiagnostic",
-      "[ d": "editor::GoToPrevDiagnostic",
-      "] g": "editor::GoToHunk",
-      "[ g": "editor::GoToPrevHunk",
-      "g c c": "editor::ToggleComments"
-    }
-  },
-  // visual, visual line & visual block modes
-  {
-    "context": "Editor && vim_mode == visual && !VimWaiting && !menu",
-    "bindings": {
-      "g c": "editor::ToggleComments"
-    }
-  },
-  // insert mode
-  {
-    "context": "Editor && vim_mode == insert && !menu",
-    "bindings": {
-      "k j": ["vim::SwitchMode", "Normal"]
-    }
-  },
-  // completion mode
-  {
-    "context": "Editor && showing_completions",
-    "bindings": {
-      "ctrl-o": "editor::ConfirmCompletion"
-    }
-  },
-  {
-    "context": "Editor && (showing_code_actions || showing_completions)",
-    "bindings": {
-      "ctrl-k": "editor::ContextMenuPrev",
-      "ctrl-j": "editor::ContextMenuNext"
+      "ctrl-w": "workspace::ToggleZoom",
+      "ctrl-w t": "terminal_panel::ToggleFocus"
     }
   },
   {
@@ -103,6 +57,87 @@
       "ctrl-l": ["workspace::ActivatePaneInDirection", "Right"],
       "ctrl-k": ["workspace::ActivatePaneInDirection", "Up"],
       "ctrl-j": ["workspace::ActivatePaneInDirection", "Down"]
+    }
+  },
+  {
+    "context": "Editor && (showing_code_actions || showing_completions)",
+    "bindings": {
+      "ctrl-k": "editor::ContextMenuPrev",
+      "ctrl-j": "editor::ContextMenuNext",
+      "ctrl-o": "editor::ConfirmCompletion"
+    }
+  },
+  {
+    "context": "vim_operator == none && !VimWaiting && vim_mode != insert",
+    "bindings": {
+      "space f": "file_finder::Toggle",
+      "space ,": "tab_switcher::Toggle",
+      "space p": "projects::OpenRecent",
+      "space /": "workspace::NewSearch",
+      "space e": "workspace::ToggleLeftDock",
+      "space g g": ["task::Spawn", { "task_name": "Lazygit" }],
+      "space t s": ["task::Spawn", { "task_name": "mix test suite" }],
+      "space t t": ["task::Spawn", { "task_name": "mix test file" }],
+      "space t n": ["task::Spawn", { "task_name": "mix test line" }],
+      "space t d": ["task::Spawn", { "task_name": "mix test failed" }],
+      "space t l": "task::Rerun",
+      "[ t": "pane::ActivatePrevItem",
+      "] t": "pane::ActivateNextItem"
+    }
+  },
+  {
+    "context": "Editor && VimControl && !VimWaiting && !menu",
+    "bindings": {
+      "space w": "workspace::Save",
+      ";": "command_palette::Toggle",
+      "ctrl-w w": "workspace::ToggleZoom",
+      "ctrl-w t": "terminal_panel::ToggleFocus",
+      "space w l": "pane::SplitRight",
+      "space w j": "pane::SplitDown",
+      "space w c": "pane::CloseAllItems",
+      "space w t": "terminal_panel::ToggleFocus",
+      "ctrl-h": ["workspace::ActivatePaneInDirection", "Left"],
+      "ctrl-l": ["workspace::ActivatePaneInDirection", "Right"],
+      "ctrl-k": ["workspace::ActivatePaneInDirection", "Up"],
+      "ctrl-j": ["workspace::ActivatePaneInDirection", "Down"],
+      "space 1": ["pane::ActivateItem", 0],
+      "space 2": ["pane::ActivateItem", 1],
+      "space 3": ["pane::ActivateItem", 2],
+      "space 4": ["pane::ActivateItem", 3],
+      "space 5": ["pane::ActivateItem", 4],
+      "space 6": ["pane::ActivateItem", 5],
+      "space 7": ["pane::ActivateItem", 6],
+      "space 8": ["pane::ActivateItem", 7],
+      "space 9": ["pane::ActivateItem", 8],
+      "space d f": "editor::Format",
+      "shift-k": "editor::Hover",
+      "ctrl-o": "pane::GoBack",
+      "ctrl-i": "pane::GoForward",
+      "space g r": "editor::RevertSelectedHunks",
+      "space g b": "editor::ToggleGitBlame",
+      "g r": "editor::FindAllReferences",
+      "g a": "editor::ToggleCodeActions",
+      "] d": "editor::GoToDiagnostic",
+      "g R": "editor::Rename",
+      "[ d": "editor::GoToPrevDiagnostic",
+      "] g": "editor::GoToHunk",
+      "[ g": "editor::GoToPrevHunk",
+      "+": "editor::SelectLargerSyntaxNode",
+      "-": "editor::SelectSmallerSyntaxNode"
+    }
+  },
+  {
+    "context": "Editor && vim_mode == normal",
+    "bindings": {}
+  },
+  {
+    "context": "Editor && vim_mode == visual",
+    "bindings": {}
+  },
+  {
+    "context": "Editor && vim_mode == insert && !menu",
+    "bindings": {
+      "j j": ["vim::SwitchMode", "Normal"]
     }
   }
 ]
