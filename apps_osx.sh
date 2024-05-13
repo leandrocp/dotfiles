@@ -4,6 +4,7 @@
 
 # https://passepartoutvpn.app
 # https://zed.dev/releases/preview
+# https://postgresapp.com
 
 brew update
 brew tap homebrew/cask-fonts

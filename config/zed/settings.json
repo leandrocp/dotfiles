@@ -41,17 +41,12 @@
   "languages": {
     "Markdown": {
       "soft_wrap": "none"
+    },
+    "Elixir": {
+      "language_servers": ["!lexical", "!elixir-ls", "next-ls"]
     }
   },
   "lsp": {
-    "elixir": {
-      "lsp": {
-        "local": {
-          "path": "/Users/leandro/code/github/lexical-lsp/lexical/_build/dev/package/lexical/bin/start_lexical.sh",
-          "arguments": []
-        }
-      }
-    },
     "rust-analyzer": {
       "initialization_options": {
         "inlayHints": {
