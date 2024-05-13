@@ -5,24 +5,27 @@ os:
   edit: 'zed {{filename}}'
 promptToReturnFromSubprocess: false
 gui:
-  # https://github.com/catppuccin/lazygit/blob/30bff2e6d14ca12a09d71e5ce4e6a086b3e48aa6/themes/macchiato/blue.yml
+  # https://github.com/catppuccin/lazygit/blob/main/themes/frappe/blue.yml
   theme:
     activeBorderColor:
-      - '#8aadf4'
+      - '#8caaee'
       - bold
     inactiveBorderColor:
-      - '#a5adcb'
+      - '#a5adce'
     optionsTextColor:
-      - '#8aadf4'
+      - '#8caaee'
     selectedLineBgColor:
-      - '#363a4f'
+      - '#414559'
     cherryPickedCommitBgColor:
-      - '#494d64'
+      - '#51576d'
     cherryPickedCommitFgColor:
-      - '#8aadf4'
+      - '#8caaee'
     unstagedChangesColor:
-      - '#ed8796'
+      - '#e78284'
     defaultFgColor:
-      - '#cad3f5'
+      - '#c6d0f5'
     searchingActiveBorderColor:
-      - '#eed49f'
+      - '#e5c890'
+
+authorColors:
+  '*': '#babbf1'

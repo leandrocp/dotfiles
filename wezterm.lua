@@ -2,7 +2,7 @@ local wezterm = require("wezterm")
 local action = wezterm.action
 
 return {
-  color_scheme = "Catppuccin Macchiato",
+  color_scheme = "Catppuccin Frappe",
   font = wezterm.font("Hack Nerd Font Mono"),
   font_size = 14.0,
 

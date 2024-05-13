@@ -23,15 +23,8 @@ IEx.configure [
     width: 120
   ],
   colors: [
-    eval_result: [ :green, :bright ],
-    eval_result: [ :red, :bright ],
-    eval_info:   [ :cyan ],
+    eval_result: [:green, :bright],
+    eval_result: [:red, :bright ,
+    eval_info:   [:cyan],
   ]
 ]
-
-is_elixir_module? = fn module ->
-  case module do
-    "Elixir." <> _ -> true
-    _ -> false
-  end
-end

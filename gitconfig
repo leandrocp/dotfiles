@@ -39,20 +39,15 @@
   up = !sh -c 'git set-upstream && git fetch && git pull --rebase' -
   cp = cherry-pick
   set-upstream = !git branch --set-upstream-to=origin/`git symbolic-ref --short HEAD`
-  conflicted = !vim +Conflicted
 [commit]
   gpgsign = true
 [gpg]
   program = /usr/local/bin/gpg
-[merge]
-  tool = vim-conflicted
 [mergetool]
   prompt = false
   keepBackup = true
 [init]
   defaultBranch = master
-[mergetool "vim-conflicted"]
-  cmd = vim +Conflicted
 [maintenance]
 	repo = /Users/leandro/.config/zsh-config/znap
 	repo = /Users/leandro/.config/zsh-config/mafredri/zsh-async
