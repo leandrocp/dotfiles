@@ -56,6 +56,6 @@ done
 
 brew install --cask dash
 
-$(brew --prefix)/opt/fzf/install
+$(brew --prefix)/opt/fzf/install --all --no-bash --no-fish
 
 brew cleanup

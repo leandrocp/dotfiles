@@ -1,7 +1,6 @@
 # vi: ft=zsh
 
 eval "$(/opt/homebrew/bin/brew shellenv)"
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 eval "$(zoxide init zsh --cmd j)"
 eval "$(~/.local/bin/mise activate zsh)"
 

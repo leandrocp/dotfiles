@@ -30,12 +30,13 @@ function bootstrap() {
   echo "bootstrap"
 
   echo "homebrew"
-  [[ -f /opt/homebrew/bin/brew ]] || /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
   eval "$(/opt/homebrew/bin/brew shellenv)"
   source apps_osx.sh
 
   echo "mise"
   curl https://mise.run | sh
+  mise install
 }
 
 link_root

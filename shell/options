@@ -9,8 +9,8 @@ export LANG=en_US.UTF-8
 
 # editor
 export ALTERNATE_EDITOR=""
-export EDITOR="nvim"
-export GIT_EDITOR="nvim"
+export EDITOR="zed"
+export GIT_EDITOR="zed --wait"
 export VISUAL=$EDITOR
 
 # history
@@ -22,14 +22,12 @@ setopt appendhistory
 # tools
 export MANPAGER='less -X';
 export GPG_TTY=$(tty);
-export FZF_DEFAULT_COMMAND='rg --files'
-export BAT_THEME="OneHalfDark"
 
 # erlang
 export ERL_AFLAGS="-kernel shell_history enabled"
 export KERL_BUILD_DOCS=yes
 
 # elixir
-export ELIXIR_EDITOR="nvim +__LINE__ __FILE__"
+export ELIXIR_EDITOR="zed __FILE__:__LINE__"
 export PLUG_EDITOR=$ELIXIR_EDITOR
 export ECTO_EDITOR=$ELIXIR_EDITOR

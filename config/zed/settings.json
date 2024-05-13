@@ -11,9 +11,6 @@
   "terminal": {
     "font_family": "Hack Nerd Font Mono",
     "copy_on_select": true,
-    "env": {
-      "GIT_EDITOR": "zed --wait"
-    }
   },
   "vim_mode": true,
   "vim": {
