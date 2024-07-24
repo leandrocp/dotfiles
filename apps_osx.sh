@@ -23,7 +23,7 @@ devutils \
 discord \
 docker \
 dust \
-exa \
+eza \
 fd \
 font-hack-nerd-font \
 fzf \

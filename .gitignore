@@ -33,5 +33,6 @@ Package Control.user-ca-bundle
 /config/pgcli/log
 /config/zed/embeddings
 /config/zed/conversations
+/config/zed/prompts
 /config/lazygit/state.yml
 *.tmp*

@@ -1,7 +1,7 @@
 [tools]
 nodejs = "lts"
 neovim = "nightly"
-erlang = "26.2.1"
+erlang = "27.0"
 elixir = "main-otp-26"
 rust = "stable"
 python = "3.12.3"

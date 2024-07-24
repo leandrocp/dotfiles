@@ -1,16 +1,9 @@
-import_if_available Plug.Conn
-import_if_available Phoenix.HTML
-import_if_available Ecto.Query
-import_if_available Ecto.Changeset
-alias Ecto.Changeset
-alias Pulse.Repo
+import_if_available(Plug.Conn)
+import_if_available(Phoenix.HTML)
+import_if_available(Ecto.Query)
+import_if_available(Ecto.Changeset)
 
-Application.put_env(:elixir, :ansi_enabled, true)
-
-# Change behavior of dbg/1 to stop prying when in IEx
-Application.put_env(:elixir, :dbg_callback, {Macro, :dbg, []})
-
-IEx.configure [
+IEx.configure(
   default_prompt: "%prefix>",
   alive_prompt: "%prefix(%node)>",
   history_size: -1,
@@ -22,9 +15,4 @@ IEx.configure [
     charlists: :as_lists,
     width: 120
   ],
-  colors: [
-    eval_result: [:green, :bright],
-    eval_result: [:red, :bright ,
-    eval_info:   [:cyan],
-  ]
-]
+)

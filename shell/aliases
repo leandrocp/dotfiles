@@ -1,7 +1,7 @@
 # vi: ft=zsh
 
 alias e='zed'
-alias up='brew upgrade; mise self-update --yes; znap pull; nvim-update; brew cleanup'
+alias up='brew upgrade; mise self-update --yes; nvim-update; elixir-update; brew cleanup'
 alias g='git'
 alias gg='lazygit'
 alias tf='terraform'
@@ -13,13 +13,14 @@ alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
 alias l='ls'
-alias ls='exa --icons --sort modified'
-alias ll='exa --long --icons --sort modified'
+alias ls='eza --icons --sort modified --git'
+alias ll='eza --long --icons --sort modified --git'
 alias -g G='| grep -i --color'
 alias -g L='| less'
 alias -g C='| pbcopy'
 
 alias nvim-update='mise install neovim@nightly -f'
+alias elixir-update='mise install elixir@main-otp-27 -f'
 
 alias asdf='mise'
 alias dns_reset="dscacheutil -flushcache && killall -HUP mDNSResponder"

@@ -1,7 +1,9 @@
 # vi: ft=zsh
 
 eval "$(/opt/homebrew/bin/brew shellenv)"
-eval "$(zoxide init zsh --cmd j)"
+eval "$(starship init zsh)"
 eval "$(~/.local/bin/mise activate zsh)"
+eval "$(zoxide init zsh --cmd j)"
+eval "$(fzf --zsh)"
 
 FPATH="/opt/homebrew/share/zsh/site-functions:${FPATH}"

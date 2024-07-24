@@ -15,6 +15,11 @@ palette = "catppuccin_frappe"
 truncate_to_repo = false
 truncation_symbol = "../"
 
+[character]
+success_symbol = "[❯](purple)"
+error_symbol = "[❯](red)"
+vimcmd_symbol = "[❮](green)"
+
 [palettes.catppuccin_frappe]
 rosewater = "#f2d5cf"
 flamingo = "#eebebe"

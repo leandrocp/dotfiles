@@ -3,7 +3,7 @@
 
 {
   "theme": "Catppuccin Frappé - No Italics",
-  "ui_font_family": "Zed Sans",
+  "ui_font_family": "Hack Nerd Font Mono",
   "telemetry": {
     "metrics": false,
     "diagnostics": false
@@ -11,6 +11,7 @@
   "terminal": {
     "font_family": "Hack Nerd Font Mono",
     "copy_on_select": true,
+    "dock": "right"
   },
   "vim_mode": true,
   "vim": {
@@ -39,11 +40,39 @@
     "Markdown": {
       "soft_wrap": "none"
     },
+    "Erlang": {
+      "language_servers": ["!erlang-ls", "elp", "..."]
+    },
     "Elixir": {
-      "language_servers": ["!lexical", "!elixir-ls", "next-ls"]
+      "language_servers": ["!elixir-ls", "!next-ls", "lexical", "..."]
+    },
+    "HEEX": {
+      "language_servers": ["!elixir-ls", "!next-ls", "lexical", "..."]
     }
   },
+  "elixir": {
+    "formatter": {
+      "external": {
+        "command": "mix format",
+        "arguments": ["--stdin", "--stdin-filename", "{buffer_path}"]
+      }
+    }
+    // "lsp": {
+    //   "local": {
+    //     "path": "/Users/leandro/code/github/lexical-lsp/lexical/_build/dev/package/lexical/bin/start_lexical.sh",
+    //     "arguments": []
+    //   }
+    // }
+  },
   "lsp": {
+    "elixir-ls": {
+      "settings": {
+        "dialyzerEnabled": false,
+        "suggestSpecs": false,
+        "fetchDeps": false,
+        "autoInsertRequiredAlias": false
+      }
+    },
     "rust-analyzer": {
       "initialization_options": {
         "inlayHints": {
@@ -58,6 +87,18 @@
         },
         "linkedProjects": ["Cargo.toml", "native/comrak_nif/Cargo.toml"]
       }
+    }
+  },
+  "assistant": {
+    "version": "1",
+    "provider": {
+      "default_model": {
+        "name": "llama3:latest",
+        "max_tokens": 2048,
+        "keep_alive": "10m"
+      },
+      "name": "ollama",
+      "low_speed_timeout_in_seconds": null
     }
   }
 }

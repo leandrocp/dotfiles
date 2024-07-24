@@ -1,4 +1,5 @@
 // references
+// https://github.com/zed-industries/zed/blob/main/assets/keymaps/vim.json
 // https://github.com/mrnugget/dotfiles/blob/master/zed_keymap.json
 
 [
@@ -28,6 +29,12 @@
       "space f": "file_finder::Toggle"
     }
   },
+  // {
+  //   "context": "ProjectPanel || Editor",
+  //   "bindings": {
+  //     "tab": "pane::AlternateFile"
+  //   }
+  // },
   {
     "context": "ProjectPanel && not_editing",
     "bindings": {
@@ -46,7 +53,7 @@
   {
     "context": "Terminal",
     "bindings": {
-      "ctrl-w": "workspace::ToggleZoom",
+      "ctrl-w z": "workspace::ToggleZoom",
       "ctrl-w t": "terminal_panel::ToggleFocus"
     }
   },
@@ -90,7 +97,7 @@
     "bindings": {
       "space w": "workspace::Save",
       ";": "command_palette::Toggle",
-      "ctrl-w w": "workspace::ToggleZoom",
+      "ctrl-w z": "workspace::ToggleZoom",
       "ctrl-w t": "terminal_panel::ToggleFocus",
       "space w l": "pane::SplitRight",
       "space w j": "pane::SplitDown",
@@ -115,6 +122,8 @@
       "ctrl-i": "pane::GoForward",
       "space g r": "editor::RevertSelectedHunks",
       "space g b": "editor::ToggleGitBlame",
+      "space g h": "editor::ToggleHunkDiff",
+      "space g H": "editor::ExpandAllHunkDiffs",
       "g r": "editor::FindAllReferences",
       "g a": "editor::ToggleCodeActions",
       "] d": "editor::GoToDiagnostic",
