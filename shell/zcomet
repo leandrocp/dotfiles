@@ -1,0 +1,21 @@
+# vi: ft=zsh
+
+# install
+if [[ ! -f ${ZDOTDIR:-${HOME}}/.zcomet/bin/zcomet.zsh ]]; then
+  git clone https://github.com/agkozak/zcomet.git ${ZDOTDIR:-${HOME}}/.zcomet/bin
+fi
+source ${ZDOTDIR:-${HOME}}/.zcomet/bin/zcomet.zsh
+
+# plugins
+
+export AGKOZAK_PROMPT_DIRTRI=0
+zcomet load agkozak/agkozak-zsh-prompt
+zcomet load ohmyzsh plugins/gitfast
+zcomet trigger mise wintermi/zsh-mise
+
+# last
+# zcomet load zsh-users/zsh-syntax-highlighting
+zcomet load zdharma-continuum/fast-syntax-highlighting
+zcomet load zsh-users/zsh-autosuggestions
+
+zcomet compinit

@@ -43,6 +43,8 @@
   gpgsign = true
 [gpg]
   program = /usr/local/bin/gpg
+[merge]
+  conflictstyle = diff3
 [mergetool]
   prompt = false
   keepBackup = true

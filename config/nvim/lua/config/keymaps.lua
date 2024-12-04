@@ -1,3 +1,23 @@
+local snacks = require("snacks")
+
+--- Map a key combination to a command
+---@param modes string|string[]: The mode(s) to map the key combination to
+---@param lhs string: The key combination to map
+---@param rhs string|function: The command to run when the key combination is pressed
+---@param opts table: Options to pass to the keymap
+local map = function(modes, lhs, rhs, opts)
+  local options = { silent = true }
+  if opts then
+    options = vim.tbl_extend("force", options, opts)
+  end
+  if type(modes) == "string" then
+    modes = { modes }
+  end
+  for _, mode in ipairs(modes) do
+    vim.keymap.set(mode, lhs, rhs, options)
+  end
+end
+
 -- commands with ;
 vim.keymap.set("n", ";", ":", { noremap = true })
 
@@ -47,36 +67,29 @@ vim.keymap.set("n", "<A-j>", ss.resize_down)
 vim.keymap.set("n", "<A-k>", ss.resize_up)
 vim.keymap.set("n", "<A-l>", ss.resize_right)
 
--- navigation
 -- tabs
 vim.keymap.set("n", "<leader>wt", "<cmd>$tabnew<cr>", { noremap = true, desc = "New tab" })
 vim.keymap.set("n", "<leader>wc", "<cmd>tabclose<cr>", { noremap = true, desc = "Close tab" })
 vim.keymap.set("n", "]t", "<cmd>tabn<cr>", { noremap = true, desc = "Next tab" })
 vim.keymap.set("n", "[t", "<cmd>tabp<cr>", { noremap = true, desc = "Prev tab" })
 
---     t = { "<cmd>$tabnew<cr>", "New tab" },
---     c = { "<cmd>tabclose<cr>", "Close tab" },
---     h = { "<cmd>-tabmove<cr>", "Move tab left" },
---     l = { "<cmd>+tabmove<cr>", "Move tab right" },
---
--- kitty integration
-vim.keymap.set("n", "<C-h>", "<cmd>KittyNavigateLeft<cr>")
-vim.keymap.set("n", "<C-j>", "<cmd>KittyNavigateDown<cr>")
-vim.keymap.set("n", "<C-k>", "<cmd>KittyNavigateUp<cr>")
-vim.keymap.set("n", "<C-l>", "<cmd>KittyNavigateRight<cr>")
 -- jump
 vim.keymap.set("n", "n", "nzzzv") -- center screen
 vim.keymap.set("n", "N", "Nzzzv")
 vim.keymap.set("n", "*", "*N") -- do not jump forward
+
 -- windows
 vim.keymap.set("n", "<leader>wj", "<cmd>split<cr>", { desc = "Split down" })
 vim.keymap.set("n", "<leader>wl", "<cmd>vsp<cr>", { desc = "Split right" })
 
+-- buffers
+map("n", "<leader>bd", function()
+  snacks.bufdelete({ wipe = true })
+end, { desc = "Delete" })
+
 -- diagnostics
 vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "Go to previous [D]iagnostic message" })
 vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "Go to next [D]iagnostic message" })
--- vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, { desc = "Show diagnostic [E]rror messages" })
--- vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uickfix list" })
 
 -- tools
 vim.keymap.set("n", "<leader>ol", "<cmd>Lazy<cr>", { desc = "Lazy" })

@@ -25,7 +25,7 @@ return {
       "nvim-lua/plenary.nvim",
       { "nvim-telescope/telescope-ui-select.nvim" },
       { "nvim-tree/nvim-web-devicons" },
-      { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
+      { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
       -- {
       --   "nvim-telescope/telescope-fzf-native.nvim",
       --   build = "make",
@@ -192,8 +192,44 @@ return {
   },
 
   {
-    "knubie/vim-kitty-navigator",
-    cmd = { "KittyNavigateLeft", "KittyNavigateDown", "KittyNavigateUp", "KittyNavigateRight" },
-    build = "cp *.py ~/.config/kitty/",
+    "MunsMan/kitty-navigator.nvim",
+    build = {
+      "cp navigate_kitty.py ~/.config/kitty",
+      "cp pass_keys.py ~/.config/kitty",
+    },
+    keys = {
+      {
+        "<C-h>",
+        function()
+          require("kitty-navigator").navigateLeft()
+        end,
+        desc = "move left",
+        mode = { "n" },
+      },
+      {
+        "<C-j>",
+        function()
+          require("kitty-navigator").navigateDown()
+        end,
+        desc = "move down",
+        mode = { "n" },
+      },
+      {
+        "<C-k>",
+        function()
+          require("kitty-navigator").navigateUp()
+        end,
+        desc = "move up",
+        mode = { "n" },
+      },
+      {
+        "<C-l>",
+        function()
+          require("kitty-navigator").navigateRight()
+        end,
+        desc = "move right",
+        mode = { "n" },
+      },
+    },
   },
 }

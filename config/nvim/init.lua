@@ -9,6 +9,7 @@
 -- https://github.com/LunarVim/nvim-basic-ide
 -- https://github.com/LazyVim/starter
 -- https://github.com/mhanberg/.dotfiles/tree/main/config/nvim
+-- https://github.com/scottmckendry/Windots/tree/main/nvim
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
@@ -31,4 +32,4 @@ require("lazy").setup("plugins")
 require("config.autocmds")
 require("config.keymaps")
 
-vim.cmd.colorscheme("catppuccin-macchiato")
+vim.cmd.colorscheme("catppuccin-frappe")

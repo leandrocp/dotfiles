@@ -1,7 +1,7 @@
 # vi: ft=zsh
 
-alias e='zed'
-alias up='brew upgrade; mise self-update --yes; nvim-update; elixir-update; brew cleanup'
+alias e='nvim'
+alias up='brew upgrade; mise self-update --yes; brew cleanup'
 alias g='git'
 alias gg='lazygit'
 alias tf='terraform'
@@ -21,6 +21,8 @@ alias -g C='| pbcopy'
 
 alias nvim-update='mise install neovim@nightly -f'
 alias elixir-update='mise install elixir@main-otp-27 -f'
+alias rust-update='mise install rust@stable -f'
+alias ts='tree-sitter'
 
 alias asdf='mise'
 alias dns_reset="dscacheutil -flushcache && killall -HUP mDNSResponder"

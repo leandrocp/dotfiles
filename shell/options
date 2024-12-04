@@ -2,6 +2,7 @@
 
 # shell
 PROFILE="$HOME/.zshrc"
+bindkey -v
 
 # locale
 export LC_ALL=en_US.UTF-8
@@ -9,8 +10,8 @@ export LANG=en_US.UTF-8
 
 # editor
 export ALTERNATE_EDITOR=""
-export EDITOR="zed"
-export GIT_EDITOR="zed --wait"
+export EDITOR="nvim"
+export GIT_EDITOR="nvim"
 export VISUAL=$EDITOR
 
 # history

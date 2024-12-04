@@ -2,6 +2,14 @@
 // https://github.com/mrnugget/dotfiles/blob/master/zed_settings.json
 
 {
+  "assistant": {
+    "default_model": {
+      "provider": "zed.dev",
+      "model": "claude-3-5-sonnet-20240620"
+    },
+    "version": "2",
+    "show_hints": false
+  },
   "theme": "Catppuccin Frappé - No Italics",
   "ui_font_family": "Hack Nerd Font Mono",
   "telemetry": {
@@ -11,19 +19,23 @@
   "terminal": {
     "font_family": "Hack Nerd Font Mono",
     "copy_on_select": true,
-    "dock": "right"
+    "dock": "bottom"
   },
   "vim_mode": true,
   "vim": {
     "use_multiline_find": true,
     "use_smartcase_find": true
   },
+  "use_smartcase_search": true,
   "buffer_font_family": "Hack Nerd Font Mono",
   "buffer_font_size": 14,
   "cursor_blink": false,
   "relative_line_numbers": true,
   "scrollbar": {
     "show": "never"
+  },
+  "indent_guides": {
+    "enabled": false
   },
   "inlay_hints": {
     "enabled": true
@@ -44,25 +56,17 @@
       "language_servers": ["!erlang-ls", "elp", "..."]
     },
     "Elixir": {
-      "language_servers": ["!elixir-ls", "!next-ls", "lexical", "..."]
+      "language_servers": ["elixir-ls", "!next-ls", "!lexical", "..."],
+      // "format_on_save": {
+      //   "external": {
+      //     "command": "mix",
+      //     "arguments": ["format", "--stdin-filename", "{buffer_path}", "-"]
+      //   }
+      // }
     },
     "HEEX": {
-      "language_servers": ["!elixir-ls", "!next-ls", "lexical", "..."]
+      "language_servers": ["elixir-ls", "!next-ls", "!lexical", "..."]
     }
-  },
-  "elixir": {
-    "formatter": {
-      "external": {
-        "command": "mix format",
-        "arguments": ["--stdin", "--stdin-filename", "{buffer_path}"]
-      }
-    }
-    // "lsp": {
-    //   "local": {
-    //     "path": "/Users/leandro/code/github/lexical-lsp/lexical/_build/dev/package/lexical/bin/start_lexical.sh",
-    //     "arguments": []
-    //   }
-    // }
   },
   "lsp": {
     "elixir-ls": {
@@ -76,7 +80,6 @@
     "rust-analyzer": {
       "initialization_options": {
         "inlayHints": {
-          "maxLength": null,
           "lifetimeElisionHints": {
             "useParameterNames": true,
             "enable": "skip_trivial"
@@ -85,20 +88,12 @@
             "enable": "always"
           }
         },
-        "linkedProjects": ["Cargo.toml", "native/comrak_nif/Cargo.toml"]
+        "linkedProjects": [
+          "Cargo.toml",
+          "/Users/leandro/code/github/leandrocp/mdex/native/comrak_nif/Cargo.toml",
+          "/Users/leandro/code/github/leandrocp/autumn/native/autumn/Cargo.toml"
+        ]
       }
-    }
-  },
-  "assistant": {
-    "version": "1",
-    "provider": {
-      "default_model": {
-        "name": "llama3:latest",
-        "max_tokens": 2048,
-        "keep_alive": "10m"
-      },
-      "name": "ollama",
-      "low_speed_timeout_in_seconds": null
     }
   }
 }

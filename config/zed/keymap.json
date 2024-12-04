@@ -4,15 +4,19 @@
 
 [
   {
+    "context": "Workspace",
     "bindings": {
-      "ctrl-k": "menu::SelectPrev",
-      "ctrl-j": "menu::SelectNext"
+      "ctrl-p": "projects::OpenRecent",
+      "ctrl-b": "branches::OpenRecent",
+      "ctrl-t": "workspace::NewTerminal",
+      "ctrl-s": "workspace::Save",
+      "ctrl-`": "terminal_panel::ToggleFocus",
     }
   },
   {
-    "context": "Workspace",
     "bindings": {
-      "ctrl-s": "workspace::Save"
+      "ctrl-k": "menu::SelectPrev",
+      "ctrl-j": "menu::SelectNext"
     }
   },
   {
@@ -146,7 +150,8 @@
   {
     "context": "Editor && vim_mode == insert && !menu",
     "bindings": {
-      "j j": ["vim::SwitchMode", "Normal"]
+      // "j j": ["vim::SwitchMode", "Normal"],
+      // "k j": ["vim::SwitchMode", "Normal"]
     }
   }
 ]

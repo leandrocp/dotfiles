@@ -14,5 +14,5 @@ IEx.configure(
     binaries: :as_strings,
     charlists: :as_lists,
     width: 120
-  ],
+  ]
 )
