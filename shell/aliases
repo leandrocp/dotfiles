@@ -1,7 +1,7 @@
 # vi: ft=zsh
 
 alias e='nvim'
-alias up='brew upgrade; mise self-update --yes; brew cleanup'
+alias up='brew upgrade; brew cleanup; mise self-update --yes; nvim-update; elixir-update'
 alias g='git'
 alias gg='lazygit'
 alias tf='terraform'

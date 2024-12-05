@@ -11,4 +11,4 @@ export FPATH="/opt/homebrew/share/zsh/site-functions:${FPATH}"
 
 eval "$(~/.local/bin/mise activate zsh)"
 eval "$(zoxide init zsh --cmd j)"
-# source <(fzf --zsh)
+source <(fzf --zsh)
