@@ -47,7 +47,7 @@ opt.titlestring = "%f"
 opt.undofile = true
 opt.updatetime = 250
 opt.wildmode = "longest:full,full"
-opt.winminwidth = 5
+opt.winminwidth = 6
 opt.wrap = false
 
 vim.g.mkdp_filetypes = { "markdown" }

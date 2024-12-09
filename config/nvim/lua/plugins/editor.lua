@@ -120,19 +120,19 @@ return {
     },
   },
 
-  {
-    "tzachar/highlight-undo.nvim",
-    config = function()
-      require("highlight-undo").setup({
-        hlgroup = "HighlightUndo",
-        duration = 300,
-        keymaps = {
-          { "n", "u", "undo", {} },
-          { "n", "<C-r>", "redo", {} },
-        },
-      })
-    end,
-  },
+  -- {
+  --   "tzachar/highlight-undo.nvim",
+  --   config = function()
+  --     require("highlight-undo").setup({
+  --       hlgroup = "HighlightUndo",
+  --       duration = 300,
+  --       keymaps = {
+  --         { "n", "u", "undo", {} },
+  --         { "n", "<C-r>", "redo", {} },
+  --       },
+  --     })
+  --   end,
+  -- },
 
   {
     "luukvbaal/statuscol.nvim",
@@ -169,15 +169,15 @@ return {
     end,
   },
 
-  {
-    "smoka7/multicursors.nvim",
-    event = "VeryLazy",
-    dependencies = {
-      "smoka7/hydra.nvim",
-    },
-    opts = {},
-    cmd = { "MCstart", "MCvisual", "MCclear", "MCpattern", "MCvisualPattern", "MCunderCursor" },
-  },
+  -- {
+  --   "smoka7/multicursors.nvim",
+  --   event = "VeryLazy",
+  --   dependencies = {
+  --     "smoka7/hydra.nvim",
+  --   },
+  --   opts = {},
+  --   cmd = { "MCstart", "MCvisual", "MCclear", "MCpattern", "MCvisualPattern", "MCunderCursor" },
+  -- },
 
   {
     "mg979/vim-visual-multi",

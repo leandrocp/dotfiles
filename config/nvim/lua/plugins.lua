@@ -1,5 +1,10 @@
 return {
-  "nvim-lua/plenary.nvim",
+  { "nvim-lua/plenary.nvim", lazy = true },
+
+  {
+    "tpope/vim-repeat",
+    event = "VeryLazy",
+  },
 
   {
     "folke/which-key.nvim",
@@ -40,22 +45,8 @@ return {
         },
       },
     },
-    -- config = function()
-    --   require("which-key").setup()
-    --
-    --   require("which-key").register({
-    --     ["<leader>b"] = { name = "Buffer", _ = "which_key_ignore" },
-    --     ["<leader>c"] = { name = "Code", _ = "which_key_ignore" },
-    --     ["<leader>d"] = { name = "Document", _ = "which_key_ignore" },
-    --     ["<leader>g"] = { name = "Git", _ = "which_key_ignore" },
-    --     ["<leader>n"] = { name = "Navigate", _ = "which_key_ignore" },
-    --     ["<leader>o"] = { name = "Tools", _ = "which_key_ignore" },
-    --     ["<leader>s"] = { name = "Search", _ = "which_key_ignore" },
-    --     ["<leader>t"] = { name = "Test", _ = "which_key_ignore" },
-    --     ["<leader>w"] = { name = "Windows", _ = "which_key_ignore" },
-    --   })
-    -- end,
   },
+
   {
     "folke/snacks.nvim",
     priority = 1000,
@@ -73,28 +64,21 @@ return {
         function()
           Snacks.scratch()
         end,
-        desc = "Toggle Scratch Buffer",
+        desc = "scratch buffer",
       },
-      -- {
-      --   "<leader>bd",
-      --   function()
-      --     Snacks.bufdelete()
-      --   end,
-      --   desc = "Delete Buffer",
-      -- },
       {
         "<leader>gg",
         function()
           Snacks.lazygit()
         end,
-        desc = "Lazygit",
+        desc = "lazygit",
       },
       {
         "<leader>go",
         function()
           Snacks.gitbrowse()
         end,
-        desc = "Open Browser",
+        desc = "open browser",
       },
     },
   },
@@ -110,15 +94,6 @@ return {
         "Makefile",
       })
       misc.setup_restore_cursor()
-
-      -- require("mini.surround").setup()
-      -- require("mini.move").setup()
-
-      -- local statusline = require("mini.statusline")
-      -- statusline.setup()
-      -- statusline.section_location = function()
-      --   return ""
-      -- end
     end,
   },
 
@@ -143,4 +118,154 @@ return {
   },
 
   { "echasnovski/mini.icons", version = "*" },
+
+  {
+    "stevearc/oil.nvim",
+    dependencies = { { "echasnovski/mini.icons", opts = {} } },
+    opts = {
+      view_options = {
+        show_hidden = true,
+      },
+      float = {
+        padding = 10,
+      },
+    },
+    keys = {
+      {
+        "-",
+        function()
+          require("oil").open_float()
+        end,
+        desc = "explorer",
+      },
+    },
+  },
+
+  {
+    "MunsMan/kitty-navigator.nvim",
+    build = {
+      "cp navigate_kitty.py ~/.config/kitty",
+      "cp pass_keys.py ~/.config/kitty",
+    },
+    keys = {
+      {
+        "<C-h>",
+        function()
+          require("kitty-navigator").navigateLeft()
+        end,
+        desc = "move left",
+        mode = { "n" },
+      },
+      {
+        "<C-j>",
+        function()
+          require("kitty-navigator").navigateDown()
+        end,
+        desc = "move down",
+        mode = { "n" },
+      },
+      {
+        "<C-k>",
+        function()
+          require("kitty-navigator").navigateUp()
+        end,
+        desc = "move up",
+        mode = { "n" },
+      },
+      {
+        "<C-l>",
+        function()
+          require("kitty-navigator").navigateRight()
+        end,
+        desc = "move right",
+        mode = { "n" },
+      },
+    },
+  },
+
+  {
+    "tpope/vim-projectionist",
+    event = "BufReadPost",
+    init = function()
+      vim.g.projectionist_heuristics = {
+        ["package.json"] = {
+          ["package.json"] = { alternate = { "package-lock.json" } },
+          ["package-lock.json"] = { alternate = { "package.json" } },
+        },
+        ["mix.exs"] = {
+          ["mix.exs"] = { alternate = { "mix.lock" } },
+          ["mix.lock"] = { alternate = { "mix.exs" } },
+          ["lib/*.ex"] = {
+            type = "source",
+            alternate = "test/{}_test.exs",
+            template = {
+              "defmodule {camelcase|capitalize|dot} do",
+              "end",
+            },
+          },
+          ["test/*_test.exs"] = {
+            type = "test",
+            alternate = "lib/{}.ex",
+            template = {
+              "defmodule {camelcase|capitalize|dot}Test do",
+              "  use ExUnit.Case, async: true",
+              "",
+              "  alias {camelcase|capitalize|dot}",
+              "end",
+            },
+          },
+        },
+      }
+    end,
+    keys = {
+      { "<Leader>sa", "<cmd>A<CR>", desc = "alternate file" },
+    },
+  },
+
+  {
+    "folke/trouble.nvim",
+    cmd = { "Trouble" },
+    opts = {
+      modes = {
+        lsp = {
+          win = { position = "right" },
+        },
+      },
+    },
+    keys = {
+      { "<leader>xx", "<cmd>Trouble diagnostics toggle<cr>", desc = "diagnostics" },
+      { "<leader>cs", "<cmd>Trouble symbols toggle<cr>", desc = "symbols" },
+      { "<leader>cS", "<cmd>Trouble lsp toggle<cr>", desc = "LSP references/definitions/... (Trouble)" },
+      { "<leader>xL", "<cmd>Trouble loclist toggle<cr>", desc = "Location List (Trouble)" },
+      { "<leader>xQ", "<cmd>Trouble qflist toggle<cr>", desc = "Quickfix List (Trouble)" },
+      {
+        "[q",
+        function()
+          if require("trouble").is_open() then
+            require("trouble").prev({ skip_groups = true, jump = true })
+          else
+            local ok, err = pcall(vim.cmd.cprev)
+            if not ok then
+              vim.notify(err, vim.log.levels.ERROR)
+            end
+          end
+        end,
+        desc = "Previous Trouble/Quickfix Item",
+      },
+      {
+        "]q",
+        function()
+          if require("trouble").is_open() then
+            require("trouble").next({ skip_groups = true, jump = true })
+          else
+            local ok, err = pcall(vim.cmd.cnext)
+            if not ok then
+              vim.notify(err, vim.log.levels.ERROR)
+            end
+          end
+        end,
+        desc = "Next Trouble/Quickfix Item",
+      },
+    },
+  },
 }

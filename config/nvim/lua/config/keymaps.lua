@@ -19,27 +19,27 @@ local map = function(modes, lhs, rhs, opts)
 end
 
 -- commands with ;
-vim.keymap.set("n", ";", ":", { noremap = true })
+map("n", ";", ":", { noremap = true })
 
 -- save buffer
-vim.keymap.set({ "i", "v", "n", "s" }, "<C-s>", "<cmd>w<cr><esc>", { desc = "Save file" })
+map({ "i", "v", "n", "s" }, "<C-s>", "<cmd>w<cr><esc>", { desc = "Save file" })
 
 -- center buffer on jumps
-vim.keymap.set("n", "<C-d>", "<C-d>zz", { noremap = true })
-vim.keymap.set("n", "<C-u>", "<C-u>zz", { noremap = true })
-vim.keymap.set("n", "n", "nzzzv", { noremap = true })
-vim.keymap.set("n", "N", "Nzzzv", { noremap = true })
+map("n", "<C-d>", "<C-d>zz", { noremap = true })
+map("n", "<C-u>", "<C-u>zz", { noremap = true })
+map("n", "n", "nzzzv", { noremap = true })
+map("n", "N", "Nzzzv", { noremap = true })
 
 -- better jk
-vim.keymap.set("n", "J", "mzJ`z")
-vim.keymap.set("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
-vim.keymap.set("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
-vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
-vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
+map("n", "J", "mzJ`z", { silent = true })
+map("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
+map("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
+map("v", "J", ":m '>+1<CR>gv=gv", { silent = true })
+map("v", "K", ":m '<-2<CR>gv=gv", { silent = true })
 
 -- better indenting
-vim.keymap.set("v", "<", "<gv")
-vim.keymap.set("v", ">", ">gv")
+map("v", "<", "<gv", { silent = true })
+map("v", ">", ">gv", { silent = true })
 
 -- smart dd
 -- don't replace yank register if deleting empty line in NORMAL MODE
@@ -50,46 +50,65 @@ local function smart_dd_normal()
     return "dd"
   end
 end
-vim.keymap.set("n", "dd", smart_dd_normal, { noremap = true, expr = true })
+map("n", "dd", smart_dd_normal, { noremap = true, expr = true })
 
 -- https://github.com/mhinz/vim-galore#saner-behavior-of-n-and-n
-vim.keymap.set("n", "n", "'Nn'[v:searchforward]", { expr = true, desc = "Next search result" })
-vim.keymap.set("x", "n", "'Nn'[v:searchforward]", { expr = true, desc = "Next search result" })
-vim.keymap.set("o", "n", "'Nn'[v:searchforward]", { expr = true, desc = "Next search result" })
-vim.keymap.set("n", "N", "'nN'[v:searchforward]", { expr = true, desc = "Prev search result" })
-vim.keymap.set("x", "N", "'nN'[v:searchforward]", { expr = true, desc = "Prev search result" })
-vim.keymap.set("o", "N", "'nN'[v:searchforward]", { expr = true, desc = "Prev search result" })
+map("n", "n", "'Nn'[v:searchforward]", { expr = true, desc = "Next search result" })
+map("x", "n", "'Nn'[v:searchforward]", { expr = true, desc = "Next search result" })
+map("o", "n", "'Nn'[v:searchforward]", { expr = true, desc = "Next search result" })
+map("n", "N", "'nN'[v:searchforward]", { expr = true, desc = "Prev search result" })
+map("x", "N", "'nN'[v:searchforward]", { expr = true, desc = "Prev search result" })
+map("o", "N", "'nN'[v:searchforward]", { expr = true, desc = "Prev search result" })
 
 -- smart-splits.nvim
 local ss = require("smart-splits")
-vim.keymap.set("n", "<A-h>", ss.resize_left)
-vim.keymap.set("n", "<A-j>", ss.resize_down)
-vim.keymap.set("n", "<A-k>", ss.resize_up)
-vim.keymap.set("n", "<A-l>", ss.resize_right)
+map("n", "<A-h>", ss.resize_left, { desc = "Resize left" })
+map("n", "<A-j>", ss.resize_down, { desc = "Resize down" })
+map("n", "<A-k>", ss.resize_up, { desc = "Resize up" })
+map("n", "<A-l>", ss.resize_right, { desc = "Resize right" })
 
 -- tabs
-vim.keymap.set("n", "<leader>wt", "<cmd>$tabnew<cr>", { noremap = true, desc = "New tab" })
-vim.keymap.set("n", "<leader>wc", "<cmd>tabclose<cr>", { noremap = true, desc = "Close tab" })
-vim.keymap.set("n", "]t", "<cmd>tabn<cr>", { noremap = true, desc = "Next tab" })
-vim.keymap.set("n", "[t", "<cmd>tabp<cr>", { noremap = true, desc = "Prev tab" })
+map("n", "<leader>wt", "<cmd>$tabnew<cr>", { noremap = true, desc = "New tab" })
+map("n", "<leader>wc", "<cmd>tabclose<cr>", { noremap = true, desc = "Close tab" })
+map("n", "]t", "<cmd>tabn<cr>", { noremap = true, desc = "Next tab" })
+map("n", "[t", "<cmd>tabp<cr>", { noremap = true, desc = "Prev tab" })
 
 -- jump
-vim.keymap.set("n", "n", "nzzzv") -- center screen
-vim.keymap.set("n", "N", "Nzzzv")
-vim.keymap.set("n", "*", "*N") -- do not jump forward
+map("n", "n", "nzzzv", { silent = true }) -- center screen
+map("n", "N", "Nzzzv", { silent = true })
+map("n", "*", "*N", { silent = true }) -- do not jump forward
 
 -- windows
-vim.keymap.set("n", "<leader>wj", "<cmd>split<cr>", { desc = "Split down" })
-vim.keymap.set("n", "<leader>wl", "<cmd>vsp<cr>", { desc = "Split right" })
+map("n", "<leader>wj", "<cmd>split<cr>", { desc = "Split down" })
+map("n", "<leader>wl", "<cmd>vsp<cr>", { desc = "Split right" })
 
 -- buffers
+map("n", "<leader>bb", "<cmd>e #<cr>", { desc = "switch other" })
 map("n", "<leader>bd", function()
   snacks.bufdelete({ wipe = true })
-end, { desc = "Delete" })
+end, { desc = "delete" })
+map("n", "<leader>bo", function()
+  Snacks.bufdelete.other()
+end, { desc = "delete others" })
+map("n", "[b", "<cmd>bprevious<cr>", { desc = "prev buffer" })
+map("n", "]b", "<cmd>bnext<cr>", { desc = "next buffer" })
 
 -- diagnostics
-vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "Go to previous [D]iagnostic message" })
-vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "Go to next [D]iagnostic message" })
+
+local diagnostic_goto = function(next, severity)
+  local go = next and vim.diagnostic.goto_next or vim.diagnostic.goto_prev
+  severity = severity and vim.diagnostic.severity[severity] or nil
+  return function()
+    go({ severity = severity })
+  end
+end
+map("n", "<leader>cd", vim.diagnostic.open_float, { desc = "Line Diagnostics" })
+map("n", "]d", diagnostic_goto(true), { desc = "Next Diagnostic" })
+map("n", "[d", diagnostic_goto(false), { desc = "Prev Diagnostic" })
+map("n", "]e", diagnostic_goto(true, "ERROR"), { desc = "Next Error" })
+map("n", "[e", diagnostic_goto(false, "ERROR"), { desc = "Prev Error" })
+map("n", "]w", diagnostic_goto(true, "WARN"), { desc = "Next Warning" })
+map("n", "[w", diagnostic_goto(false, "WARN"), { desc = "Prev Warning" })
 
 -- tools
-vim.keymap.set("n", "<leader>ol", "<cmd>Lazy<cr>", { desc = "Lazy" })
+map("n", "<leader>ol", "<cmd>Lazy<cr>", { desc = "Lazy" })
