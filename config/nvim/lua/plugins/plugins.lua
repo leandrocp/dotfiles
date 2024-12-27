@@ -145,27 +145,21 @@ return {
       { "<leader>tl", ":TestLast<CR>", desc = "Test Last" },
     },
     config = function()
+      vim.opt.shell = "bash"
       vim.g["test#custom_strategies"] = {
         snacks = function(cmd)
-          require("snacks").terminal.toggle(cmd, {
+          require("snacks").terminal.open(cmd, {
             win = {
+              relative = "editor",
               position = "bottom",
               enter = true,
               title = "Test",
-              relative = "editor",
             },
             interactive = false,
           })
-
-          -- require("snacks").terminal.toggle(cmd, {
-          --   -- win = { position = "bottom", enter = true },
-          --   win = { style = "split" },
-          --   interactive = false,
-          -- })
         end,
       }
       vim.g["test#strategy"] = "snacks"
-      vim.g["test#preserve_screen"] = 0
     end,
   },
 }
