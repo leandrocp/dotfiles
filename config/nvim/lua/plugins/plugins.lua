@@ -150,6 +150,7 @@ return {
         snacks = function(cmd)
           require("snacks").terminal.open(cmd, {
             win = {
+              style = "terminal",
               relative = "editor",
               position = "bottom",
               enter = true,

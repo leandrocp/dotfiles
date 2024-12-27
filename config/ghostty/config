@@ -1,5 +1,6 @@
-font-family = Hack Nerd Font Mono
-# font-size   = 14
-theme       = catppuccin-frappe
-cursor-style = block
+# https://ghostty.org/docs/config/reference
 
+theme=catppuccin-frappe
+font-family="Hack Nerd Font Mono"
+copy-on-select=true
+window-save-state=always
