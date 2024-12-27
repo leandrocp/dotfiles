@@ -2,7 +2,7 @@
 
 # shell
 PROFILE="$HOME/.zshrc"
-bindkey -v
+# bindkey -v
 
 # locale
 export LC_ALL=en_US.UTF-8
@@ -18,7 +18,8 @@ export VISUAL=$EDITOR
 export HISTFILE=~/.zsh_history
 export HISTSIZE=10000
 export SAVEHIST=10000
-setopt appendhistory
+setopt inc_append_history
+setopt share_history
 
 # tools
 export MANPAGER='less -X';

@@ -8,8 +8,11 @@ source ${ZDOTDIR:-${HOME}}/.zcomet/bin/zcomet.zsh
 
 # plugins
 
-export AGKOZAK_PROMPT_DIRTRIM=0
-zcomet load agkozak/agkozak-zsh-prompt
+# export AGKOZAK_PROMPT_DIRTRIM=0
+# zcomet load agkozak/agkozak-zsh-prompt
+
+zcomet load sindresorhus/pure async.zsh pure.zsh
+
 zcomet load ohmyzsh plugins/gitfast
 zcomet trigger mise wintermi/zsh-mise
 
@@ -17,5 +20,11 @@ zcomet trigger mise wintermi/zsh-mise
 # zcomet load zsh-users/zsh-syntax-highlighting
 zcomet load zdharma-continuum/fast-syntax-highlighting
 zcomet load zsh-users/zsh-autosuggestions
+
+# add .zsh-completions to the fpath
+fpath=("${HOME}/.zsh-completions" $fpath)
+# remove duplicates from path and fpath
+typeset -U fpath
+typeset -U path
 
 zcomet compinit

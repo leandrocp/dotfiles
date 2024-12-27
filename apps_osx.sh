@@ -9,48 +9,48 @@
 brew update
 brew tap homebrew/cask-fonts
 
-packages=(\
-1password \
-autoconf \
-automake \
-bat \
-btop \
-cmake \
-cmark-gfm \
-coreutils \
-dash \
-devutils \
-discord \
-docker \
-dust \
-eza \
-fd \
-font-hack-nerd-font \
-fzf \
-gcc \
-gh \
-gnu-sed \
-lazygit \
-macdown \
-muzzle \
-obsidian \
-openssl \
-pgcli \
-proton-mail \
-protonmail-bridge \
-raycast \
-renameutils \
-ripgrep \
-slack \
-starship \
-tableplus \
-wxwidgets \
-zoxide \
-zsh \
+packages=(
+  1password
+  autoconf
+  automake
+  bat
+  btop
+  cmake
+  cmark-gfm
+  coreutils
+  dash
+  devutils
+  discord
+  docker
+  dust
+  eza
+  fd
+  font-hack-nerd-font
+  fzf
+  gcc
+  gh
+  gnu-sed
+  lazygit
+  macdown
+  muzzle
+  obsidian
+  openssl
+  pgcli
+  proton-mail
+  protonmail-bridge
+  raycast
+  renameutils
+  ripgrep
+  slack
+  starship
+  tableplus
+  wxwidgets
+  zoxide
+  zsh
+  ast-grep
 )
 
-for i in "${packages[@]}"
-do
+for i in "${packages[@]}"; do
   brew install "$i"
 done
 
