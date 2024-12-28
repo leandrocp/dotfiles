@@ -145,10 +145,9 @@ return {
       { "<leader>tl", ":TestLast<CR>", desc = "Test Last" },
     },
     config = function()
-      vim.opt.shell = "bash"
       vim.g["test#custom_strategies"] = {
         snacks = function(cmd)
-          require("snacks").terminal.open(cmd, {
+          require("snacks").terminal(cmd, {
             win = {
               style = "terminal",
               relative = "editor",
@@ -158,9 +157,30 @@ return {
             },
             interactive = false,
           })
+          vim.cmd("stopinsert")
+          vim.cmd("normal! G")
         end,
       }
       vim.g["test#strategy"] = "snacks"
     end,
+  },
+
+  {
+    "nvim-treesitter/nvim-treesitter",
+    keys = {
+      { "<CR>", desc = "Increment Selection" },
+      { "<bs>", desc = "Decrement Selection", mode = "x" },
+    },
+    opts = {
+      incremental_selection = {
+        enable = true,
+        keymaps = {
+          init_selection = "<CR>",
+          node_incremental = "<CR>",
+          scope_incremental = false,
+          node_decremental = "<bs>",
+        },
+      },
+    },
   },
 }
