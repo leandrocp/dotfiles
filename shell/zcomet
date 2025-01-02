@@ -13,13 +13,13 @@ source ${ZDOTDIR:-${HOME}}/.zcomet/bin/zcomet.zsh
 
 zcomet load sindresorhus/pure async.zsh pure.zsh
 
-zcomet load ohmyzsh plugins/gitfast
-zcomet trigger mise wintermi/zsh-mise
+# zcomet load ohmyzsh plugins/gitfast
+# zcomet trigger mise wintermi/zsh-mise
 
 # last
 # zcomet load zsh-users/zsh-syntax-highlighting
 zcomet load zdharma-continuum/fast-syntax-highlighting
-zcomet load zsh-users/zsh-autosuggestions
+# zcomet load zsh-users/zsh-autosuggestions
 
 # add .zsh-completions to the fpath
 fpath=("${HOME}/.zsh-completions" $fpath)
