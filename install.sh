@@ -37,6 +37,9 @@ function bootstrap() {
   echo "mise"
   curl https://mise.run | sh
   mise install
+
+  echo "fsh theme"
+  fast-theme XDG:catppuccin-frappe
 }
 
 link_root

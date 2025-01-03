@@ -11,6 +11,7 @@ brew tap homebrew/cask-fonts
 
 packages=(
   1password
+  ast-grep
   autoconf
   automake
   bat
@@ -21,7 +22,6 @@ packages=(
   dash
   devutils
   discord
-  docker
   dust
   eza
   fd
@@ -42,12 +42,11 @@ packages=(
   renameutils
   ripgrep
   slack
-  starship
   tableplus
+  tmux
   wxwidgets
   zoxide
   zsh
-  ast-grep
 )
 
 for i in "${packages[@]}"; do

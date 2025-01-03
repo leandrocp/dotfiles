@@ -10,8 +10,9 @@ source ${ZDOTDIR:-${HOME}}/.zcomet/bin/zcomet.zsh
 
 # export AGKOZAK_PROMPT_DIRTRIM=0
 # zcomet load agkozak/agkozak-zsh-prompt
-
-zcomet load sindresorhus/pure async.zsh pure.zsh
+# zcomet load sindresorhus/pure async.zsh pure.zsh
+zcomet load romkatv/powerlevel10k
+# zcomet load tolkonepiu/catppuccin-powerlevel10k-themes
 
 # zcomet load ohmyzsh plugins/gitfast
 # zcomet trigger mise wintermi/zsh-mise
