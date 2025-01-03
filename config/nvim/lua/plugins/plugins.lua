@@ -60,45 +60,25 @@ return {
   },
 
   {
-    "MunsMan/kitty-navigator.nvim",
-    build = {
-      "cp navigate_kitty.py ~/.config/kitty",
-      "cp pass_keys.py ~/.config/kitty",
-    },
+    "https://github.com/fresh2dev/zellij.vim.git",
+    event = "VeryLazy",
     keys = {
-      {
-        "<C-h>",
-        function()
-          require("kitty-navigator").navigateLeft()
-        end,
-        desc = "move left",
-        mode = { "n" },
-      },
-      {
-        "<C-j>",
-        function()
-          require("kitty-navigator").navigateDown()
-        end,
-        desc = "move down",
-        mode = { "n" },
-      },
-      {
-        "<C-k>",
-        function()
-          require("kitty-navigator").navigateUp()
-        end,
-        desc = "move up",
-        mode = { "n" },
-      },
-      {
-        "<C-l>",
-        function()
-          require("kitty-navigator").navigateRight()
-        end,
-        desc = "move right",
-        mode = { "n" },
-      },
+      { "<C-h>", ":ZellijNavigateLeft<CR>", mode = { "n" }, { noremap = true } },
+      { "<C-j>", ":ZellijNavigateDown<CR>", mode = { "n", "i" }, { noremap = true } },
+      { "<C-k>", ":ZellijNavigateUp<CR>", mode = { "n", "i" }, { noremap = true } },
+      { "<C-l>", ":ZellijNavigateRight<CR>", mode = { "n", "i" }, { noremap = true } },
+      { "<D-j>", "<cmd>ZellijNewPaneSplit<CR>", { silent = true, desc = "Split Down" } },
+      { "<D-l>", "<cmd>ZellijNewPaneVSplit<CR>", { silent = true, desc = "Split Right" } },
     },
+    config = function()
+      -- Autocommand which names the current Zellij tab after Vim's current working directory
+      vim.api.nvim_create_autocmd({ "DirChanged", "WinEnter", "BufEnter" }, {
+        pattern = "*",
+        callback = function()
+          vim.fn.system('zellij action rename-tab "' .. vim.fn.fnamemodify(vim.fn.getcwd(), ":t") .. '"')
+        end,
+      })
+    end,
   },
 
   {

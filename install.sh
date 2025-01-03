@@ -42,6 +42,12 @@ function bootstrap() {
   fast-theme XDG:catppuccin-frappe
 }
 
+function zellij() {
+  curl -s https://api.github.com/repos/fresh2dev/zellij-autolock/releases/latest | jq -r '.assets[].browser_download_url' |  wget -i - -P ~/.config/zellij/plugins/
+  curl -s https://api.github.com/repos/dj95/zjstatus/releases/latest | jq -r '.assets[].browser_download_url' |  wget -i - -P ~/.config/zellij/plugins/
+  curl -s https://api.github.com/repos/karimould/zellij-forgot/releases/latest | jq -r '.assets[].browser_download_url' |  wget -i - -P ~/.config/zellij/plugins/
+}
+
 link_root
 link_config
 bootstrap

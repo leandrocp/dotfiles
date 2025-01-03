@@ -43,8 +43,8 @@ packages=(
   ripgrep
   slack
   tableplus
-  tmux
   wxwidgets
+  zellij
   zoxide
   zsh
 )
