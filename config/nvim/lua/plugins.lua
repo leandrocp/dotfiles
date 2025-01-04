@@ -29,6 +29,7 @@ return {
           mode = { "n", "v" },
           { "<leader>f", group = "file/find" },
           { "<leader>g", group = "git" },
+          { "<leader>q", group = "quit/session" },
           { "<leader>s", group = "search" },
           { "[", group = "prev" },
           { "]", group = "next" },
@@ -48,7 +49,7 @@ return {
         function()
           require("which-key").show({ global = false })
         end,
-        desc = "Buffer Keymaps (which-key)",
+        desc = "Buffer Keymaps",
       },
     },
   },
@@ -325,9 +326,63 @@ return {
   {
     "ibhagwan/fzf-lua",
     cmd = "FzfLua",
-    opts = {},
+    opts = function(_, _opts)
+      local actions = require("fzf-lua.actions")
+
+      return {
+        fzf_colors = true,
+        fzf_opts = {
+          ["--no-scrollbar"] = true,
+        },
+        defaults = {
+          formatter = "path.dirname_first",
+        },
+        files = {
+          cwd_prompt = false,
+          actions = {
+            ["alt-i"] = { actions.toggle_ignore },
+            ["alt-h"] = { actions.toggle_hidden },
+          },
+        },
+        grep = {
+          actions = {
+            ["alt-i"] = { actions.toggle_ignore },
+            ["alt-h"] = { actions.toggle_hidden },
+          },
+        },
+      }
+    end,
     keys = {
-      { "<leader>fp", pick, desc = "Projects" },
+      { "<c-j>", "<c-j>", ft = "fzf", mode = "t", nowait = true },
+      { "<c-k>", "<c-k>", ft = "fzf", mode = "t", nowait = true },
+      { "<leader>r", "<cmd>FzfLua resume<cr>", desc = "Resume Find/Search" },
+      { "<leader>:", "<cmd>FzfLua command_history<cr>", desc = "Command History" },
+      { "<leader><space>", "<cmd>FzfLua files<cr>", desc = "Files" },
+      {
+        "<leader>/",
+        function()
+          require("fzf-lua").live_grep_native({
+            resume = true,
+          })
+        end,
+        desc = "Grep",
+      },
+      { "<leader>fb", "<cmd>FzfLua buffers sort_mru=true sort_lastused=true<cr>", desc = "Buffers" },
+      { "<leader>sw", "<cmd>FzfLua grep_cword<cr>", desc = "Word" },
+      {
+        "gs",
+        function()
+          require("fzf-lua").lsp_document_symbols()
+        end,
+        desc = "Goto Symbol",
+      },
+      {
+        "gS",
+        function()
+          require("fzf-lua").lsp_workspace_symbols()
+        end,
+        desc = "Goto Workspace Symbol",
+      },
     },
   },
 
@@ -470,11 +525,11 @@ return {
           vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
           vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
           vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
-          vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, opts)
+          -- vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, opts)
           vim.keymap.set("n", "go", vim.lsp.buf.type_definition, opts)
           vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
-          vim.keymap.set("n", "gs", vim.lsp.buf.signature_help, opts)
-          vim.keymap.set("n", "<space>rn", vim.lsp.buf.rename, opts)
+          -- vim.keymap.set("n", "gs", vim.lsp.buf.signature_help, opts)
+          -- vim.keymap.set("n", "<space>rn", vim.lsp.buf.rename, opts)
           vim.keymap.set({ "n", "v" }, "<space>ca", vim.lsp.buf.code_action, opts)
         end,
       })

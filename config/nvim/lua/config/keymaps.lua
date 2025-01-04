@@ -35,12 +35,17 @@ map("n", "<C-u>", "<C-u>zz", { noremap = true })
 map("n", "n", "nzzzv", { noremap = true })
 map("n", "N", "Nzzzv", { noremap = true })
 
--- better jk
-map("n", "J", "mzJ`z", { silent = true })
-map("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
-map("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
-map("v", "J", ":m '>+1<CR>gv=gv", { silent = true })
-map("v", "K", ":m '<-2<CR>gv=gv", { silent = true })
+-- better up/down
+map({ "n", "x" }, "j", "v:count == 0 ? 'gj' : 'j'", { desc = "Down", expr = true, silent = true })
+map({ "n", "x" }, "<Down>", "v:count == 0 ? 'gj' : 'j'", { desc = "Down", expr = true, silent = true })
+map({ "n", "x" }, "k", "v:count == 0 ? 'gk' : 'k'", { desc = "Up", expr = true, silent = true })
+map({ "n", "x" }, "<Up>", "v:count == 0 ? 'gk' : 'k'", { desc = "Up", expr = true, silent = true })
+
+-- Move to window using the <ctrl> hjkl keys
+map("n", "<C-h>", "<C-w>h", { desc = "Go to Left Window", remap = true })
+map("n", "<C-j>", "<C-w>j", { desc = "Go to Lower Window", remap = true })
+map("n", "<C-k>", "<C-w>k", { desc = "Go to Upper Window", remap = true })
+map("n", "<C-l>", "<C-w>l", { desc = "Go to Right Window", remap = true })
 
 -- better indenting
 map("v", "<", "<gv", { silent = true })
@@ -69,3 +74,9 @@ map("o", "N", "'nN'[v:searchforward]", { expr = true, desc = "Prev search result
 map("n", "n", "nzzzv", { silent = true }) -- center screen
 map("n", "N", "Nzzzv", { silent = true })
 map("n", "*", "*N", { silent = true }) -- do not jump forward
+
+-- windows
+map("n", "<leader>w", "<c-w>", { desc = "Windows", remap = true })
+map("n", "<leader>-", "<C-W>s", { desc = "Split Window Below", remap = true })
+map("n", "<leader>\\", "<C-W>v", { desc = "Split Window Right", remap = true })
+map("n", "<leader>wd", "<C-W>c", { desc = "Delete Window", remap = true })
