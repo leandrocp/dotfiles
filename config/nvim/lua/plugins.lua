@@ -431,12 +431,14 @@ return {
         cmd = "Mason",
         build = ":MasonUpdate",
       },
-      { "williamboman/mason-lspconfig.nvim" },
+      "williamboman/mason-lspconfig.nvim",
+      "saghen/blink.cmp",
     },
     init = function()
       vim.opt.signcolumn = "yes"
     end,
     config = function()
+      local capabilities = require("blink.cmp").get_lsp_capabilities()
       local lspconfig = require("lspconfig")
 
       require("mason").setup({})
@@ -478,6 +480,7 @@ return {
       })
 
       lspconfig.lua_ls.setup({
+        capabilities = capabilities,
         settings = {
           Lua = {
             diagnostics = {
@@ -514,5 +517,23 @@ return {
         },
       })
     end,
+  },
+
+  {
+    "saghen/blink.cmp",
+    dependencies = "rafamadriz/friendly-snippets",
+    version = "*",
+    opts = {
+      keymap = {
+        preset = "default",
+        ["<C-o>"] = { "select_and_accept" },
+        ["<C-k>"] = { "select_prev", "fallback" },
+        ["<C-j>"] = { "select_next", "fallback" },
+      },
+      sources = {
+        default = { "lsp", "path", "snippets", "buffer" },
+      },
+    },
+    opts_extend = { "sources.default" },
   },
 }
