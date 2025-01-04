@@ -10,8 +10,23 @@ mouse-hide-while-typing=true
 shell-integration=zsh
 shell-integration-features=title
 
-keybind=clear
 # https://ghostty.org/docs/config/keybind/reference
+keybind=clear
+keybind = cmd+v=paste_from_clipboard
+
+# keybind = cmd+t=unbind
+# keybind = cmd+n=unbind
+# keybind = cmd+w=unbind
+# keybind = cmd+1=unbind
+# keybind = cmd+2=unbind
+# keybind = cmd+3=unbind
+# keybind = cmd+4=unbind
+# keybind = cmd+5=unbind
+# keybind = cmd+6=unbind
+# keybind = cmd+7=unbind
+# keybind = cmd+8=unbind
+# keybind = cmd+9=unbind
+#
 # keybind = cmd+r=reload_config
 # keybind = cmd+ctrl+\=new_split:right
 # keybind = cmd+ctrl+-=new_split:down

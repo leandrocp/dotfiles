@@ -6,6 +6,18 @@ keybinds clear-defaults=true {
             WriteChars "\u{000D}";
             MessagePlugin "autolock" {};
         }
+        bind "Ctrl t" { SwitchToMode "Tab"; }
+        bind "Ctrl n" { SwitchToMode "Pane"; }
+        bind "Super w" { CloseTab; }
+        bind "Super 1" { GoToTab 1; SwitchToMode "Normal"; }
+        bind "Super 2" { GoToTab 2; SwitchToMode "Normal"; }
+        bind "Super 3" { GoToTab 3; SwitchToMode "Normal"; }
+        bind "Super 4" { GoToTab 4; SwitchToMode "Normal"; }
+        bind "Super 5" { GoToTab 5; SwitchToMode "Normal"; }
+        bind "Super 6" { GoToTab 6; SwitchToMode "Normal"; }
+        bind "Super 7" { GoToTab 7; SwitchToMode "Normal"; }
+        bind "Super 8" { GoToTab 8; SwitchToMode "Normal"; }
+        bind "Super 9" { GoToTab 9; SwitchToMode "Normal"; }
     }
 
     resize {
@@ -24,15 +36,26 @@ keybinds clear-defaults=true {
         bind "Ctrl c" { SwitchToMode "Normal"; }
         bind "h" { GoToPreviousTab; }
         bind "l" { GoToNextTab; }
+        bind "H" { MoveTab "Left"; }
+        bind "L" { MoveTab "Right"; }
         bind "n" { NewTab; SwitchToMode "Normal"; }
-        bind "x" { CloseTab; SwitchToMode "Normal"; }
         bind "Tab" { ToggleTab; }
+        bind "1" { GoToTab 1; SwitchToMode "Normal"; }
+        bind "2" { GoToTab 2; SwitchToMode "Normal"; }
+        bind "3" { GoToTab 3; SwitchToMode "Normal"; }
+        bind "4" { GoToTab 4; SwitchToMode "Normal"; }
+        bind "5" { GoToTab 5; SwitchToMode "Normal"; }
+        bind "6" { GoToTab 6; SwitchToMode "Normal"; }
+        bind "7" { GoToTab 7; SwitchToMode "Normal"; }
+        bind "8" { GoToTab 8; SwitchToMode "Normal"; }
+        bind "9" { GoToTab 9; SwitchToMode "Normal"; }
     }
 
     pane {
         bind "Ctrl c" { SwitchToMode "Normal"; }
-        bind "h" { NewPane "Down"; SwitchToMode "Normal"; }
+        bind "h" { NewPane "Left"; SwitchToMode "Normal"; }
         bind "j" { NewPane "Down"; SwitchToMode "Normal"; }
+        bind "k" { NewPane "up"; SwitchToMode "Normal"; }
         bind "l" { NewPane "Right"; SwitchToMode "Normal"; }
         bind "x" { CloseFocus; SwitchToMode "Normal"; }
         bind "f" { ToggleFocusFullscreen; SwitchToMode "Normal"; }
@@ -64,20 +87,16 @@ keybinds clear-defaults=true {
         }
     }
 
-    shared {
-      bind "Ctrl t" { SwitchToMode "Tab"; }
-      bind "Super 1" { GoToTab 1; SwitchToMode "Normal"; }
-      bind "Super 2" { GoToTab 2; SwitchToMode "Normal"; }
-      bind "Super 3" { GoToTab 3; SwitchToMode "Normal"; }
-      bind "Super 4" { GoToTab 4; SwitchToMode "Normal"; }
-      bind "Super 5" { GoToTab 5; SwitchToMode "Normal"; }
-      bind "Super 6" { GoToTab 6; SwitchToMode "Normal"; }
-      bind "Super 7" { GoToTab 7; SwitchToMode "Normal"; }
-      bind "Super 8" { GoToTab 8; SwitchToMode "Normal"; }
-      bind "Super 9" { GoToTab 9; SwitchToMode "Normal"; }
+    locked {
+        bind "Super z" {
+            MessagePlugin "autolock" {payload "disable";};
+            SwitchToMode "Normal";
+        }
+        bind "Ctrl t" { SwitchToMode "Tab"; }
+        bind "Ctrl n" { SwitchToMode "Pane"; }
     }
 
-   shared_except "locked" {
+    shared_except "locked" {
         bind "Ctrl h" { MoveFocus "Left"; SwitchToMode "Normal";  }
         bind "Ctrl l" { MoveFocus "Right"; SwitchToMode "Normal";  }
         bind "Ctrl j" { MoveFocus "Down"; SwitchToMode "Normal";  }
@@ -97,7 +116,7 @@ keybinds clear-defaults=true {
         bind "Ctrl p" { SwitchToMode "Pane"; }
     }
     shared_except "resize" "locked" {
-        bind "Ctrl r" { SwitchToMode "Resize"; }
+        bind "Ctrl e" { SwitchToMode "Resize"; }
     }
     shared_except "scroll" "locked" {
         bind "Ctrl s" { SwitchToMode "Scroll"; }
@@ -152,4 +171,4 @@ theme "cattpuccin-frappe"
 default_mode "normal"
 // default_layout "compact"
 pane_frames false
-// copy_command "pbcopy"
+copy_command "pbcopy"

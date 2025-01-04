@@ -1,7 +1,3 @@
--- Keymaps are automatically loaded on the VeryLazy event
--- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
--- Add any additional keymaps here
-
 --- Map a key combination to a command
 ---@param modes string|string[]: The mode(s) to map the key combination to
 ---@param lhs string: The key combination to map
@@ -20,8 +16,56 @@ local map = function(modes, lhs, rhs, opts)
   end
 end
 
--- delete default lazyvim keymaps
-vim.keymap.del("n", "<leader>K")
-
 -- commands with ;
-map("n", ";", ":", { desc = "Command" })
+map("n", ";", ":", {
+  noremap = true,
+  expr = true,
+  callback = function()
+    vim.fn.feedkeys(":", "n")
+    return ""
+  end,
+})
+
+-- save buffer
+map({ "i", "v", "n", "s" }, "<C-s>", "<cmd>w<cr><esc>", { desc = "Save file" })
+
+-- center buffer on jumps
+map("n", "<C-d>", "<C-d>zz", { noremap = true })
+map("n", "<C-u>", "<C-u>zz", { noremap = true })
+map("n", "n", "nzzzv", { noremap = true })
+map("n", "N", "Nzzzv", { noremap = true })
+
+-- better jk
+map("n", "J", "mzJ`z", { silent = true })
+map("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
+map("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
+map("v", "J", ":m '>+1<CR>gv=gv", { silent = true })
+map("v", "K", ":m '<-2<CR>gv=gv", { silent = true })
+
+-- better indenting
+map("v", "<", "<gv", { silent = true })
+map("v", ">", ">gv", { silent = true })
+
+-- smart dd
+-- don't replace yank register if deleting empty line in NORMAL MODE
+local function smart_dd_normal()
+  if vim.api.nvim_get_current_line():match("^%s*$") then
+    return '"_dd'
+  else
+    return "dd"
+  end
+end
+map("n", "dd", smart_dd_normal, { noremap = true, expr = true })
+
+-- https://github.com/mhinz/vim-galore#saner-behavior-of-n-and-n
+map("n", "n", "'Nn'[v:searchforward]", { expr = true, desc = "Next search result" })
+map("x", "n", "'Nn'[v:searchforward]", { expr = true, desc = "Next search result" })
+map("o", "n", "'Nn'[v:searchforward]", { expr = true, desc = "Next search result" })
+map("n", "N", "'nN'[v:searchforward]", { expr = true, desc = "Prev search result" })
+map("x", "N", "'nN'[v:searchforward]", { expr = true, desc = "Prev search result" })
+map("o", "N", "'nN'[v:searchforward]", { expr = true, desc = "Prev search result" })
+
+-- jump
+map("n", "n", "nzzzv", { silent = true }) -- center screen
+map("n", "N", "Nzzzv", { silent = true })
+map("n", "*", "*N", { silent = true }) -- do not jump forward
