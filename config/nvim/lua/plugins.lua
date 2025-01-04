@@ -523,7 +523,11 @@ return {
     "saghen/blink.cmp",
     dependencies = "rafamadriz/friendly-snippets",
     version = "*",
+    event = "InsertEnter",
     opts = {
+      appearance = {
+        use_nvim_cmp_as_default = false,
+      },
       keymap = {
         preset = "default",
         ["<C-o>"] = { "select_and_accept" },
@@ -532,6 +536,13 @@ return {
       },
       sources = {
         default = { "lsp", "path", "snippets", "buffer" },
+      },
+      signature = { enabled = true },
+      completion = {
+        documentation = {
+          auto_show = true,
+          auto_show_delay_ms = 200,
+        },
       },
     },
     opts_extend = { "sources.default" },
