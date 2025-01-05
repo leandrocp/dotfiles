@@ -1,13 +1,55 @@
 // https://github.com/zellij-org/zellij/blob/main/zellij-utils/assets/config/default.kdl
 
+plugins {
+    compact-bar location="zellij:compact-bar"
+    configuration location="zellij:configuration"
+    filepicker location="zellij:strider" {
+        cwd "/"
+    }
+    plugin-manager location="zellij:plugin-manager"
+    session-manager location="zellij:session-manager"
+    status-bar location="zellij:status-bar"
+    strider location="zellij:strider"
+    tab-bar location="zellij:tab-bar"
+    welcome-screen location="zellij:session-manager" {
+        welcome_screen true
+    }
+
+    autolock location="file:~/.config/zellij/plugins/zellij-autolock.wasm" {
+      is_enabled true
+      triggers "nvim|e"
+      watch_triggers "git|fzf|zoxide|lazygit"
+      reaction_seconds "1.0"
+      print_to_log true
+    }
+
+    // zjframes location="file:~/.config/zellij/plugins/zjframes.wasm" {
+    //   hide_frame_for_single_pane       "true"
+    //   hide_frame_except_for_search     "true"
+    //   hide_frame_except_for_fullscreen "true"
+    // }
+}
+
+load_plugins {
+  autolock
+  // zjframes
+}
+ 
+simplified_ui true
+theme "cattpuccin-frappe"
+default_mode "normal"
+// default_layout "compact"
+pane_frames false
+copy_command "pbcopy"
+
 keybinds clear-defaults=true {
-    normal {
-        bind "Enter" {
-            WriteChars "\u{000D}";
-            MessagePlugin "autolock" {};
-        }
-        bind "Ctrl t" { SwitchToMode "Tab"; }
-        bind "Ctrl n" { SwitchToMode "Pane"; }
+    shared_among "normal" "locked" {
+        bind "Super m" { SwitchToMode "Move"; }
+        bind "Super p" { SwitchToMode "Pane"; }
+        bind "Super q" { SwitchToMode "Session"; }
+        bind "Super r" { SwitchToMode "Resize"; }
+        bind "Super s" { SwitchToMode "Scroll"; }
+        bind "Super t" { SwitchToMode "Tab"; }
         bind "Super w" { CloseTab; }
         bind "Super 1" { GoToTab 1; SwitchToMode "Normal"; }
         bind "Super 2" { GoToTab 2; SwitchToMode "Normal"; }
@@ -20,49 +62,52 @@ keybinds clear-defaults=true {
         bind "Super 9" { GoToTab 9; SwitchToMode "Normal"; }
     }
 
-    resize {
-        bind "Ctrl c" { SwitchToMode "Normal"; }
-        bind "h" { Resize "Increase Left"; }
-        bind "j" { Resize "Increase Down"; }
-        bind "k" { Resize "Increase Up"; }
-        bind "l" { Resize "Increase Right"; }
-        bind "H" { Resize "Decrease Left"; }
-        bind "J" { Resize "Decrease Down"; }
-        bind "K" { Resize "Decrease Up"; }
-        bind "L" { Resize "Decrease Right"; }
+    shared_except "normal" "locked" {
+        bind "Ctrl c" "Esc" { SwitchToMode "Normal"; }
+    }
+
+    normal {
+        bind "Enter" {
+            WriteChars "\u{000D}";
+            MessagePlugin "autolock" {};
+        }
+        bind "Ctrl h" { MoveFocusOrTab "Left"; SwitchToMode "Normal";  }
+        bind "Ctrl l" { MoveFocusOrTab "Right"; SwitchToMode "Normal";  }
+        bind "Ctrl j" { MoveFocus "Down"; SwitchToMode "Normal";  }
+        bind "Ctrl k" { MoveFocus "Up"; SwitchToMode "Normal";  }
     }
 
     tab {
-        bind "Ctrl c" { SwitchToMode "Normal"; }
         bind "h" { GoToPreviousTab; }
         bind "l" { GoToNextTab; }
         bind "H" { MoveTab "Left"; }
         bind "L" { MoveTab "Right"; }
         bind "n" { NewTab; SwitchToMode "Normal"; }
         bind "Tab" { ToggleTab; }
-        bind "1" { GoToTab 1; SwitchToMode "Normal"; }
-        bind "2" { GoToTab 2; SwitchToMode "Normal"; }
-        bind "3" { GoToTab 3; SwitchToMode "Normal"; }
-        bind "4" { GoToTab 4; SwitchToMode "Normal"; }
-        bind "5" { GoToTab 5; SwitchToMode "Normal"; }
-        bind "6" { GoToTab 6; SwitchToMode "Normal"; }
-        bind "7" { GoToTab 7; SwitchToMode "Normal"; }
-        bind "8" { GoToTab 8; SwitchToMode "Normal"; }
-        bind "9" { GoToTab 9; SwitchToMode "Normal"; }
     }
 
     pane {
-        bind "Ctrl c" { SwitchToMode "Normal"; }
         bind "h" { NewPane "Left"; SwitchToMode "Normal"; }
         bind "j" { NewPane "Down"; SwitchToMode "Normal"; }
         bind "k" { NewPane "up"; SwitchToMode "Normal"; }
         bind "l" { NewPane "Right"; SwitchToMode "Normal"; }
+        bind "H" { MovePane "Left"; }
+        bind "J" { MovePane "Down"; }
+        bind "K" { MovePane "Up"; }
+        bind "L" { MovePane "Right"; }
         bind "x" { CloseFocus; SwitchToMode "Normal"; }
         bind "f" { ToggleFocusFullscreen; SwitchToMode "Normal"; }
     }
 
+    resize {
+        bind "h" { Resize "Increase Left"; }
+        bind "j" { Resize "Increase Down"; }
+        bind "k" { Resize "Increase Up"; }
+        bind "l" { Resize "Increase Right"; }
+    }
+
     session {
-        bind "Ctrl c" { SwitchToMode "Normal"; }
+        bind "q" { Quit; }
         bind "d" { Detach; }
         bind "w" {
             LaunchOrFocusPlugin "session-manager" {
@@ -86,89 +131,4 @@ keybinds clear-defaults=true {
             SwitchToMode "Normal"
         }
     }
-
-    locked {
-        bind "Super z" {
-            MessagePlugin "autolock" {payload "disable";};
-            SwitchToMode "Normal";
-        }
-        bind "Ctrl t" { SwitchToMode "Tab"; }
-        bind "Ctrl n" { SwitchToMode "Pane"; }
-    }
-
-    shared_except "locked" {
-        bind "Ctrl h" { MoveFocus "Left"; SwitchToMode "Normal";  }
-        bind "Ctrl l" { MoveFocus "Right"; SwitchToMode "Normal";  }
-        bind "Ctrl j" { MoveFocus "Down"; SwitchToMode "Normal";  }
-        bind "Ctrl k" { MoveFocus "Up"; SwitchToMode "Normal";  }
-        bind "Super n" { NewPane; }
-        bind "Super t" { NewTab; }
-        bind "Super =" { Resize "Increase"; SwitchToMode "Normal"; }
-        bind "Super -" { Resize "Decrease"; SwitchToMode "Normal"; }
-        bind "Super Left" { MoveTab "Left"; SwitchToMode "Normal"; }
-        bind "Super Right" { MoveTab "Right"; SwitchToMode "Normal"; }
-    }
-
-    shared_except "normal" "locked" {
-        bind "Enter" "Esc" { SwitchToMode "Normal"; }
-    }
-    shared_except "pane" "locked" {
-        bind "Ctrl p" { SwitchToMode "Pane"; }
-    }
-    shared_except "resize" "locked" {
-        bind "Ctrl e" { SwitchToMode "Resize"; }
-    }
-    shared_except "scroll" "locked" {
-        bind "Ctrl s" { SwitchToMode "Scroll"; }
-    }
-    shared_except "session" "locked" {
-        bind "Ctrl o" { SwitchToMode "Session"; }
-    }
-    shared_except "tab" "locked" {
-        bind "Ctrl t" { SwitchToMode "Tab"; }
-    }
-    shared_except "move" "locked" {
-        bind "Ctrl m" { SwitchToMode "Move"; }
-    }
 }
-
-plugins {
-    compact-bar location="zellij:compact-bar"
-    configuration location="zellij:configuration"
-    filepicker location="zellij:strider" {
-        cwd "/"
-    }
-    plugin-manager location="zellij:plugin-manager"
-    session-manager location="zellij:session-manager"
-    status-bar location="zellij:status-bar"
-    strider location="zellij:strider"
-    tab-bar location="zellij:tab-bar"
-    welcome-screen location="zellij:session-manager" {
-        welcome_screen true
-    }
-
-    autolock location="file:~/.config/zellij/plugins/zellij-autolock.wasm" {
-      is_enabled true
-      triggers "nvim|vim|git|fzf|zoxide|atuin|lazygit"
-      reaction_seconds "0.3"
-      print_to_log true
-    }
-
-    // zjframes location="file:~/.config/zellij/plugins/zjframes.wasm" {
-    //   hide_frame_for_single_pane       "true"
-    //   hide_frame_except_for_search     "true"
-    //   hide_frame_except_for_fullscreen "true"
-    // }
-}
-
-load_plugins {
-  autolock
-  // zjframes
-}
- 
-simplified_ui true
-theme "cattpuccin-frappe"
-default_mode "normal"
-// default_layout "compact"
-pane_frames false
-copy_command "pbcopy"

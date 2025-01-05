@@ -16,11 +16,12 @@
   "numb.nvim": { "branch": "master", "commit": "3f7d4a74bd456e747a1278ea1672b26116e0824d" },
   "nvim-lspconfig": { "branch": "master", "commit": "f4ed656e876e45cf914d7beb972830561178e232" },
   "nvim-treesitter": { "branch": "master", "commit": "57713d079c3c2afcc31f3e0650bf8594a2a296ba" },
-  "oil.nvim": { "branch": "master", "commit": "c6a39a69b2df7c10466f150dde0bd23e49c1fba3" },
+  "oil.nvim": { "branch": "master", "commit": "254bc6635cb3f77e6e9a89155652f368e5535160" },
   "plenary.nvim": { "branch": "master", "commit": "2d9b06177a975543726ce5c73fca176cedbffe9d" },
   "relative-toggle.nvim": { "branch": "main", "commit": "fabe2f60f5f148f2bf1fb76e8a542f5adf8d996a" },
   "snacks.nvim": { "branch": "main", "commit": "d312053f78b4fb55523def179ac502438dd93193" },
   "undotree": { "branch": "master", "commit": "2556c6800b210b2096b55b66e74b4cc1d9ebbe4f" },
   "vim-cool": { "branch": "master", "commit": "662e7b11064cbeedad17c45d2fe926e78d3cd0b6" },
-  "which-key.nvim": { "branch": "main", "commit": "8ab96b38a2530eacba5be717f52e04601eb59326" }
+  "which-key.nvim": { "branch": "main", "commit": "8ab96b38a2530eacba5be717f52e04601eb59326" },
+  "zellij.vim": { "branch": "main", "commit": "c3e599a348da131789d765698e6346cd66f9bdb6" }
 }

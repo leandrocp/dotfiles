@@ -19,6 +19,12 @@ return {
   },
 
   {
+    "https://github.com/fresh2dev/zellij.vim",
+    lazy = true,
+    event = "VeryLazy",
+  },
+
+  {
     "folke/which-key.nvim",
     event = "VeryLazy",
     opts = {
