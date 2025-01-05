@@ -1,5 +1,12 @@
 // https://github.com/zellij-org/zellij/blob/main/zellij-utils/assets/config/default.kdl
 
+default_mode "normal"
+theme "cattpuccin-frappe"
+simplified_ui true
+default_layout "compact"
+pane_frames false
+copy_command "pbcopy"
+
 plugins {
     compact-bar location="zellij:compact-bar"
     configuration location="zellij:configuration"
@@ -35,13 +42,6 @@ load_plugins {
   // zjframes
 }
  
-simplified_ui true
-theme "cattpuccin-frappe"
-default_mode "normal"
-// default_layout "compact"
-pane_frames false
-copy_command "pbcopy"
-
 keybinds clear-defaults=true {
     shared_among "normal" "locked" {
         bind "Super m" { SwitchToMode "Move"; }
@@ -50,6 +50,7 @@ keybinds clear-defaults=true {
         bind "Super r" { SwitchToMode "Resize"; }
         bind "Super s" { SwitchToMode "Scroll"; }
         bind "Super t" { SwitchToMode "Tab"; }
+        bind "Super f" { ToggleFloatingPanes; }
         bind "Super w" { CloseTab; }
         bind "Super 1" { GoToTab 1; SwitchToMode "Normal"; }
         bind "Super 2" { GoToTab 2; SwitchToMode "Normal"; }
@@ -75,6 +76,10 @@ keybinds clear-defaults=true {
         bind "Ctrl l" { MoveFocusOrTab "Right"; SwitchToMode "Normal";  }
         bind "Ctrl j" { MoveFocus "Down"; SwitchToMode "Normal";  }
         bind "Ctrl k" { MoveFocus "Up"; SwitchToMode "Normal";  }
+        bind "Ctrl x" { Clear; }
+        bind "Ctrl e" { EditScrollback; }
+        bind "Ctrl d" { PageScrollDown; }
+        bind "Ctrl u" { PageScrollUp; }
     }
 
     tab {

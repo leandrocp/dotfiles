@@ -22,6 +22,7 @@
   "snacks.nvim": { "branch": "main", "commit": "d312053f78b4fb55523def179ac502438dd93193" },
   "undotree": { "branch": "master", "commit": "2556c6800b210b2096b55b66e74b4cc1d9ebbe4f" },
   "vim-cool": { "branch": "master", "commit": "662e7b11064cbeedad17c45d2fe926e78d3cd0b6" },
+  "vim-test": { "branch": "master", "commit": "ade33384bd8ca8555853cf5d7dd26a293fcb332e" },
   "which-key.nvim": { "branch": "main", "commit": "8ab96b38a2530eacba5be717f52e04601eb59326" },
   "zellij.vim": { "branch": "main", "commit": "c3e599a348da131789d765698e6346cd66f9bdb6" }
 }

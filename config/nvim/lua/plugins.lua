@@ -37,6 +37,7 @@ return {
           { "<leader>g", group = "git" },
           { "<leader>q", group = "quit/session" },
           { "<leader>s", group = "search" },
+          { "<leader>t", group = "test" },
           { "[", group = "prev" },
           { "]", group = "next" },
           {
@@ -192,6 +193,8 @@ return {
     },
     opts = {
       formatters_by_ft = {
+        sh = { "shfmt" },
+        zsh = { "shfmt" },
         lua = { "stylua" },
         elixir = { "mix" },
         rust = { "rustfmt" },
@@ -607,5 +610,25 @@ return {
       },
     },
     opts_extend = { "sources.default" },
+  },
+
+  {
+    "vim-test/vim-test",
+    keys = {
+      { "<leader>ts", "<cmd>TestSuite<CR>", desc = "Suite" },
+      { "<leader>tf", "<cmd>TestFile<CR>", desc = "File" },
+      { "<leader>tn", "<cmd>TestNearest<CR>", desc = "Nearest" },
+      { "<leader>tl", "<cmd>TestLast<CR>", desc = "Last" },
+    },
+    config = function()
+      vim.g["test#echo_command"] = 1
+      vim.cmd([[
+        function! ZellijStrategy(cmd)
+          call system('zellij run --floating --width "80%" --height "80%" --x "10%" --y "10%" -- ' . a:cmd)
+        endfunction
+        let g:test#custom_strategies = {'zellij': function('ZellijStrategy')}
+      ]])
+      vim.g["test#strategy"] = "zellij"
+    end,
   },
 }
