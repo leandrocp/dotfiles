@@ -32,6 +32,7 @@ packages=(
   gnu-sed
   lazygit
   macdown
+  mise
   muzzle
   obsidian
   openssl

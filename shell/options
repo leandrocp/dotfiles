@@ -1,29 +1,32 @@
 # vi: ft=zsh
 
-# shell
-PROFILE="$HOME/.zshrc"
-# bindkey -v
+bindkey -v
+bindkey '^p' history-search-backward
+bindkey '^n' history-search-forward
+bindkey '^o' autosuggest-accept
+bindkey '^[w' kill-region
 
-# locale
-export LC_ALL=en_US.UTF-8
-export LANG=en_US.UTF-8
+HISTSIZE=5000
+HISTFILE=~/.zsh_history
+SAVEHIST=$HISTSIZE
+HISTDUP=erase
+setopt appendhistory
+setopt sharehistory
+setopt hist_ignore_space
+setopt hist_ignore_all_dups
+setopt hist_save_no_dups
+setopt hist_ignore_dups
+setopt hist_find_no_dups
 
-# editor
-export ALTERNATE_EDITOR=""
-export EDITOR="nvim"
-export GIT_EDITOR="nvim"
-export VISUAL=$EDITOR
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
+zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 
-# history
-export HISTFILE=~/.zsh_history
-export HISTSIZE=10000
-export SAVEHIST=10000
-setopt inc_append_history
-setopt share_history
-
-# tools
-export MANPAGER='less -X';
-export GPG_TTY=$(tty);
+ALTERNATE_EDITOR=""
+EDITOR="nvim"
+GIT_EDITOR="nvim"
+VISUAL=$EDITOR
+MANPAGER='less -X';
+GPG_TTY=$(tty);
 
 # erlang
 export ERL_AFLAGS="-kernel shell_history enabled"

@@ -106,3 +106,26 @@ vim.api.nvim_create_autocmd({ "BufWritePre" }, {
     vim.fn.mkdir(vim.fn.fnamemodify(file, ":p:h"), "p")
   end,
 })
+
+-- zellij integration
+local function zellij(mode)
+  vim.schedule(function()
+    if vim.env.ZELLIJ ~= nil then
+      vim.fn.system({ "zellij", "action", "switch-mode", mode })
+    end
+  end)
+end
+
+vim.api.nvim_create_autocmd({ "FocusGained", "BufEnter" }, {
+  group = augroup("zellij_lock"),
+  callback = function()
+    zellij("locked")
+  end,
+})
+
+vim.api.nvim_create_autocmd({ "FocusLost", "VimLeave" }, {
+  group = augroup("zellij_normal"),
+  callback = function()
+    zellij("normal")
+  end,
+})

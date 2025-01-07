@@ -22,24 +22,17 @@ plugins {
         welcome_screen true
     }
 
-    autolock location="file:~/.config/zellij/plugins/zellij-autolock.wasm" {
-      is_enabled true
-      triggers "nvim|e"
-      watch_triggers "git|fzf|zoxide|lazygit"
-      reaction_seconds "1.0"
-      print_to_log true
-    }
-
-    // zjframes location="file:~/.config/zellij/plugins/zjframes.wasm" {
-    //   hide_frame_for_single_pane       "true"
-    //   hide_frame_except_for_search     "true"
-    //   hide_frame_except_for_fullscreen "true"
+    // autolock location="file:~/.config/zellij/plugins/zellij-autolock.wasm" {
+    // autolock location="file:/Users/leandro/code/fresh2dev/zellij-autolock/target/wasm32-wasip1/debug/zellij-autolock.wasm" {
+    //   is_enabled true
+    //   triggers "e|nvim|vim"
+    //   reaction_seconds "0.3"
+    //   print_to_log true
     // }
 }
 
 load_plugins {
-  autolock
-  // zjframes
+  // autolock
 }
  
 keybinds clear-defaults=true {
@@ -64,25 +57,43 @@ keybinds clear-defaults=true {
     }
 
     shared_except "normal" "locked" {
-        bind "Ctrl c" "Esc" { SwitchToMode "Normal"; }
+        // bind "Ctrl c" "Esc" { SwitchToMode "Normal"; }
+        // bind "Ctrl c" { SwitchToMode "Normal"; }
+    }
+
+    shared_except "locked" {
+        bind "Super k" { SwitchToMode "locked"; }
+        // bind "Ctrl c" "Esc" { SwitchToMode "Normal"; }
+        // bind "Ctrl x" { Clear; }
+        // bind "Ctrl s" { Search "up"; }
+        // bind "Ctrl e" { EditScrollback; }
+        // bind "Ctrl d" { PageScrollDown; }
+        // bind "Ctrl u" { PageScrollUp; }
+    }
+
+    locked {
+        bind "Ctrl g" { SwitchToMode "Normal"; }
+        // bind "Alt z" {
+        //     // Disable the autolock plugin.
+        //     MessagePlugin "autolock" {payload "disable";};
+        //     // Unlock Zellij.
+        //     SwitchToMode "Normal";
+        // }
     }
 
     normal {
-        bind "Enter" {
-            WriteChars "\u{000D}";
-            MessagePlugin "autolock" {};
-        }
+        // bind "Enter" {
+        //     WriteChars "\u{000D}";
+        //     MessagePlugin "autolock" {};
+        // }
         bind "Ctrl h" { MoveFocusOrTab "Left"; SwitchToMode "Normal";  }
         bind "Ctrl l" { MoveFocusOrTab "Right"; SwitchToMode "Normal";  }
         bind "Ctrl j" { MoveFocus "Down"; SwitchToMode "Normal";  }
         bind "Ctrl k" { MoveFocus "Up"; SwitchToMode "Normal";  }
-        bind "Ctrl x" { Clear; }
-        bind "Ctrl e" { EditScrollback; }
-        bind "Ctrl d" { PageScrollDown; }
-        bind "Ctrl u" { PageScrollUp; }
     }
 
     tab {
+        bind "Ctrl c" "Esc" { SwitchToMode "Normal"; }
         bind "h" { GoToPreviousTab; }
         bind "l" { GoToNextTab; }
         bind "H" { MoveTab "Left"; }
@@ -92,6 +103,7 @@ keybinds clear-defaults=true {
     }
 
     pane {
+        bind "Ctrl c" "Esc" { SwitchToMode "Normal"; }
         bind "h" { NewPane "Left"; SwitchToMode "Normal"; }
         bind "j" { NewPane "Down"; SwitchToMode "Normal"; }
         bind "k" { NewPane "up"; SwitchToMode "Normal"; }
@@ -105,6 +117,7 @@ keybinds clear-defaults=true {
     }
 
     resize {
+        bind "Ctrl c" "Esc" { SwitchToMode "Normal"; }
         bind "h" { Resize "Increase Left"; }
         bind "j" { Resize "Increase Down"; }
         bind "k" { Resize "Increase Up"; }
@@ -112,6 +125,7 @@ keybinds clear-defaults=true {
     }
 
     session {
+        bind "Ctrl c" "Esc" { SwitchToMode "Normal"; }
         bind "q" { Quit; }
         bind "d" { Detach; }
         bind "w" {

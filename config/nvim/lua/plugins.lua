@@ -19,12 +19,6 @@ return {
   },
 
   {
-    "https://github.com/fresh2dev/zellij.vim",
-    lazy = true,
-    event = "VeryLazy",
-  },
-
-  {
     "folke/which-key.nvim",
     event = "VeryLazy",
     opts = {
@@ -62,7 +56,14 @@ return {
   },
 
   {
+    "https://github.com/fresh2dev/zellij.vim",
+    lazy = true,
+    event = "VeryLazy",
+  },
+
+  {
     "max397574/better-escape.nvim",
+    event = "BufReadPost",
     config = function()
       require("better_escape").setup({
         mappings = {
@@ -204,6 +205,7 @@ return {
       },
       format_on_save = { timeout_ms = 500 },
       formatters = {
+        injected = { options = { ignore_errors = true } },
         shfmt = {
           prepend_args = { "-i", "2" },
         },
@@ -368,10 +370,15 @@ return {
       { "<leader>:", "<cmd>FzfLua command_history<cr>", desc = "Command History" },
       { "<leader><space>", "<cmd>FzfLua files<cr>", desc = "Files" },
       {
+        "<leader>,",
+        "<cmd>FzfLua buffers sort_mru=true sort_lastused=true<cr>",
+        desc = "Switch Buffer",
+      },
+      {
         "<leader>/",
         function()
           require("fzf-lua").live_grep_native({
-            resume = true,
+            resume = false,
           })
         end,
         desc = "Grep",
@@ -594,7 +601,8 @@ return {
       },
       keymap = {
         preset = "default",
-        ["<C-o>"] = { "select_and_accept" },
+        ["<C-o>"] = { "accept", "fallback" },
+        -- ["<C-o>"] = { "select_and_accept" },
         ["<C-k>"] = { "select_prev", "fallback" },
         ["<C-j>"] = { "select_next", "fallback" },
       },
@@ -629,6 +637,47 @@ return {
         let g:test#custom_strategies = {'zellij': function('ZellijStrategy')}
       ]])
       vim.g["test#strategy"] = "zellij"
+    end,
+  },
+
+  {
+    "nvim-lualine/lualine.nvim",
+    event = "VeryLazy",
+    init = function()
+      vim.g.lualine_laststatus = vim.o.laststatus
+      if vim.fn.argc(-1) > 0 then
+        -- set an empty statusline till lualine loads
+        vim.o.statusline = " "
+      else
+        -- hide the statusline on the starter page
+        vim.o.laststatus = 0
+      end
+    end,
+    opts = function()
+      local lualine_require = require("lualine_require")
+      lualine_require.require = require
+
+      vim.o.laststatus = vim.g.lualine_laststatus
+
+      local opts = {
+        options = {
+          theme = "auto",
+          icons_enabled = false,
+          section_separators = "",
+          component_separators = "",
+          globalstatus = vim.o.laststatus == 3,
+          disabled_filetypes = { statusline = { "snacks_dashboard" } },
+        },
+        -- sections = {
+        --   lualine_a = { "mode" },
+        --   lualine_b = { "branch" },
+        --   lualine_c = {
+        --     { "diagnostics" },
+        --     { "diff" },
+        --   },
+        -- },
+      }
+      return opts
     end,
   },
 }

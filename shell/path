@@ -1,9 +1,17 @@
 # vi: ft=zsh
 
+# eval "$(/opt/homebrew/bin/brew shellenv)"
+export HOMEBREW_PREFIX="/opt/homebrew"
+export HOMEBREW_CELLAR="/opt/homebrew/Cellar"
+export HOMEBREW_REPOSITORY="/opt/homebrew"
+export PATH="/opt/homebrew/bin:/opt/homebrew/sbin${PATH+:$PATH}"
+export MANPATH="/opt/homebrew/share/man${MANPATH+:$MANPATH}:"
+export INFOPATH="/opt/homebrew/share/info:${INFOPATH:-}"
+export FPATH="/opt/homebrew/share/zsh/site-functions:${FPATH}"
+
 export COREUTILS_BIN=/opt/homebrew/opt/coreutils/libexec/gnubin
 export GPG_BIN=/usr/local/opt/gnupg2/bin
 export GNU_SED_BIN=/opt/homebrew/opt/gnu-sed/libexec/gnubin
-
 export FLYCTL_HOME="$HOME/.fly"
 export CARGO_BIN=$HOME/.cargo/bin
 export OPENJDK_BIN=/opt/homebrew/opt/openjdk/bin
@@ -13,5 +21,5 @@ export POSTGRES_PATH="/opt/homebrew/opt/postgresql@15"
 export POSTGRES_BIN_PATH=$POSTGRES_PATH/bin
 export POSTGRES_LIB_PATH=$POSTGRES_PATH/lib
 
-export PATH=$PATH:$HOME/.bin:./bin:${COREUTILS_BIN}:${GPG_BIN}:${GNU_SED_BIN}:$FLYCTL_HOME/bin:${CARGO_BIN}:${OPENJDK_BIN}:/usr/local/bin:${POSTGRES_BIN_PATH}:${POSTGRES_LIB_PATH}:/usr/local/lib:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin
+export PATH=$PATH:$HOME/.bin:$HOME/.local/bin:./bin:${COREUTILS_BIN}:${GPG_BIN}:${GNU_SED_BIN}:$FLYCTL_HOME/bin:${CARGO_BIN}:${OPENJDK_BIN}:/usr/local/bin:${POSTGRES_BIN_PATH}:${POSTGRES_LIB_PATH}:/usr/local/lib:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin
 export MANPATH=/usr/local/opt/gnu-sed/libexec/gnuman:$MANPATH
