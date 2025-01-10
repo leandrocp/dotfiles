@@ -1,8 +1,8 @@
 [tools]
 nodejs = "lts"
 neovim = "nightly"
-rust = "stable"
 python = "3.12.3"
 erlang = "27.2"
 elixir = "1.18.1-otp-27"
 node = "lts"
+rust = "stable"

@@ -45,7 +45,6 @@ packages=(
   slack
   tableplus
   wxwidgets
-  zellij
   zoxide
   zsh
 )

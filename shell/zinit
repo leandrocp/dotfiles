@@ -8,35 +8,23 @@ ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
 [ ! -d $ZINIT_HOME/.git ] && git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
 source "${ZINIT_HOME}/zinit.zsh"
 
-# autoload -Uz _zinit
-# (( ${+_comps} )) && _comps[zinit]=_zinit
-
 zinit ice compile'(pure|async).zsh' pick'async.zsh' src'pure.zsh'
 zinit light sindresorhus/pure
 
-zinit lucid from'gh-r' as'program' for \
-  pick'zoxide/zoxide' \
-  atload'eval "$(zoxide init --cmd j zsh)"' \
-  'ajeetdsouza/zoxide' \
-  \
-  atload'source <(fzf --zsh)' \
-  'junegunn/fzf'
+zinit wait lucid light-mode for \
+  atinit"zicompinit; zicdreplay" \
+  zdharma/fast-syntax-highlighting \
+  atload"_zsh_autosuggest_start;bindkey '^o' autosuggest-accept" \
+  zsh-users/zsh-autosuggestions \
+  blockf atpull'zinit creinstall -q .' \
+  zsh-users/zsh-completions
 
-zinit ice wait lucid from'gh-r' as'program' bpick'*-macos-arm64.tar.gz' \
-  pick'mise/bin/mise' \
-  atclone"
-     cp -vf mise/man/man1/mise.1 $ZINIT[MAN_DIR]/man1;
-     ./mise/bin/mise completion zsh > _mise
-     " \
-  atpull'%atclone' \
-  atload'eval "$(mise activate zsh)"'
-zinit light 'jdx/mise'
+zinit wait'1' lucid for \
+  OMZP::extract
 
-zinit snippet 'OMZP::extract'
-
-zinit ice depth=1
-zinit light zsh-users/zsh-completions
-zinit light zsh-users/zsh-autosuggestions
-
-zinit lucid atload"zicompinit; zicdreplay" for \
-  'zdharma/fast-syntax-highlighting'
+# zinit ice depth=1
+# zinit light zsh-users/zsh-autosuggestions
+# zinit light zsh-users/zsh-completions
+# zinit light zdharma-continuum/fast-syntax-highlighting
+#
+# zinit snippet 'OMZP::extract'

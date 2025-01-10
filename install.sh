@@ -37,6 +37,10 @@ function bootstrap() {
   eval "$(/opt/homebrew/bin/brew shellenv)"
   source apps_osx.sh
 
+  echo "bat"
+  wget -P "$(bat --config-dir)/themes" https://github.com/catppuccin/bat/raw/main/themes/Catppuccin%20Frappe.tmTheme
+  bat cache --build
+
   mise plugins install neovim
   mise plugins install erlang https://github.com/michallepicki/asdf-erlang-prebuilt-macos.git
   mise install

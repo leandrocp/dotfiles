@@ -3,7 +3,7 @@
 bindkey -v
 bindkey '^p' history-search-backward
 bindkey '^n' history-search-forward
-bindkey '^o' autosuggest-accept
+# bindkey '^o' autosuggest-accept
 bindkey '^[w' kill-region
 
 HISTSIZE=5000

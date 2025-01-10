@@ -3,4 +3,7 @@ source ~/.shell/zinit
 source ~/.shell/path
 source ~/.shell/options
 source ~/.shell/aliases
-source ~/.shell/zellij
+
+source <(fzf --zsh)
+eval "$(zoxide init --cmd j zsh)"
+eval "$(/opt/homebrew/bin/mise activate zsh)"

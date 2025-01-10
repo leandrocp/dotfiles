@@ -4,8 +4,6 @@ alias e='nvim'
 alias up='brew upgrade; brew cleanup; mise self-update --yes; zcomet update; zcomet self-update; nvim-update; elixir-update'
 alias g='git'
 alias gg='lazygit'
-alias z='zellij'
-alias tf='terraform'
 
 alias rm='rm -i'
 alias df='df -h'

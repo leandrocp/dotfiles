@@ -5,15 +5,36 @@ return {
     name = "catppuccin",
     opts = {
       integrations = {
+        treesitter = true,
         blink_cmp = true,
         fzf = true,
         gitsigns = true,
         grug_far = true,
         mason = true,
         neotest = true,
-        treesitter = true,
         snacks = true,
         which_key = true,
+        mini = { enabled = true },
+        native_lsp = {
+          enabled = true,
+          virtual_text = {
+            errors = { "italic" },
+            hints = { "italic" },
+            warnings = { "italic" },
+            information = { "italic" },
+            ok = { "italic" },
+          },
+          underlines = {
+            errors = { "underline" },
+            hints = { "underline" },
+            warnings = { "underline" },
+            information = { "underline" },
+            ok = { "underline" },
+          },
+          inlay_hints = {
+            background = true,
+          },
+        },
       },
     },
   },
@@ -53,12 +74,6 @@ return {
         desc = "Buffer Keymaps",
       },
     },
-  },
-
-  {
-    "https://github.com/fresh2dev/zellij.vim",
-    lazy = true,
-    event = "VeryLazy",
   },
 
   {
@@ -142,8 +157,27 @@ return {
   },
 
   {
-    "echasnovski/mini.misc",
-    version = "*",
+    "folke/snacks.nvim",
+    opts = function()
+      -- Toggle the profiler
+      Snacks.toggle.profiler():map("<leader>pp")
+      -- Toggle the profiler highlights
+      Snacks.toggle.profiler_highlights():map("<leader>ph")
+    end,
+    keys = {
+      {
+        "<leader>ps",
+        function()
+          Snacks.profiler.scratch()
+        end,
+        desc = "Profiler Scratch Bufer",
+      },
+    },
+  },
+
+  {
+    "echasnovski/mini.nvim",
+    event = { "BufReadPost", "BufNewFile" },
     config = function()
       local misc = require("mini.misc")
       misc.setup()
@@ -153,6 +187,13 @@ return {
         "Makefile",
       })
       misc.setup_restore_cursor()
+
+      require("mini.comment").setup()
+      require("mini.ai").setup()
+      require("mini.jump").setup()
+      require("mini.move").setup()
+      require("mini.surround").setup()
+      require("mini.statusline").setup()
     end,
   },
 
@@ -203,7 +244,7 @@ return {
       default_format_opts = {
         lsp_format = "fallback",
       },
-      format_on_save = { timeout_ms = 500 },
+      format_on_save = { timeout_ms = 1000 },
       formatters = {
         injected = { options = { ignore_errors = true } },
         shfmt = {
@@ -341,12 +382,18 @@ return {
       local actions = require("fzf-lua.actions")
 
       return {
+        defaults = {
+          formatter = "path.dirname_first",
+          file_icons = false,
+        },
         fzf_colors = true,
         fzf_opts = {
           ["--no-scrollbar"] = true,
         },
-        defaults = {
-          formatter = "path.dirname_first",
+        winopts = {
+          preview = {
+            default = "cat",
+          },
         },
         files = {
           cwd_prompt = false,
@@ -403,9 +450,9 @@ return {
   },
 
   {
+    -- Adds git related signs to the gutter, as well as utilities for managing changes
     "lewis6991/gitsigns.nvim",
     event = "BufReadPre",
-    keys = {},
     opts = {
       signs = {
         add = { text = "+" },
@@ -414,27 +461,55 @@ return {
         topdelete = { text = "‾" },
         changedelete = { text = "~" },
       },
-      on_attach = function(buffer)
+      on_attach = function(bufnr)
         local gs = package.loaded.gitsigns
 
-        local function map(mode, l, r, desc)
-          vim.keymap.set(mode, l, r, { buffer = buffer, desc = desc })
+        local function map(mode, l, r, opts)
+          opts = opts or {}
+          opts.buffer = bufnr
+          vim.keymap.set(mode, l, r, opts)
         end
 
-        map("n", "]g", gs.next_hunk, "Next git chunk")
-        map("n", "[g", gs.prev_hunk, "Prev git chunk")
-        map({ "n", "v" }, "<leader>gs", ":Gitsigns stage_hunk<CR>", "Stage change")
-        map({ "n", "v" }, "<leader>gr", ":Gitsigns reset_hunk<CR>", "Reset change")
-        map("n", "<leader>gU", gs.undo_stage_hunk, "Undo stage change")
-        map("n", "<leader>gS", gs.stage_buffer, "Stage buffer")
-        map("n", "<leader>gR", gs.reset_buffer, "Reset buffer")
+        map({ "n", "v" }, "]c", function()
+          if vim.wo.diff then
+            return "]h"
+          end
+          vim.schedule(function()
+            gs.next_hunk()
+          end)
+          return "<Ignore>"
+        end, { expr = true, desc = "Jump to next hunk" })
+
+        map({ "n", "v" }, "[c", function()
+          if vim.wo.diff then
+            return "[h"
+          end
+          vim.schedule(function()
+            gs.prev_hunk()
+          end)
+          return "<Ignore>"
+        end, { expr = true, desc = "Jump to previous hunk" })
+
+        map("v", "<leader>gs", function()
+          gs.stage_hunk({ vim.fn.line("."), vim.fn.line("v") })
+        end, { desc = "stage git hunk" })
+        map("v", "<leader>gr", function()
+          gs.reset_hunk({ vim.fn.line("."), vim.fn.line("v") })
+        end, { desc = "reset git hunk" })
+        -- normal mode
+        map("n", "<leader>gs", gs.stage_hunk, { desc = "git stage hunk" })
+        map("n", "<leader>gr", gs.reset_hunk, { desc = "git reset hunk" })
+        map("n", "<leader>gS", gs.stage_buffer, { desc = "git Stage buffer" })
+        map("n", "<leader>gu", gs.undo_stage_hunk, { desc = "undo stage hunk" })
+        map("n", "<leader>gR", gs.reset_buffer, { desc = "git Reset buffer" })
+        map("n", "<leader>gp", gs.preview_hunk, { desc = "preview git hunk" })
         map("n", "<leader>gb", function()
-          gs.blame_line({ full = true })
-        end, "Blame line")
-        map("n", "<leader>gd", gs.diffthis, "Diff this")
+          gs.blame_line({ full = false })
+        end, { desc = "git blame line" })
+        map("n", "<leader>gd", gs.diffthis, { desc = "git diff against index" })
         map("n", "<leader>gD", function()
           gs.diffthis("~")
-        end, "Diff this ~")
+        end, { desc = "git diff against last commit" })
       end,
     },
   },
@@ -602,7 +677,6 @@ return {
       keymap = {
         preset = "default",
         ["<C-o>"] = { "accept", "fallback" },
-        -- ["<C-o>"] = { "select_and_accept" },
         ["<C-k>"] = { "select_prev", "fallback" },
         ["<C-j>"] = { "select_next", "fallback" },
       },
@@ -617,7 +691,6 @@ return {
         },
       },
     },
-    opts_extend = { "sources.default" },
   },
 
   {
@@ -630,54 +703,12 @@ return {
     },
     config = function()
       vim.g["test#echo_command"] = 1
-      vim.cmd([[
-        function! ZellijStrategy(cmd)
-          call system('zellij run --floating --width "80%" --height "80%" --x "10%" --y "10%" -- ' . a:cmd)
-        endfunction
-        let g:test#custom_strategies = {'zellij': function('ZellijStrategy')}
-      ]])
-      vim.g["test#strategy"] = "zellij"
     end,
   },
 
   {
-    "nvim-lualine/lualine.nvim",
-    event = "VeryLazy",
-    init = function()
-      vim.g.lualine_laststatus = vim.o.laststatus
-      if vim.fn.argc(-1) > 0 then
-        -- set an empty statusline till lualine loads
-        vim.o.statusline = " "
-      else
-        -- hide the statusline on the starter page
-        vim.o.laststatus = 0
-      end
-    end,
-    opts = function()
-      local lualine_require = require("lualine_require")
-      lualine_require.require = require
-
-      vim.o.laststatus = vim.g.lualine_laststatus
-
-      local opts = {
-        options = {
-          theme = "auto",
-          icons_enabled = false,
-          section_separators = "",
-          component_separators = "",
-          globalstatus = vim.o.laststatus == 3,
-          disabled_filetypes = { statusline = { "snacks_dashboard" } },
-        },
-        -- sections = {
-        --   lualine_a = { "mode" },
-        --   lualine_b = { "branch" },
-        --   lualine_c = {
-        --     { "diagnostics" },
-        --     { "diff" },
-        --   },
-        -- },
-      }
-      return opts
-    end,
+    "mrcjkb/rustaceanvim",
+    version = "^5", -- Recommended
+    lazy = false, -- This plugin is already lazy
   },
 }

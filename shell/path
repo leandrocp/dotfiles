@@ -1,13 +1,6 @@
 # vi: ft=zsh
 
-# eval "$(/opt/homebrew/bin/brew shellenv)"
-export HOMEBREW_PREFIX="/opt/homebrew"
-export HOMEBREW_CELLAR="/opt/homebrew/Cellar"
-export HOMEBREW_REPOSITORY="/opt/homebrew"
-export PATH="/opt/homebrew/bin:/opt/homebrew/sbin${PATH+:$PATH}"
-export MANPATH="/opt/homebrew/share/man${MANPATH+:$MANPATH}:"
-export INFOPATH="/opt/homebrew/share/info:${INFOPATH:-}"
-export FPATH="/opt/homebrew/share/zsh/site-functions:${FPATH}"
+eval "$(/opt/homebrew/bin/brew shellenv)"
 
 export COREUTILS_BIN=/opt/homebrew/opt/coreutils/libexec/gnubin
 export GPG_BIN=/usr/local/opt/gnupg2/bin

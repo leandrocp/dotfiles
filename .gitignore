@@ -36,6 +36,4 @@ Package Control.user-ca-bundle
 /config/zed/prompts
 /config/lazygit/state.yml
 /config/lazygit/state.yml
-/config/zellij/config.kdl.bak
-/config/zellij/plugins
 *.tmp*
