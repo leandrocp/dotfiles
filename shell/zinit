@@ -17,7 +17,8 @@ zinit wait lucid light-mode for \
   atload"_zsh_autosuggest_start;bindkey '^o' autosuggest-accept" \
   zsh-users/zsh-autosuggestions \
   blockf atpull'zinit creinstall -q .' \
-  zsh-users/zsh-completions
+  zsh-users/zsh-completions \
+  wintermi/zsh-mise
 
 zinit wait'1' lucid for \
   OMZP::extract

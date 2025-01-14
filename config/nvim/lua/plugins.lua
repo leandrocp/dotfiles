@@ -190,7 +190,15 @@ return {
 
       require("mini.comment").setup()
       require("mini.ai").setup()
-      require("mini.jump").setup()
+      require("mini.jump").setup({
+        mappings = {
+          forward = "f",
+          backward = "F",
+          forward_till = "t",
+          backward_till = "T",
+          repeat_jump = ",",
+        },
+      })
       require("mini.move").setup()
       require("mini.surround").setup()
       require("mini.statusline").setup()
@@ -222,6 +230,9 @@ return {
     "stevearc/conform.nvim",
     event = { "BufWritePre" },
     cmd = { "ConformInfo" },
+    init = function()
+      vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
+    end,
     keys = {
       {
         -- Customize or remove this keymap to your liking
@@ -244,7 +255,8 @@ return {
       default_format_opts = {
         lsp_format = "fallback",
       },
-      format_on_save = { timeout_ms = 1000 },
+      -- format_on_save = { timeout_ms = 1000, lsp_format = "fallback" },
+      format_on_save = nil,
       formatters = {
         injected = { options = { ignore_errors = true } },
         shfmt = {
@@ -252,9 +264,6 @@ return {
         },
       },
     },
-    init = function()
-      vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
-    end,
   },
 
   {
@@ -390,11 +399,11 @@ return {
         fzf_opts = {
           ["--no-scrollbar"] = true,
         },
-        winopts = {
-          preview = {
-            default = "cat",
-          },
-        },
+        -- winopts = {
+        --   preview = {
+        --     default = "cat",
+        --   },
+        -- },
         files = {
           cwd_prompt = false,
           actions = {
@@ -701,14 +710,24 @@ return {
       { "<leader>tn", "<cmd>TestNearest<CR>", desc = "Nearest" },
       { "<leader>tl", "<cmd>TestLast<CR>", desc = "Last" },
     },
-    config = function()
+    opts = {
+      setup = {},
+    },
+    config = function(plugin, opts)
       vim.g["test#echo_command"] = 1
+      vim.g["test#strategy"] = "neovim"
+      vim.g["test#neovim#term_position"] = "belowright"
+      vim.g["test#neovim#preserve_screen"] = 1
+
+      for k, _ in pairs(opts.setup) do
+        opts.setup[k](plugin, opts)
+      end
     end,
   },
 
   {
     "mrcjkb/rustaceanvim",
-    version = "^5", -- Recommended
-    lazy = false, -- This plugin is already lazy
+    version = "^5",
+    lazy = false,
   },
 }
