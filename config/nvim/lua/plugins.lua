@@ -95,6 +95,7 @@ return {
     opts = {
       bigfile = { enabled = true },
       bufdelete = { enabled = true },
+      picker = {},
       dashboard = {
         enabled = true,
         preset = {
@@ -152,6 +153,226 @@ return {
           Snacks.notifier.hide()
         end,
         desc = "Dismiss All Notifications",
+      },
+      -- picker
+      {
+        "<leader>,",
+        function()
+          Snacks.picker.buffers()
+        end,
+        desc = "Buffers",
+      },
+      {
+        "<leader>/",
+        function()
+          Snacks.picker.grep()
+        end,
+        desc = "Grep",
+      },
+      {
+        "<leader>;",
+        function()
+          Snacks.picker.command_history()
+        end,
+        desc = "Command History",
+      },
+      {
+        "<leader><space>",
+        function()
+          Snacks.picker.files()
+        end,
+        desc = "Find Files",
+      },
+      {
+        "<leader>fb",
+        function()
+          Snacks.picker.buffers()
+        end,
+        desc = "Buffers",
+      },
+      {
+        "<leader>fc",
+        function()
+          Snacks.picker.files({ cwd = vim.fn.stdpath("config") })
+        end,
+        desc = "Find Config File",
+      },
+      {
+        "<leader>ff",
+        function()
+          Snacks.picker.files()
+        end,
+        desc = "Find Files",
+      },
+      {
+        "<leader>fg",
+        function()
+          Snacks.picker.git_files()
+        end,
+        desc = "Find Git Files",
+      },
+      {
+        "<leader>fr",
+        function()
+          Snacks.picker.recent()
+        end,
+        desc = "Recent",
+      },
+      {
+        "<leader>gl",
+        function()
+          Snacks.picker.git_log()
+        end,
+        desc = "Git Log",
+      },
+      {
+        "<leader>gt",
+        function()
+          Snacks.picker.git_status()
+        end,
+        desc = "Git Status",
+      },
+      {
+        "<leader>sb",
+        function()
+          Snacks.picker.lines()
+        end,
+        desc = "Buffer Lines",
+      },
+      {
+        "<leader>sB",
+        function()
+          Snacks.picker.grep_buffers()
+        end,
+        desc = "Grep Open Buffers",
+      },
+      {
+        "<leader>sg",
+        function()
+          Snacks.picker.grep()
+        end,
+        desc = "Grep",
+      },
+      {
+        "<leader>sw",
+        function()
+          Snacks.picker.grep_word()
+        end,
+        desc = "Visual selection or word",
+        mode = { "n", "x" },
+      },
+      {
+        "<leader>sC",
+        function()
+          Snacks.picker.commands()
+        end,
+        desc = "Commands",
+      },
+      {
+        "<leader>sd",
+        function()
+          Snacks.picker.diagnostics()
+        end,
+        desc = "Diagnostics",
+      },
+      {
+        "<leader>sh",
+        function()
+          Snacks.picker.help()
+        end,
+        desc = "Help Pages",
+      },
+      {
+        "<leader>sj",
+        function()
+          Snacks.picker.jumps()
+        end,
+        desc = "Jumps",
+      },
+      {
+        "<leader>sk",
+        function()
+          Snacks.picker.keymaps()
+        end,
+        desc = "Keymaps",
+      },
+      {
+        "<leader>sl",
+        function()
+          Snacks.picker.loclist()
+        end,
+        desc = "Location List",
+      },
+      {
+        "<leader>sM",
+        function()
+          Snacks.picker.man()
+        end,
+        desc = "Man Pages",
+      },
+      {
+        "<leader>sm",
+        function()
+          Snacks.picker.marks()
+        end,
+        desc = "Marks",
+      },
+      {
+        "<leader>r",
+        function()
+          Snacks.picker.resume()
+        end,
+        desc = "Resume",
+      },
+      {
+        "<leader>sq",
+        function()
+          Snacks.picker.qflist()
+        end,
+        desc = "Quickfix List",
+      },
+      {
+        "<leader>qp",
+        function()
+          Snacks.picker.projects()
+        end,
+        desc = "Projects",
+      },
+      {
+        "gd",
+        function()
+          Snacks.picker.lsp_definitions()
+        end,
+        desc = "Goto Definition",
+      },
+      {
+        "gr",
+        function()
+          Snacks.picker.lsp_references()
+        end,
+        nowait = true,
+        desc = "References",
+      },
+      {
+        "gI",
+        function()
+          Snacks.picker.lsp_implementations()
+        end,
+        desc = "Goto Implementation",
+      },
+      {
+        "gy",
+        function()
+          Snacks.picker.lsp_type_definitions()
+        end,
+        desc = "Goto T[y]pe Definition",
+      },
+      {
+        "gs",
+        function()
+          Snacks.picker.lsp_symbols()
+        end,
+        desc = "LSP Symbols",
       },
     },
   },
@@ -245,24 +466,33 @@ return {
       },
     },
     opts = {
-      formatters_by_ft = {
-        sh = { "shfmt" },
-        zsh = { "shfmt" },
-        lua = { "stylua" },
-        elixir = { "mix" },
-        rust = { "rustfmt" },
-      },
       default_format_opts = {
         lsp_format = "fallback",
       },
-      -- format_on_save = { timeout_ms = 1000, lsp_format = "fallback" },
-      format_on_save = nil,
+      formatters_by_ft = {
+        lua = { "stylua" },
+        javascript = { "prettier" },
+        typescript = { "prettier" },
+        svelte = { "prettier" },
+        css = { "prettier" },
+        html = { "prettier" },
+        json = { "prettier" },
+        yaml = { "prettier" },
+        markdown = { "prettier" },
+        elixir = { "mix" },
+        rust = { "rustfmt" },
+        sh = { "shfmt", "shellharden", "beautysh" },
+        bash = { "shfmt", "shellharden", "beautysh" },
+        zsh = { "shfmt", "shellharden", "beautysh" },
+        toml = { "taplo" },
+      },
       formatters = {
-        injected = { options = { ignore_errors = true } },
-        shfmt = {
-          prepend_args = { "-i", "2" },
+        injected = {
+          ignore_errors = true,
         },
       },
+      -- format_on_save = { timeout_ms = 1000, lsp_format = "fallback" },
+      format_on_save = nil,
     },
   },
 
@@ -384,79 +614,79 @@ return {
     end,
   },
 
-  {
-    "ibhagwan/fzf-lua",
-    cmd = "FzfLua",
-    opts = function(_, _opts)
-      local actions = require("fzf-lua.actions")
-
-      return {
-        defaults = {
-          formatter = "path.dirname_first",
-          file_icons = false,
-        },
-        fzf_colors = true,
-        fzf_opts = {
-          ["--no-scrollbar"] = true,
-        },
-        -- winopts = {
-        --   preview = {
-        --     default = "cat",
-        --   },
-        -- },
-        files = {
-          cwd_prompt = false,
-          actions = {
-            ["alt-i"] = { actions.toggle_ignore },
-            ["alt-h"] = { actions.toggle_hidden },
-          },
-        },
-        grep = {
-          actions = {
-            ["alt-i"] = { actions.toggle_ignore },
-            ["alt-h"] = { actions.toggle_hidden },
-          },
-        },
-      }
-    end,
-    keys = {
-      { "<c-j>", "<c-j>", ft = "fzf", mode = "t", nowait = true },
-      { "<c-k>", "<c-k>", ft = "fzf", mode = "t", nowait = true },
-      { "<leader>r", "<cmd>FzfLua resume<cr>", desc = "Resume Find/Search" },
-      { "<leader>:", "<cmd>FzfLua command_history<cr>", desc = "Command History" },
-      { "<leader><space>", "<cmd>FzfLua files<cr>", desc = "Files" },
-      {
-        "<leader>,",
-        "<cmd>FzfLua buffers sort_mru=true sort_lastused=true<cr>",
-        desc = "Switch Buffer",
-      },
-      {
-        "<leader>/",
-        function()
-          require("fzf-lua").live_grep_native({
-            resume = false,
-          })
-        end,
-        desc = "Grep",
-      },
-      { "<leader>fb", "<cmd>FzfLua buffers sort_mru=true sort_lastused=true<cr>", desc = "Buffers" },
-      { "<leader>sw", "<cmd>FzfLua grep_cword<cr>", desc = "Word" },
-      {
-        "gs",
-        function()
-          require("fzf-lua").lsp_document_symbols()
-        end,
-        desc = "Goto Symbol",
-      },
-      {
-        "gS",
-        function()
-          require("fzf-lua").lsp_workspace_symbols()
-        end,
-        desc = "Goto Workspace Symbol",
-      },
-    },
-  },
+  -- {
+  --   "ibhagwan/fzf-lua",
+  --   cmd = "FzfLua",
+  --   opts = function(_, _opts)
+  --     local actions = require("fzf-lua.actions")
+  --
+  --     return {
+  --       defaults = {
+  --         formatter = "path.dirname_first",
+  --         file_icons = false,
+  --       },
+  --       fzf_colors = true,
+  --       fzf_opts = {
+  --         ["--no-scrollbar"] = true,
+  --       },
+  --       -- winopts = {
+  --       --   preview = {
+  --       --     default = "cat",
+  --       --   },
+  --       -- },
+  --       files = {
+  --         cwd_prompt = false,
+  --         actions = {
+  --           ["alt-i"] = { actions.toggle_ignore },
+  --           ["alt-h"] = { actions.toggle_hidden },
+  --         },
+  --       },
+  --       grep = {
+  --         actions = {
+  --           ["alt-i"] = { actions.toggle_ignore },
+  --           ["alt-h"] = { actions.toggle_hidden },
+  --         },
+  --       },
+  --     }
+  --   end,
+  --   keys = {
+  --     { "<c-j>", "<c-j>", ft = "fzf", mode = "t", nowait = true },
+  --     { "<c-k>", "<c-k>", ft = "fzf", mode = "t", nowait = true },
+  --     { "<leader>r", "<cmd>FzfLua resume<cr>", desc = "Resume Find/Search" },
+  --     { "<leader>:", "<cmd>FzfLua command_history<cr>", desc = "Command History" },
+  --     { "<leader><space>", "<cmd>FzfLua files<cr>", desc = "Files" },
+  --     {
+  --       "<leader>,",
+  --       "<cmd>FzfLua buffers sort_mru=true sort_lastused=true<cr>",
+  --       desc = "Switch Buffer",
+  --     },
+  --     {
+  --       "<leader>/",
+  --       function()
+  --         require("fzf-lua").live_grep_native({
+  --           resume = false,
+  --         })
+  --       end,
+  --       desc = "Grep",
+  --     },
+  --     { "<leader>fb", "<cmd>FzfLua buffers sort_mru=true sort_lastused=true<cr>", desc = "Buffers" },
+  --     { "<leader>sw", "<cmd>FzfLua grep_cword<cr>", desc = "Word" },
+  --     {
+  --       "gs",
+  --       function()
+  --         require("fzf-lua").lsp_document_symbols()
+  --       end,
+  --       desc = "Goto Symbol",
+  --     },
+  --     {
+  --       "gS",
+  --       function()
+  --         require("fzf-lua").lsp_workspace_symbols()
+  --       end,
+  --       desc = "Goto Workspace Symbol",
+  --     },
+  --   },
+  -- },
 
   {
     -- Adds git related signs to the gutter, as well as utilities for managing changes
@@ -622,12 +852,12 @@ return {
           -- Buffer local mappings.
           local opts = { buffer = ev.buf }
           vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
-          vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
+          -- vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
           vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
           vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
           -- vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, opts)
-          vim.keymap.set("n", "go", vim.lsp.buf.type_definition, opts)
-          vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
+          -- vim.keymap.set("n", "gy", vim.lsp.buf.type_definition, opts)
+          -- vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
           -- vim.keymap.set("n", "gs", vim.lsp.buf.signature_help, opts)
           -- vim.keymap.set("n", "<space>rn", vim.lsp.buf.rename, opts)
           vim.keymap.set({ "n", "v" }, "<space>ca", vim.lsp.buf.code_action, opts)

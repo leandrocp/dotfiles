@@ -1,7 +1,7 @@
 # vi: ft=zsh
 
 alias e='nvim'
-alias up='brew upgrade; brew cleanup; mise self-update --yes; zcomet update; zcomet self-update; nvim-update; elixir-update'
+alias up='brew upgrade; brew cleanup; zinit self-update; zinit update; nvim-update'
 alias g='git'
 alias gg='lazygit'
 
@@ -19,8 +19,6 @@ alias -g L='| less'
 alias -g C='| pbcopy'
 
 alias nvim-update='mise install neovim@nightly -f'
-alias elixir-update='mise install elixir@main-otp-27 -f'
-alias rust-update='mise install rust@stable -f'
 alias ts='tree-sitter'
 
 alias asdf='mise'

@@ -1,11 +1,14 @@
 # https://ghostty.org/docs/config/reference
+# https://github.com/search?q=path%3Aghostty%2Fconfig&type=code
 theme=catppuccin-frappe
-font-family=Hack Nerd Font Mono
+font-family=Hack
 font-size=14
 adjust-cell-height=25%
 copy-on-select=clipboard
 clipboard-trim-trailing-spaces=true
-# window-save-state=always
+window-save-state=always
+window-padding-x=10
+window-padding-y=10
 quit-after-last-window-closed=true
 mouse-hide-while-typing=true
 shell-integration=zsh
