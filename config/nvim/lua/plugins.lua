@@ -95,7 +95,6 @@ return {
     opts = {
       bigfile = { enabled = true },
       bufdelete = { enabled = true },
-      picker = {},
       dashboard = {
         enabled = true,
         preset = {
@@ -123,9 +122,18 @@ return {
       },
       lazygit = { enabled = true },
       notifier = { enabled = true },
+      picker = {},
       quickfile = { enabled = true },
+      terminal = {},
     },
     keys = {
+      {
+        "<leader>e",
+        function()
+          Snacks.terminal()
+        end,
+        desc = "Toggle Terminal",
+      },
       {
         "<leader>bd",
         function()
@@ -614,82 +622,7 @@ return {
     end,
   },
 
-  -- {
-  --   "ibhagwan/fzf-lua",
-  --   cmd = "FzfLua",
-  --   opts = function(_, _opts)
-  --     local actions = require("fzf-lua.actions")
-  --
-  --     return {
-  --       defaults = {
-  --         formatter = "path.dirname_first",
-  --         file_icons = false,
-  --       },
-  --       fzf_colors = true,
-  --       fzf_opts = {
-  --         ["--no-scrollbar"] = true,
-  --       },
-  --       -- winopts = {
-  --       --   preview = {
-  --       --     default = "cat",
-  --       --   },
-  --       -- },
-  --       files = {
-  --         cwd_prompt = false,
-  --         actions = {
-  --           ["alt-i"] = { actions.toggle_ignore },
-  --           ["alt-h"] = { actions.toggle_hidden },
-  --         },
-  --       },
-  --       grep = {
-  --         actions = {
-  --           ["alt-i"] = { actions.toggle_ignore },
-  --           ["alt-h"] = { actions.toggle_hidden },
-  --         },
-  --       },
-  --     }
-  --   end,
-  --   keys = {
-  --     { "<c-j>", "<c-j>", ft = "fzf", mode = "t", nowait = true },
-  --     { "<c-k>", "<c-k>", ft = "fzf", mode = "t", nowait = true },
-  --     { "<leader>r", "<cmd>FzfLua resume<cr>", desc = "Resume Find/Search" },
-  --     { "<leader>:", "<cmd>FzfLua command_history<cr>", desc = "Command History" },
-  --     { "<leader><space>", "<cmd>FzfLua files<cr>", desc = "Files" },
-  --     {
-  --       "<leader>,",
-  --       "<cmd>FzfLua buffers sort_mru=true sort_lastused=true<cr>",
-  --       desc = "Switch Buffer",
-  --     },
-  --     {
-  --       "<leader>/",
-  --       function()
-  --         require("fzf-lua").live_grep_native({
-  --           resume = false,
-  --         })
-  --       end,
-  --       desc = "Grep",
-  --     },
-  --     { "<leader>fb", "<cmd>FzfLua buffers sort_mru=true sort_lastused=true<cr>", desc = "Buffers" },
-  --     { "<leader>sw", "<cmd>FzfLua grep_cword<cr>", desc = "Word" },
-  --     {
-  --       "gs",
-  --       function()
-  --         require("fzf-lua").lsp_document_symbols()
-  --       end,
-  --       desc = "Goto Symbol",
-  --     },
-  --     {
-  --       "gS",
-  --       function()
-  --         require("fzf-lua").lsp_workspace_symbols()
-  --       end,
-  --       desc = "Goto Workspace Symbol",
-  --     },
-  --   },
-  -- },
-
   {
-    -- Adds git related signs to the gutter, as well as utilities for managing changes
     "lewis6991/gitsigns.nvim",
     event = "BufReadPre",
     opts = {
@@ -933,6 +866,12 @@ return {
   },
 
   {
+    "akinsho/toggleterm.nvim",
+    version = "*",
+    config = true,
+  },
+
+  {
     "vim-test/vim-test",
     keys = {
       { "<leader>ts", "<cmd>TestSuite<CR>", desc = "Suite" },
@@ -940,24 +879,37 @@ return {
       { "<leader>tn", "<cmd>TestNearest<CR>", desc = "Nearest" },
       { "<leader>tl", "<cmd>TestLast<CR>", desc = "Last" },
     },
-    opts = {
-      setup = {},
-    },
-    config = function(plugin, opts)
-      vim.g["test#echo_command"] = 1
-      vim.g["test#strategy"] = "neovim"
-      vim.g["test#neovim#term_position"] = "belowright"
-      vim.g["test#neovim#preserve_screen"] = 1
+    config = function()
+      vim.g["test#custom_strategies"] = {
+        snacks = function(cmd)
+          require("snacks").terminal(cmd, { win = { position = "right", enter = true }, interactive = false })
+          vim.cmd("stopinsert")
+          vim.cmd("normal! G")
+        end,
+      }
 
-      for k, _ in pairs(opts.setup) do
-        opts.setup[k](plugin, opts)
-      end
+      vim.g["test#strategy"] = "snacks"
+      vim.g["test#echo_command"] = 1
     end,
   },
 
   {
-    "mrcjkb/rustaceanvim",
-    version = "^5",
+    "yetone/avante.nvim",
+    event = "VeryLazy",
     lazy = false,
+    version = false,
+    build = "make",
+    dependencies = {
+      "stevearc/dressing.nvim",
+      "nvim-lua/plenary.nvim",
+      "MunifTanjim/nui.nvim",
+      {
+        "MeanderingProgrammer/render-markdown.nvim",
+        opts = {
+          file_types = { "markdown", "Avante" },
+        },
+        ft = { "markdown", "Avante" },
+      },
+    },
   },
 }
