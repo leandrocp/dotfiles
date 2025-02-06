@@ -50,6 +50,7 @@ vim.api.nvim_create_autocmd("FileType", {
     "qf",
     "spectre_panel",
     "startuptime",
+    "toggleterm",
     "tsplayground",
   },
   callback = function(event)

@@ -79,4 +79,8 @@ map("n", "*", "*N", { silent = true }) -- do not jump forward
 map("n", "<leader>w", "<c-w>", { desc = "Windows", remap = true })
 map("n", "<leader>-", "<C-W>s", { desc = "Split Window Below", remap = true })
 map("n", "<leader>\\", "<C-W>v", { desc = "Split Window Right", remap = true })
-map("n", "<leader>wd", "<C-W>c", { desc = "Delete Window", remap = true })
+map("n", "<leader>wd", "<C-W>c", { desc = "Delete", remap = true })
+
+vim.keymap.set("n", "<leader>wt", ":tabnew<CR>")
+vim.keymap.set("n", "[t", ":tabprev<cr>")
+vim.keymap.set("n", "]t", ":tabnext<cr>")

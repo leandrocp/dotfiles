@@ -4,6 +4,8 @@ return {
     lazy = true,
     name = "catppuccin",
     opts = {
+      term_colors = true,
+      no_italic = true,
       integrations = {
         treesitter = true,
         blink_cmp = true,
@@ -48,11 +50,13 @@ return {
       spec = {
         {
           mode = { "n", "v" },
-          { "<leader>f", group = "file/find" },
+          { "<leader>a", group = "ai" },
+          { "<leader>f", group = "file / find" },
           { "<leader>g", group = "git" },
-          { "<leader>q", group = "quit/session" },
+          { "<leader>q", group = "quit / session" },
           { "<leader>s", group = "search" },
           { "<leader>t", group = "test" },
+          { "<leader>w", group = "window / tab" },
           { "[", group = "prev" },
           { "]", group = "next" },
           {
@@ -128,13 +132,6 @@ return {
     },
     keys = {
       {
-        "<leader>e",
-        function()
-          Snacks.terminal()
-        end,
-        desc = "Toggle Terminal",
-      },
-      {
         "<leader>bd",
         function()
           Snacks.bufdelete()
@@ -192,25 +189,11 @@ return {
         desc = "Find Files",
       },
       {
-        "<leader>fb",
-        function()
-          Snacks.picker.buffers()
-        end,
-        desc = "Buffers",
-      },
-      {
         "<leader>fc",
         function()
           Snacks.picker.files({ cwd = vim.fn.stdpath("config") })
         end,
         desc = "Find Config File",
-      },
-      {
-        "<leader>ff",
-        function()
-          Snacks.picker.files()
-        end,
-        desc = "Find Files",
       },
       {
         "<leader>fg",
@@ -227,13 +210,6 @@ return {
         desc = "Recent",
       },
       {
-        "<leader>gl",
-        function()
-          Snacks.picker.git_log()
-        end,
-        desc = "Git Log",
-      },
-      {
         "<leader>gt",
         function()
           Snacks.picker.git_status()
@@ -241,25 +217,11 @@ return {
         desc = "Git Status",
       },
       {
-        "<leader>sb",
-        function()
-          Snacks.picker.lines()
-        end,
-        desc = "Buffer Lines",
-      },
-      {
         "<leader>sB",
         function()
           Snacks.picker.grep_buffers()
         end,
         desc = "Grep Open Buffers",
-      },
-      {
-        "<leader>sg",
-        function()
-          Snacks.picker.grep()
-        end,
-        desc = "Grep",
       },
       {
         "<leader>sw",
@@ -382,24 +344,26 @@ return {
         end,
         desc = "LSP Symbols",
       },
-    },
-  },
-
-  {
-    "folke/snacks.nvim",
-    opts = function()
-      -- Toggle the profiler
-      Snacks.toggle.profiler():map("<leader>pp")
-      -- Toggle the profiler highlights
-      Snacks.toggle.profiler_highlights():map("<leader>ph")
-    end,
-    keys = {
       {
-        "<leader>ps",
+        "<leader>gl",
         function()
-          Snacks.profiler.scratch()
+          Snacks.picker.git_log()
         end,
-        desc = "Profiler Scratch Bufer",
+        desc = "Git Log",
+      },
+      {
+        "<leader>gd",
+        function()
+          Snacks.picker.git_diff()
+        end,
+        desc = "Git Diff (Hunks)",
+      },
+      {
+        "<leader>gB",
+        function()
+          Snacks.picker.git_branches()
+        end,
+        desc = "Branches",
       },
     },
   },
@@ -411,14 +375,29 @@ return {
       local misc = require("mini.misc")
       misc.setup()
       misc.setup_auto_root({
-        ".git",
-        "mix.lock",
-        "Makefile",
+        "mix.exs",
+        "Cargo.toml",
+        -- ".git",
+        -- "mix.lock",
+        -- "Makefile",
       })
       misc.setup_restore_cursor()
 
       require("mini.comment").setup()
+
       require("mini.ai").setup()
+
+      require("mini.files").setup({
+        mappings = {
+          go_in_plus = "<CR>",
+          go_out = "-",
+        },
+        windows = {
+          preview = true,
+          width_preview = 50,
+        },
+      })
+
       require("mini.jump").setup({
         mappings = {
           forward = "f",
@@ -428,29 +407,31 @@ return {
           repeat_jump = ",",
         },
       })
+
       require("mini.move").setup()
+
       require("mini.surround").setup()
+
       require("mini.statusline").setup()
     end,
-  },
-
-  {
-    "stevearc/oil.nvim",
-    opts = {
-      view_options = {
-        show_hidden = true,
-      },
-      float = {
-        padding = 10,
-      },
-    },
     keys = {
       {
         "-",
         function()
-          require("oil").open_float()
+          if vim.fn.filereadable(vim.fn.bufname("%")) > 0 then
+            MiniFiles.open(vim.api.nvim_buf_get_name(0))
+          else
+            MiniFiles.open()
+          end
         end,
         desc = "Explorer",
+      },
+      {
+        "=",
+        function()
+          MiniFiles.open(MiniFiles.get_latest_path())
+        end,
+        desc = "Explorer Resume",
       },
     },
   },
@@ -642,7 +623,7 @@ return {
           vim.keymap.set(mode, l, r, opts)
         end
 
-        map({ "n", "v" }, "]c", function()
+        map({ "n", "v" }, "]h", function()
           if vim.wo.diff then
             return "]h"
           end
@@ -652,7 +633,7 @@ return {
           return "<Ignore>"
         end, { expr = true, desc = "Jump to next hunk" })
 
-        map({ "n", "v" }, "[c", function()
+        map({ "n", "v" }, "[h", function()
           if vim.wo.diff then
             return "[h"
           end
@@ -669,19 +650,19 @@ return {
           gs.reset_hunk({ vim.fn.line("."), vim.fn.line("v") })
         end, { desc = "reset git hunk" })
         -- normal mode
-        map("n", "<leader>gs", gs.stage_hunk, { desc = "git stage hunk" })
-        map("n", "<leader>gr", gs.reset_hunk, { desc = "git reset hunk" })
-        map("n", "<leader>gS", gs.stage_buffer, { desc = "git Stage buffer" })
+        map("n", "<leader>gs", gs.stage_hunk, { desc = "stage hunk" })
+        map("n", "<leader>gr", gs.reset_hunk, { desc = "reset hunk" })
+        map("n", "<leader>gS", gs.stage_buffer, { desc = "Stage buffer" })
         map("n", "<leader>gu", gs.undo_stage_hunk, { desc = "undo stage hunk" })
-        map("n", "<leader>gR", gs.reset_buffer, { desc = "git Reset buffer" })
+        map("n", "<leader>gR", gs.reset_buffer, { desc = "Reset buffer" })
         map("n", "<leader>gp", gs.preview_hunk, { desc = "preview git hunk" })
         map("n", "<leader>gb", function()
           gs.blame_line({ full = false })
-        end, { desc = "git blame line" })
-        map("n", "<leader>gd", gs.diffthis, { desc = "git diff against index" })
-        map("n", "<leader>gD", function()
-          gs.diffthis("~")
-        end, { desc = "git diff against last commit" })
+        end, { desc = "blame line" })
+        -- map("n", "<leader>gd", gs.diffthis, { desc = "diff against index" })
+        -- map("n", "<leader>gD", function()
+        --   gs.diffthis("~")
+        -- end, { desc = "diff against last commit" })
       end,
     },
   },
@@ -822,7 +803,7 @@ return {
       local elixirls = require("elixir.elixirls")
 
       elixir.setup({
-        nextls = { enable = true },
+        nextls = { enable = false },
         elixirls = {
           enable = true,
           settings = elixirls.settings({
@@ -838,10 +819,21 @@ return {
   },
 
   {
+    "tpope/vim-projectionist",
+    event = "VeryLazy",
+    keys = {
+      { "<leader>A", "<Cmd>A<CR>", desc = "Alternate" },
+    },
+  },
+
+  {
     "saghen/blink.cmp",
-    dependencies = "rafamadriz/friendly-snippets",
+    dependencies = {
+      -- { "rafamadriz/friendly-snippets" },
+      { "saghen/blink.compat", version = "*", lazy = true, opts = {} },
+    },
     version = "*",
-    event = "InsertEnter",
+    lazy = false,
     opts = {
       appearance = {
         use_nvim_cmp_as_default = false,
@@ -853,7 +845,35 @@ return {
         ["<C-j>"] = { "select_next", "fallback" },
       },
       sources = {
-        default = { "lsp", "path", "snippets", "buffer" },
+        default = {
+          "lsp",
+          "path",
+          "snippets",
+          "buffer",
+          "avante_commands",
+          "avante_files",
+          "avante_mentions",
+        },
+        providers = {
+          avante_commands = {
+            name = "avante_commands",
+            module = "blink.compat.source",
+            score_offset = 90,
+            opts = {},
+          },
+          avante_files = {
+            name = "avante_files",
+            module = "blink.compat.source",
+            score_offset = 100,
+            opts = {},
+          },
+          avante_mentions = {
+            name = "avante_mentions",
+            module = "blink.compat.source",
+            score_offset = 1000,
+            opts = {},
+          },
+        },
       },
       signature = { enabled = true },
       completion = {
@@ -863,12 +883,26 @@ return {
         },
       },
     },
+    opts_extend = { "sources.default" },
   },
 
   {
     "akinsho/toggleterm.nvim",
+    event = "VeryLazy",
+    cmd = { "TermExec" },
     version = "*",
-    config = true,
+    opts = {
+      insert_mappings = true,
+      terminal_mappings = true,
+      direction = "vertical",
+      size = function(term)
+        if term.direction == "horizontal" then
+          return 20
+        elseif term.direction == "vertical" then
+          return vim.o.columns * 0.3
+        end
+      end,
+    },
   },
 
   {
@@ -880,16 +914,8 @@ return {
       { "<leader>tl", "<cmd>TestLast<CR>", desc = "Last" },
     },
     config = function()
-      vim.g["test#custom_strategies"] = {
-        snacks = function(cmd)
-          require("snacks").terminal(cmd, { win = { position = "right", enter = true }, interactive = false })
-          vim.cmd("stopinsert")
-          vim.cmd("normal! G")
-        end,
-      }
-
-      vim.g["test#strategy"] = "snacks"
       vim.g["test#echo_command"] = 1
+      vim.g["test#strategy"] = "toggleterm"
     end,
   },
 
@@ -906,9 +932,20 @@ return {
       {
         "MeanderingProgrammer/render-markdown.nvim",
         opts = {
-          file_types = { "markdown", "Avante" },
+          file_types = { "Avante" },
         },
-        ft = { "markdown", "Avante" },
+        ft = { "Avante" },
+      },
+    },
+    opts = {
+      provider = "gemini",
+      vendors = {
+        ollama = {
+          __inherited_from = "openai",
+          api_key_name = "",
+          endpoint = "http://127.0.0.1:11434/v1",
+          model = "deepseek-r1:14b",
+        },
       },
     },
   },
