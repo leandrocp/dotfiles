@@ -97,7 +97,10 @@ return {
     priority = 1000,
     lazy = false,
     opts = {
-      bigfile = { enabled = true },
+      bigfile = {
+        enabled = true,
+        size = 4 * 1024 * 1024,
+      },
       bufdelete = { enabled = true },
       dashboard = {
         enabled = true,
@@ -146,20 +149,13 @@ return {
         desc = "LazyGit",
       },
       {
-        "<leader>n",
+        "<leader>go",
         function()
-          Snacks.notifier.show_history()
+          Snacks.gitbrowse()
         end,
-        desc = "Notification History",
+        desc = "Open Browser",
       },
-      {
-        "<leader>un",
-        function()
-          Snacks.notifier.hide()
-        end,
-        desc = "Dismiss All Notifications",
-      },
-      -- picker
+
       {
         "<leader>,",
         function()
@@ -273,13 +269,13 @@ return {
         end,
         desc = "Location List",
       },
-      {
-        "<leader>sM",
-        function()
-          Snacks.picker.man()
-        end,
-        desc = "Man Pages",
-      },
+      -- {
+      --   "<leader>sM",
+      --   function()
+      --     Snacks.picker.man()
+      --   end,
+      --   desc = "Man Pages",
+      -- },
       {
         "<leader>sm",
         function()
@@ -820,9 +816,9 @@ return {
 
   {
     "tpope/vim-projectionist",
-    event = "VeryLazy",
+    event = { "BufReadPre", "BufNewFile" },
     keys = {
-      { "<leader>A", "<Cmd>A<CR>", desc = "Alternate" },
+      { "<leader>ba", "<Cmd>A<CR>", desc = "Alternate" },
     },
   },
 
@@ -886,6 +882,60 @@ return {
     opts_extend = { "sources.default" },
   },
 
+  -- {
+  --   "milanglacier/minuet-ai.nvim",
+  --   event = { "InsertEnter" },
+  --   config = function()
+  --     require("minuet").setup({
+  --       cmp = {
+  --         enable_auto_complete = false,
+  --       },
+  --       blink = {
+  --         enable_auto_complete = false,
+  --       },
+  --       provider = "gemini",
+  --       virtualtext = {
+  --         auto_trigger_ft = { "elixir", "rust", "lua" },
+  --         keymap = {
+  --           accept = "<C-a>",
+  --           prev = "<C-[>",
+  --           next = "<C-]>",
+  --           dismiss = "<C-e>",
+  --         },
+  --       },
+  --     })
+  --   end,
+  -- },
+
+  {
+    "yetone/avante.nvim",
+    event = "VeryLazy",
+    lazy = false,
+    version = false,
+    build = "make",
+    dependencies = {
+      "stevearc/dressing.nvim",
+      "nvim-lua/plenary.nvim",
+      "MunifTanjim/nui.nvim",
+      {
+        "MeanderingProgrammer/render-markdown.nvim",
+        opts = {
+          file_types = { "Avante" },
+        },
+        ft = { "Avante" },
+      },
+    },
+    opts = {
+      provider = "gemini",
+      gemini = {
+        model = "gemini-2.0-flash-exp",
+      },
+      file_selector = {
+        provider = "snacks",
+      },
+    },
+  },
+
   {
     "akinsho/toggleterm.nvim",
     event = "VeryLazy",
@@ -916,37 +966,10 @@ return {
     config = function()
       vim.g["test#echo_command"] = 1
       vim.g["test#strategy"] = "toggleterm"
-    end,
-  },
 
-  {
-    "yetone/avante.nvim",
-    event = "VeryLazy",
-    lazy = false,
-    version = false,
-    build = "make",
-    dependencies = {
-      "stevearc/dressing.nvim",
-      "nvim-lua/plenary.nvim",
-      "MunifTanjim/nui.nvim",
-      {
-        "MeanderingProgrammer/render-markdown.nvim",
-        opts = {
-          file_types = { "Avante" },
-        },
-        ft = { "Avante" },
-      },
-    },
-    opts = {
-      provider = "gemini",
-      vendors = {
-        ollama = {
-          __inherited_from = "openai",
-          api_key_name = "",
-          endpoint = "http://127.0.0.1:11434/v1",
-          model = "deepseek-r1:14b",
-        },
-      },
-    },
+      vim.g["test#rust#cargotest#options"] = {
+        nearest = "-- --nocapture",
+      }
+    end,
   },
 }
