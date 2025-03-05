@@ -51,12 +51,15 @@ return {
         {
           mode = { "n", "v" },
           { "<leader>a", group = "ai" },
-          { "<leader>f", group = "file / find" },
+          { "<leader>c", group = "code" },
+          { "<leader>f", group = "find" },
           { "<leader>g", group = "git" },
+          { "<leader>i", group = "inspect" },
           { "<leader>q", group = "quit / session" },
           { "<leader>s", group = "search" },
           { "<leader>t", group = "test" },
           { "<leader>w", group = "window / tab" },
+          { "<leader>d", group = "diagnostics" },
           { "[", group = "prev" },
           { "]", group = "next" },
           {
@@ -441,7 +444,6 @@ return {
     end,
     keys = {
       {
-        -- Customize or remove this keymap to your liking
         "<leader>bf",
         function()
           require("conform").format({ async = true })
@@ -476,8 +478,8 @@ return {
           ignore_errors = true,
         },
       },
-      -- format_on_save = { timeout_ms = 1000, lsp_format = "fallback" },
-      format_on_save = nil,
+      format_on_save = { timeout_ms = 1000, lsp_format = "fallback" },
+      -- format_on_save = nil,
     },
   },
 
@@ -645,7 +647,6 @@ return {
         map("v", "<leader>gr", function()
           gs.reset_hunk({ vim.fn.line("."), vim.fn.line("v") })
         end, { desc = "reset git hunk" })
-        -- normal mode
         map("n", "<leader>gs", gs.stage_hunk, { desc = "stage hunk" })
         map("n", "<leader>gr", gs.reset_hunk, { desc = "reset hunk" })
         map("n", "<leader>gS", gs.stage_buffer, { desc = "Stage buffer" })
@@ -695,7 +696,7 @@ return {
     "mbbill/undotree",
     cmd = "UndotreeToggle",
     keys = {
-      { "<Leader>du", "<cmd>UndotreeToggle<CR>", desc = "Undo tree" },
+      { "<Leader>cu", "<cmd>UndotreeToggle<CR>", desc = "Undo tree" },
     },
   },
 
@@ -759,7 +760,6 @@ return {
       vim.api.nvim_create_autocmd("LspAttach", {
         group = vim.api.nvim_create_augroup("UserLspConfig", {}),
         callback = function(ev)
-          -- Buffer local mappings.
           local opts = { buffer = ev.buf }
           vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
           -- vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
@@ -771,6 +771,9 @@ return {
           -- vim.keymap.set("n", "gs", vim.lsp.buf.signature_help, opts)
           -- vim.keymap.set("n", "<space>rn", vim.lsp.buf.rename, opts)
           vim.keymap.set({ "n", "v" }, "<space>ca", vim.lsp.buf.code_action, opts)
+          vim.keymap.set("n", "<leader>dh", function()
+            vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
+          end)
         end,
       })
 
@@ -825,7 +828,6 @@ return {
   {
     "saghen/blink.cmp",
     dependencies = {
-      -- { "rafamadriz/friendly-snippets" },
       { "saghen/blink.compat", version = "*", lazy = true, opts = {} },
     },
     version = "*",
@@ -840,35 +842,13 @@ return {
         ["<C-k>"] = { "select_prev", "fallback" },
         ["<C-j>"] = { "select_next", "fallback" },
       },
+      cmdline = { sources = { "cmdline" } },
       sources = {
         default = {
           "lsp",
           "path",
           "snippets",
           "buffer",
-          "avante_commands",
-          "avante_files",
-          "avante_mentions",
-        },
-        providers = {
-          avante_commands = {
-            name = "avante_commands",
-            module = "blink.compat.source",
-            score_offset = 90,
-            opts = {},
-          },
-          avante_files = {
-            name = "avante_files",
-            module = "blink.compat.source",
-            score_offset = 100,
-            opts = {},
-          },
-          avante_mentions = {
-            name = "avante_mentions",
-            module = "blink.compat.source",
-            score_offset = 1000,
-            opts = {},
-          },
         },
       },
       signature = { enabled = true },
@@ -883,58 +863,57 @@ return {
   },
 
   -- {
-  --   "milanglacier/minuet-ai.nvim",
-  --   event = { "InsertEnter" },
+  --   "yetone/avante.nvim",
+  --   event = "VeryLazy",
+  --   lazy = false,
+  --   version = false,
+  --   build = "make",
+  --   dependencies = {
+  --     "stevearc/dressing.nvim",
+  --     "nvim-lua/plenary.nvim",
+  --     "MunifTanjim/nui.nvim",
+  --     {
+  --       "MeanderingProgrammer/render-markdown.nvim",
+  --       opts = {
+  --         file_types = { "Avante" },
+  --       },
+  --       ft = { "Avante" },
+  --     },
+  --   },
+  --   opts = {
+  --     provider = "gemini",
+  --     gemini = {
+  --       model = "gemini-2.0-flash-exp",
+  --     },
+  --     file_selector = {
+  --       provider = "snacks",
+  --     },
+  --   },
+  -- },
+
+  -- {
+  --   "zbirenbaum/copilot.lua",
+  --   cmd = "Copilot",
+  --   event = "InsertEnter",
   --   config = function()
-  --     require("minuet").setup({
-  --       cmp = {
-  --         enable_auto_complete = false,
-  --       },
-  --       blink = {
-  --         enable_auto_complete = false,
-  --       },
-  --       provider = "gemini",
-  --       virtualtext = {
-  --         auto_trigger_ft = { "elixir", "rust", "lua" },
-  --         keymap = {
-  --           accept = "<C-a>",
-  --           prev = "<C-[>",
-  --           next = "<C-]>",
-  --           dismiss = "<C-e>",
-  --         },
-  --       },
-  --     })
+  --     require("copilot").setup({})
   --   end,
   -- },
 
-  {
-    "yetone/avante.nvim",
-    event = "VeryLazy",
-    lazy = false,
-    version = false,
-    build = "make",
-    dependencies = {
-      "stevearc/dressing.nvim",
-      "nvim-lua/plenary.nvim",
-      "MunifTanjim/nui.nvim",
-      {
-        "MeanderingProgrammer/render-markdown.nvim",
-        opts = {
-          file_types = { "Avante" },
-        },
-        ft = { "Avante" },
-      },
-    },
-    opts = {
-      provider = "gemini",
-      gemini = {
-        model = "gemini-2.0-flash-exp",
-      },
-      file_selector = {
-        provider = "snacks",
-      },
-    },
-  },
+  -- {
+  --   "olimorris/codecompanion.nvim",
+  --   config = true,
+  --   dependencies = {
+  --     "nvim-lua/plenary.nvim",
+  --     { "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
+  --   },
+  --   opts = {
+  --     strategies = {
+  --       chat = { adapter = "gemini" },
+  --       inline = { adapter = "gemini" },
+  --     },
+  --   },
+  -- },
 
   {
     "akinsho/toggleterm.nvim",
@@ -971,5 +950,33 @@ return {
         nearest = "-- --nocapture",
       }
     end,
+  },
+
+  {
+    "rachartier/tiny-inline-diagnostic.nvim",
+    event = "VeryLazy",
+    priority = 1000,
+    config = function()
+      require("tiny-inline-diagnostic").setup()
+      vim.diagnostic.config({ virtual_text = false })
+    end,
+  },
+
+  {
+    "folke/trouble.nvim",
+    opts = {},
+    cmd = "Trouble",
+    keys = {
+      {
+        "<leader>w",
+        "<cmd>Trouble diagnostics toggle<cr>",
+        desc = "workspace",
+      },
+      {
+        "<leader>db",
+        "<cmd>Trouble diagnostics toggle filter.buf=0<cr>",
+        desc = "buffer",
+      },
+    },
   },
 }

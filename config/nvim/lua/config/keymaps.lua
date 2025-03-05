@@ -51,6 +51,10 @@ map("n", "<C-l>", "<C-w>l", { desc = "Go to Right Window", remap = true })
 map("v", "<", "<gv", { silent = true })
 map("v", ">", ">gv", { silent = true })
 
+
+map("n", "<leader>iw", "<cmd>Inspect<CR>", { desc = "Inspect word", remap = true })
+map("n", "<leader>it", "<cmd>InspectTree<CR>", { desc = "Inspect tree", remap = true })
+
 -- smart dd
 -- don't replace yank register if deleting empty line in NORMAL MODE
 local function smart_dd_normal()
