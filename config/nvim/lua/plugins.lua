@@ -374,9 +374,9 @@ return {
       local misc = require("mini.misc")
       misc.setup()
       misc.setup_auto_root({
-        "mix.exs",
-        "Cargo.toml",
-        -- ".git",
+        -- "mix.exs",
+        -- "Cargo.toml",
+        ".git",
         -- "mix.lock",
         -- "Makefile",
       })
@@ -478,8 +478,8 @@ return {
           ignore_errors = true,
         },
       },
-      format_on_save = { timeout_ms = 1000, lsp_format = "fallback" },
-      -- format_on_save = nil,
+      -- format_on_save = { timeout_ms = 1000, lsp_format = "fallback" },
+      format_on_save = nil,
     },
   },
 
@@ -914,6 +914,23 @@ return {
   --     },
   --   },
   -- },
+
+  {
+    "CopilotC-Nvim/CopilotChat.nvim",
+    event = "VeryLazy",
+    cmd = { "Copilot", "CopilotChat" },
+    dependencies = {
+      { "github/copilot.vim" },
+      { "nvim-lua/plenary.nvim", branch = "master" },
+    },
+    build = "make tiktoken",
+    opts = {},
+    keys = {
+      { "<leader>ae", "<cmd>CopilotChatExplain<cr>", desc = "Explain" },
+      { "<leader>at", "<cmd>CopilotChatTests<cr>", desc = "Generate Tests" },
+      { "<leader>aa", ":CopilotChatToggle<CR>", mode = { "n", "x" }, desc = "Toggle Chat" },
+    },
+  },
 
   {
     "akinsho/toggleterm.nvim",
