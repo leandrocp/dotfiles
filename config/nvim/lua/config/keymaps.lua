@@ -47,6 +47,12 @@ map("n", "<C-j>", "<C-w>j", { desc = "Go to Lower Window", remap = true })
 map("n", "<C-k>", "<C-w>k", { desc = "Go to Upper Window", remap = true })
 map("n", "<C-l>", "<C-w>l", { desc = "Go to Right Window", remap = true })
 
+-- Resize windows
+map("n", "<C-Up>", "<C-w>+", { desc = "Increase window height" })
+map("n", "<C-Down>", "<C-w>-", { desc = "Decrease window height" })
+map("n", "<C-Left>", "<C-w><", { desc = "Decrease window width" })
+map("n", "<C-Right>", "<C-w>>", { desc = "Increase window width" })
+
 -- better indenting
 map("v", "<", "<gv", { silent = true })
 map("v", ">", ">gv", { silent = true })

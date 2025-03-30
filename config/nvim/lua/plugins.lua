@@ -12,30 +12,11 @@ return {
         fzf = true,
         gitsigns = true,
         grug_far = true,
-        mason = true,
-        neotest = true,
         snacks = true,
         which_key = true,
         mini = { enabled = true },
         native_lsp = {
           enabled = true,
-          virtual_text = {
-            errors = { "italic" },
-            hints = { "italic" },
-            warnings = { "italic" },
-            information = { "italic" },
-            ok = { "italic" },
-          },
-          underlines = {
-            errors = { "underline" },
-            hints = { "underline" },
-            warnings = { "underline" },
-            information = { "underline" },
-            ok = { "underline" },
-          },
-          inlay_hints = {
-            background = true,
-          },
         },
       },
     },
@@ -315,6 +296,13 @@ return {
         desc = "Goto Definition",
       },
       {
+        "gD",
+        function()
+          Snacks.picker.lsp_declarations()
+        end,
+        desc = "Goto Declaration",
+      },
+      {
         "gr",
         function()
           Snacks.picker.lsp_references()
@@ -337,11 +325,18 @@ return {
         desc = "Goto T[y]pe Definition",
       },
       {
-        "gs",
+        "<leader>ss",
         function()
           Snacks.picker.lsp_symbols()
         end,
         desc = "LSP Symbols",
+      },
+      {
+        "<leader>sS",
+        function()
+          Snacks.picker.lsp_workspace_symbols()
+        end,
+        desc = "LSP Workspace Symbols",
       },
       {
         "<leader>gl",
@@ -457,15 +452,16 @@ return {
         lsp_format = "fallback",
       },
       formatters_by_ft = {
+        ["*"] = { "codespell", "typos" },
         lua = { "stylua" },
-        javascript = { "prettier" },
-        typescript = { "prettier" },
-        svelte = { "prettier" },
-        css = { "prettier" },
-        html = { "prettier" },
-        json = { "prettier" },
-        yaml = { "prettier" },
-        markdown = { "prettier" },
+        javascript = { "prettierd", "prettier", stop_after_first = true },
+        typescript = { "prettierd", "prettier", stop_after_first = true },
+        svelte = { "prettierd", "prettier", stop_after_first = true },
+        css = { "prettierd", "prettier", stop_after_first = true },
+        html = { "prettierd", "prettier", stop_after_first = true },
+        json = { "prettierd", "prettier", stop_after_first = true },
+        yaml = { "prettierd", "prettier", stop_after_first = true },
+        markdown = { "prettierd", "prettier", stop_after_first = true },
         elixir = { "mix" },
         rust = { "rustfmt" },
         sh = { "shfmt", "shellharden", "beautysh" },
@@ -717,105 +713,105 @@ return {
     config = true,
   },
 
-  {
-    "neovim/nvim-lspconfig",
-    event = { "BufReadPre", "BufNewFile" },
-    cmd = { "LspInfo", "LspInstall", "LspStart" },
-    dependencies = {
-      {
-        "williamboman/mason.nvim",
-        cmd = "Mason",
-        build = ":MasonUpdate",
-      },
-      "williamboman/mason-lspconfig.nvim",
-      "saghen/blink.cmp",
-    },
-    init = function()
-      vim.opt.signcolumn = "yes"
-    end,
-    config = function()
-      local capabilities = require("blink.cmp").get_lsp_capabilities()
-      local lspconfig = require("lspconfig")
+  -- {
+  --   "neovim/nvim-lspconfig",
+  --   event = { "BufReadPre", "BufNewFile" },
+  --   cmd = { "LspInfo", "LspInstall", "LspStart" },
+  --   dependencies = {
+  --     {
+  --       "williamboman/mason.nvim",
+  --       cmd = "Mason",
+  --       build = ":MasonUpdate",
+  --     },
+  --     "williamboman/mason-lspconfig.nvim",
+  --     "saghen/blink.cmp",
+  --   },
+  --   init = function()
+  --     vim.opt.signcolumn = "yes"
+  --   end,
+  --   config = function()
+  --     local capabilities = require("blink.cmp").get_lsp_capabilities()
+  --     local lspconfig = require("lspconfig")
+  --
+  --     require("mason").setup({})
+  --
+  --     require("mason-lspconfig").setup({
+  --       ensure_installed = {
+  --         "bashls",
+  --         "erlangls",
+  --         "lua_ls",
+  --         "rust_analyzer",
+  --       },
+  --       automatic_installation = true,
+  --       handlers = {
+  --         function(server_name)
+  --           lspconfig[server_name].setup({})
+  --         end,
+  --       },
+  --     })
+  --
+  --     vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "Previous diagnostic" })
+  --     vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "Next diagnostic" })
+  --
+  --     vim.api.nvim_create_autocmd("LspAttach", {
+  --       group = vim.api.nvim_create_augroup("UserLspConfig", {}),
+  --       callback = function(ev)
+  --         local opts = { buffer = ev.buf }
+  --         vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
+  --         -- vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
+  --         vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
+  --         vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
+  --         -- vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, opts)
+  --         -- vim.keymap.set("n", "gy", vim.lsp.buf.type_definition, opts)
+  --         -- vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
+  --         -- vim.keymap.set("n", "gs", vim.lsp.buf.signature_help, opts)
+  --         -- vim.keymap.set("n", "<space>rn", vim.lsp.buf.rename, opts)
+  --         vim.keymap.set({ "n", "v" }, "<space>ca", vim.lsp.buf.code_action, opts)
+  --         vim.keymap.set("n", "<leader>dh", function()
+  --           vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
+  --         end)
+  --       end,
+  --     })
+  --
+  --     lspconfig.lua_ls.setup({
+  --       capabilities = capabilities,
+  --       settings = {
+  --         Lua = {
+  --           diagnostics = {
+  --             globals = { "vim" },
+  --           },
+  --         },
+  --       },
+  --     })
+  --   end,
+  -- },
 
-      require("mason").setup({})
-
-      require("mason-lspconfig").setup({
-        ensure_installed = {
-          "bashls",
-          "erlangls",
-          "lua_ls",
-          "rust_analyzer",
-        },
-        automatic_installation = true,
-        handlers = {
-          function(server_name)
-            lspconfig[server_name].setup({})
-          end,
-        },
-      })
-
-      vim.keymap.set("n", "[d", vim.diagnostic.goto_prev)
-      vim.keymap.set("n", "]d", vim.diagnostic.goto_next)
-
-      vim.api.nvim_create_autocmd("LspAttach", {
-        group = vim.api.nvim_create_augroup("UserLspConfig", {}),
-        callback = function(ev)
-          local opts = { buffer = ev.buf }
-          vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
-          -- vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
-          vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
-          vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
-          -- vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, opts)
-          -- vim.keymap.set("n", "gy", vim.lsp.buf.type_definition, opts)
-          -- vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
-          -- vim.keymap.set("n", "gs", vim.lsp.buf.signature_help, opts)
-          -- vim.keymap.set("n", "<space>rn", vim.lsp.buf.rename, opts)
-          vim.keymap.set({ "n", "v" }, "<space>ca", vim.lsp.buf.code_action, opts)
-          vim.keymap.set("n", "<leader>dh", function()
-            vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
-          end)
-        end,
-      })
-
-      lspconfig.lua_ls.setup({
-        capabilities = capabilities,
-        settings = {
-          Lua = {
-            diagnostics = {
-              globals = { "vim" },
-            },
-          },
-        },
-      })
-    end,
-  },
-
-  {
-    "elixir-tools/elixir-tools.nvim",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-    },
-    version = "*",
-    event = { "BufReadPre", "BufNewFile" },
-    config = function()
-      local elixir = require("elixir")
-      local elixirls = require("elixir.elixirls")
-
-      elixir.setup({
-        nextls = { enable = false },
-        elixirls = {
-          enable = true,
-          settings = elixirls.settings({
-            dialyzerEnabled = false,
-            enableTestLenses = false,
-          }),
-        },
-        projectionist = {
-          enable = true,
-        },
-      })
-    end,
-  },
+  -- {
+  --   "elixir-tools/elixir-tools.nvim",
+  --   dependencies = {
+  --     "nvim-lua/plenary.nvim",
+  --   },
+  --   version = "*",
+  --   event = { "BufReadPre", "BufNewFile" },
+  --   config = function()
+  --     local elixir = require("elixir")
+  --     local elixirls = require("elixir.elixirls")
+  --
+  --     elixir.setup({
+  --       nextls = { enable = false },
+  --       elixirls = {
+  --         enable = true,
+  --         settings = elixirls.settings({
+  --           dialyzerEnabled = false,
+  --           enableTestLenses = false,
+  --         }),
+  --       },
+  --       projectionist = {
+  --         enable = true,
+  --       },
+  --     })
+  --   end,
+  -- },
 
   {
     "tpope/vim-projectionist",
@@ -827,18 +823,11 @@ return {
 
   {
     "saghen/blink.cmp",
-    dependencies = {
-      { "saghen/blink.compat", version = "*", lazy = true, opts = {} },
-    },
     version = "*",
     lazy = false,
     opts = {
-      appearance = {
-        use_nvim_cmp_as_default = false,
-      },
       keymap = {
-        preset = "default",
-        ["<C-o>"] = { "accept", "fallback" },
+        preset = "super-tab",
         ["<C-k>"] = { "select_prev", "fallback" },
         ["<C-j>"] = { "select_next", "fallback" },
       },
@@ -853,67 +842,10 @@ return {
       },
       signature = { enabled = true },
       completion = {
-        documentation = {
-          auto_show = true,
-          auto_show_delay_ms = 200,
-        },
+        documentation = { auto_show = true, auto_show_delay_ms = 500 },
       },
     },
-    opts_extend = { "sources.default" },
   },
-
-  -- {
-  --   "yetone/avante.nvim",
-  --   event = "VeryLazy",
-  --   lazy = false,
-  --   version = false,
-  --   build = "make",
-  --   dependencies = {
-  --     "stevearc/dressing.nvim",
-  --     "nvim-lua/plenary.nvim",
-  --     "MunifTanjim/nui.nvim",
-  --     {
-  --       "MeanderingProgrammer/render-markdown.nvim",
-  --       opts = {
-  --         file_types = { "Avante" },
-  --       },
-  --       ft = { "Avante" },
-  --     },
-  --   },
-  --   opts = {
-  --     provider = "gemini",
-  --     gemini = {
-  --       model = "gemini-2.0-flash-exp",
-  --     },
-  --     file_selector = {
-  --       provider = "snacks",
-  --     },
-  --   },
-  -- },
-
-  -- {
-  --   "zbirenbaum/copilot.lua",
-  --   cmd = "Copilot",
-  --   event = "InsertEnter",
-  --   config = function()
-  --     require("copilot").setup({})
-  --   end,
-  -- },
-
-  -- {
-  --   "olimorris/codecompanion.nvim",
-  --   config = true,
-  --   dependencies = {
-  --     "nvim-lua/plenary.nvim",
-  --     { "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
-  --   },
-  --   opts = {
-  --     strategies = {
-  --       chat = { adapter = "gemini" },
-  --       inline = { adapter = "gemini" },
-  --     },
-  --   },
-  -- },
 
   {
     "CopilotC-Nvim/CopilotChat.nvim",

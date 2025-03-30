@@ -14,7 +14,7 @@ end
 
 require("config.options")
 require("config.lazy")
+require("config.lsp")
 require("config.keymaps")
 require("config.autocmds")
 vim.cmd.colorscheme("catppuccin-frappe")
-vim.api.nvim_set_hl(0, "MiniJump", { fg = "#ffffff", bg = "#626880" })
