@@ -3,7 +3,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
   callback = function(event)
     local opts = { buffer = event.buf }
     vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
-    vim.keymap.set("n", "gs", vim.lsp.buf.signature_help, opts)
+    vim.keymap.set("n", "gh", vim.lsp.buf.signature_help, opts)
     vim.keymap.set({ "n", "v" }, "<space>ca", vim.lsp.buf.code_action, opts)
   end,
 })

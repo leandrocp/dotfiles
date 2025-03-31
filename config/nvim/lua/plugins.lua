@@ -325,14 +325,14 @@ return {
         desc = "Goto T[y]pe Definition",
       },
       {
-        "<leader>ss",
+        "gs",
         function()
           Snacks.picker.lsp_symbols()
         end,
         desc = "LSP Symbols",
       },
       {
-        "<leader>sS",
+        "gS",
         function()
           Snacks.picker.lsp_workspace_symbols()
         end,
@@ -826,8 +826,14 @@ return {
     version = "*",
     lazy = false,
     opts = {
+      -- keymap = {
+      --   preset = "super-tab",
+      --   ["<C-k>"] = { "select_prev", "fallback" },
+      --   ["<C-j>"] = { "select_next", "fallback" },
+      -- },
       keymap = {
-        preset = "super-tab",
+        preset = "default",
+        ["<C-o>"] = { "accept", "fallback" },
         ["<C-k>"] = { "select_prev", "fallback" },
         ["<C-j>"] = { "select_next", "fallback" },
       },
