@@ -7,17 +7,16 @@ return {
       term_colors = true,
       no_italic = true,
       integrations = {
-        treesitter = true,
         blink_cmp = true,
         fzf = true,
         gitsigns = true,
         grug_far = true,
-        snacks = true,
-        which_key = true,
         mini = { enabled = true },
-        native_lsp = {
-          enabled = true,
-        },
+        native_lsp = { enabled = true },
+        overseer = true,
+        snacks = true,
+        treesitter = true,
+        which_key = true,
       },
     },
   },
@@ -31,21 +30,21 @@ return {
       spec = {
         {
           mode = { "n", "v" },
-          { "<leader>a", group = "ai" },
-          { "<leader>c", group = "code" },
-          { "<leader>f", group = "find" },
-          { "<leader>g", group = "git" },
-          { "<leader>i", group = "inspect" },
-          { "<leader>q", group = "quit / session" },
-          { "<leader>s", group = "search" },
-          { "<leader>t", group = "test" },
-          { "<leader>w", group = "window / tab" },
-          { "<leader>d", group = "diagnostics" },
-          { "[", group = "prev" },
-          { "]", group = "next" },
+          { "<leader>a", group = "AI" },
+          { "<leader>c", group = "Code" },
+          { "<leader>f", group = "Find" },
+          { "<leader>g", group = "Git" },
+          { "<leader>i", group = "Inspect" },
+          { "<leader>q", group = "Quit / Session" },
+          { "<leader>s", group = "Search" },
+          { "<leader>t", group = "Test / Tasks" },
+          { "<leader>w", group = "Window / Tab" },
+          { "<leader>d", group = "Diagnostics" },
+          { "[", group = "Prev" },
+          { "]", group = "Next" },
           {
             "<leader>b",
-            group = "buffer",
+            group = "Buffer",
             expand = function()
               return require("which-key.extras").expand.buf()
             end,
@@ -253,13 +252,6 @@ return {
         end,
         desc = "Location List",
       },
-      -- {
-      --   "<leader>sM",
-      --   function()
-      --     Snacks.picker.man()
-      --   end,
-      --   desc = "Man Pages",
-      -- },
       {
         "<leader>sm",
         function()
@@ -448,9 +440,6 @@ return {
       },
     },
     opts = {
-      default_format_opts = {
-        lsp_format = "fallback",
-      },
       formatters_by_ft = {
         ["*"] = { "codespell", "typos" },
         lua = { "stylua" },
@@ -713,112 +702,55 @@ return {
     config = true,
   },
 
-  -- {
-  --   "neovim/nvim-lspconfig",
-  --   event = { "BufReadPre", "BufNewFile" },
-  --   cmd = { "LspInfo", "LspInstall", "LspStart" },
-  --   dependencies = {
-  --     {
-  --       "williamboman/mason.nvim",
-  --       cmd = "Mason",
-  --       build = ":MasonUpdate",
-  --     },
-  --     "williamboman/mason-lspconfig.nvim",
-  --     "saghen/blink.cmp",
-  --   },
-  --   init = function()
-  --     vim.opt.signcolumn = "yes"
-  --   end,
-  --   config = function()
-  --     local capabilities = require("blink.cmp").get_lsp_capabilities()
-  --     local lspconfig = require("lspconfig")
-  --
-  --     require("mason").setup({})
-  --
-  --     require("mason-lspconfig").setup({
-  --       ensure_installed = {
-  --         "bashls",
-  --         "erlangls",
-  --         "lua_ls",
-  --         "rust_analyzer",
-  --       },
-  --       automatic_installation = true,
-  --       handlers = {
-  --         function(server_name)
-  --           lspconfig[server_name].setup({})
-  --         end,
-  --       },
-  --     })
-  --
-  --     vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "Previous diagnostic" })
-  --     vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "Next diagnostic" })
-  --
-  --     vim.api.nvim_create_autocmd("LspAttach", {
-  --       group = vim.api.nvim_create_augroup("UserLspConfig", {}),
-  --       callback = function(ev)
-  --         local opts = { buffer = ev.buf }
-  --         vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
-  --         -- vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
-  --         vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
-  --         vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
-  --         -- vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, opts)
-  --         -- vim.keymap.set("n", "gy", vim.lsp.buf.type_definition, opts)
-  --         -- vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
-  --         -- vim.keymap.set("n", "gs", vim.lsp.buf.signature_help, opts)
-  --         -- vim.keymap.set("n", "<space>rn", vim.lsp.buf.rename, opts)
-  --         vim.keymap.set({ "n", "v" }, "<space>ca", vim.lsp.buf.code_action, opts)
-  --         vim.keymap.set("n", "<leader>dh", function()
-  --           vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
-  --         end)
-  --       end,
-  --     })
-  --
-  --     lspconfig.lua_ls.setup({
-  --       capabilities = capabilities,
-  --       settings = {
-  --         Lua = {
-  --           diagnostics = {
-  --             globals = { "vim" },
-  --           },
-  --         },
-  --       },
-  --     })
-  --   end,
-  -- },
+  {
+    "elixir-tools/elixir-tools.nvim",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+    },
+    version = "*",
+    event = { "BufReadPre", "BufNewFile" },
+    config = function()
+      local elixir = require("elixir")
+      local elixirls = require("elixir.elixirls")
 
-  -- {
-  --   "elixir-tools/elixir-tools.nvim",
-  --   dependencies = {
-  --     "nvim-lua/plenary.nvim",
-  --   },
-  --   version = "*",
-  --   event = { "BufReadPre", "BufNewFile" },
-  --   config = function()
-  --     local elixir = require("elixir")
-  --     local elixirls = require("elixir.elixirls")
-  --
-  --     elixir.setup({
-  --       nextls = { enable = false },
-  --       elixirls = {
-  --         enable = true,
-  --         settings = elixirls.settings({
-  --           dialyzerEnabled = false,
-  --           enableTestLenses = false,
-  --         }),
-  --       },
-  --       projectionist = {
-  --         enable = true,
-  --       },
-  --     })
-  --   end,
-  -- },
+      elixir.setup({
+        nextls = { enable = false },
+        elixirls = {
+          enable = true,
+          settings = elixirls.settings({
+            dialyzerEnabled = false,
+            enableTestLenses = false,
+          }),
+        },
+        projectionist = {
+          enable = false,
+        },
+      })
+    end,
+  },
 
   {
-    "tpope/vim-projectionist",
-    event = { "BufReadPre", "BufNewFile" },
+    "mrcjkb/rustaceanvim",
+    version = "^5",
+    lazy = false,
+  },
+
+  {
+    "rgroli/other.nvim",
+    cmd = { "Other", "OtherTabNew", "OtherSplit", "OtherVSplit", "OtherClose" },
     keys = {
-      { "<leader>ba", "<Cmd>A<CR>", desc = "Alternate" },
+      { "ga", "<Cmd>:Other<CR>", silent = true, desc = "Open alternative file" },
+      { "gA", "<Cmd>:OtherSplit<CR>", silent = true, desc = "Open alternative file in split" },
     },
+    config = function()
+      require("other-nvim").setup({
+        showMissingFiles = true,
+        mappings = {
+          "elixir",
+          "rust",
+        },
+      })
+    end,
   },
 
   {
@@ -826,11 +758,6 @@ return {
     version = "*",
     lazy = false,
     opts = {
-      -- keymap = {
-      --   preset = "super-tab",
-      --   ["<C-k>"] = { "select_prev", "fallback" },
-      --   ["<C-j>"] = { "select_next", "fallback" },
-      -- },
       keymap = {
         preset = "default",
         ["<C-o>"] = { "accept", "fallback" },
@@ -892,10 +819,10 @@ return {
   {
     "vim-test/vim-test",
     keys = {
-      { "<leader>ts", "<cmd>TestSuite<CR>", desc = "Suite" },
-      { "<leader>tf", "<cmd>TestFile<CR>", desc = "File" },
-      { "<leader>tn", "<cmd>TestNearest<CR>", desc = "Nearest" },
-      { "<leader>tl", "<cmd>TestLast<CR>", desc = "Last" },
+      { "<leader>ts", "<cmd>TestSuite<CR>", desc = "Test: Suite" },
+      { "<leader>tf", "<cmd>TestFile<CR>", desc = "Test: File" },
+      { "<leader>tn", "<cmd>TestNearest<CR>", desc = "Test: Nearest" },
+      { "<leader>tl", "<cmd>TestLast<CR>", desc = "Test: Last" },
     },
     config = function()
       vim.g["test#echo_command"] = 1
@@ -904,6 +831,77 @@ return {
       vim.g["test#rust#cargotest#options"] = {
         nearest = "-- --nocapture",
       }
+    end,
+  },
+
+  {
+    "stevearc/overseer.nvim",
+    event = "VeryLazy",
+    cmd = {
+      "OverseerOpen",
+      "OverseerClose",
+      "OverseerToggle",
+      "OverseerSaveBundle",
+      "OverseerLoadBundle",
+      "OverseerDeleteBundle",
+      "OverseerRunCmd",
+      "OverseerRun",
+      "OverseerInfo",
+      "OverseerBuild",
+      "OverseerQuickAction",
+      "OverseerTaskAction",
+      "OverseerClearCache",
+    },
+    keys = {
+      { "<leader>tr", "<cmd>OverseerRun<CR>", desc = "Task: Run" },
+      { "<leader>tt", "<cmd>OverseerToggle<CR>", desc = "Task: List" },
+      { "<leader>tb", "<cmd>OverseerBuild<CR>", desc = "Task: Build" },
+      { "<leader>ta", "<cmd>OverseerTaskAction<CR>", desc = "Task: Action" },
+      { "<leader>tq", "<cmd>OverseerQuickAction<CR>", desc = "Task: Recent" },
+    },
+    opts = {
+      dap = false,
+      task_list = {
+        bindings = {
+          ["<C-h>"] = false,
+          ["<C-j>"] = false,
+          ["<C-k>"] = false,
+          ["<C-l>"] = false,
+        },
+      },
+      form = {
+        win_opts = {
+          winblend = 0,
+        },
+      },
+      confirm = {
+        win_opts = {
+          winblend = 0,
+        },
+      },
+      task_win = {
+        win_opts = {
+          winblend = 0,
+        },
+      },
+    },
+    config = function(_, opts)
+      require("overseer").setup(opts)
+
+      local overseer = require("overseer")
+      overseer.register_template({
+        name = "mix docs",
+        builder = function()
+          return {
+            cmd = { "mix", "docs" },
+            components = {
+              "default",
+            },
+            cwd = vim.fn.getcwd(),
+          }
+        end,
+        desc = "mix docs",
+      })
     end,
   },
 
@@ -933,5 +931,11 @@ return {
         desc = "buffer",
       },
     },
+  },
+
+  {
+    "folke/flash.nvim",
+    event = "VeryLazy",
+    opts = {},
   },
 }

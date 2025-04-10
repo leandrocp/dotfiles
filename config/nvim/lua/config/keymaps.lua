@@ -57,7 +57,6 @@ map("n", "<C-Right>", "<C-w>>", { desc = "Increase window width" })
 map("v", "<", "<gv", { silent = true })
 map("v", ">", ">gv", { silent = true })
 
-
 map("n", "<leader>iw", "<cmd>Inspect<CR>", { desc = "Inspect word", remap = true })
 map("n", "<leader>it", "<cmd>InspectTree<CR>", { desc = "Inspect tree", remap = true })
 
@@ -94,3 +93,5 @@ map("n", "<leader>wd", "<C-W>c", { desc = "Delete", remap = true })
 vim.keymap.set("n", "<leader>wt", ":tabnew<CR>")
 vim.keymap.set("n", "[t", ":tabprev<cr>")
 vim.keymap.set("n", "]t", ":tabnext<cr>")
+
+map("n", "<leader>tR", "<cmd>OverseerRestartLast<Cr>", { desc = "Task: Restart Last" })
