@@ -94,4 +94,8 @@ vim.keymap.set("n", "<leader>wt", ":tabnew<CR>")
 vim.keymap.set("n", "[t", ":tabprev<cr>")
 vim.keymap.set("n", "]t", ":tabnext<cr>")
 
+map("n", "<leader>ch", function()
+  vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
+end, { desc = "Toggle Inlay Hints" })
+
 map("n", "<leader>tR", "<cmd>OverseerRestartLast<Cr>", { desc = "Task: Restart Last" })

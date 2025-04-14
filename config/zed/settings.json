@@ -3,9 +3,38 @@
 
 {
   "assistant": {
+    "always_allow_tool_actions": true,
+    "profiles": {
+      "write": {
+        "name": "Write",
+        "tools": {
+          "create_directory": true,
+          "bash": true,
+          "batch_tool": true,
+          "code_symbols": true,
+          "copy_path": true,
+          "create_file": true,
+          "delete_path": true,
+          "diagnostics": true,
+          "find_replace_file": true,
+          "edit_files": true,
+          "fetch": true,
+          "list_directory": true,
+          "move_path": true,
+          "now": true,
+          "path_search": true,
+          "read_file": true,
+          "regex_search": true,
+          "symbol_info": true,
+          "thinking": true
+        },
+        "enable_all_context_servers": true,
+        "context_servers": {}
+      }
+    },
     "default_model": {
       "provider": "zed.dev",
-      "model": "claude-3-5-sonnet-20240620"
+      "model": "claude-3-7-sonnet-latest"
     },
     "version": "2",
     "show_hints": false
@@ -34,66 +63,4 @@
   "scrollbar": {
     "show": "never"
   },
-  "indent_guides": {
-    "enabled": false
-  },
-  "inlay_hints": {
-    "enabled": true
-  },
-  "git": {
-    "inline_blame": {
-      "enabled": false
-    }
-  },
-  "format_on_save": "off",
-  "ensure_final_newline_on_save": false,
-  "use_autoclose": false,
-  "languages": {
-    "Markdown": {
-      "soft_wrap": "none"
-    },
-    "Erlang": {
-      "language_servers": ["!erlang-ls", "elp", "..."]
-    },
-    "Elixir": {
-      "language_servers": ["elixir-ls", "!next-ls", "!lexical", "..."],
-      // "format_on_save": {
-      //   "external": {
-      //     "command": "mix",
-      //     "arguments": ["format", "--stdin-filename", "{buffer_path}", "-"]
-      //   }
-      // }
-    },
-    "HEEX": {
-      "language_servers": ["elixir-ls", "!next-ls", "!lexical", "..."]
-    }
-  },
-  "lsp": {
-    "elixir-ls": {
-      "settings": {
-        "dialyzerEnabled": false,
-        "suggestSpecs": false,
-        "fetchDeps": false,
-        "autoInsertRequiredAlias": false
-      }
-    },
-    "rust-analyzer": {
-      "initialization_options": {
-        "inlayHints": {
-          "lifetimeElisionHints": {
-            "useParameterNames": true,
-            "enable": "skip_trivial"
-          },
-          "closureReturnTypeHints": {
-            "enable": "always"
-          }
-        },
-        "linkedProjects": [
-          "Cargo.toml",
-          "/Users/leandro/code/github/leandrocp/mdex/native/comrak_nif/Cargo.toml",
-          "/Users/leandro/code/github/leandrocp/autumn/native/autumn/Cargo.toml"
-        ]
-      }
-    }
-  }
 }

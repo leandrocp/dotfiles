@@ -703,37 +703,106 @@ return {
   },
 
   {
-    "elixir-tools/elixir-tools.nvim",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-    },
-    version = "*",
-    event = { "BufReadPre", "BufNewFile" },
+    "neovim/nvim-lspconfig",
     config = function()
-      local elixir = require("elixir")
-      local elixirls = require("elixir.elixirls")
-
-      elixir.setup({
-        nextls = { enable = false },
-        elixirls = {
-          enable = true,
-          settings = elixirls.settings({
-            dialyzerEnabled = false,
-            enableTestLenses = false,
-          }),
+      vim.lsp.config("*", {
+        capabilities = {
+          workspace = {
+            didChangeWatchedFiles = {
+              -- Requires `watchman` to be installed https://github.com/facebook/watchman
+              dynamicRegistration = true,
+            },
+          },
         },
-        projectionist = {
-          enable = false,
+      })
+
+      -- https://github.com/neovim/nvim-lspconfig/tree/master/lsp
+      for _, language_server in ipairs({
+        "elixirls",
+        "html",
+        "jsonls",
+        "lua_ls",
+        "svelte",
+        "yamlls",
+        "rust_analyzer",
+        "dockerls",
+      }) do
+        vim.lsp.enable(language_server)
+      end
+
+      -- Missing leacy configs
+      -- See https://github.com/neovim/nvim-lspconfig/issues/3705
+      require("lspconfig")["tailwindcss"].setup({})
+
+      vim.lsp.config("lua_ls", {
+        settings = {
+          Lua = {
+            runtime = {
+              version = "LuaJIT",
+            },
+            diagnostics = {
+              globals = {
+                "vim",
+              },
+            },
+            workspace = {
+              checkThirdParty = false,
+              library = {
+                vim.env.VIMRUNTIME,
+              },
+            },
+            telemetry = {
+              enable = false,
+            },
+          },
+        },
+      })
+
+      vim.lsp.config("elixirls", {
+        cmd = { "elixir-ls" },
+        settings = {
+          elixirLS = {
+            dialyzerEnabled = false,
+            fetchDeps = false,
+            enableTestLenses = false,
+          },
         },
       })
     end,
   },
 
-  {
-    "mrcjkb/rustaceanvim",
-    version = "^5",
-    lazy = false,
-  },
+  -- {
+  --   "elixir-tools/elixir-tools.nvim",
+  --   dependencies = {
+  --     "nvim-lua/plenary.nvim",
+  --   },
+  --   version = "*",
+  --   event = { "BufReadPre", "BufNewFile" },
+  --   config = function()
+  --     local elixir = require("elixir")
+  --     local elixirls = require("elixir.elixirls")
+  --
+  --     elixir.setup({
+  --       nextls = { enable = false },
+  --       elixirls = {
+  --         enable = true,
+  --         settings = elixirls.settings({
+  --           dialyzerEnabled = false,
+  --           enableTestLenses = false,
+  --         }),
+  --       },
+  --       projectionist = {
+  --         enable = false,
+  --       },
+  --     })
+  --   end,
+  -- },
+  --
+  -- {
+  --   "mrcjkb/rustaceanvim",
+  --   version = "^5",
+  --   lazy = false,
+  -- },
 
   {
     "rgroli/other.nvim",
@@ -789,7 +858,9 @@ return {
       { "nvim-lua/plenary.nvim", branch = "master" },
     },
     build = "make tiktoken",
-    opts = {},
+    opts = {
+      model = "gemini-2.5-pro",
+    },
     keys = {
       { "<leader>ae", "<cmd>CopilotChatExplain<cr>", desc = "Explain" },
       { "<leader>at", "<cmd>CopilotChatTests<cr>", desc = "Generate Tests" },

@@ -117,3 +117,11 @@ vim.api.nvim_create_user_command("OverseerRestartLast", function()
     overseer.run_action(tasks[1], "restart")
   end
 end, {})
+
+vim.api.nvim_create_autocmd("LspAttach", {
+  group = vim.api.nvim_create_augroup("UserLspConfig", {}),
+  callback = function(args)
+    local bufnr = args.buf
+    vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
+  end,
+})
