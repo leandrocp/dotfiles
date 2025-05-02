@@ -20,12 +20,9 @@ zinit wait lucid light-mode for \
   zsh-users/zsh-completions \
   wintermi/zsh-mise
 
+zinit ice as"completion"
+zinit snippet OMZ::plugins/mix-fast/mix-fast.plugin.zsh
+
 zinit wait'1' lucid for \
   OMZP::extract
 
-# zinit ice depth=1
-# zinit light zsh-users/zsh-autosuggestions
-# zinit light zsh-users/zsh-completions
-# zinit light zdharma-continuum/fast-syntax-highlighting
-#
-# zinit snippet 'OMZP::extract'
