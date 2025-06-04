@@ -1,11 +1,15 @@
 [tools]
-elixir = "1.18.3-otp-27"
-elixir-ls = "0.27.2"
+elixir = "1.18.4-otp-27"
+elixir-ls = "latest"
 erlang = "27"
-go = "1"
-lua-language-server = "3.14.0"
+go = "latest"
+lua-language-server = "latest"
 neovim = "0"
-node = "23"
+node = "24"
 python = "3"
-"rust" = { version = "1", components = "rust-src,rust-analyzer" }
+"rust" = { version = "latest", components = "rust-src,rust-analyzer" }
+terraform = "latest"
+terraform-ls = "latest"
+terrascan = "latest"
+tflint = "latest"
 uv = "latest"

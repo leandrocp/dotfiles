@@ -457,6 +457,9 @@ return {
         bash = { "shfmt", "shellharden", "beautysh" },
         zsh = { "shfmt", "shellharden", "beautysh" },
         toml = { "taplo" },
+        terraform = { "terraform_fmt" },
+        tf = { "terraform_fmt" },
+        ["terraform-vars"] = { "terraform_fmt" },
       },
       formatters = {
         injected = {
@@ -726,6 +729,8 @@ return {
         "yamlls",
         "rust_analyzer",
         "dockerls",
+        "terraformls",
+        "gopls",
       }) do
         vim.lsp.enable(language_server)
       end
@@ -743,6 +748,8 @@ return {
             diagnostics = {
               globals = {
                 "vim",
+                "Snacks",
+                "MiniFiles",
               },
             },
             workspace = {
@@ -770,39 +777,6 @@ return {
       })
     end,
   },
-
-  -- {
-  --   "elixir-tools/elixir-tools.nvim",
-  --   dependencies = {
-  --     "nvim-lua/plenary.nvim",
-  --   },
-  --   version = "*",
-  --   event = { "BufReadPre", "BufNewFile" },
-  --   config = function()
-  --     local elixir = require("elixir")
-  --     local elixirls = require("elixir.elixirls")
-  --
-  --     elixir.setup({
-  --       nextls = { enable = false },
-  --       elixirls = {
-  --         enable = true,
-  --         settings = elixirls.settings({
-  --           dialyzerEnabled = false,
-  --           enableTestLenses = false,
-  --         }),
-  --       },
-  --       projectionist = {
-  --         enable = false,
-  --       },
-  --     })
-  --   end,
-  -- },
-  --
-  -- {
-  --   "mrcjkb/rustaceanvim",
-  --   version = "^5",
-  --   lazy = false,
-  -- },
 
   {
     "rgroli/other.nvim",

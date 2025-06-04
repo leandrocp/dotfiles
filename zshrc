@@ -6,7 +6,7 @@ source ~/.shell/aliases
 
 source <(fzf --zsh)
 eval "$(zoxide init --cmd j zsh)"
-# eval "$(/opt/homebrew/bin/mise activate zsh)"
+eval "$(/opt/homebrew/bin/mise activate zsh --shims)"
 
 function y() {
 	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
