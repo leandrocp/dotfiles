@@ -843,25 +843,6 @@ return {
   },
 
   {
-    "akinsho/toggleterm.nvim",
-    event = "VeryLazy",
-    cmd = { "TermExec" },
-    version = "*",
-    opts = {
-      insert_mappings = true,
-      terminal_mappings = true,
-      direction = "vertical",
-      size = function(term)
-        if term.direction == "horizontal" then
-          return 20
-        elseif term.direction == "vertical" then
-          return vim.o.columns * 0.3
-        end
-      end,
-    },
-  },
-
-  {
     "vim-test/vim-test",
     keys = {
       { "<leader>ts", "<cmd>TestSuite<CR>", desc = "Test: Suite" },

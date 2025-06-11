@@ -5,9 +5,9 @@ erlang = "27"
 go = "latest"
 lua-language-server = "latest"
 neovim = "0"
-node = "24"
+node = "latest"
 python = "3"
-"rust" = { version = "latest", components = "rust-src,rust-analyzer" }
+rust = { version = "latest", components = "rust-src,rust-analyzer" }
 terraform = "latest"
 terraform-ls = "latest"
 terrascan = "latest"
