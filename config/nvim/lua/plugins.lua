@@ -600,54 +600,41 @@ return {
         topdelete = { text = "‾" },
         changedelete = { text = "~" },
       },
-      on_attach = function(bufnr)
-        local gs = package.loaded.gitsigns
+      on_attach = function(buffer)
+        local gs = require("gitsigns")
 
-        local function map(mode, l, r, opts)
-          opts = opts or {}
-          opts.buffer = bufnr
-          vim.keymap.set(mode, l, r, opts)
+        local function map(mode, l, r, desc)
+          vim.keymap.set(mode, l, r, { buffer = buffer, desc = desc })
         end
 
-        map({ "n", "v" }, "]h", function()
+        map("n", "]h", function()
           if vim.wo.diff then
-            return "]h"
+            vim.cmd.normal({ "]c", bang = true })
+          else
+            gs.nav_hunk("next")
           end
-          vim.schedule(function()
-            gs.next_hunk()
-          end)
-          return "<Ignore>"
-        end, { expr = true, desc = "Jump to next hunk" })
-
-        map({ "n", "v" }, "[h", function()
+        end, "next hunk")
+        map("n", "[h", function()
           if vim.wo.diff then
-            return "[h"
+            vim.cmd.normal({ "[c", bang = true })
+          else
+            gs.nav_hunk("prev")
           end
-          vim.schedule(function()
-            gs.prev_hunk()
-          end)
-          return "<Ignore>"
-        end, { expr = true, desc = "Jump to previous hunk" })
+        end, "prev hunk")
 
-        map("v", "<leader>gs", function()
-          gs.stage_hunk({ vim.fn.line("."), vim.fn.line("v") })
-        end, { desc = "stage git hunk" })
-        map("v", "<leader>gr", function()
-          gs.reset_hunk({ vim.fn.line("."), vim.fn.line("v") })
-        end, { desc = "reset git hunk" })
-        map("n", "<leader>gs", gs.stage_hunk, { desc = "stage hunk" })
-        map("n", "<leader>gr", gs.reset_hunk, { desc = "reset hunk" })
-        map("n", "<leader>gS", gs.stage_buffer, { desc = "Stage buffer" })
-        map("n", "<leader>gu", gs.undo_stage_hunk, { desc = "undo stage hunk" })
-        map("n", "<leader>gR", gs.reset_buffer, { desc = "Reset buffer" })
-        map("n", "<leader>gp", gs.preview_hunk, { desc = "preview git hunk" })
+        map({ "n", "v" }, "<leader>gs", ":Gitsigns stage_hunk<CR>", "stage hunk")
+        map({ "n", "v" }, "<leader>gr", ":Gitsigns reset_hunk<CR>", "reset hunk")
+        map("n", "<leader>gS", gs.stage_buffer, "stage buffer")
+        map("n", "<leader>gu", gs.undo_stage_hunk, "undo stage hunk")
+        map("n", "<leader>gR", gs.reset_buffer, "reset buffer")
+        map("n", "<leader>gp", gs.preview_hunk_inline, "preview hunk inline")
         map("n", "<leader>gb", function()
-          gs.blame_line({ full = false })
-        end, { desc = "blame line" })
-        -- map("n", "<leader>gd", gs.diffthis, { desc = "diff against index" })
-        -- map("n", "<leader>gD", function()
-        --   gs.diffthis("~")
-        -- end, { desc = "diff against last commit" })
+          gs.blame_line({ full = true })
+        end, "blame line")
+        map("n", "<leader>gB", function()
+          gs.blame()
+        end, "blame buffer")
+        map("n", "<leader>gd", gs.diffthis, "diff")
       end,
     },
   },
