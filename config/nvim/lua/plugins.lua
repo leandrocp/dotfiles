@@ -35,6 +35,7 @@ return {
           { "<leader>f", group = "Find" },
           { "<leader>g", group = "Git" },
           { "<leader>i", group = "Inspect" },
+          { "<leader>m", group = "Marks" },
           { "<leader>q", group = "Quit / Session" },
           { "<leader>s", group = "Search" },
           { "<leader>t", group = "Test / Tasks" },
@@ -830,6 +831,25 @@ return {
   },
 
   {
+    "akinsho/toggleterm.nvim",
+    event = "VeryLazy",
+    cmd = { "TermExec" },
+    version = "*",
+    opts = {
+      insert_mappings = true,
+      terminal_mappings = true,
+      direction = "vertical",
+      size = function(term)
+        if term.direction == "horizontal" then
+          return 20
+        elseif term.direction == "vertical" then
+          return vim.o.columns * 0.3
+        end
+      end,
+    },
+  },
+
+  {
     "vim-test/vim-test",
     keys = {
       { "<leader>ts", "<cmd>TestSuite<CR>", desc = "Test: Suite" },
@@ -950,5 +970,22 @@ return {
     "folke/flash.nvim",
     event = "VeryLazy",
     opts = {},
+  },
+
+  {
+    "fnune/recall.nvim",
+    event = "VeryLazy",
+    version = "*",
+    config = function()
+      local recall = require("recall")
+
+      recall.setup({})
+
+      vim.keymap.set("n", "<leader>mm", recall.toggle, { desc = "Toggle mark" })
+      vim.keymap.set("n", "<leader>mn", recall.goto_next, { desc = "Next mark" })
+      vim.keymap.set("n", "<leader>mp", recall.goto_prev, { desc = "Previous mark" })
+      vim.keymap.set("n", "<leader>mc", recall.clear, { desc = "Clear marks" })
+      vim.keymap.set("n", "<leader>k", require("recall.snacks").pick, { noremap = true, silent = true, desc = "List marks" })
+    end,
   },
 }

@@ -32,3 +32,4 @@ keybind = super+down=resize_split:down,60
 keybind = super+left=resize_split:left,60
 keybind = super+up=resize_split:up,60
 keybind = super+right=resize_split:right,60
+keybind = shift+enter=text:\n

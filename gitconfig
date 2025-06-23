@@ -12,8 +12,8 @@
   ui = true
 [push]
   default = current
-[difftool]
-  prompt = false
+[diff]
+  external = difft
 [grep]
   extendRegexp = true
   lineNumber = true
@@ -43,13 +43,6 @@
   gpgsign = true
 [gpg]
   program = /usr/local/bin/gpg
-[merge]
-  conflictstyle = diff3
-[mergetool]
-  prompt = false
-  keepBackup = true
-[init]
-  defaultBranch = master
 [maintenance]
 	repo = /Users/leandro/.config/zsh-config/znap
 	repo = /Users/leandro/.config/zsh-config/mafredri/zsh-async
