@@ -1,5 +1,20 @@
 return {
   {
+    "projekt0n/github-nvim-theme",
+    name = "github-theme",
+    lazy = false,
+    priority = 1000,
+    opts = {}
+  },
+
+  {
+    "folke/tokyonight.nvim",
+    lazy = false,
+    priority = 1000,
+    opts = {},
+  },
+
+  {
     "catppuccin/nvim",
     lazy = true,
     name = "catppuccin",
@@ -361,13 +376,11 @@ return {
     config = function()
       local misc = require("mini.misc")
       misc.setup()
-      misc.setup_auto_root({
-        -- "mix.exs",
-        -- "Cargo.toml",
-        ".git",
-        -- "mix.lock",
-        -- "Makefile",
-      })
+      -- misc.setup_auto_root({
+      --   -- "mix.exs",
+      --   -- "Cargo.toml",
+      --   ".git",
+      -- })
       misc.setup_restore_cursor()
 
       require("mini.comment").setup()
@@ -707,26 +720,6 @@ return {
         },
       })
 
-      -- https://github.com/neovim/nvim-lspconfig/tree/master/lsp
-      for _, language_server in ipairs({
-        "elixirls",
-        "html",
-        "jsonls",
-        "lua_ls",
-        "svelte",
-        "yamlls",
-        "rust_analyzer",
-        "dockerls",
-        "terraformls",
-        "gopls",
-      }) do
-        vim.lsp.enable(language_server)
-      end
-
-      -- Missing leacy configs
-      -- See https://github.com/neovim/nvim-lspconfig/issues/3705
-      require("lspconfig")["tailwindcss"].setup({})
-
       vim.lsp.config("lua_ls", {
         settings = {
           Lua = {
@@ -753,16 +746,53 @@ return {
         },
       })
 
-      vim.lsp.config("elixirls", {
-        cmd = { "elixir-ls" },
-        settings = {
-          elixirLS = {
-            dialyzerEnabled = false,
-            fetchDeps = false,
-            enableTestLenses = false,
+      -- vim.lsp.config("elixirls", {
+      --   cmd = { "elixir-ls" },
+      --   settings = {
+      --     elixirLS = {
+      --       dialyzerEnabled = false,
+      --       fetchDeps = false,
+      --       enableTestLenses = false,
+      --     },
+      --   },
+      -- })
+
+      vim.lsp.config("nextls", {
+        cmd = { "next-ls", "--stdio" },
+        init_options = {
+          experimental = {
+            completions = {
+              enable = true,
+            },
+          },
+          extensions = {
+            credo = {
+              enable = true,
+            },
           },
         },
       })
+
+      -- https://github.com/neovim/nvim-lspconfig/tree/master/lua/lspconfig/configs
+      for _, language_server in ipairs({
+        -- "elixirls",
+        "nextls",
+        "html",
+        "jsonls",
+        "lua_ls",
+        "svelte",
+        "yamlls",
+        "rust_analyzer",
+        "dockerls",
+        "terraformls",
+        "gopls",
+      }) do
+        vim.lsp.enable(language_server)
+      end
+
+      -- Missing legacy configs
+      -- See https://github.com/neovim/nvim-lspconfig/issues/3705
+      require("lspconfig")["tailwindcss"].setup({})
     end,
   },
 
@@ -985,7 +1015,19 @@ return {
       vim.keymap.set("n", "<leader>mn", recall.goto_next, { desc = "Next mark" })
       vim.keymap.set("n", "<leader>mp", recall.goto_prev, { desc = "Previous mark" })
       vim.keymap.set("n", "<leader>mc", recall.clear, { desc = "Clear marks" })
-      vim.keymap.set("n", "<leader>k", require("recall.snacks").pick, { noremap = true, silent = true, desc = "List marks" })
+      vim.keymap.set(
+        "n",
+        "<leader>k",
+        require("recall.snacks").pick,
+        { noremap = true, silent = true, desc = "List marks" }
+      )
     end,
   },
+
+  -- {
+  --   "m4xshen/hardtime.nvim",
+  --   lazy = false,
+  --   dependencies = { "MunifTanjim/nui.nvim" },
+  --   opts = {},
+  -- },
 }

@@ -1,6 +1,7 @@
 # https://ghostty.org/docs/config/reference
 # https://github.com/search?q=path%3Aghostty%2Fconfig&type=code
-theme=catppuccin-frappe
+# theme=catppuccin-frappe
+theme="/Users/leandro/.dotfiles/config/ghostty/tokyonight_moon"
 font-family=Hack
 font-size=14
 adjust-cell-height=25%

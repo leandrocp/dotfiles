@@ -23,5 +23,3 @@ vim.lsp.config("*", {
   capabilities = capabilities,
   root_markers = { ".git" },
 })
-
-vim.lsp.enable({ "luals", "elixirls" })
