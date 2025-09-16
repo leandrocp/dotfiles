@@ -29,10 +29,10 @@ packages=(
   fzf
   gcc
   gh
+  git
   gnu-sed
   lazygit
   macdown
-  mise
   muzzle
   obsidian
   openssl

@@ -42,7 +42,6 @@ function bootstrap() {
   bat cache --build
 
   mise plugins install neovim
-  mise plugins install erlang https://github.com/michallepicki/asdf-erlang-prebuilt-macos.git
   mise install
 }
 
