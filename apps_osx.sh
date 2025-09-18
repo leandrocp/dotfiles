@@ -44,6 +44,7 @@ packages=(
   ripgrep
   slack
   tableplus
+  typos-cli
   wxwidgets
   zoxide
   zsh

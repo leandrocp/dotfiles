@@ -1,14 +1,17 @@
 [tools]
 elixir = "1.19.0-rc.0-otp-28"
 elixir-ls = "latest"
-erlang = "28"
+erlang = "28.0.4"
 go = "latest"
 lua-language-server = "latest"
 neovim = "nightly"
 node = "latest"
 pnpm = "latest"
 python = "3"
-rust = { version = "latest", components = "rust-src,rust-analyzer" }
+rust = { version = "latest", components = "rust-src,rust-analyzer,rustfmt" }
+shfmt = "latest"
+stylua = "latest"
+taplo = "latest"
 terraform = "latest"
 terraform-ls = "latest"
 terrascan = "latest"

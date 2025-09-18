@@ -29,9 +29,6 @@ function link_config() {
 function bootstrap() {
   echo "bootstrap"
 
-  echo "fsh theme"
-  fast-theme XDG:catppuccin-frappe
-
   echo "homebrew"
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
   eval "$(/opt/homebrew/bin/brew shellenv)"
@@ -43,6 +40,9 @@ function bootstrap() {
 
   mise plugins install neovim
   mise install
+
+  npm install -g @fsouza/prettierd
+  pip install codespell
 }
 
 link_root

@@ -2,12 +2,11 @@ vim.pack.add({
   "https://github.com/CopilotC-Nvim/CopilotChat.nvim",
   "https://github.com/MagicDuck/grug-far.nvim",
   "https://github.com/NeogitOrg/neogit",
-  "https://github.com/adriankarlen/plugin-view.nvim",
   "https://github.com/akinsho/toggleterm.nvim",
   "https://github.com/catppuccin/nvim",
   "https://github.com/cpea2506/relative-toggle.nvim",
   "https://github.com/echasnovski/mini.nvim",
-  "https://github.com/fnune/recall.nvim",
+  -- "https://github.com/fnune/recall.nvim",
   "https://github.com/folke/flash.nvim",
   "https://github.com/folke/snacks.nvim",
   "https://github.com/ibhagwan/fzf-lua",
@@ -29,7 +28,7 @@ vim.pack.add({
   "https://github.com/rachartier/tiny-inline-diagnostic.nvim",
   "https://github.com/rgroli/other.nvim",
   "https://github.com/romainl/vim-cool",
-  "https://github.com/sindrets/diffview.nvim",
+  -- "https://github.com/sindrets/diffview.nvim",
   "https://github.com/stevearc/conform.nvim",
   "https://github.com/stevearc/overseer.nvim",
   "https://github.com/vim-test/vim-test",
@@ -375,12 +374,6 @@ map("n", "<leader>tR", "<cmd>OverseerRestartLast<Cr>", { desc = "restart last ta
 -- plugins
 --
 
--- plugin-view
-require("plugin-view").setup()
-map("n", "<leader>pl", function()
-  require("plugin-view").open()
-end, { desc = "plugins" })
-
 map("n", "<leader>pu", function()
   vim.pack.update()
 end, { desc = "update" })
@@ -490,8 +483,11 @@ end, { desc = "explorer resume" })
 -- fzf-lua
 require("fzf-lua").setup({
   defaults = {
-    git_icons = true,
-    file_icons = true,
+    git_icons = false,
+    file_icons = false,
+  },
+  files = {
+    path_shorten = 1,
   },
 })
 
@@ -623,29 +619,35 @@ require("better_escape").setup({
 require("conform").setup({
   formatters_by_ft = {
     ["*"] = { "codespell", "typos" },
-    lua = { "stylua" },
-    javascript = { "prettierd", "prettier", stop_after_first = true },
-    typescript = { "prettierd", "prettier", stop_after_first = true },
-    svelte = { "prettierd", "prettier", stop_after_first = true },
+    ["terraform-vars"] = { "terraform_fmt" },
+    bash = { "shfmt" },
     css = { "prettierd", "prettier", stop_after_first = true },
-    html = { "prettierd", "prettier", stop_after_first = true },
-    json = { "prettierd", "prettier", stop_after_first = true },
-    yaml = { "prettierd", "prettier", stop_after_first = true },
-    markdown = { "prettierd", "prettier", stop_after_first = true },
     elixir = { "mix" },
+    go = { "gofmt" },
+    html = { "prettierd", "prettier", stop_after_first = true },
+    javascript = { "prettierd", "prettier", stop_after_first = true },
+    json = { "prettierd", "prettier", stop_after_first = true },
+    lua = { "stylua" },
+    markdown = { "prettierd", "prettier", stop_after_first = true },
+    python = { "isort", "black" },
     rust = { "rustfmt" },
-    sh = { "shfmt", "shellharden", "beautysh" },
-    bash = { "shfmt", "shellharden", "beautysh" },
-    zsh = { "shfmt", "shellharden", "beautysh" },
-    toml = { "taplo" },
+    sh = { "shfmt" },
+    svelte = { "prettierd", "prettier", stop_after_first = true },
     terraform = { "terraform_fmt" },
     tf = { "terraform_fmt" },
-    ["terraform-vars"] = { "terraform_fmt" },
+    toml = { "taplo" },
+    typescript = { "prettierd", "prettier", stop_after_first = true },
+    yaml = { "prettierd", "prettier", stop_after_first = true },
+    zsh = { "shfmt" },
   },
   formatters = {
     injected = {
       ignore_errors = true,
     },
+  },
+  default_format_opts = {
+    timeout_ms = 3000,
+    lsp_format = "fallback",
   },
   format_on_save = nil,
 })
@@ -1032,15 +1034,3 @@ map("n", "<leader>db", "<cmd>Trouble diagnostics toggle filter.buf=0<cr>", { des
 
 -- flash
 require("flash").setup({})
-
--- recall
-local recall = require("recall")
-recall.setup({})
-
-map("n", "<leader>mm", recall.toggle, { desc = "toggle mark" })
-map("n", "<leader>mn", recall.goto_next, { desc = "next mark" })
-map("n", "<leader>mp", recall.goto_prev, { desc = "previous mark" })
-map("n", "<leader>mc", recall.clear, { desc = "clear marks" })
-map("n", "<leader>k", function()
-  require("fzf-lua").marks()
-end, { desc = "list marks" })
