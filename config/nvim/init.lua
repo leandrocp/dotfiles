@@ -12,7 +12,6 @@ vim.pack.add({
   "https://github.com/ibhagwan/fzf-lua",
   "https://github.com/folke/tokyonight.nvim",
   "https://github.com/folke/trouble.nvim",
-  "https://github.com/folke/which-key.nvim",
   "https://github.com/github/copilot.vim",
   "https://github.com/lewis6991/gitsigns.nvim",
   "https://github.com/max397574/better-escape.nvim",
@@ -378,41 +377,62 @@ map("n", "<leader>pu", function()
   vim.pack.update()
 end, { desc = "update" })
 
--- which-key
-require("which-key").setup({
-  preset = "helix",
-  defaults = {},
-  spec = {
-    {
-      mode = { "n", "v" },
-      { "<leader>a", group = "ai" },
-      { "<leader>c", group = "code" },
-      { "<leader>f", group = "find" },
-      { "<leader>g", group = "git" },
-      { "<leader>i", group = "inspect" },
-      { "<leader>m", group = "marks" },
-      { "<leader>q", group = "quit / session" },
-      { "<leader>s", group = "search" },
-      { "<leader>t", group = "test / tasks" },
-      { "<leader>w", group = "window / tab" },
-      { "<leader>d", group = "diagnostics" },
-      { "<leader>p", group = "plugins" },
-      { "[", group = "prev" },
-      { "]", group = "next" },
-      {
-        "<leader>b",
-        group = "buffer",
-        expand = function()
-          return require("which-key.extras").expand.buf()
-        end,
-      },
+-- mini.clue
+do
+  local clue = require("mini.clue")
+
+  local miniclue_clues = {}
+  local function append(mode, keys, desc)
+    table.insert(miniclue_clues, { mode = mode, keys = keys, desc = desc })
+  end
+
+  local leader_groups = {
+    { suffix = "a", desc = "ai" },
+    { suffix = "b", desc = "buffer" },
+    { suffix = "c", desc = "code" },
+    { suffix = "d", desc = "diagnostics" },
+    { suffix = "f", desc = "find" },
+    { suffix = "g", desc = "git" },
+    { suffix = "i", desc = "inspect" },
+    { suffix = "m", desc = "marks" },
+    { suffix = "p", desc = "plugins" },
+    { suffix = "q", desc = "quit / session" },
+    { suffix = "s", desc = "search" },
+    { suffix = "t", desc = "test / tasks" },
+    { suffix = "w", desc = "window / tab" },
+  }
+
+  for _, mode in ipairs({ "n", "x" }) do
+    for _, group in ipairs(leader_groups) do
+      append(mode, "<leader>" .. group.suffix, group.desc)
+    end
+    append(mode, "[", "prev")
+    append(mode, "]", "next")
+  end
+
+  clue.setup({
+    triggers = {
+      { mode = "n", keys = "<leader>" },
+      { mode = "x", keys = "<leader>" },
+      { mode = "n", keys = "[" },
+      { mode = "x", keys = "[" },
+      { mode = "n", keys = "]" },
+      { mode = "x", keys = "]" },
     },
-  },
-})
+    clues = miniclue_clues,
+    window = {
+      delay = 200,
+    },
+  })
+end
 
 map("n", "<leader>?", function()
-  require("which-key").show({ global = false })
-end, { desc = "buffer keymaps" })
+  local clue = require("mini.clue")
+  clue.ensure_buf_triggers()
+  vim.schedule(function()
+    vim.api.nvim_input("<leader>")
+  end)
+end, { desc = "show <leader> clues" })
 
 -- snacks
 require("snacks").setup({
