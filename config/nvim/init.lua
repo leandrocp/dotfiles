@@ -377,63 +377,6 @@ map("n", "<leader>pu", function()
   vim.pack.update()
 end, { desc = "update" })
 
--- mini.clue
-do
-  local clue = require("mini.clue")
-
-  local miniclue_clues = {}
-  local function append(mode, keys, desc)
-    table.insert(miniclue_clues, { mode = mode, keys = keys, desc = desc })
-  end
-
-  local leader_groups = {
-    { suffix = "a", desc = "ai" },
-    { suffix = "b", desc = "buffer" },
-    { suffix = "c", desc = "code" },
-    { suffix = "d", desc = "diagnostics" },
-    { suffix = "f", desc = "find" },
-    { suffix = "g", desc = "git" },
-    { suffix = "i", desc = "inspect" },
-    { suffix = "m", desc = "marks" },
-    { suffix = "p", desc = "plugins" },
-    { suffix = "q", desc = "quit / session" },
-    { suffix = "s", desc = "search" },
-    { suffix = "t", desc = "test / tasks" },
-    { suffix = "w", desc = "window / tab" },
-  }
-
-  for _, mode in ipairs({ "n", "x" }) do
-    for _, group in ipairs(leader_groups) do
-      append(mode, "<leader>" .. group.suffix, group.desc)
-    end
-    append(mode, "[", "prev")
-    append(mode, "]", "next")
-  end
-
-  clue.setup({
-    triggers = {
-      { mode = "n", keys = "<leader>" },
-      { mode = "x", keys = "<leader>" },
-      { mode = "n", keys = "[" },
-      { mode = "x", keys = "[" },
-      { mode = "n", keys = "]" },
-      { mode = "x", keys = "]" },
-    },
-    clues = miniclue_clues,
-    window = {
-      delay = 200,
-    },
-  })
-end
-
-map("n", "<leader>?", function()
-  local clue = require("mini.clue")
-  clue.ensure_buf_triggers()
-  vim.schedule(function()
-    vim.api.nvim_input("<leader>")
-  end)
-end, { desc = "show <leader> clues" })
-
 -- snacks
 require("snacks").setup({
   bigfile = {
@@ -454,13 +397,70 @@ map("n", "<leader>go", function()
   Snacks.gitbrowse()
 end, { desc = "open browser" })
 
--- mini
+-- mini.misc
 local misc = require("mini.misc")
 misc.setup()
 misc.setup_restore_cursor()
 
+-- mini.clue
+local clue = require("mini.clue")
+
+local miniclue_clues = {}
+local function append(mode, keys, desc)
+  table.insert(miniclue_clues, { mode = mode, keys = keys, desc = desc })
+end
+
+local leader_groups = {
+  { suffix = "a", desc = "ai" },
+  { suffix = "b", desc = "buffer" },
+  { suffix = "c", desc = "code" },
+  { suffix = "d", desc = "diagnostics" },
+  { suffix = "f", desc = "find" },
+  { suffix = "g", desc = "git" },
+  { suffix = "i", desc = "inspect" },
+  { suffix = "m", desc = "marks" },
+  { suffix = "p", desc = "plugins" },
+  { suffix = "q", desc = "quit / session" },
+  { suffix = "s", desc = "search" },
+  { suffix = "t", desc = "test / tasks" },
+  { suffix = "w", desc = "window / tab" },
+}
+
+for _, mode in ipairs({ "n", "x" }) do
+  for _, group in ipairs(leader_groups) do
+    append(mode, "<leader>" .. group.suffix, group.desc)
+  end
+  append(mode, "[", "prev")
+  append(mode, "]", "next")
+end
+
+clue.setup({
+  triggers = {
+    { mode = "n", keys = "<leader>" },
+    { mode = "x", keys = "<leader>" },
+    { mode = "n", keys = "[" },
+    { mode = "x", keys = "[" },
+    { mode = "n", keys = "]" },
+    { mode = "x", keys = "]" },
+  },
+  clues = miniclue_clues,
+  window = {
+    delay = 200,
+  },
+})
+
+map("n", "<leader>?", function()
+  local clue = require("mini.clue")
+  clue.ensure_buf_triggers()
+  vim.schedule(function()
+    vim.api.nvim_input("<leader>")
+  end)
+end, { desc = "show <leader> clues" })
+
+-- mini.ai
 require("mini.ai").setup()
 
+-- mini.files
 require("mini.files").setup({
   mappings = {
     go_in_plus = "<CR>",
@@ -472,6 +472,7 @@ require("mini.files").setup({
   },
 })
 
+-- mini.jump
 require("mini.jump").setup({
   mappings = {
     forward = "f",
@@ -482,10 +483,13 @@ require("mini.jump").setup({
   },
 })
 
+-- mini.move
 require("mini.move").setup()
 
+-- mini.surround
 require("mini.surround").setup()
 
+-- mini.statusline
 require("mini.statusline").setup()
 
 map("n", "-", function()
