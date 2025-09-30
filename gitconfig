@@ -37,6 +37,7 @@
   ll = log --graph --decorate --pretty=oneline --abbrev-commit --all
   g = grep --break --heading --line-number
   delete-branch = !sh -c 'git push origin :refs/heads/$1 && git remote prune origin && git branch -D $1' -
+  delete-tag = !sh -c 'git tag -d $1 git push origin -d $1' -
   squash = rebase -i @{u}
   up = !sh -c 'git set-upstream && git fetch && git pull --rebase' -
   cp = cherry-pick
