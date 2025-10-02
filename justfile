@@ -1,4 +1,18 @@
-default: link-root link-config homebrew apps-osx apps-mise apps-npm
+default:
+    @just --list
+
+all: link-root link-config homebrew apps-osx apps-mise apps-npm
+
+update:
+    #!/usr/bin/env zsh
+    brew upgrade
+    brew cleanup
+    zinit self-update
+    zinit update
+    mise plugins up
+    mise up
+    nvim --headless -c "lua vim.pack.update(nil, { force = true })" -c "quit"
+    just apps-npm
 
 link-root:
     #!/usr/bin/env bash
