@@ -12,7 +12,6 @@ vim.pack.add({
   "https://github.com/ibhagwan/fzf-lua",
   "https://github.com/folke/tokyonight.nvim",
   "https://github.com/folke/trouble.nvim",
-  "https://github.com/github/copilot.vim",
   "https://github.com/lewis6991/gitsigns.nvim",
   "https://github.com/max397574/better-escape.nvim",
   "https://github.com/mbbill/undotree",
@@ -929,7 +928,18 @@ vim.lsp.config("elixirls", {
   },
 })
 
+vim.lsp.config("tailwindcss", {})
+
+vim.lsp.config("copilot", {
+  settings = {
+    telemetry = {
+      telemetryLevel = "off",
+    },
+  },
+})
+
 for _, language_server in ipairs({
+  "copilot",
   "elixirls",
   "html",
   "lua_ls",
@@ -941,8 +951,6 @@ for _, language_server in ipairs({
 }) do
   vim.lsp.enable(language_server)
 end
-
-vim.lsp.config("tailwindcss", {})
 
 vim.lsp.inline_completion.enable()
 
@@ -1103,3 +1111,15 @@ end, { desc = "select prompt" })
 map({ "i", "t" }, "<c-.>", function()
   require("sidekick.cli").switch_focus()
 end, { desc = "switch focus" })
+
+map({ "i", "n" }, "<Tab>", function()
+  if require("sidekick").nes_jump_or_apply() then
+    return
+  end
+
+  if vim.lsp.inline_completion.get() then
+    return
+  end
+
+  return "<Tab>"
+end, { expr = true, desc = "goto / apply suggestion" })
