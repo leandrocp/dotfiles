@@ -1,5 +1,4 @@
 vim.pack.add({
-  "https://github.com/CopilotC-Nvim/CopilotChat.nvim",
   "https://github.com/MagicDuck/grug-far.nvim",
   "https://github.com/NeogitOrg/neogit",
   "https://github.com/akinsho/toggleterm.nvim",
@@ -8,6 +7,7 @@ vim.pack.add({
   "https://github.com/echasnovski/mini.nvim",
   -- "https://github.com/fnune/recall.nvim",
   "https://github.com/folke/flash.nvim",
+  "https://github.com/folke/sidekick.nvim",
   "https://github.com/folke/snacks.nvim",
   "https://github.com/ibhagwan/fzf-lua",
   "https://github.com/folke/tokyonight.nvim",
@@ -373,9 +373,28 @@ map("n", "<leader>tR", "<cmd>OverseerRestartLast<Cr>", { desc = "restart last ta
 -- plugins
 --
 
+local function pack_clean()
+  local active_plugins = {}
+  local unused_plugins = {}
+
+  for _, plugin in ipairs(vim.pack.get()) do
+    active_plugins[plugin.spec.name] = plugin.active
+  end
+
+  for _, plugin in ipairs(vim.pack.get()) do
+    if not active_plugins[plugin.spec.name] then
+      table.insert(unused_plugins, plugin.spec.name)
+    end
+  end
+
+  vim.pack.del(unused_plugins)
+end
+
 map("n", "<leader>pu", function()
   vim.pack.update()
 end, { desc = "update" })
+
+map("n", "<leader>pc", pack_clean, { desc = "clean" })
 
 -- snacks
 require("snacks").setup({
@@ -925,6 +944,8 @@ end
 
 vim.lsp.config("tailwindcss", {})
 
+vim.lsp.inline_completion.enable()
+
 -- other
 require("other-nvim").setup({
   showMissingFiles = true,
@@ -944,6 +965,16 @@ require("blink.cmp").setup({
     ["<C-o>"] = { "accept", "fallback" },
     ["<C-k>"] = { "select_prev", "fallback" },
     ["<C-j>"] = { "select_next", "fallback" },
+    ["<Tab>"] = {
+      "snippet_forward",
+      function()
+        return require("sidekick").nes_jump_or_apply()
+      end,
+      function()
+        return vim.lsp.inline_completion.get()
+      end,
+      "fallback",
+    },
   },
   cmdline = { sources = { "cmdline" } },
   sources = {
@@ -960,15 +991,6 @@ require("blink.cmp").setup({
   },
   fuzzy = { implementation = "prefer_rust_with_warning" },
 })
-
--- copilot chat
-require("CopilotChat").setup({
-  model = "gemini-2.5-pro",
-})
-
-map("n", "<leader>ae", "<cmd>CopilotChatExplain<cr>", { desc = "explain" })
-map("n", "<leader>at", "<cmd>CopilotChatTests<cr>", { desc = "generate tests" })
-map({ "n", "x" }, "<leader>aa", ":CopilotChatToggle<CR>", { desc = "toggle chat" })
 
 -- toggleterm
 require("toggleterm").setup({
@@ -1058,3 +1080,26 @@ map("n", "<leader>db", "<cmd>Trouble diagnostics toggle filter.buf=0<cr>", { des
 
 -- flash
 require("flash").setup({})
+
+-- sidekick
+require("sidekick").setup({})
+
+map("n", "<leader>aa", function()
+  require("sidekick.cli").toggle()
+end, { desc = "toggle" })
+
+map("n", "<leader>ac", function()
+  require("sidekick.cli").toggle({ name = "claude", focus = true })
+end, { desc = "claude" })
+
+map({ "n", "v" }, "<leader>as", function()
+  require("sidekick.cli").send()
+end, { desc = "send visual selection" })
+
+map("n", "<leader>ap", function()
+  require("sidekick.cli").select_prompt()
+end, { desc = "select prompt" })
+
+map({ "i", "t" }, "<c-.>", function()
+  require("sidekick.cli").switch_focus()
+end, { desc = "switch focus" })

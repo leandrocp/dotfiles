@@ -5,7 +5,7 @@ erlang = "28.0.4"
 go = "latest"
 lua-language-server = "latest"
 neovim = "nightly"
-node = "latest"
+node = "22"
 pnpm = "latest"
 python = "3"
 rust = { version = "latest", components = "rust-src,rust-analyzer,rustfmt" }

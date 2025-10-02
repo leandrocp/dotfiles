@@ -1,0 +1,87 @@
+default: link-root link-config homebrew apps-osx apps-mise apps-npm
+
+link-root:
+    #!/usr/bin/env bash
+    for name in *; do
+        case "$name" in
+            justfile|README.md|shell|config|.git) continue ;;
+        esac
+        target="$HOME/.$name"
+        echo "$target"
+        rm -rf "$target"
+        ln -s "$PWD/$name" "$target"
+    done
+
+link-config:
+    #!/usr/bin/env bash
+    for name in config/*; do
+        target="$HOME/.$name"
+        echo "$target"
+        rm -rf "$target"
+        ln -s "$PWD/$name" "$target"
+    done
+
+homebrew:
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+
+apps-osx:
+    #!/usr/bin/env bash
+    brew update
+    packages=(\
+        1password \
+        ast-grep \
+        autoconf \
+        automake \
+        bat \
+        btop \
+        cmake \
+        cmark-gfm \
+        codespell \
+        coreutils \
+        dash \
+        devutils \
+        discord \
+        dust \
+        eza \
+        fd \
+        font-hack-nerd-font \
+        fzf \
+        gcc \
+        gh \
+        git \
+        gnu-sed \
+        lazygit \
+        macdown \
+        muzzle \
+        obsidian \
+        openssl \
+        pgcli \
+        proton-mail \
+        protonmail-bridge \
+        raycast \
+        renameutils \
+        ripgrep \
+        slack \
+        tableplus \
+        typos-cli \
+        wxwidgets \
+        zoxide \
+        zsh \
+    )
+    for i in "${packages[@]}"; do
+        brew install "$i"
+    done
+    brew install --cask dash
+    $(brew --prefix)/opt/fzf/install --all --no-bash --no-fish
+    brew cleanup
+
+apps-mise:
+    mise plugins install neovim
+    mise install
+
+apps-npm:
+    npm install -g @fsouza/prettierd
+    npm install -g @anthropic-ai/claude-code
+    npm install -g @openai/codex@latest
+    npm install -g @github/copilot-language-server
