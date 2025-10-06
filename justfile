@@ -5,6 +5,7 @@ all: link-root link-config homebrew apps-osx apps-mise apps-npm
 
 update:
     #!/usr/bin/env zsh
+    source ~/.shell/zinit
     brew upgrade
     brew cleanup
     zinit self-update
@@ -54,6 +55,7 @@ apps-osx:
         codespell \
         coreutils \
         dash \
+        devtoys \
         devutils \
         discord \
         dust \
