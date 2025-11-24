@@ -22,7 +22,7 @@
       },
       "scrolling" : {
         "acceleration" : {
-          "vertical" : 1
+          "vertical" : 0.24
         },
         "distance" : {
           "vertical" : "auto"

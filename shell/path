@@ -9,13 +9,11 @@ export FLYCTL_HOME="$HOME/.fly"
 export CARGO_BIN=$HOME/.cargo/bin
 export OPENJDK_BIN=/opt/homebrew/opt/openjdk/bin
 
-# postgresql
-export POSTGRES_PATH="/opt/homebrew/opt/postgresql@15"
-export POSTGRES_BIN_PATH=$POSTGRES_PATH/bin
-export POSTGRES_LIB_PATH=$POSTGRES_PATH/lib
+# postgresql (Postgres.app)
+export POSTGRES_BIN_PATH="/Applications/Postgres.app/Contents/Versions/latest/bin"
 
 # opencode
 export PATH=/Users/leandro/.opencode/bin:$PATH
 
-export PATH=$PATH:$HOME/.bin:$HOME/.local/bin:./bin:${COREUTILS_BIN}:${GPG_BIN}:${GNU_SED_BIN}:$FLYCTL_HOME/bin:${CARGO_BIN}:${OPENJDK_BIN}:/usr/local/bin:${POSTGRES_BIN_PATH}:${POSTGRES_LIB_PATH}:/usr/local/lib:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin
+export PATH=$PATH:$HOME/.bin:$HOME/.local/bin:./bin:${COREUTILS_BIN}:${GPG_BIN}:${GNU_SED_BIN}:$FLYCTL_HOME/bin:${CARGO_BIN}:${OPENJDK_BIN}:/usr/local/bin:${POSTGRES_BIN_PATH}:/usr/local/lib:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin
 export MANPATH=/usr/local/opt/gnu-sed/libexec/gnuman:$MANPATH

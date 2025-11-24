@@ -7,13 +7,14 @@ vim.pack.add({
   "https://github.com/echasnovski/mini.nvim",
   -- "https://github.com/fnune/recall.nvim",
   "https://github.com/folke/flash.nvim",
-  "https://github.com/folke/sidekick.nvim",
+  -- "https://github.com/folke/sidekick.nvim",
   "https://github.com/folke/snacks.nvim",
   "https://github.com/ibhagwan/fzf-lua",
   "https://github.com/folke/tokyonight.nvim",
   "https://github.com/folke/trouble.nvim",
   "https://github.com/lewis6991/gitsigns.nvim",
   "https://github.com/max397574/better-escape.nvim",
+  "https://github.com/MeanderingProgrammer/render-markdown.nvim",
   "https://github.com/mbbill/undotree",
   "https://github.com/mg979/vim-visual-multi",
   "https://github.com/monaqa/dial.nvim",
@@ -26,7 +27,7 @@ vim.pack.add({
   "https://github.com/rachartier/tiny-inline-diagnostic.nvim",
   "https://github.com/rgroli/other.nvim",
   "https://github.com/romainl/vim-cool",
-  -- "https://github.com/sindrets/diffview.nvim",
+  "https://github.com/sindrets/diffview.nvim",
   "https://github.com/stevearc/conform.nvim",
   "https://github.com/stevearc/overseer.nvim",
   "https://github.com/vim-test/vim-test",
@@ -361,6 +362,15 @@ map("n", "<leader>wd", "<C-W>c", { desc = "delete window", remap = true })
 map("n", "<leader>wt", ":tabnew<CR>", { desc = "new tab" })
 map("n", "[t", ":tabprev<cr>", { desc = "prev tab" })
 map("n", "]t", ":tabnext<cr>", { desc = "next tab" })
+map("n", "<leader>1", "1gt", { desc = "tab 1" })
+map("n", "<leader>2", "2gt", { desc = "tab 2" })
+map("n", "<leader>3", "3gt", { desc = "tab 3" })
+map("n", "<leader>4", "4gt", { desc = "tab 4" })
+map("n", "<leader>5", "5gt", { desc = "tab 5" })
+map("n", "<leader>6", "6gt", { desc = "tab 6" })
+map("n", "<leader>7", "7gt", { desc = "tab 7" })
+map("n", "<leader>8", "8gt", { desc = "tab 8" })
+map("n", "<leader>9", "9gt", { desc = "tab 9" })
 
 map("n", "<leader>ch", function()
   vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
@@ -524,13 +534,13 @@ end, { desc = "explorer resume" })
 
 -- fzf-lua
 require("fzf-lua").setup({
-  defaults = {
-    git_icons = false,
-    file_icons = false,
-  },
-  files = {
-    path_shorten = 1,
-  },
+  -- defaults = {
+  --   git_icons = false,
+  --   file_icons = false,
+  -- },
+  -- files = {
+  --   path_shorten = 1,
+  -- },
 })
 
 map("n", "<leader>,", function()
@@ -938,6 +948,19 @@ vim.lsp.config("copilot", {
   },
 })
 
+vim.lsp.config("rust_analyzer", {
+  settings = {
+    ["rust-analyzer"] = {
+      checkOnSave = {
+        allFeatures = true,
+      },
+      diagnostics = {
+        disabled = { "inactive-code" },
+      },
+    },
+  },
+})
+
 for _, language_server in ipairs({
   "copilot",
   "elixirls",
@@ -975,9 +998,9 @@ require("blink.cmp").setup({
     ["<C-j>"] = { "select_next", "fallback" },
     ["<Tab>"] = {
       "snippet_forward",
-      function()
-        return require("sidekick").nes_jump_or_apply()
-      end,
+      -- function()
+      --   return require("sidekick").nes_jump_or_apply()
+      -- end,
       function()
         return vim.lsp.inline_completion.get()
       end,
@@ -1089,37 +1112,63 @@ map("n", "<leader>db", "<cmd>Trouble diagnostics toggle filter.buf=0<cr>", { des
 -- flash
 require("flash").setup({})
 
+-- render-markdown
+require("render-markdown").setup({})
+
+map("n", "<leader>cm", "<cmd>RenderMarkdown toggle<cr>", { desc = "toggle markdown" })
+
+-- diffview
+require("diffview").setup({
+  enhanced_diff_hl = true,
+  view = {
+    merge_tool = {
+      layout = "diff3_mixed",
+    },
+  },
+  hooks = {
+    diff_buf_read = function()
+      vim.opt_local.wrap = false
+      vim.opt_local.list = false
+    end,
+  },
+})
+
+map("n", "<leader>gv", "<cmd>DiffviewOpen<cr>", { desc = "diff view" })
+map("n", "<leader>gc", "<cmd>DiffviewClose<cr>", { desc = "close diff view" })
+map("n", "<leader>gh", "<cmd>DiffviewFileHistory<cr>", { desc = "file history" })
+map("n", "<leader>gH", "<cmd>DiffviewFileHistory %<cr>", { desc = "current file history" })
+
 -- sidekick
-require("sidekick").setup({})
-
-map("n", "<leader>aa", function()
-  require("sidekick.cli").toggle()
-end, { desc = "toggle" })
-
-map("n", "<leader>ac", function()
-  require("sidekick.cli").toggle({ name = "claude", focus = true })
-end, { desc = "claude" })
-
-map({ "n", "v" }, "<leader>as", function()
-  require("sidekick.cli").send()
-end, { desc = "send visual selection" })
-
-map("n", "<leader>ap", function()
-  require("sidekick.cli").select_prompt()
-end, { desc = "select prompt" })
-
-map({ "i", "t" }, "<c-.>", function()
-  require("sidekick.cli").switch_focus()
-end, { desc = "switch focus" })
-
-map({ "i", "n" }, "<Tab>", function()
-  if require("sidekick").nes_jump_or_apply() then
-    return
-  end
-
-  if vim.lsp.inline_completion.get() then
-    return
-  end
-
-  return "<Tab>"
-end, { expr = true, desc = "goto / apply suggestion" })
+-- require("sidekick").setup({})
+--
+-- map("n", "<leader>at", function()
+--   require("sidekick.cli").toggle()
+-- end, { desc = "toggle sidekick" })
+--
+-- map("n", "<leader>ac", function()
+--   require("sidekick.cli").toggle({ name = "claude", focus = true })
+-- end, { desc = "claude" })
+--
+-- map({ "n", "v" }, "<leader>as", function()
+--   require("sidekick.cli").send()
+-- end, { desc = "send visual selection" })
+--
+-- map("n", "<leader>ap", function()
+--   require("sidekick.cli").select_prompt()
+-- end, { desc = "select prompt" })
+--
+-- map({ "i", "t" }, "<c-.>", function()
+--   require("sidekick.cli").switch_focus()
+-- end, { desc = "switch focus" })
+--
+-- map({ "i", "n" }, "<Tab>", function()
+--   if require("sidekick").nes_jump_or_apply() then
+--     return
+--   end
+--
+--   if vim.lsp.inline_completion.get() then
+--     return
+--   end
+--
+--   return "<Tab>"
+-- end, { expr = true, desc = "goto / apply suggestion" })
