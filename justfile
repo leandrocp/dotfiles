@@ -41,54 +41,8 @@ homebrew:
     eval "$(/opt/homebrew/bin/brew shellenv)"
 
 apps-osx:
-    #!/usr/bin/env bash
     brew update
-    packages=(\
-        1password \
-        ast-grep \
-        autoconf \
-        automake \
-        bat \
-        btop \
-        cmake \
-        cmark-gfm \
-        codespell \
-        coreutils \
-        dash \
-        devtoys \
-        devutils \
-        discord \
-        dust \
-        eza \
-        fd \
-        font-hack-nerd-font \
-        fzf \
-        gcc \
-        gh \
-        git \
-        gnu-sed \
-        lazygit \
-        macdown \
-        muzzle \
-        obsidian \
-        openssl \
-        pgcli \
-        proton-mail \
-        protonmail-bridge \
-        raycast \
-        renameutils \
-        ripgrep \
-        slack \
-        tableplus \
-        typos-cli \
-        wxwidgets \
-        zoxide \
-        zsh \
-    )
-    for i in "${packages[@]}"; do
-        brew install "$i"
-    done
-    brew install --cask dash
+    brew bundle install --file=Brewfile
     $(brew --prefix)/opt/fzf/install --all --no-bash --no-fish
     brew cleanup
 
@@ -101,3 +55,26 @@ apps-npm:
     npm install -g @anthropic-ai/claude-code
     npm install -g @openai/codex@latest
     npm install -g @github/copilot-language-server
+
+check:
+    #!/usr/bin/env bash
+    echo "Checking dotfiles installation..."
+    echo ""
+    echo "Binaries:"
+    binaries=(nvim zsh git fzf zoxide eza bat fd rg lazygit mise)
+    for bin in "${binaries[@]}"; do
+        if command -v "$bin" &> /dev/null; then
+            echo "  ✓ $bin"
+        else
+            echo "  ✗ $bin"
+        fi
+    done
+
+    echo ""
+    echo "Git:"
+    git config --global user.name &> /dev/null && echo "  ✓ user.name: $(git config --global user.name)" || echo "  ✗ user.name"
+    git config --global user.email &> /dev/null && echo "  ✓ user.email: $(git config --global user.email)" || echo "  ✗ user.email"
+
+    echo ""
+    echo "Checking Homebrew env..."
+    brew doctor

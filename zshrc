@@ -1,3 +1,5 @@
+[[ "$ZPROF" == "1" ]] && zmodload zsh/zprof
+
 source ~/.sensitive
 source ~/.shell/zinit
 source ~/.shell/options
@@ -33,3 +35,7 @@ function y() {
 	fi
 	rm -f -- "$tmp"
 }
+
+[[ "$ZPROF" == "1" ]] && zprof
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
