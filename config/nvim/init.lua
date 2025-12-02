@@ -242,14 +242,28 @@ vim.api.nvim_create_autocmd("LspAttach", {
   group = vim.api.nvim_create_augroup("UserLspConfig", {}),
   callback = function(event)
     local bufnr = event.buf
+    local client = vim.lsp.get_client_by_id(event.data.client_id)
+
     vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
 
     local opts = { buffer = event.buf }
     vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
     vim.keymap.set("n", "gh", vim.lsp.buf.signature_help, opts)
     vim.keymap.set({ "n", "v" }, "<space>ca", vim.lsp.buf.code_action, opts)
+
+    if client:supports_method("textDocument/inlineCompletion") then
+      vim.lsp.inline_completion.enable(true, { bufnr = bufnr })
+    end
   end,
 })
+
+vim.keymap.set("i", "<M-]>", function()
+  vim.lsp.inline_completion.select({ count = 1 })
+end, { desc = "Next inline suggestion" })
+
+vim.keymap.set("i", "<M-[>", function()
+  vim.lsp.inline_completion.select({ count = -1 })
+end, { desc = "Previous inline suggestion" })
 
 vim.api.nvim_create_autocmd("PackChanged", {
   desc = "Handle nvim-treesitter updates",
@@ -975,8 +989,6 @@ for _, language_server in ipairs({
   vim.lsp.enable(language_server)
 end
 
-vim.lsp.inline_completion.enable()
-
 -- other
 require("other-nvim").setup({
   showMissingFiles = true,
@@ -1172,3 +1184,14 @@ map("n", "<leader>gH", "<cmd>DiffviewFileHistory %<cr>", { desc = "current file 
 --
 --   return "<Tab>"
 -- end, { expr = true, desc = "goto / apply suggestion" })
+
+vim.api.nvim_create_user_command("ToggleInlineCompletion", function()
+  local enabled = vim.lsp.inline_completion.is_enabled()
+  vim.lsp.inline_completion.enable(not enabled)
+  vim.notify(
+    string.format("Inline completion %s", enabled and "disabled" or "enabled"),
+    vim.log.levels.INFO
+  )
+end, { desc = "Toggle LSP inline completion" })
+
+vim.keymap.set("n", "<leader>ai", "<cmd>ToggleInlineCompletion<CR>", { desc = "Toggle inline completion" })
