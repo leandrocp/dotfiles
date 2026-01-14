@@ -75,3 +75,5 @@
 	repo = /Users/leandro/.config/zsh-config/sindresorhus/pure
 [branch]
 	sort = -committerdate
+[rerere]
+	enabled = true

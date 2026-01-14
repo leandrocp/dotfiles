@@ -14,7 +14,7 @@ vim.pack.add({
   "https://github.com/folke/trouble.nvim",
   "https://github.com/lewis6991/gitsigns.nvim",
   "https://github.com/max397574/better-escape.nvim",
-  "https://github.com/MeanderingProgrammer/render-markdown.nvim",
+  -- "https://github.com/MeanderingProgrammer/render-markdown.nvim",
   "https://github.com/mbbill/undotree",
   "https://github.com/mg979/vim-visual-multi",
   "https://github.com/monaqa/dial.nvim",
@@ -1124,10 +1124,9 @@ map("n", "<leader>db", "<cmd>Trouble diagnostics toggle filter.buf=0<cr>", { des
 -- flash
 require("flash").setup({})
 
--- render-markdown
-require("render-markdown").setup({})
-
-map("n", "<leader>cm", "<cmd>RenderMarkdown toggle<cr>", { desc = "toggle markdown" })
+-- -- render-markdown
+-- require("render-markdown").setup({})
+-- map("n", "<leader>cm", "<cmd>RenderMarkdown toggle<cr>", { desc = "toggle markdown" })
 
 -- diffview
 require("diffview").setup({

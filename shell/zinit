@@ -43,3 +43,7 @@ zinit snippet OMZ::plugins/mix-fast/mix-fast.plugin.zsh
 zinit wait'1' lucid for \
   OMZP::extract
 
+zinit ice wait lucid as"completion" id-as"bun" \
+    atload'export BUN_INSTALL="$HOME/.bun"; export PATH="$BUN_INSTALL/bin:$PATH"'
+zinit snippet "$HOME/.bun/_bun"
+

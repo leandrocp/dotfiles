@@ -1,11 +1,11 @@
 [tools]
-elixir = "1.19.0-otp-28"
+elixir = "1.19.5-otp-28"
 elixir-ls = "latest"
 erlang = "28.1"
 go = "latest"
 lua-language-server = "latest"
 neovim = "nightly"
-node = "22"
+node = "latest"
 "npm:typescript" = "latest"
 pnpm = "latest"
 python = "3"
