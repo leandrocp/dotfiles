@@ -52,7 +52,6 @@ apps-mise:
 
 apps-npm:
     npm install -g @fsouza/prettierd
-    npm install -g @anthropic-ai/claude-code
     npm install -g @openai/codex@latest
     npm install -g @github/copilot-language-server
 

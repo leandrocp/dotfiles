@@ -8,7 +8,7 @@ export GNU_SED_BIN=/opt/homebrew/opt/gnu-sed/libexec/gnubin
 export FLYCTL_HOME="$HOME/.fly"
 export CARGO_BIN=$HOME/.cargo/bin
 export OPENJDK_BIN=/opt/homebrew/opt/openjdk/bin
-export POSTGRES_BIN_PATH="/Applications/Postgres.app/Contents/Versions/latest/bin"
+export POSTGRES_BIN="/Applications/Postgres.app/Contents/Versions/latest/bin"
 export OPENCODE_BIN="$HOME/.opencode/bin"
 
 export PATH=$PATH:$HOME/.bin:$HOME/.local/bin:./bin:${COREUTILS_BIN}:${GPG_BIN}:${GNU_SED_BIN}:$FLYCTL_HOME/bin:${CARGO_BIN}:${OPENJDK_BIN}::/usr/local/bin:${POSTGRES_BIN}:${OPENCODE_BIN}:/usr/local/lib:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin

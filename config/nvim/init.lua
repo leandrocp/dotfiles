@@ -36,6 +36,15 @@ vim.pack.add({
 
 vim.cmd([[colorscheme tokyonight]])
 
+-- Filter out ElixirLS formatter plugin warnings
+local original_notify = vim.notify
+vim.notify = function(msg, level, opts)
+  if type(msg) == "string" and msg:match("Formatter plugin.*is not loaded") then
+    return
+  end
+  return original_notify(msg, level, opts)
+end
+
 --
 -- options
 --
