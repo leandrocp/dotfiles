@@ -36,15 +36,6 @@ vim.pack.add({
 
 vim.cmd([[colorscheme tokyonight]])
 
--- Filter out ElixirLS formatter plugin warnings
-local original_notify = vim.notify
-vim.notify = function(msg, level, opts)
-  if type(msg) == "string" and msg:match("Formatter plugin.*is not loaded") then
-    return
-  end
-  return original_notify(msg, level, opts)
-end
-
 --
 -- options
 --
@@ -439,6 +430,7 @@ require("snacks").setup({
   quickfile = { enabled = true },
   terminal = {},
 })
+
 
 map("n", "<leader>bd", function()
   Snacks.bufdelete()
@@ -950,15 +942,10 @@ vim.lsp.config("lua_ls", {
   },
 })
 
-vim.lsp.config("elixirls", {
-  cmd = { "elixir-ls" },
-  settings = {
-    elixirLS = {
-      dialyzerEnabled = false,
-      fetchDeps = false,
-      enableTestLenses = false,
-    },
-  },
+vim.lsp.config("expert", {
+  cmd = { vim.fn.expand("~/code/elixir-lang/expert/apps/expert/_build/prod/rel/plain/bin/start_expert"), "--stdio" },
+  root_markers = { "mix.exs", ".git" },
+  filetypes = { "elixir", "eelixir", "heex" },
 })
 
 vim.lsp.config("tailwindcss", {})
@@ -986,7 +973,7 @@ vim.lsp.config("rust_analyzer", {
 
 for _, language_server in ipairs({
   "copilot",
-  "elixirls",
+  "expert",
   "html",
   "lua_ls",
   "yamlls",
