@@ -43,7 +43,6 @@ homebrew:
 apps-osx:
     brew update
     brew bundle install --file=Brewfile
-    $(brew --prefix)/opt/fzf/install --all --no-bash --no-fish
     brew cleanup
 
 apps-mise:
@@ -52,7 +51,6 @@ apps-mise:
 
 apps-npm:
     npm install -g @fsouza/prettierd
-    npm install -g @openai/codex@latest
     npm install -g @github/copilot-language-server
 
 check:

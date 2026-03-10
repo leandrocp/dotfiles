@@ -991,6 +991,38 @@ require("other-nvim").setup({
   mappings = {
     "elixir",
     "rust",
+    {
+      pattern = "(.*)/src/(.*).ts$",
+      target = "%1/test/%2.test.ts",
+    },
+    {
+      pattern = "(.*)/test/(.*).test.ts$",
+      target = "%1/src/%2.ts",
+    },
+    {
+      pattern = "(.*)/src/(.*).tsx$",
+      target = "%1/test/%2.test.tsx",
+    },
+    {
+      pattern = "(.*)/test/(.*).test.tsx$",
+      target = "%1/src/%2.tsx",
+    },
+    {
+      pattern = "(.*)/src/(.*).js$",
+      target = "%1/test/%2.test.js",
+    },
+    {
+      pattern = "(.*)/test/(.*).test.js$",
+      target = "%1/src/%2.js",
+    },
+    {
+      pattern = "(.*)/src/(.*).jsx$",
+      target = "%1/test/%2.test.jsx",
+    },
+    {
+      pattern = "(.*)/test/(.*).test.jsx$",
+      target = "%1/src/%2.jsx",
+    },
   },
 })
 

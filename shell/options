@@ -35,3 +35,7 @@ export KERL_BUILD_DOCS=yes
 export ELIXIR_EDITOR="zed __FILE__:__LINE__"
 export PLUG_EDITOR=$ELIXIR_EDITOR
 export ECTO_EDITOR=$ELIXIR_EDITOR
+export MIX_OS_DEPS_COMPILE_PARTITION_COUNT=5
+
+# github
+export GITHUB_TOKEN=$(gh auth token)
