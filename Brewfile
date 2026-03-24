@@ -13,6 +13,7 @@ brew "renameutils"
 brew "ripgrep"
 brew "wxwidgets"
 brew "zsh"
+brew "mole"
 
 cask "1password"
 cask "dash"

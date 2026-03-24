@@ -13,7 +13,7 @@ update:
     mise plugins up
     mise up
     nvim --headless -c "lua vim.pack.update(nil, { force = true })" -c "quit"
-    just apps-npm
+    mise exec just -- just apps-npm
 
 link-root:
     #!/usr/bin/env bash

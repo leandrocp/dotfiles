@@ -4,6 +4,7 @@ vim.pack.add({
   "https://github.com/akinsho/toggleterm.nvim",
   "https://github.com/catppuccin/nvim",
   "https://github.com/cpea2506/relative-toggle.nvim",
+  "https://github.com/Mofiqul/dracula.nvim",
   "https://github.com/echasnovski/mini.nvim",
   -- "https://github.com/fnune/recall.nvim",
   "https://github.com/folke/flash.nvim",

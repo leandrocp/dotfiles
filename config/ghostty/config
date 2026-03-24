@@ -1,5 +1,8 @@
 # https://ghostty.org/docs/config/reference
 # https://github.com/search?q=path%3Aghostty%2Fconfig&type=code
+
+# auto-update-channel=tip
+
 # theme=catppuccin-frappe
 theme="/Users/leandro/.dotfiles/config/ghostty/tokyonight_moon"
 font-family=Hack
@@ -13,7 +16,7 @@ window-padding-y=10
 quit-after-last-window-closed=true
 mouse-hide-while-typing=true
 shell-integration=zsh
-shell-integration-features=cursor,sudo,title
+shell-integration-features=cursor,sudo,title,ssh-terminfo
 clipboard-paste-protection=false
 notify-on-command-finish=unfocused
 notify-on-command-finish-action=no-bell,notify
@@ -28,27 +31,20 @@ split-inherit-working-directory=true
 keybind = super+r=reload_config
 keybind = super+x=clear_screen
 keybind = super+w=close_surface
-# splits: navigate (same Ctrl+hjkl as Neovim)
 keybind = performable:ctrl+h=goto_split:left
 keybind = performable:ctrl+j=goto_split:down
 keybind = performable:ctrl+k=goto_split:up
 keybind = performable:ctrl+l=goto_split:right
-
-# splits: create (Cmd+Shift+hjkl)
 keybind = super+shift+h=new_split:left
 keybind = super+shift+j=new_split:down
 keybind = super+shift+k=new_split:up
 keybind = super+shift+l=new_split:right
 keybind = super+n=goto_split:next
 keybind = super+p=goto_split:previous
-
-# splits: resize (mirrors nvim Ctrl+arrows)
 keybind = super+down=resize_split:down,60
 keybind = super+left=resize_split:left,60
 keybind = super+up=resize_split:up,60
 keybind = super+right=resize_split:right,60
-
-# splits: layout
 keybind = super+e=equalize_splits
 keybind = super+z=toggle_split_zoom
 keybind = shift+enter=text:\n
