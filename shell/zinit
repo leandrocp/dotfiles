@@ -47,3 +47,5 @@ zinit ice wait lucid as"completion" id-as"bun" \
     atload'export BUN_INSTALL="$HOME/.bun"; export PATH="$BUN_INSTALL/bin:$PATH"'
 zinit snippet "$HOME/.bun/_bun"
 
+zinit ice wait lucid as"completion"
+zinit snippet "$HOME/.dotfiles/shell/completions/_just"
