@@ -1,0 +1,163 @@
+# yaml-language-server: $schema=https://gh-dash.dev/schema.json
+prSections:
+    - title: My Pull Requests
+      filters: >-
+          is:open author:@me
+          -repo:BeaconCMS/beacon
+          -repo:BeaconCMS/beacon_live_admin
+          -repo:BeaconCMS/live_monaco_editor
+    - title: Review Requested
+      filters: >-
+          is:open review-requested:@me
+          -repo:BeaconCMS/beacon
+          -repo:BeaconCMS/beacon_live_admin
+          -repo:BeaconCMS/live_monaco_editor
+    - title: Work
+      filters: >-
+          is:open
+          repo:Intellispark/pulse
+          repo:Intellispark/IntelliSync
+    - title: Open Source
+      filters: >-
+          is:open
+          repo:leandrocp/mdex
+          repo:leandrocp/mdex_gfm
+          repo:leandrocp/mdex_katex
+          repo:leandrocp/mdex_mermaid
+          repo:leandrocp/lumis
+          repo:leandrocp/req_embed
+          repo:leandrocp/err
+          repo:kivikakk/comrak
+    - title: Recently Closed
+      filters: >-
+          is:closed author:@me sort:updated-desc
+          -repo:BeaconCMS/beacon
+          -repo:BeaconCMS/beacon_live_admin
+          -repo:BeaconCMS/live_monaco_editor
+issuesSections:
+    - title: My Issues
+      filters: >-
+          is:open author:@me
+          -repo:BeaconCMS/beacon
+          -repo:BeaconCMS/beacon_live_admin
+          -repo:BeaconCMS/live_monaco_editor
+    - title: Assigned
+      filters: >-
+          is:open assignee:@me
+          -repo:BeaconCMS/beacon
+          -repo:BeaconCMS/beacon_live_admin
+          -repo:BeaconCMS/live_monaco_editor
+    - title: Work
+      filters: >-
+          is:open
+          repo:Intellispark/pulse
+          repo:Intellispark/IntelliSync
+    - title: Open Source
+      filters: >-
+          is:open
+          repo:leandrocp/mdex
+          repo:leandrocp/mdex_gfm
+          repo:leandrocp/mdex_katex
+          repo:leandrocp/mdex_mermaid
+          repo:leandrocp/lumis
+          repo:leandrocp/req_embed
+          repo:leandrocp/err
+          repo:kivikakk/comrak
+notificationsSections:
+    - title: All
+      filters: ""
+    - title: Created
+      filters: reason:author
+    - title: Participating
+      filters: reason:participating
+    - title: Mentioned
+      filters: reason:mention
+    - title: Review Requested
+      filters: reason:review-requested
+    - title: Assigned
+      filters: reason:assign
+    - title: Subscribed
+      filters: reason:subscribed
+    - title: Team Mentioned
+      filters: reason:team-mention
+repo:
+    branchesRefetchIntervalSeconds: 30
+    prsRefetchIntervalSeconds: 60
+defaults:
+    preview:
+        open: true
+        width: 50
+    prsLimit: 20
+    prApproveComment: LGTM
+    issuesLimit: 20
+    notificationsLimit: 20
+    view: prs
+    layout:
+        prs:
+            updatedAt:
+                width: 5
+            createdAt:
+                width: 5
+            repo:
+                width: 20
+            author:
+                width: 15
+            authorIcon:
+                hidden: false
+            assignees:
+                width: 20
+                hidden: true
+            base:
+                width: 15
+                hidden: true
+            lines:
+                width: 15
+        issues:
+            updatedAt:
+                width: 5
+            createdAt:
+                width: 5
+            repo:
+                width: 15
+            creator:
+                width: 10
+            creatorIcon:
+                hidden: false
+            assignees:
+                width: 20
+                hidden: true
+    refetchIntervalMinutes: 30
+keybindings:
+    universal:
+        - key: g
+          command: cd {{.RepoPath}} && lazygit
+          name: lazygit
+        - key: O
+          command: open {{.RepoPath}}
+          name: open in finder
+    prs:
+        - key: a
+          command: gh pr review --repo {{.RepoName}} --approve {{.PrNumber}}
+          name: approve
+        - key: M
+          command: gh pr merge --repo {{.RepoName}} {{.PrNumber}} --squash --delete-branch
+          name: squash merge & delete branch
+        - key: x
+          command: gh pr close --repo {{.RepoName}} {{.PrNumber}} --delete-branch
+          name: close & delete branch
+        - key: P
+          command: gh pr ready --repo {{.RepoName}} {{.PrNumber}} --undo
+          name: move to draft
+repoPaths:
+    :owner/:repo: ~/code/:owner/:repo
+theme:
+    ui:
+        sectionsShowCount: true
+        table:
+            showSeparator: true
+            compact: false
+pager:
+    diff: delta
+confirmQuit: false
+showAuthorIcons: true
+smartFilteringAtLaunch: true
