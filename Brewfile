@@ -17,6 +17,8 @@ brew "ripgrep"
 brew "wxwidgets"
 brew "zsh"
 brew "mole"
+brew "gnupg"
+brew "pinentry-mac"
 
 cask "1password"
 cask "dash"

@@ -59,7 +59,7 @@
 [commit]
   gpgsign = true
 [gpg]
-  program = /usr/local/bin/gpg
+  program = /opt/homebrew/bin/gpg
 [maintenance]
 	repo = /Users/leandro/.config/zsh-config/znap
 	repo = /Users/leandro/.config/zsh-config/mafredri/zsh-async
