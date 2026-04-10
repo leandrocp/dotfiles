@@ -32,6 +32,7 @@ link-config:
     for name in config/*; do
         target="$HOME/.$name"
         echo "$target"
+        mkdir -p "$(dirname "$target")"
         rm -rf "$target"
         ln -s "$PWD/$name" "$target"
     done
