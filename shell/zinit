@@ -19,6 +19,11 @@ zinit wait lucid light-mode for \
   blockf atpull'zinit creinstall -q .' \
   zsh-users/zsh-completions
 
+zinit from"gh-r" as"program" mv"direnv* -> direnv" \
+    atclone'./direnv hook zsh > zhook.zsh' atpull'%atclone' \
+    pick"direnv" src="zhook.zsh" for \
+        direnv/direnv
+
 zinit as="command" lucid from="gh-r" for \
     id-as="usage" \
     atpull="%atclone" \

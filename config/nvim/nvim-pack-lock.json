@@ -45,6 +45,10 @@
       "rev": "b08a9f8d0602fdf075262e8e1b6dc776b3966003",
       "src": "https://github.com/MagicDuck/grug-far.nvim"
     },
+    "lazy.nvim": {
+      "rev": "85c7ff3711b730b4030d03144f6db6375044ae82",
+      "src": "https://github.com/folke/lazy.nvim"
+    },
     "mini.nvim": {
       "rev": "69b7433355664cf76898eb86a12a019f39bd86d1",
       "src": "https://github.com/echasnovski/mini.nvim"
@@ -88,6 +92,10 @@
     "relative-toggle.nvim": {
       "rev": "669743be90a3a3c5fc0eceec478042e2bc7541a4",
       "src": "https://github.com/cpea2506/relative-toggle.nvim"
+    },
+    "render-markdown.nvim": {
+      "rev": "26097a4eb95b391d0308c1b77cce89b28bbc9916",
+      "src": "https://github.com/MeanderingProgrammer/render-markdown.nvim"
     },
     "snacks.nvim": {
       "rev": "ad9ede6a9cddf16cedbd31b8932d6dcdee9b716e",
