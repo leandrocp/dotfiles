@@ -19,7 +19,7 @@ link-root:
     #!/usr/bin/env bash
     for name in *; do
         case "$name" in
-            justfile|README.md|shell|config|.git) continue ;;
+            justfile|README.md|config|.git) continue ;;
         esac
         target="$HOME/.$name"
         echo "$target"

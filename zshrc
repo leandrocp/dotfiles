@@ -1,6 +1,6 @@
 [[ "$ZPROF" == "1" ]] && zmodload zsh/zprof
 
-source ~/.sensitive
+[ -f ~/.sensitive ] && source ~/.sensitive
 source ~/.shell/zinit
 source ~/.shell/options
 source ~/.shell/aliases
