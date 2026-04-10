@@ -1,7 +1,7 @@
 default:
     @just --list
 
-all: link-root link-config homebrew apps-osx apps-mise apps-npm
+install: link-root link-config apps-osx apps-mise apps-npm
 
 update:
     #!/usr/bin/env zsh
@@ -35,10 +35,6 @@ link-config:
         rm -rf "$target"
         ln -s "$PWD/$name" "$target"
     done
-
-homebrew:
-    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-    eval "$(/opt/homebrew/bin/brew shellenv)"
 
 apps-osx:
     brew update
