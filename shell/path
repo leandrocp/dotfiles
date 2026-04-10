@@ -1,9 +1,10 @@
 # vi: ft=zsh
 
 eval "$(/opt/homebrew/bin/brew shellenv)"
+eval "$(mise activate zsh)"
 
 export COREUTILS_BIN=/opt/homebrew/opt/coreutils/libexec/gnubin
-export GPG_BIN=/usr/local/opt/gnupg2/bin
+export GPG_BIN=/opt/homebrew/opt/gnupg/bin
 export GNU_SED_BIN=/opt/homebrew/opt/gnu-sed/libexec/gnubin
 export FLYCTL_HOME="$HOME/.fly"
 export CARGO_BIN=$HOME/.cargo/bin

@@ -1,10 +1,10 @@
 [[ "$ZPROF" == "1" ]] && zmodload zsh/zprof
 
 [ -f ~/.sensitive ] && source ~/.sensitive
+source ~/.shell/path
 source ~/.shell/zinit
 source ~/.shell/options
 source ~/.shell/aliases
-source ~/.shell/path
 
 source <(fzf --zsh)
 eval "$(zoxide init --cmd j zsh)"
