@@ -22,8 +22,8 @@ vim.pack.add({
   "https://github.com/nacro90/numb.nvim",
   "https://github.com/neovim/nvim-lspconfig",
   "https://github.com/nvim-lua/plenary.nvim",
-  "https://github.com/nvim-treesitter/nvim-treesitter",
-  "https://github.com/nvim-treesitter/nvim-treesitter-textobjects",
+  { src = "https://github.com/nvim-treesitter/nvim-treesitter", branch = "main" },
+  { src = "https://github.com/nvim-treesitter/nvim-treesitter-textobjects", branch = "main" },
   "https://github.com/projekt0n/github-nvim-theme",
   "https://github.com/rachartier/tiny-inline-diagnostic.nvim",
   "https://github.com/rgroli/other.nvim",
@@ -687,7 +687,6 @@ require("better_escape").setup({
 require("conform").setup({
   formatters_by_ft = {
     ["*"] = { "codespell", "typos" },
-    ["terraform-vars"] = { "terraform_fmt" },
     bash = { "shfmt" },
     css = { "prettierd", "prettier", stop_after_first = true },
     elixir = { "mix" },
@@ -700,9 +699,6 @@ require("conform").setup({
     python = { "isort", "black" },
     rust = { "rustfmt" },
     sh = { "shfmt" },
-    svelte = { "prettierd", "prettier", stop_after_first = true },
-    terraform = { "terraform_fmt" },
-    tf = { "terraform_fmt" },
     toml = { "taplo" },
     typescript = { "prettierd", "prettier", stop_after_first = true },
     yaml = { "prettierd", "prettier", stop_after_first = true },
@@ -772,60 +768,89 @@ map("n", "<C-x>", function()
 end, { expr = true })
 
 -- treesitter
-require("nvim-treesitter.configs").setup({
-  ensure_installed = {
-    "bash",
-    "css",
-    "diff",
-    "eex",
-    "elixir",
-    "erlang",
-    "heex",
-    "html",
-    "javascript",
-    "json",
-    "lua",
-    "luadoc",
-    "markdown",
-    "markdown_inline",
-    "regex",
-    "rust",
-    "svelte",
-    "toml",
-    "vim",
-    "vimdoc",
-    "yaml",
-  },
-  auto_install = true,
-  highlight = { enable = true },
-  incremental_selection = {
-    enable = true,
-    keymaps = {
-      init_selection = "<CR>",
-      node_incremental = "<CR>",
-      node_decremental = "<C-CR>",
-    },
-  },
-  textobjects = {
-    move = {
-      enable = true,
-      goto_next_start = { ["]f"] = "@function.outer", ["]c"] = "@class.outer", ["]a"] = "@parameter.inner" },
-      goto_next_end = { ["]F"] = "@function.outer", ["]C"] = "@class.outer", ["]A"] = "@parameter.inner" },
-      goto_previous_start = { ["[f"] = "@function.outer", ["[c"] = "@class.outer", ["[a"] = "@parameter.inner" },
-      goto_previous_end = { ["[F"] = "@function.outer", ["[C"] = "@class.outer", ["[A"] = "@parameter.inner" },
-    },
-    select = {
-      enable = true,
-      lookahead = true,
-      keymaps = {},
-      selection_modes = {},
-      include_surrounding_whitespace = true,
-    },
+local treesitter_languages = {
+  "bash",
+  "css",
+  "diff",
+  "eex",
+  "elixir",
+  "erlang",
+  "heex",
+  "html",
+  "javascript",
+  "json",
+  "lua",
+  "luadoc",
+  "markdown",
+  "markdown_inline",
+  "regex",
+  "rust",
+  "toml",
+  "vim",
+  "vimdoc",
+  "yaml",
+}
+
+require("nvim-treesitter").setup()
+require("nvim-treesitter").install(treesitter_languages)
+
+vim.api.nvim_create_autocmd("FileType", {
+  group = vim.api.nvim_create_augroup("UserTreesitter", { clear = true }),
+  callback = function(event)
+    local lang = vim.treesitter.language.get_lang(vim.bo[event.buf].filetype)
+    if not lang then
+      return
+    end
+
+    local ok = vim.treesitter.language.add(lang)
+    if ok then
+      vim.treesitter.start(event.buf, lang)
+    end
+  end,
+})
+
+require("nvim-treesitter-textobjects").setup({
+  move = {
+    set_jumps = true,
   },
 })
 
-map("n", "<CR>", "", { desc = "increment selection" })
-map("x", "<C-CR>", "", { desc = "decrement selection" })
+map({ "n", "x", "o" }, "]f", function()
+  require("nvim-treesitter-textobjects.move").goto_next_start("@function.outer", "textobjects")
+end)
+map({ "n", "x", "o" }, "]c", function()
+  require("nvim-treesitter-textobjects.move").goto_next_start("@class.outer", "textobjects")
+end)
+map({ "n", "x", "o" }, "]a", function()
+  require("nvim-treesitter-textobjects.move").goto_next_start("@parameter.inner", "textobjects")
+end)
+map({ "n", "x", "o" }, "]F", function()
+  require("nvim-treesitter-textobjects.move").goto_next_end("@function.outer", "textobjects")
+end)
+map({ "n", "x", "o" }, "]C", function()
+  require("nvim-treesitter-textobjects.move").goto_next_end("@class.outer", "textobjects")
+end)
+map({ "n", "x", "o" }, "]A", function()
+  require("nvim-treesitter-textobjects.move").goto_next_end("@parameter.inner", "textobjects")
+end)
+map({ "n", "x", "o" }, "[f", function()
+  require("nvim-treesitter-textobjects.move").goto_previous_start("@function.outer", "textobjects")
+end)
+map({ "n", "x", "o" }, "[c", function()
+  require("nvim-treesitter-textobjects.move").goto_previous_start("@class.outer", "textobjects")
+end)
+map({ "n", "x", "o" }, "[a", function()
+  require("nvim-treesitter-textobjects.move").goto_previous_start("@parameter.inner", "textobjects")
+end)
+map({ "n", "x", "o" }, "[F", function()
+  require("nvim-treesitter-textobjects.move").goto_previous_end("@function.outer", "textobjects")
+end)
+map({ "n", "x", "o" }, "[C", function()
+  require("nvim-treesitter-textobjects.move").goto_previous_end("@class.outer", "textobjects")
+end)
+map({ "n", "x", "o" }, "[A", function()
+  require("nvim-treesitter-textobjects.move").goto_previous_end("@parameter.inner", "textobjects")
+end)
 
 -- gitsigns
 require("gitsigns").setup({
