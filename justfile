@@ -20,6 +20,18 @@ link-root:
     for name in *; do
         case "$name" in
             justfile|README.md|config|.git) continue ;;
+            gnupg)
+                target="$HOME/.gnupg"
+                echo "$target"
+                mkdir -p "$target"
+                chmod 700 "$target"
+                for file in "$PWD/$name"/*; do
+                    link_target="$target/$(basename "$file")"
+                    rm -f "$link_target"
+                    ln -s "$file" "$link_target"
+                done
+                continue
+                ;;
         esac
         target="$HOME/.$name"
         echo "$target"
@@ -68,6 +80,7 @@ check:
     echo "Git:"
     git config --global user.name &> /dev/null && echo "  ✓ user.name: $(git config --global user.name)" || echo "  ✗ user.name"
     git config --global user.email &> /dev/null && echo "  ✓ user.email: $(git config --global user.email)" || echo "  ✗ user.email"
+    echo "  $(test -f "$HOME/.gnupg/gpg-agent.conf" && printf '✓' || printf '✗') gpg-agent.conf"
 
     echo ""
     echo "Checking Homebrew env..."
