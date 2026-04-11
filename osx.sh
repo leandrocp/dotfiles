@@ -28,10 +28,10 @@ defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
 defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
 
 # Speed up key repeat.
-defaults write NSGlobalDomain KeyRepeat -int 2
+defaults write NSGlobalDomain KeyRepeat -int 1
 
 # Reduce the delay before key repeat starts.
-defaults write NSGlobalDomain InitialKeyRepeat -int 15
+defaults write NSGlobalDomain InitialKeyRepeat -int 10
 
 # Enable tap to click on Apple trackpads.
 defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool true
