@@ -20,6 +20,7 @@ notify-on-command-finish-action=no-bell,notify
 notify-on-command-finish-after=30s
 tab-inherit-working-directory=true
 split-inherit-working-directory=true
+unfocused-split-opacity=0.70
 
 # https://ghostty.org/docs/config/keybind/reference
 # ghostty +list-keybinds
