@@ -792,7 +792,16 @@ local treesitter_languages = {
 }
 
 require("nvim-treesitter").setup()
-require("nvim-treesitter").install(treesitter_languages)
+require("nvim-treesitter-textobjects").init()
+require("nvim-treesitter.configs").setup({
+  ensure_installed = treesitter_languages,
+  textobjects = {
+    move = {
+      enable = true,
+      set_jumps = true,
+    },
+  },
+})
 
 vim.api.nvim_create_autocmd("FileType", {
   group = vim.api.nvim_create_augroup("UserTreesitter", { clear = true }),
@@ -807,12 +816,6 @@ vim.api.nvim_create_autocmd("FileType", {
       vim.treesitter.start(event.buf, lang)
     end
   end,
-})
-
-require("nvim-treesitter-textobjects").setup({
-  move = {
-    set_jumps = true,
-  },
 })
 
 map({ "n", "x", "o" }, "]f", function()
