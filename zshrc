@@ -2,6 +2,7 @@
 
 [ -f ~/.sensitive ] && source ~/.sensitive
 source ~/.shell/path
+source ~/.shell/ssh
 source ~/.shell/zinit
 source ~/.shell/options
 source ~/.shell/aliases
