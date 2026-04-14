@@ -792,14 +792,9 @@ local treesitter_languages = {
 }
 
 require("nvim-treesitter").setup()
-require("nvim-treesitter-textobjects").init()
-require("nvim-treesitter.configs").setup({
-  ensure_installed = treesitter_languages,
-  textobjects = {
-    move = {
-      enable = true,
-      set_jumps = true,
-    },
+require("nvim-treesitter-textobjects").setup({
+  move = {
+    set_jumps = true,
   },
 })
 
