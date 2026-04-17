@@ -23,20 +23,24 @@ split-inherit-working-directory=true
 unfocused-split-opacity=0.70
 
 # https://ghostty.org/docs/config/keybind/reference
-# ghostty +list-keybinds
-# https://github.com/alacritty/alacritty/issues/5346#issuecomment-1055695103
-# super = cmd
 keybind = super+r=reload_config
 keybind = super+x=clear_screen
 keybind = super+w=close_surface
-keybind = performable:ctrl+h=goto_split:left
-keybind = performable:ctrl+j=goto_split:down
-keybind = performable:ctrl+k=goto_split:up
-keybind = performable:ctrl+l=goto_split:right
-keybind = super+shift+h=new_split:left
-keybind = super+shift+j=new_split:down
-keybind = super+shift+k=new_split:up
-keybind = super+shift+l=new_split:right
+
+# keybind = performable:ctrl+h=goto_split:left
+# keybind = performable:ctrl+j=goto_split:down
+# keybind = performable:ctrl+k=goto_split:up
+# keybind = performable:ctrl+l=goto_split:right
+keybind = super+h=goto_split:left
+keybind = super+j=goto_split:down
+keybind = super+k=goto_split:up
+keybind = super+l=goto_split:right
+
+keybind = ctrl+space>h=new_split:left
+keybind = ctrl+space>j=new_split:down
+keybind = ctrl+space>k=new_split:up
+keybind = ctrl+space>l=new_split:right
+
 keybind = super+n=goto_split:next
 keybind = super+p=goto_split:previous
 keybind = super+down=resize_split:down,60
@@ -45,4 +49,3 @@ keybind = super+up=resize_split:up,60
 keybind = super+right=resize_split:right,60
 keybind = super+e=equalize_splits
 keybind = super+z=toggle_split_zoom
-keybind = shift+enter=text:\n

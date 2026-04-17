@@ -24,6 +24,9 @@ defaults write NSGlobalDomain NSAutomaticQuoteSubstitutionEnabled -bool false
 # Disable system spell correction.
 defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
 
+# Disable inline predictive text suggestions.
+defaults write NSGlobalDomain NSAutomaticInlinePredictionEnabled -bool false
+
 # Prefer key repeat over press-and-hold accent picker.
 defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
 
