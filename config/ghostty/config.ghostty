@@ -3,6 +3,7 @@
 
 theme=TokyoNight Moon
 font-family=Hack
+# font-feature=-calt,-liga,-dlig
 font-size=14
 adjust-cell-height=25%
 copy-on-select=clipboard

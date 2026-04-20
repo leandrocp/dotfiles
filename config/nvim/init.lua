@@ -201,7 +201,7 @@ vim.api.nvim_create_autocmd("FileType", {
 -- wrap and check for spell in text filetypes
 vim.api.nvim_create_autocmd("FileType", {
   group = augroup("wrap_spell"),
-  pattern = { "text", "plaintex", "typst", "gitcommit", "markdown" },
+  pattern = { "text", "plaintex", "typst", "gitcommit" },
   callback = function()
     vim.opt_local.wrap = true
     vim.opt_local.spell = true
@@ -342,6 +342,21 @@ map("n", "<C-Right>", "<C-w>>", { desc = "increase window width" })
 -- better indenting
 map("v", "<", "<gv", { silent = true })
 map("v", ">", ">gv", { silent = true })
+
+-- treesitter node selection (Neovim 0.12 built-ins)
+map("n", "<CR>", function()
+  vim.cmd.normal({ "v", bang = true })
+  require("vim.treesitter._select").select_parent(vim.v.count1)
+end, { desc = "select treesitter node" })
+map("x", "<CR>", function()
+  require("vim.treesitter._select").select_parent(vim.v.count1)
+end, { desc = "expand treesitter node" })
+map("x", "<BS>", function()
+  require("vim.treesitter._select").select_child(vim.v.count1)
+end, { desc = "shrink treesitter node" })
+map("x", "<C-h>", function()
+  require("vim.treesitter._select").select_child(vim.v.count1)
+end, { desc = "shrink treesitter node" })
 
 map("n", "<leader>iw", "<cmd>Inspect<CR>", { desc = "inspect word", remap = true })
 map("n", "<leader>it", "<cmd>InspectTree<CR>", { desc = "inspect tree", remap = true })

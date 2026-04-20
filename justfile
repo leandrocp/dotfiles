@@ -8,6 +8,7 @@ update:
     source ~/.shell/zinit
     brew upgrade
     brew cleanup
+    rtk init -g --opencode --auto-patch
     zinit self-update
     zinit update
     mise plugins up
@@ -53,6 +54,7 @@ apps-osx:
     brew update
     brew bundle install --file=Brewfile
     brew cleanup
+    rtk init -g --opencode --auto-patch
 
 apps-mise:
     mise plugins install neovim
