@@ -12,7 +12,7 @@
 [color]
   ui = true
 [push]
-  default = current
+	default = upstream
   autoSetupRemote = true
 [init]
   defaultBranch = main
@@ -56,6 +56,7 @@
   up = !sh -c 'git set-upstream && git fetch && git pull --rebase' -
   cp = cherry-pick
   set-upstream = !git branch --set-upstream-to=origin/`git symbolic-ref --short HEAD`
+  prw = !/Users/leandro/.local/bin/git-prw
 [commit]
   gpgsign = true
 [gpg]
