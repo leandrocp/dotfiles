@@ -36,4 +36,5 @@ Package Control.user-ca-bundle
 /config/zed/prompts
 /config/lazygit/state.yml
 /config/lazygit/state.yml
+/config/opencode/package-lock.json
 *.tmp*
