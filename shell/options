@@ -39,3 +39,7 @@ export MIX_OS_DEPS_COMPILE_PARTITION_COUNT=5
 
 # github
 export GITHUB_TOKEN=$(gh auth token)
+
+# gh
+export GH_TELEMETRY=false
+export DO_NOT_TRACK=true
