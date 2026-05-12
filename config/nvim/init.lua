@@ -982,9 +982,9 @@ vim.lsp.config("lua_ls", {
 })
 
 vim.lsp.config("expert", {
-  cmd = { vim.fn.expand("~/code/elixir-lang/expert/apps/expert/_build/prod/rel/plain/bin/start_expert"), "--stdio" },
+  cmd = { "expert", "--stdio" },
   root_markers = { "mix.exs", ".git" },
-  filetypes = { "elixir", "eelixir", "heex" },
+  filetypes = { "elixir", "eex", "heex" },
 })
 
 vim.lsp.config("tailwindcss", {})
