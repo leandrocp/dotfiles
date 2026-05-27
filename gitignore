@@ -19,3 +19,4 @@ Session.vim
 *.sublime-workspace
 .sensitive
 !.dockerignore
+settings.local.json

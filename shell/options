@@ -43,3 +43,6 @@ export GITHUB_TOKEN=$(gh auth token)
 # gh
 export GH_TELEMETRY=false
 export DO_NOT_TRACK=true
+
+# ripgrep
+export RIPGREP_CONFIG_PATH="$HOME/.config/ripgrep/ripgreprc"
