@@ -1000,9 +1000,10 @@ vim.lsp.config("copilot", {
 vim.lsp.config("rust_analyzer", {
   settings = {
     ["rust-analyzer"] = {
-      checkOnSave = {
+      cargo = {
         allFeatures = true,
       },
+      checkOnSave = true,
       diagnostics = {
         disabled = { "inactive-code" },
       },
