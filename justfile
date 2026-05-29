@@ -16,6 +16,38 @@ update:
     nvim --headless -c "lua vim.pack.update(nil, { force = true })" -c "quit"
     mise exec just -- just apps-npm
 
+clean:
+    #!/usr/bin/env zsh
+    set -euo pipefail
+
+    read "confirm?Run cleanup? This deletes caches, Docker artifacts, and node_modules under $HOME/code. [y/N] "
+    case "$confirm" in
+        [yY]) ;;
+        *) echo "Cancelled."; exit 0 ;;
+    esac
+
+    echo "==> Homebrew"
+    brew autoremove
+    brew cleanup --prune=all
+
+    echo "==> npm"
+    npm cache verify
+    npx --yes npkill --directory "$HOME/code" --exclude-sensitive --delete-all -y
+
+    echo "==> Cargo"
+    if ! command -v cargo-cache >/dev/null; then
+        cargo install cargo-cache
+    fi
+    cargo cache --autoclean
+
+    echo "==> Docker"
+    if command -v docker >/dev/null && docker info >/dev/null 2>&1; then
+        docker system prune --all --force
+        docker builder prune --all --force
+    else
+        echo "Docker is not running; skipping."
+    fi
+
 link-root:
     #!/usr/bin/env bash
     for name in *; do
