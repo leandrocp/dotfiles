@@ -1027,9 +1027,34 @@ end
 -- other
 require("other-nvim").setup({
   showMissingFiles = true,
+  hooks = {
+    onFindOtherFiles = function(matches)
+      local has_existing = false
+      for _, f in ipairs(matches) do
+        if f.exists then
+          has_existing = true
+          break
+        end
+      end
+      if not has_existing then
+        return matches
+      end
+      return vim.tbl_filter(function(f)
+        return f.exists
+      end, matches)
+    end,
+  },
   mappings = {
     "elixir",
     "rust",
+    {
+      pattern = "lib/extensions/postgres_cdc_rls/(.*)%.ex$",
+      target = "test/realtime/extensions/cdc_rls/%1_test.exs",
+    },
+    {
+      pattern = "test/realtime/extensions/cdc_rls/(.*)_test%.exs$",
+      target = "lib/extensions/postgres_cdc_rls/%1.ex",
+    },
     {
       pattern = "(.*)/src/(.*).ts$",
       target = "%1/test/%2.test.ts",

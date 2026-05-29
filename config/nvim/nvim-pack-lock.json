@@ -10,7 +10,7 @@
       "version": "1.0.0 - 2.0.0"
     },
     "conform.nvim": {
-      "rev": "18aeab3d63d350dcf44d64c462cc489a3412af40",
+      "rev": "619363c30309d29ffa631e67c8183f2a72caa373",
       "src": "https://github.com/stevearc/conform.nvim"
     },
     "dial.nvim": {
@@ -30,7 +30,7 @@
       "src": "https://github.com/folke/flash.nvim"
     },
     "fzf-lua": {
-      "rev": "311a630292310ea3bfe46dd616e17f283e975801",
+      "rev": "fea9eedc6894c44d44cbb772a5cd11c93b82d7a1",
       "src": "https://github.com/ibhagwan/fzf-lua"
     },
     "github-nvim-theme": {
@@ -42,7 +42,7 @@
       "src": "https://github.com/lewis6991/gitsigns.nvim"
     },
     "grug-far.nvim": {
-      "rev": "a5875fde04e2940a5060f8df9c453bcfcfe0a5c0",
+      "rev": "5506c2f59dc9ab2ed6c233585412b24d31d51521",
       "src": "https://github.com/MagicDuck/grug-far.nvim"
     },
     "lazy.nvim": {
@@ -50,7 +50,7 @@
       "src": "https://github.com/folke/lazy.nvim"
     },
     "mini.nvim": {
-      "rev": "18797ed18f347d0d0da27fec28a67979b1207f70",
+      "rev": "15abccbe23525ee0502d2efe620c77db00bfb93c",
       "src": "https://github.com/echasnovski/mini.nvim"
     },
     "neogit": {
@@ -58,15 +58,15 @@
       "src": "https://github.com/NeogitOrg/neogit"
     },
     "numb.nvim": {
-      "rev": "12ef3913dea8727d4632c6f2ed47957a993de627",
+      "rev": "167fbbb8de5529eac4f66ef054c260636cd9af51",
       "src": "https://github.com/nacro90/numb.nvim"
     },
     "nvim": {
-      "rev": "426dbebe06b5c69fd846ceb17b42e12f890aedf1",
+      "rev": "8edd468af4d63212b84d69b2ddb5ffc9023ef5eb",
       "src": "https://github.com/catppuccin/nvim"
     },
     "nvim-lspconfig": {
-      "rev": "8f7e64066e2641d5e7d494962a9c7051e3d38dd5",
+      "rev": "9573948c38bfabeec353ae7dd7d3ffec4c506a6b",
       "src": "https://github.com/neovim/nvim-lspconfig"
     },
     "nvim-treesitter": {
@@ -82,7 +82,7 @@
       "src": "https://github.com/rgroli/other.nvim"
     },
     "overseer.nvim": {
-      "rev": "3d0c7e7bbfe1a1c6f9bfecd0af8709171a97df71",
+      "rev": "a93d9f6d6defdac4bcd6d2c8ba988650e42e0a0e",
       "src": "https://github.com/stevearc/overseer.nvim"
     },
     "plenary.nvim": {
@@ -94,15 +94,15 @@
       "src": "https://github.com/cpea2506/relative-toggle.nvim"
     },
     "render-markdown.nvim": {
-      "rev": "629eb9533ec989d9d5c6cab8f3ad5372422c24e0",
+      "rev": "5adf0895310c1904e5abfaad40a2baad7fe44a07",
       "src": "https://github.com/MeanderingProgrammer/render-markdown.nvim"
     },
     "snacks.nvim": {
-      "rev": "ad9ede6a9cddf16cedbd31b8932d6dcdee9b716e",
+      "rev": "882c996cf28183f4d63640de0b4c02ec886d01f2",
       "src": "https://github.com/folke/snacks.nvim"
     },
     "tiny-inline-diagnostic.nvim": {
-      "rev": "147af4e49f51dd48f41972de26552872b8ba7b25",
+      "rev": "6bdbc9a2f5a846ff5fc55a998ff97c0e2968b7e5",
       "src": "https://github.com/rachartier/tiny-inline-diagnostic.nvim"
     },
     "toggleterm.nvim": {
@@ -126,7 +126,7 @@
       "src": "https://github.com/romainl/vim-cool"
     },
     "vim-test": {
-      "rev": "7062b50979a28e804081f0e82b7321184ec1c20b",
+      "rev": "d29ec9976fd6b684488c908e6c7c72a3a7a0cb7f",
       "src": "https://github.com/vim-test/vim-test"
     },
     "vim-visual-multi": {
