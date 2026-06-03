@@ -7,8 +7,8 @@ source ~/.shell/zinit
 source ~/.shell/options
 source ~/.shell/aliases
 
-source <(fzf --zsh)
-eval "$(zoxide init --cmd j zsh)"
+command -v fzf >/dev/null 2>&1 && source <(fzf --zsh)
+command -v zoxide >/dev/null 2>&1 && eval "$(zoxide init --cmd j zsh)"
 
 precmd() {
   if git rev-parse --git-dir > /dev/null 2>&1; then
