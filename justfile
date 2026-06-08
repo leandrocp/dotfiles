@@ -20,7 +20,7 @@ clean:
     #!/usr/bin/env zsh
     set -euo pipefail
 
-    read "confirm?Run cleanup? This deletes caches, Docker artifacts, and node_modules under $HOME/code. [y/N] "
+    read "confirm?Run cleanup? This deletes caches, unused mise tool versions, Docker artifacts, and node_modules under $HOME/code. [y/N] "
     case "$confirm" in
         [yY]) ;;
         *) echo "Cancelled."; exit 0 ;;
@@ -29,6 +29,10 @@ clean:
     echo "==> Homebrew"
     brew autoremove
     brew cleanup --prune=all
+
+    echo "==> mise"
+    mise cache prune
+    mise prune
 
     echo "==> npm"
     npm cache verify
