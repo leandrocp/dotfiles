@@ -38,6 +38,10 @@ clean:
     npm cache verify
     npx --yes npkill --directory "$HOME/code" --exclude-sensitive --delete-all -y
 
+    echo "==> mac-cleaner-cli"
+    echo "Leave browser categories unselected. mac-cleaner-cli has no non-interactive browser skip flag."
+    npx --yes mac-cleaner-cli
+
     echo "==> Cargo"
     if ! command -v cargo-cache >/dev/null; then
         cargo install cargo-cache
