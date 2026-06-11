@@ -40,3 +40,22 @@ vercel = "latest"
 yazi = "latest"
 zig = "latest"
 zoxide = "latest"
+
+[tasks."realtime:dev"]
+description = "Start Realtime dev server"
+dir = "{{cwd}}"
+run = """
+source "$HOME/.config/mise/realtime-worktree-env.sh"
+echo "realtime dev: branch=$branch NAME=$NAME PORT=$PORT GEN_RPC_TCP_SERVER_PORT=$GEN_RPC_TCP_SERVER_PORT"
+echo "  -> http://localhost:$PORT"
+exec iex --name "${NAME}@127.0.0.1" --cookie cookie -S mix phx.server
+"""
+
+[tasks."realtime:setup"]
+description = "Set up Realtime (deps, db, seeds) for the current worktree"
+dir = "{{cwd}}"
+run = """
+source "$HOME/.config/mise/realtime-worktree-env.sh"
+echo "realtime setup: branch=$branch GEN_RPC_TCP_SERVER_PORT=$GEN_RPC_TCP_SERVER_PORT"
+exec mix setup
+"""
