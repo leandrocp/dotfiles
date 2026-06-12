@@ -48,6 +48,16 @@ defaults write NSGlobalDomain com.apple.mouse.tapBehavior -int 1
 # Disable natural scrolling.
 defaults write NSGlobalDomain com.apple.swipescrolldirection -bool false
 
+# Hide Spotlight from the menu bar.
+defaults write com.apple.Spotlight MenuItemHidden -bool true
+
+# Disable Spotlight keyboard shortcuts so another launcher can use Command+Space.
+symbolic_hotkeys_plist="$HOME/Library/Preferences/com.apple.symbolichotkeys.plist"
+for key in 64 65; do
+  /usr/libexec/PlistBuddy -c "Set :AppleSymbolicHotKeys:${key}:enabled false" "$symbolic_hotkeys_plist" 2>/dev/null || \
+    /usr/libexec/PlistBuddy -c "Add :AppleSymbolicHotKeys:${key}:enabled bool false" "$symbolic_hotkeys_plist"
+done
+
 # Remove any delay before password is required.
 defaults write com.apple.screensaver askForPasswordDelay -int 0
 
@@ -97,7 +107,7 @@ defaults write com.apple.Safari WebKitDeveloperExtrasEnabledPreferenceKey -bool 
 defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2DeveloperExtrasEnabled -bool true
 
 # Restart affected apps so the new settings apply.
-for app in "Dock" "Finder" "Safari" "SystemUIServer"; do
+for app in "Dock" "Finder" "Safari" "Spotlight" "SystemUIServer"; do
   # Ignore failures when an app is not running.
   killall "$app" >/dev/null 2>&1
 done

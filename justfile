@@ -1,7 +1,7 @@
 default:
     @just --list
 
-install: link-root link-config apps-osx apps-mise apps-npm
+install: link-root link-config supercmd-sync apps-osx apps-mise apps-npm
 
 update:
     #!/usr/bin/env zsh
@@ -89,6 +89,28 @@ link-config:
         rm -rf "$target"
         ln -s "$PWD/$name" "$target"
     done
+
+supercmd-sync:
+    #!/usr/bin/env bash
+    set -euo pipefail
+
+    sync_dir="$HOME/.config/supercmd"
+    app_support_dir="$HOME/Library/Application Support/SuperCmd"
+    pointer_path="$app_support_dir/settings-location.json"
+
+    mkdir -p "$sync_dir"
+    mkdir -p "$app_support_dir"
+
+    if [ ! -f "$sync_dir/settings.json" ] && [ -f "$app_support_dir/settings.json" ]; then
+        cp "$app_support_dir/settings.json" "$sync_dir/settings.json"
+    fi
+
+    printf '{\n  "path": "%s"\n}\n' "$sync_dir" > "$pointer_path"
+
+    if pgrep -x "SuperCmd" >/dev/null 2>&1; then
+        killall SuperCmd
+        open -a "SuperCmd"
+    fi
 
 apps-osx:
     brew update

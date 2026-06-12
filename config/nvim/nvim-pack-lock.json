@@ -230,7 +230,7 @@
       "src": "https://github.com/dasupradyumna/midnight.nvim"
     },
     "mini.nvim": {
-      "rev": "d5e6f5b843f1d813d9c4bfb242b751dc5ab6f8ae",
+      "rev": "a59a9b7fb0a42cbcf022938ee5f0724320b66f63",
       "src": "https://github.com/echasnovski/mini.nvim"
     },
     "modus-themes.nvim": {
@@ -310,7 +310,7 @@
       "src": "https://github.com/catppuccin/nvim"
     },
     "nvim-lspconfig": {
-      "rev": "229b79051b380377664edc4cbd534930154921a1",
+      "rev": "ed19590a3a9792901553c388d1aadafce012f80d",
       "src": "https://github.com/neovim/nvim-lspconfig"
     },
     "nvim-treesitter": {
@@ -422,7 +422,7 @@
       "src": "https://github.com/samharju/synthweave.nvim"
     },
     "tiny-inline-diagnostic.nvim": {
-      "rev": "680762989e8b05a72e90769959d0fb9a557e6917",
+      "rev": "e930d0a46031645040d5492595b46cdf6ab3514f",
       "src": "https://github.com/rachartier/tiny-inline-diagnostic.nvim"
     },
     "toggleterm.nvim": {
@@ -446,7 +446,7 @@
       "src": "https://github.com/mbbill/undotree"
     },
     "vague.nvim": {
-      "rev": "8ee15ea4505d64ede559ff1cb112582a6f2ea138",
+      "rev": "788697064264bed8390b52ca2ac9906a96712120",
       "src": "https://github.com/vague-theme/vague.nvim"
     },
     "vesper.nvim": {
