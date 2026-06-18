@@ -73,6 +73,17 @@ link-root:
                 done
                 continue
                 ;;
+            claude)
+                target="$HOME/.claude"
+                echo "$target"
+                mkdir -p "$target"
+                for file in "$PWD/$name"/*; do
+                    link_target="$target/$(basename "$file")"
+                    rm -f "$link_target"
+                    ln -s "$file" "$link_target"
+                done
+                continue
+                ;;
         esac
         target="$HOME/.$name"
         echo "$target"
