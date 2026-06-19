@@ -84,7 +84,7 @@
   "navigationStyle": "vim",
   "clipboardHistoryRetentionDays": null,
   "clipboardAppBlacklist": [],
-  "emojiPickerEnabled": true,
+  "emojiPickerEnabled": false,
   "emojiPickerTriggerPrefix": ":",
   "emojiPickerExcludedAppBundleIds": [],
   "browserSearch": {
