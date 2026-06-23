@@ -15,19 +15,19 @@ prSections:
     - title: Work
       filters: >-
           is:open
-          repo:Intellispark/pulse
-          repo:Intellispark/IntelliSync
-    - title: Open Source
+          repo:supabase/realtime
+    - title: OSS
       filters: >-
           is:open
           repo:leandrocp/mdex
+          repo:leandrocp/mdex_native
           repo:leandrocp/mdex_gfm
           repo:leandrocp/mdex_katex
           repo:leandrocp/mdex_mermaid
           repo:leandrocp/lumis
           repo:leandrocp/req_embed
+          repo:leandrocp/nimble_publisher_mdex
           repo:leandrocp/err
-          repo:kivikakk/comrak
     - title: Recently Closed
       filters: >-
           is:closed author:@me sort:updated-desc
@@ -50,8 +50,7 @@ issuesSections:
     - title: Work
       filters: >-
           is:open
-          repo:Intellispark/pulse
-          repo:Intellispark/IntelliSync
+          repo:supabase/realtime
     - title: Open Source
       filters: >-
           is:open
@@ -62,7 +61,6 @@ issuesSections:
           repo:leandrocp/lumis
           repo:leandrocp/req_embed
           repo:leandrocp/err
-          repo:kivikakk/comrak
 notificationsSections:
     - title: All
       filters: ""
