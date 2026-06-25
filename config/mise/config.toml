@@ -56,3 +56,8 @@ source "$HOME/.config/mise/realtime-worktree-env.sh"
 echo "realtime setup: branch=$branch GEN_RPC_TCP_SERVER_PORT=$GEN_RPC_TCP_SERVER_PORT"
 exec mix setup
 """
+
+[tasks."gh:rerun-failed"]
+description = "Re-run failed GitHub Actions jobs for a repo or PR (--pr N, --repo OWNER/REPO, --dry-run)"
+dir = "{{cwd}}"
+run = 'exec "$HOME/.config/mise/gh-rerun-failed.sh" "$@"'

@@ -37,3 +37,8 @@ zinit wait'1' lucid for \
 
 zinit ice wait lucid as"completion"
 zinit snippet "$HOME/.dotfiles/shell/completions/_just"
+
+# mise's completion self-registers via `compdef`; sourcing it lets zinit's
+# compdef shim capture the call and `zicdreplay` (above) replay it after
+# compinit. The `as"completion"` snippet path doesn't work here.
+source "$HOME/.dotfiles/shell/completions/_mise"
