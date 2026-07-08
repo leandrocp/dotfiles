@@ -1,19 +1,7 @@
 # vi: ft=zsh
 
-export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:$PATH"
+export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:$HOME/.local/bin:$PATH"
 
-[ -x /opt/homebrew/bin/brew ] && eval "$(/opt/homebrew/bin/brew shellenv 2>/dev/null)"
 command -v mise >/dev/null 2>&1 && eval "$(mise activate zsh)"
 
-export COREUTILS_BIN=/opt/homebrew/opt/coreutils/libexec/gnubin
-export GPG_BIN=/opt/homebrew/opt/gnupg/bin
-export GNU_SED_BIN=/opt/homebrew/opt/gnu-sed/libexec/gnubin
-export GNU_GREP_BIN=/opt/homebrew/opt/grep/libexec/gnubin
-export FLYCTL_HOME="$HOME/.fly"
-export CARGO_BIN=$HOME/.cargo/bin
-export OPENJDK_BIN=/opt/homebrew/opt/openjdk/bin
-export POSTGRES_BIN="/Applications/Postgres.app/Contents/Versions/latest/bin"
-export OPENCODE_BIN="$HOME/.opencode/bin"
-
-export PATH=${COREUTILS_BIN}:${GPG_BIN}:${GNU_SED_BIN}:${GNU_GREP_BIN}:$PATH:$HOME/.bin:$HOME/.local/bin:./bin:$FLYCTL_HOME/bin:${CARGO_BIN}:${OPENJDK_BIN}:/usr/local/bin:${POSTGRES_BIN}:${OPENCODE_BIN}:/usr/local/lib:/usr/local/sbin:/usr/bin:/usr/sbin:/bin:/sbin
 export MANPATH=/usr/local/opt/gnu-sed/libexec/gnuman:$MANPATH

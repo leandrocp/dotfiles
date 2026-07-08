@@ -1,5 +1,176 @@
+[settings]
+dotfiles.root = "~/.dotfiles"
+experimental = true
+
+[bootstrap.packages]
+"brew:autoconf" = "latest"
+"brew:automake" = "latest"
+"brew-cask:bitwarden" = "latest"
+"brew:btop" = "latest"
+"brew:cmark-gfm" = "latest"
+"brew:codespell" = "latest"
+"brew:coreutils" = "latest"
+"brew-cask:dash" = "latest"
+"brew-cask:devtoys" = "latest"
+"brew-cask:devutils" = "latest"
+"brew-cask:discord" = "latest"
+# docker-desktop currently fails with mise 2026.7.3: cask shim does not support version.csv.second.
+# "brew-cask:docker-desktop" = "latest"
+"brew-cask:font-hack-nerd-font" = "latest"
+"brew:gcc" = "latest"
+"brew:git" = "latest"
+"brew:gnu-sed" = "latest"
+"brew:gnupg" = "latest"
+"brew:grep" = "latest"
+"brew:herdr" = "latest"
+"brew:just" = "latest"
+"brew-cask:macdown" = "latest"
+"brew:mole" = "latest"
+"brew-cask:muzzle" = "latest"
+# obsidian currently fails with mise 2026.7.3 during Caskroom reconciliation.
+# "brew-cask:obsidian" = "latest"
+"brew:opencode" = "latest"
+"brew:openssl@3" = "latest"
+"brew:pgcli" = "latest"
+"brew:pinentry-mac" = "latest"
+# These casks currently fail during migration from Homebrew-managed Caskroom state
+# to mise-managed cask receipts. Re-enable after mise cask reconciliation stabilizes
+# or on a clean machine.
+# "brew-cask:postgres-app" = "latest"
+# "brew-cask:proton-mail" = "latest"
+# "brew-cask:proton-mail-bridge" = "latest"
+# "brew-cask:proton-pass" = "latest"
+# "brew-cask:rectangle" = "latest"
+"brew:renameutils" = "latest"
+"brew:ripgrep" = "latest"
+# "brew-cask:slack" = "latest"
+# "brew-cask:tableplus" = "latest"
+"brew:tree" = "latest"
+"brew:wxwidgets" = "latest"
+# "brew-cask:zed@preview" = "latest"
+# "brew-cask:zen" = "latest"
+"brew:zsh" = "latest"
+
+[dotfiles]
+"~/.bin" = "~/.dotfiles/bin"
+"~/.claude/CLAUDE.md" = "~/.dotfiles/claude/CLAUDE.md"
+"~/.claude/settings.json" = "~/.dotfiles/claude/settings.json"
+"~/.config/bat" = "~/.dotfiles/config/bat"
+"~/.config/fsh" = "~/.dotfiles/config/fsh"
+"~/.config/gh-dash" = "~/.dotfiles/config/gh-dash"
+"~/.config/ghostty" = "~/.dotfiles/config/ghostty"
+"~/.config/git" = "~/.dotfiles/config/git"
+"~/.config/herdr/config.toml" = "~/.dotfiles/config/herdr/config.toml"
+"~/.config/lazygit" = "~/.dotfiles/config/lazygit"
+"~/.config/linearmouse" = "~/.dotfiles/config/linearmouse"
+"~/.config/mise" = "~/.dotfiles/config/mise"
+"~/.config/nvim" = "~/.dotfiles/config/nvim"
+"~/.config/opencode" = "~/.dotfiles/config/opencode"
+"~/.config/pgcli" = "~/.dotfiles/config/pgcli"
+"~/.config/rectangle.json" = "~/.dotfiles/config/rectangle.json"
+"~/.config/ripgrep" = "~/.dotfiles/config/ripgrep"
+"~/.config/supercmd/settings.json" = "~/.dotfiles/config/supercmd/settings.json"
+"~/.config/yazi" = "~/.dotfiles/config/yazi"
+"~/.config/zed/settings.json" = "~/.dotfiles/config/zed/settings.json"
+"~/Library/Application Support/SuperCmd/settings-location.json" = "~/.dotfiles/config/supercmd/settings-location.json"
+"~/.gitconfig" = "~/.dotfiles/gitconfig"
+"~/.gitignore" = "~/.dotfiles/gitignore"
+"~/.gnupg/gpg-agent.conf" = "~/.dotfiles/gnupg/gpg-agent.conf"
+"~/.iex.exs" = "~/.dotfiles/iex.exs"
+"~/.psqlrc" = "~/.dotfiles/psqlrc"
+"~/.shell" = "~/.dotfiles/shell"
+"~/.zshrc" = "~/.dotfiles/zshrc"
+
+[bootstrap.macos.dock]
+autohide = true
+show_recents = false
+
+[bootstrap.macos.finder]
+show_extensions_warning = false
+show_pathbar = true
+show_status_bar = true
+show_all_files = true
+
+[bootstrap.macos.keyboard]
+initial_key_repeat = 10
+key_repeat = 1
+press_and_hold = false
+
+[bootstrap.macos.trackpad]
+tap_to_click = true
+
+[bootstrap.hooks.post-defaults]
+run = """
+symbolic_hotkeys_plist="$HOME/Library/Preferences/com.apple.symbolichotkeys.plist"
+for key in 64 65; do
+  /usr/libexec/PlistBuddy -c "Set :AppleSymbolicHotKeys:${key}:enabled false" "$symbolic_hotkeys_plist" 2>/dev/null || \
+    /usr/libexec/PlistBuddy -c "Add :AppleSymbolicHotKeys:${key}:enabled bool false" "$symbolic_hotkeys_plist"
+done
+chflags nohidden "$HOME/Library"
+for app in "Dock" "Finder" "Safari" "Spotlight" "SystemUIServer"; do
+  killall "$app" >/dev/null 2>&1 || true
+done
+"""
+
+[env]
+DO_NOT_TRACK = "true"
+ECTO_EDITOR = "zed __FILE__:__LINE__"
+EDITOR = "nvim"
+ELIXIR_EDITOR = "zed __FILE__:__LINE__"
+ERL_AFLAGS = "-kernel shell_history enabled"
+FLYCTL_HOME = "$HOME/.fly"
+GH_TELEMETRY = "false"
+GIT_EDITOR = "nvim"
+KERL_BUILD_DOCS = "yes"
+MANPAGER = "less -X"
+MIX_OS_DEPS_COMPILE_PARTITION_COUNT = "5"
+PLUG_EDITOR = "zed://file/__FILE__:__LINE__"
+RIPGREP_CONFIG_PATH = "$HOME/.config/ripgrep/ripgreprc"
+VISUAL = "nvim"
+
+[env._]
+path = [
+  "/opt/homebrew/opt/coreutils/libexec/gnubin",
+  "/opt/homebrew/opt/gnupg/bin",
+  "/opt/homebrew/opt/gnu-sed/libexec/gnubin",
+  "/opt/homebrew/opt/grep/libexec/gnubin",
+  "/opt/homebrew/opt/openjdk/bin",
+  "$HOME/.bin",
+  "$HOME/.local/bin",
+  "./bin",
+  "$HOME/.fly/bin",
+  "$HOME/.cargo/bin",
+  "/Applications/Postgres.app/Contents/Versions/latest/bin",
+  "$HOME/.opencode/bin",
+]
+
+[shell_alias]
+"...." = "cd ../../.."
+"..." = "cd ../.."
+".." = "cd .."
+asdf = "mise"
+cc = "claude --allow-dangerously-skip-permissions"
+cx = "codex"
+df = "df -h"
+dns_reset = "dscacheutil -flushcache && killall -HUP mDNSResponder"
+du = "du -h"
+e = "nvim"
+g = "git"
+gg = "lazygit"
+l = "ls"
+ll = "eza --long --icons --sort modified --reverse --git"
+ls = "eza --icons --sort modified --reverse --git"
+m = "gemini"
+oc = "opencode"
+rm = "rm -i"
+tf = "terraform"
+ts = "tree-sitter"
+up = "cd $HOME/.dotfiles && mise run up"
+
 [tools]
 "aqua:elixir-lang/expert" = "latest"
+"npm:@fsouza/prettierd" = "latest"
+"npm:@github/copilot-language-server" = "latest"
 "npm:typescript" = "latest"
 ast-grep = "latest"
 awscli = "latest"
@@ -37,6 +208,67 @@ vercel = "latest"
 yazi = "latest"
 zig = "latest"
 zoxide = "latest"
+
+[tasks.web-server]
+description = "Start a simple HTTP server and open it in the browser"
+run = """
+port="${1:-8000}"
+sleep 1 && open "http://localhost:${port}/" &
+python -m http.server "$port"
+"""
+
+[tasks.up]
+description = "Update system packages, mise tools, zinit, and Neovim packages"
+run = """
+set -euo pipefail
+mise bootstrap packages apply --yes
+mise bootstrap packages upgrade --yes
+mise up
+zsh -lc 'source "$HOME/.shell/zinit" && zinit self-update && zinit update'
+nvim --headless -c "lua vim.pack.update(nil, { force = true })" -c "quit"
+"""
+
+[tasks.clean]
+description = "Clean package-manager caches and generated artifacts"
+run = """
+set -euo pipefail
+
+printf 'Run cleanup? This deletes caches, unused mise tool versions, Docker artifacts, and node_modules under $HOME/code. [y/N] '
+read -r confirm
+case "$confirm" in
+  [yY]) ;;
+  *) echo "Cancelled."; exit 0 ;;
+esac
+
+echo "==> bootstrap packages"
+mise bootstrap packages prune --manager brew --yes
+
+echo "==> mise"
+mise cache prune
+mise prune
+
+echo "==> npm"
+npm cache verify
+npx --yes npkill --directory "$HOME/code" --exclude-sensitive --delete-all -y
+
+echo "==> mac-cleaner-cli"
+echo "Leave browser categories unselected. mac-cleaner-cli has no non-interactive browser skip flag."
+npx --yes mac-cleaner-cli
+
+echo "==> Cargo"
+if ! command -v cargo-cache >/dev/null; then
+  cargo install cargo-cache
+fi
+cargo cache --autoclean
+
+echo "==> Docker"
+if command -v docker >/dev/null && docker info >/dev/null 2>&1; then
+  docker system prune --all --force
+  docker builder prune --all --force
+else
+  echo "Docker is not running; skipping."
+fi
+"""
 
 [tasks."realtime:dev"]
 description = "Start Realtime dev server"

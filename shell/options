@@ -21,28 +21,7 @@ setopt hist_find_no_dups
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
 
-export EDITOR="nvim"
-export GIT_EDITOR="nvim"
-export VISUAL=$EDITOR
-export MANPAGER='less -X';
 export GPG_TTY=$(tty);
-
-# erlang
-export ERL_AFLAGS="-kernel shell_history enabled"
-export KERL_BUILD_DOCS=yes
-
-# elixir
-export ELIXIR_EDITOR="zed __FILE__:__LINE__"
-export PLUG_EDITOR="zed://file/__FILE__:__LINE__"
-export ECTO_EDITOR=$ELIXIR_EDITOR
-export MIX_OS_DEPS_COMPILE_PARTITION_COUNT=5
 
 # github
 command -v gh >/dev/null 2>&1 && export GITHUB_TOKEN=$(gh auth token)
-
-# gh
-export GH_TELEMETRY=false
-export DO_NOT_TRACK=true
-
-# ripgrep
-export RIPGREP_CONFIG_PATH="$HOME/.config/ripgrep/ripgreprc"

@@ -1,0 +1,5 @@
+[theme]
+name = "tokyo-night"
+
+[ui.toast.clipboard]
+position = "top-right"

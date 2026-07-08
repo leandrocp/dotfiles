@@ -1,24 +1,18 @@
 ## dotfiles
 
-### Bootstrap
+## Setup
 
-1. Install [brew](https://brew.sh)
-
-```sh
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-```
-
-2. Install pre-requisites
-
-```
-eval "$(/opt/homebrew/bin/brew shellenv)"
-brew install git just
-```
-
-3. Bootstrap
+1. Install [mise](https://mise.jdx.dev)
 
 ```sh
-git clone git@github.com:leandrocp/dotfiles.git ~/.dotfiles
+curl https://mise.run | sh
+```
+
+2. Bootstrap
+
+```sh
+~/.local/bin/mise exec git@latest -- git clone git@github.com:leandrocp/dotfiles.git ~/.dotfiles
 cd ~/.dotfiles
-just install
+~/.local/bin/mise trust "$PWD/config/mise/config.toml"
+MISE_JOBS=1 MISE_GLOBAL_CONFIG_FILE="$PWD/config/mise/config.toml" ~/.local/bin/mise bootstrap --yes --force-dotfiles
 ```
