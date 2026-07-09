@@ -2,6 +2,9 @@
 dotfiles.root = "~/.dotfiles"
 experimental = true
 
+[bootstrap.brew.taps]
+"rjyo/moshi" = "https://github.com/rjyo/homebrew-moshi.git"
+
 [bootstrap.packages]
 "brew:autoconf" = "latest"
 "brew:automake" = "latest"
@@ -26,6 +29,7 @@ experimental = true
 "brew:just" = "latest"
 "brew-cask:macdown" = "latest"
 "brew:mole" = "latest"
+"brew:mosh" = "latest"
 "brew-cask:muzzle" = "latest"
 # obsidian currently fails with mise 2026.7.3 during Caskroom reconciliation.
 # "brew-cask:obsidian" = "latest"
@@ -43,6 +47,7 @@ experimental = true
 # "brew-cask:rectangle" = "latest"
 "brew:renameutils" = "latest"
 "brew:ripgrep" = "latest"
+"brew:rjyo/moshi/moshi-hook" = "latest"
 # "brew-cask:slack" = "latest"
 # "brew-cask:tableplus" = "latest"
 "brew:tree" = "latest"
@@ -77,8 +82,10 @@ experimental = true
 "~/.gitignore" = "~/.dotfiles/gitignore"
 "~/.gnupg/gpg-agent.conf" = "~/.dotfiles/gnupg/gpg-agent.conf"
 "~/.iex.exs" = "~/.dotfiles/iex.exs"
+"~/.profile" = "~/.dotfiles/profile"
 "~/.psqlrc" = "~/.dotfiles/psqlrc"
 "~/.shell" = "~/.dotfiles/shell"
+"~/.zshenv" = "~/.dotfiles/zshenv"
 "~/.zshrc" = "~/.dotfiles/zshrc"
 
 [bootstrap.macos.dock]
