@@ -3,8 +3,8 @@ dotfiles.root = "~/.dotfiles"
 env_shell_expand = true
 experimental = true
 
-[bootstrap.brew.taps]
-"rjyo/moshi" = "https://github.com/rjyo/homebrew-moshi.git"
+# [bootstrap.brew.taps]
+# "rjyo/moshi" = "https://github.com/rjyo/homebrew-moshi.git"
 
 [bootstrap.packages]
 "brew:autoconf" = "latest"
@@ -16,15 +16,10 @@ experimental = true
 "brew:coreutils" = "latest"
 "brew-cask:dash" = "latest"
 "brew-cask:devtoys" = "latest"
-# devutils cask extraction fails with mise 2026.7.3: it walks the DMG's
-# "Applications -> /Applications" symlink into the real /Applications dir
-# and chokes on unrelated apps' broken symlinks (e.g. Cloudflare WARP's
-# Sparkle.framework/XPCServices). Install manually: brew install --cask devutils
 # "brew-cask:devutils" = "latest"
-# discord hits the same mise 2026.7.3 /Applications-walk bug as devutils above.
 # "brew-cask:discord" = "latest"
-# docker-desktop currently fails with mise 2026.7.3: cask shim does not support version.csv.second.
 # "brew-cask:docker-desktop" = "latest"
+"brew:eza" = "latest"
 "brew-cask:font-hack-nerd-font" = "latest"
 "brew:gcc" = "latest"
 "brew:git" = "latest"
@@ -37,15 +32,11 @@ experimental = true
 "brew:mole" = "latest"
 "brew:mosh" = "latest"
 "brew-cask:muzzle" = "latest"
-# obsidian currently fails with mise 2026.7.3 during Caskroom reconciliation.
 # "brew-cask:obsidian" = "latest"
 "brew:opencode" = "latest"
 "brew:openssl@3" = "latest"
 "brew:pgcli" = "latest"
 "brew:pinentry-mac" = "latest"
-# These casks currently fail during migration from Homebrew-managed Caskroom state
-# to mise-managed cask receipts. Re-enable after mise cask reconciliation stabilizes
-# or on a clean machine.
 # "brew-cask:postgres-app" = "latest"
 # "brew-cask:proton-mail" = "latest"
 # "brew-cask:proton-mail-bridge" = "latest"
@@ -53,7 +44,7 @@ experimental = true
 # "brew-cask:rectangle" = "latest"
 "brew:renameutils" = "latest"
 "brew:ripgrep" = "latest"
-"brew:rjyo/moshi/moshi-hook" = "latest"
+# "brew:rjyo/moshi/moshi-hook" = "latest"
 # "brew-cask:slack" = "latest"
 # "brew-cask:tableplus" = "latest"
 "brew:tree" = "latest"
@@ -78,11 +69,11 @@ experimental = true
 "~/.config/nvim" = "~/.dotfiles/config/nvim"
 "~/.config/opencode" = "~/.dotfiles/config/opencode"
 "~/.config/pgcli" = "~/.dotfiles/config/pgcli"
+"~/.pi/agent/keybindings.json" = "~/.dotfiles/pi/agent/keybindings.json"
+"~/.pi/agent/settings.json" = "~/.dotfiles/pi/agent/settings.json"
+"~/.pi/agent/themes/tokyonight-moon.json" = "~/.dotfiles/pi/agent/themes/tokyonight-moon.json"
 "~/.config/rectangle.json" = "~/.dotfiles/config/rectangle.json"
 "~/.config/ripgrep" = "~/.dotfiles/config/ripgrep"
-# SuperCmd's settings.json/settings-location.json hold live usage history,
-# frecency data, and API key fields (github.com/SuperCmdLabs/SuperCmd) — not
-# safe for a public dotfiles repo. Left unmanaged intentionally.
 "~/.config/yazi" = "~/.dotfiles/config/yazi"
 "~/.config/zed/settings.json" = "~/.dotfiles/config/zed/settings.json"
 "~/.gitconfig" = "~/.dotfiles/gitconfig"
@@ -190,13 +181,12 @@ ast-grep = "latest"
 awscli = "latest"
 bun = "latest"
 cmake = "latest"
-codex = "latest"
+"aqua:openai/codex" = "latest"
 difftastic = "latest"
 dust = "latest"
 elixir = "main-otp-29"
 emsdk = "latest"
 erlang = "latest"
-eza = "latest"
 fd = "latest"
 fzf = "latest"
 gh = "latest"
@@ -211,6 +201,7 @@ lua = "latest"
 lua-language-server = "latest"
 neovim = "stable"
 node = "latest"
+"npm:@earendil-works/pi-coding-agent" = "latest"
 pnpm = "latest"
 python = "3"
 rust = { version = "latest", components = "rust-src,rust-analyzer,rustfmt" }
@@ -238,6 +229,7 @@ set -euo pipefail
 mise bootstrap packages apply --yes
 mise bootstrap packages upgrade --yes
 mise up
+pi update --extensions
 zsh -lc 'source "$HOME/.shell/zinit" && zinit self-update && zinit update'
 nvim --headless -c "lua vim.pack.update(nil, { force = true })" -c "quit"
 """

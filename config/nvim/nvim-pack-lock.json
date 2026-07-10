@@ -50,7 +50,7 @@
       "src": "https://github.com/uloco/bluloco.nvim"
     },
     "catppuccin-nvim": {
-      "rev": "e068ab5f8261f23f6f71ffd8791ae40315b77b9c",
+      "rev": "05e8787020dcfdb937bf2ff23855ea2415b4e072",
       "src": "https://github.com/catppuccin/nvim"
     },
     "citruszest.nvim": {
@@ -114,7 +114,7 @@
       "src": "https://github.com/neanias/everforest-nvim"
     },
     "flash.nvim": {
-      "rev": "fcea7ff883235d9024dc41e638f164a450c14ca2",
+      "rev": "b6346946d10d07998efee029fb0f7a593806d0cd",
       "src": "https://github.com/folke/flash.nvim"
     },
     "flexoki-neovim": {
@@ -230,7 +230,7 @@
       "src": "https://github.com/dasupradyumna/midnight.nvim"
     },
     "mini.nvim": {
-      "rev": "928971c3cfe99ddf29659acc31214cfa836fabe4",
+      "rev": "fdc8b9701616863e44f7a7a0802cfe16bd866539",
       "src": "https://github.com/echasnovski/mini.nvim"
     },
     "modus-themes.nvim": {
@@ -262,7 +262,7 @@
       "src": "https://github.com/diegoulloao/neofusion.nvim"
     },
     "neogit": {
-      "rev": "95ab34f3137a01e830d01eb494fa508390d8c0b3",
+      "rev": "a0847c4bea5a5f92a36e3f3bf7da99d7d685d3ac",
       "src": "https://github.com/NeogitOrg/neogit"
     },
     "neomodern.nvim": {
@@ -286,7 +286,7 @@
       "src": "https://github.com/oxfist/night-owl.nvim"
     },
     "nightfox.nvim": {
-      "rev": "26b61b1f856ec37cae3cb64f5690adb955f246a1",
+      "rev": "4dacd3f0185a2227bdf3b6c0975a8f0bf87cac9a",
       "src": "https://github.com/EdenEast/nightfox.nvim"
     },
     "no-clown-fiesta.nvim": {
@@ -354,7 +354,7 @@
       "src": "https://github.com/olimorris/onedarkpro.nvim"
     },
     "onenord.nvim": {
-      "rev": "8b6fe1e0f260ca0b8201ef6a8e2c97e0f38ea35d",
+      "rev": "5240bfb79bcab7e03508626c5283cfc417b79169",
       "src": "https://github.com/rmehri01/onenord.nvim"
     },
     "other.nvim": {
