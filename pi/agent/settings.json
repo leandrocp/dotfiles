@@ -13,6 +13,8 @@
     "npm:pi-lens",
     "npm:@juicesharp/rpiv-ask-user-question",
     "npm:@juicesharp/rpiv-todo",
-    "npm:@ff-labs/pi-fff"
-  ]
+    "npm:@ff-labs/pi-fff",
+    "npm:@hypabolic/pi-hypa"
+  ],
+  "outputPad": 0
 }
