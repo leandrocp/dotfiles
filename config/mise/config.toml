@@ -9,7 +9,7 @@ experimental = true
 [bootstrap.packages]
 "brew:autoconf" = "latest"
 "brew:automake" = "latest"
-# "brew-cask:bitwarden" = "latest"
+"brew-cask:bitwarden" = "latest"
 "brew:btop" = "latest"
 "brew:cmark-gfm" = "latest"
 "brew:codespell" = "latest"
