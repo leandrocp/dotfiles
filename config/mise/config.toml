@@ -2,9 +2,7 @@
 dotfiles.root = "~/.dotfiles"
 env_shell_expand = true
 experimental = true
-
-# [bootstrap.brew.taps]
-# "rjyo/moshi" = "https://github.com/rjyo/homebrew-moshi.git"
+system_packages.managers = ["brew", "brew-cask"]
 
 [bootstrap.packages]
 "brew:autoconf" = "latest"
@@ -14,44 +12,27 @@ experimental = true
 "brew:cmark-gfm" = "latest"
 "brew:codespell" = "latest"
 "brew:coreutils" = "latest"
-"brew-cask:dash" = "latest"
-"brew-cask:devtoys" = "latest"
-# "brew-cask:devutils" = "latest"
-# "brew-cask:discord" = "latest"
-# "brew-cask:docker-desktop" = "latest"
 "brew:eza" = "latest"
-"brew-cask:font-hack-nerd-font" = "latest"
 "brew:gcc" = "latest"
 "brew:git" = "latest"
 "brew:gnu-sed" = "latest"
 "brew:gnupg" = "latest"
 "brew:grep" = "latest"
 "brew:herdr" = "latest"
-"brew:just" = "latest"
-"brew-cask:macdown" = "latest"
 "brew:mole" = "latest"
 "brew:mosh" = "latest"
-"brew-cask:muzzle" = "latest"
-# "brew-cask:obsidian" = "latest"
 "brew:opencode" = "latest"
 "brew:openssl@3" = "latest"
 "brew:pgcli" = "latest"
 "brew:pinentry-mac" = "latest"
-# "brew-cask:postgres-app" = "latest"
-# "brew-cask:proton-mail" = "latest"
-# "brew-cask:proton-mail-bridge" = "latest"
-# "brew-cask:proton-pass" = "latest"
-# "brew-cask:rectangle" = "latest"
 "brew:renameutils" = "latest"
 "brew:ripgrep" = "latest"
-# "brew:rjyo/moshi/moshi-hook" = "latest"
-# "brew-cask:slack" = "latest"
-# "brew-cask:tableplus" = "latest"
 "brew:tree" = "latest"
 "brew:wxwidgets" = "latest"
-# "brew-cask:zed@preview" = "latest"
-# "brew-cask:zen" = "latest"
-"brew:zsh" = "latest"
+"brew-cask:dash" = "latest"
+"brew-cask:devtoys" = "latest"
+"brew-cask:font-hack-nerd-font" = "latest"
+"brew-cask:muzzle" = "latest"
 
 [dotfiles]
 "~/.bin" = "~/.dotfiles/bin"
@@ -104,6 +85,9 @@ press_and_hold = false
 
 [bootstrap.macos.trackpad]
 tap_to_click = true
+
+[bootstrap.user]
+login_shell = "/bin/zsh"
 
 [bootstrap.hooks.post-defaults]
 run = """
