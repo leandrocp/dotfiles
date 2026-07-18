@@ -31,6 +31,7 @@ system_packages.managers = ["brew", "brew-cask"]
 "brew:wxwidgets" = "latest"
 "brew-cask:dash" = "latest"
 "brew-cask:devtoys" = "latest"
+"brew-cask:discord" = "latest"
 "brew-cask:font-hack-nerd-font" = "latest"
 "brew-cask:muzzle" = "latest"
 
