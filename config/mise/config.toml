@@ -34,6 +34,7 @@ system_packages.managers = ["brew", "brew-cask"]
 "brew-cask:discord" = "latest"
 "brew-cask:font-hack-nerd-font" = "latest"
 "brew-cask:muzzle" = "latest"
+"brew-cask:ticktick" = "latest"
 
 [dotfiles]
 "~/.bin" = "~/.dotfiles/bin"
@@ -192,6 +193,7 @@ node = "latest"
 "npm:@earendil-works/pi-coding-agent" = "latest"
 pnpm = "latest"
 python = "3"
+rtk = "latest"
 rust = { version = "latest", components = "rust-src,rust-analyzer,rustfmt" }
 stylua = "latest"
 tree-sitter = "0.26"
@@ -217,6 +219,7 @@ set -euo pipefail
 mise bootstrap packages apply --yes
 mise bootstrap packages upgrade --yes
 mise up
+pi update
 pi update --extensions
 zsh -lc 'source "$HOME/.shell/zinit" && zinit self-update && zinit update'
 nvim --headless -c "lua vim.pack.update(nil, { force = true })" -c "quit"

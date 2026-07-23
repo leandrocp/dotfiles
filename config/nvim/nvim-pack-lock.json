@@ -50,7 +50,7 @@
       "src": "https://github.com/uloco/bluloco.nvim"
     },
     "catppuccin-nvim": {
-      "rev": "05e8787020dcfdb937bf2ff23855ea2415b4e072",
+      "rev": "058e83dc009e4dd62f30807054de9cc849699e27",
       "src": "https://github.com/catppuccin/nvim"
     },
     "citruszest.nvim": {
