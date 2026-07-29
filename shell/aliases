@@ -3,3 +3,4 @@
 alias -g C='| pbcopy'
 alias -g G='| grep -i --color'
 alias -g L='| less'
+alias assume=". assume"
