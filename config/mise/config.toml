@@ -217,7 +217,9 @@ description = "Update system packages, mise tools, zinit, and Neovim packages"
 run = """
 set -euo pipefail
 mise bootstrap packages apply --yes
-mise bootstrap packages upgrade --yes
+# mise's native brew upgrader currently misidentifies Homebrew-owned directory links.
+# Remove this workaround after https://github.com/jdx/mise/pull/11320 is released.
+brew upgrade
 mise up
 pi update
 pi update --extensions

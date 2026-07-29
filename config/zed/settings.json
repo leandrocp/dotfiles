@@ -1,3 +1,14 @@
 {
+  "terminal": {
+    "font_weight": 100.0,
+    "font_size": 14.0,
+    "font_family": "Hack Nerd Font Mono"
+  },
+  "icon_theme": "Zed (Default)",
+  "theme": {
+    "mode": "dark",
+    "light": "One Light",
+    "dark": "Tokyo Night Moon"
+  },
   "vim_mode": true
 }
