@@ -61,7 +61,6 @@ idiomatic_version_file_enable_tools = ["node"]
 "brew-cask:session-manager-plugin" = "latest"
 "brew-cask:slack" = "latest"
 "brew-cask:tableplus" = "latest"
-"brew-cask:ticktick" = "latest"
 "brew-cask:zed@preview" = "latest"
 "brew-cask:zen" = "latest"
 
