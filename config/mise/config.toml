@@ -38,6 +38,7 @@ idiomatic_version_file_enable_tools = ["node"]
 "brew:renameutils" = "latest"
 "brew:ripgrep" = "latest"
 "brew:tree" = "latest"
+"brew:worktrunk" = "latest"
 "brew:wxwidgets" = "latest"
 "brew:zsh" = "latest"
 "brew-cask:bitwarden" = "latest"
@@ -60,6 +61,7 @@ idiomatic_version_file_enable_tools = ["node"]
 "brew-cask:screen-studio" = "latest"
 "brew-cask:session-manager-plugin" = "latest"
 "brew-cask:slack" = "latest"
+"brew-cask:t3-code" = "latest"
 "brew-cask:tableplus" = "latest"
 "brew-cask:zed@preview" = "latest"
 "brew-cask:zen" = "latest"
@@ -191,6 +193,7 @@ up = "cd $HOME/.dotfiles && mise run up"
 
 [tools]
 "aqua:elixir-lang/expert" = "latest"
+"npm:@immich/cli" = "latest"
 "npm:@fsouza/prettierd" = "latest"
 "npm:@github/copilot-language-server" = "latest"
 "npm:@lumis-sh/cli" = { version = "0.4.1", allow_builds = ["@lumis-sh/cli"] }
