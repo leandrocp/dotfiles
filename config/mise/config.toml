@@ -267,11 +267,8 @@ depends = ["brew"]
 description = "Update system packages, mise tools, zinit, and Neovim packages"
 run = """
 set -euo pipefail
-# Self-updating casks leave root-owned files behind, so mise shells out to sudo
-# mid-run and its progress bars hide the password prompt. Authenticate first.
 sudo -v
 mise self-update
-# Cask postflight commands use macOS flags such as `ln -h`; avoid GNU coreutils here.
 PATH="/opt/homebrew/bin:/usr/bin:/bin:/usr/sbin:/sbin:$PATH" mise --no-env bootstrap packages apply --yes
 mise run brew
 mise up
