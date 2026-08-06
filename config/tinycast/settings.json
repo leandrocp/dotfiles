@@ -1,0 +1,41 @@
+{
+  "favoriteApps" : [
+
+  ],
+  "hiddenLauncherItems" : [
+
+  ],
+  "hiddenLauncherKinds" : [
+
+  ],
+  "hotkeys" : {
+    "apps" : {
+
+    },
+    "panes" : {
+
+    },
+    "togglePalette" : {
+      "carbonKeyCode" : 49,
+      "carbonModifiers" : 256
+    }
+  },
+  "settings" : {
+    "clipboardDisabledApps" : [
+      "com.apple.keychainaccess",
+      "com.apple.Passwords"
+    ],
+    "clipboardRetentionDays" : 90,
+    "compactMode" : false,
+    "emojiSkinTone" : "light",
+    "hyperKey" : "none",
+    "hyperKeyIncludesShift" : true,
+    "hyperKeyQuickPress" : "none",
+    "hyperKeyReplacesGlyph" : true,
+    "launchAtLogin" : true,
+    "popToRootSeconds" : 0,
+    "showFavoritesInCompactMode" : true,
+    "showInMenuBar" : true
+  },
+  "version" : 1
+}

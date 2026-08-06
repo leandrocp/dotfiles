@@ -38,4 +38,3 @@ Package Control.user-ca-bundle
 /config/lazygit/state.yml
 /config/opencode/package-lock.json
 *.tmp*
-/config/supercmd/

@@ -47,7 +47,6 @@ idiomatic_version_file_enable_tools = ["node"]
 "brew-cask:devtoys" = "latest"
 "brew-cask:devutils" = "latest"
 "brew-cask:discord" = "latest"
-"brew-cask:docker-desktop" = "latest"
 "brew-cask:font-hack-nerd-font" = "latest"
 "brew-cask:ghostty" = "latest"
 "brew-cask:linear" = "latest"
@@ -252,11 +251,29 @@ sleep 1 && open "http://localhost:${port}/" &
 python -m http.server "$port"
 """
 
+[tasks.brew]
+description = "Install or upgrade Brewfile packages that mise can't manage"
+run = """
+set -eu
+brew trust --tap abue-ammar/tinycast immanuwell/droast
+brew bundle install --file "$HOME/.dotfiles/Brewfile" --upgrade
+"""
+
+[tasks.bootstrap]
+description = "Install packages that require Homebrew"
+depends = ["brew"]
+
 [tasks.up]
 description = "Update system packages, mise tools, zinit, and Neovim packages"
 run = """
 set -euo pipefail
-mise bootstrap packages apply --yes
+# Self-updating casks leave root-owned files behind, so mise shells out to sudo
+# mid-run and its progress bars hide the password prompt. Authenticate first.
+sudo -v
+mise self-update
+# Cask postflight commands use macOS flags such as `ln -h`; avoid GNU coreutils here.
+PATH="/opt/homebrew/bin:/usr/bin:/bin:/usr/sbin:/sbin:$PATH" mise --no-env bootstrap packages apply --yes
+mise run brew
 mise up
 pi update
 pi update --extensions
