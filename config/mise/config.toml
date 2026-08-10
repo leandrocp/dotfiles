@@ -58,7 +58,6 @@ idiomatic_version_file_enable_tools = ["node"]
 "brew-cask:proton-pass" = "latest"
 "brew-cask:rectangle" = "latest"
 "brew-cask:screen-studio" = "latest"
-"brew-cask:session-manager-plugin" = "latest"
 "brew-cask:slack" = "latest"
 "brew-cask:t3-code" = "latest"
 "brew-cask:tableplus" = "latest"
