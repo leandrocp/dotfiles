@@ -269,6 +269,7 @@ set -euo pipefail
 sudo -v
 mise self-update
 PATH="/opt/homebrew/bin:/usr/bin:/bin:/usr/sbin:/sbin:$PATH" mise --no-env bootstrap packages apply --yes
+PATH="/opt/homebrew/bin:/usr/bin:/bin:/usr/sbin:/sbin:$PATH" mise --no-env bootstrap packages upgrade --yes
 mise run brew
 mise up
 pi update
