@@ -5,6 +5,20 @@
     "sessionUrl": false
   },
   "model": "opus[1m]",
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash \"$HOME/.claude/hooks/herdr-agent-state.sh\" session",
+            "timeout": 10
+          }
+        ]
+      }
+    ]
+  },
   "enabledPlugins": {
     "vercel@claude-plugins-official": true,
     "lua-lsp@claude-plugins-official": true,
@@ -20,6 +34,5 @@
   },
   "effortLevel": "xhigh",
   "skipDangerousModePermissionPrompt": true,
-  "theme": "auto",
-  "hooks": {"SessionStart":[{"matcher":"*","hooks":[{"type":"command","command":"bash '/Users/leandro/.claude/hooks/herdr-agent-state.sh' session","timeout":10}]}]}
+  "theme": "auto"
 }

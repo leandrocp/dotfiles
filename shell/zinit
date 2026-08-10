@@ -14,7 +14,7 @@ zinit ice compile'(pure|async).zsh' pick'async.zsh' src'pure.zsh'
 zinit light sindresorhus/pure
 
 zinit wait lucid light-mode for \
-  atinit"zicompinit; zicdreplay" \
+  atinit'zicompinit; command -v wt >/dev/null 2>&1 && eval "$(command wt config shell init zsh)"; zicdreplay' \
   zdharma/fast-syntax-highlighting \
   atload"_zsh_autosuggest_start;bindkey '^o' autosuggest-accept" \
   zsh-users/zsh-autosuggestions \

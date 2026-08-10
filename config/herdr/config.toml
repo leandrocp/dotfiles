@@ -7,7 +7,7 @@ name = "tokyo-night"
 position = "top-right"
 
 [ui.toast]
-delivery = "system"
+delivery = "terminal"
 
 [ui.sound]
 enabled = false
