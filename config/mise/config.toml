@@ -311,6 +311,20 @@ if ! command -v cargo-cache >/dev/null; then
 fi
 cargo cache --autoclean
 
+# cargo-cache only prunes CARGO_HOME's registry and git checkouts. The shared
+# CARGO_TARGET_DIR from zshenv accumulates artifacts from every crate ever built
+# and is never garbage collected, so cap it with cargo-sweep. Sweep needs a
+# manifest to resolve the target dir, hence the throwaway stub crate.
+if ! command -v cargo-sweep >/dev/null; then
+  cargo install cargo-sweep
+fi
+sweep_stub="$(mktemp -d)"
+mkdir -p "$sweep_stub/src"
+printf '[package]\nname = "sweep-stub"\nversion = "0.0.0"\nedition = "2021"\n' > "$sweep_stub/Cargo.toml"
+: > "$sweep_stub/src/main.rs"
+CARGO_TARGET_DIR="$HOME/.cargo/target" cargo sweep --maxsize 2GB "$sweep_stub"
+rm -rf "$sweep_stub"
+
 echo "==> Docker"
 if command -v docker >/dev/null && docker info >/dev/null 2>&1; then
   docker system prune --all --force
