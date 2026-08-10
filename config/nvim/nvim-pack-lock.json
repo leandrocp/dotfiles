@@ -350,7 +350,7 @@
       "src": "https://github.com/navarasu/onedark.nvim"
     },
     "onedarkpro.nvim": {
-      "rev": "f5fddfd5122fe00421e199151ae4fe8571a02898",
+      "rev": "6d07cb75191aa56b657de19ffcae092b31ddc810",
       "src": "https://github.com/olimorris/onedarkpro.nvim"
     },
     "onenord.nvim": {
