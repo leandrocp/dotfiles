@@ -20,5 +20,6 @@
   },
   "effortLevel": "xhigh",
   "skipDangerousModePermissionPrompt": true,
-  "theme": "auto"
+  "theme": "auto",
+  "hooks": {"SessionStart":[{"matcher":"*","hooks":[{"type":"command","command":"bash '/Users/leandro/.claude/hooks/herdr-agent-state.sh' session","timeout":10}]}]}
 }

@@ -1,5 +1,13 @@
+onboarding = false
+
 [theme]
 name = "tokyo-night"
 
 [ui.toast.clipboard]
 position = "top-right"
+
+[ui.toast]
+delivery = "system"
+
+[ui.sound]
+enabled = false
