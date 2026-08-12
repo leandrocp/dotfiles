@@ -63,7 +63,6 @@ idiomatic_version_file_enable_tools = ["node"]
 "brew-cask:t3-code" = "latest"
 "brew-cask:tableplus" = "latest"
 "brew-cask:zed@preview" = "latest"
-"brew-cask:zen" = "latest"
 
 [dotfiles]
 "~/.bin" = "~/.dotfiles/bin"

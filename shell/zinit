@@ -9,12 +9,15 @@ ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
 source "${ZINIT_HOME}/zinit.zsh"
 
 fpath=("$HOME/.dotfiles/shell/completions" $fpath)
+zicompinit
+
+if command -v wt >/dev/null 2>&1; then eval "$(command wt config shell init zsh)"; fi
 
 zinit ice compile'(pure|async).zsh' pick'async.zsh' src'pure.zsh'
 zinit light sindresorhus/pure
 
 zinit wait lucid light-mode for \
-  atinit'zicompinit; command -v wt >/dev/null 2>&1 && eval "$(command wt config shell init zsh)"; zicdreplay' \
+  atinit'zicdreplay' \
   zdharma/fast-syntax-highlighting \
   atload"_zsh_autosuggest_start;bindkey '^o' autosuggest-accept" \
   zsh-users/zsh-autosuggestions \

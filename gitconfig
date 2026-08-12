@@ -56,25 +56,31 @@
   up = !sh -c 'git set-upstream && git fetch && git pull --rebase' -
   cp = cherry-pick
   set-upstream = !git branch --set-upstream-to=origin/`git symbolic-ref --short HEAD`
-  prw = !/Users/leandro/.local/bin/git-prw
+  prw = !$HOME/.local/bin/git-prw
 [commit]
   gpgsign = true
 [gpg]
   program = /opt/homebrew/bin/gpg
 [maintenance]
-	repo = /Users/leandro/.config/zsh-config/znap
-	repo = /Users/leandro/.config/zsh-config/mafredri/zsh-async
-	repo = /Users/leandro/.config/zsh-config/ohmyzsh/ohmyzsh
-	repo = /Users/leandro/.config/zsh-config/sorin-ionescu/prezto
-	repo = /Users/leandro/.config/zsh-config/zdharma-continuum/fast-syntax-highlighting
-	repo = /Users/leandro/.config/zsh-config/zsh-users/zsh-autosuggestions
-	repo = /Users/leandro/.config/zsh-config/zsh-users/zsh-history-substring-search
-	repo = /Users/leandro/.config/zsh-config/zsh-users/zsh-syntax-highlighting
-	repo = /Users/leandro/.config/zsh-config/marlonrichert/zsh-autocomplete
-	repo = /Users/leandro/.config/zsh-config/zsh-users/zsh-completions
-	repo = /Users/leandro/.config/zsh-config/jeffreytse/zsh-vi-mode
-	repo = /Users/leandro/.config/zsh-config/sindresorhus/pure
+	repo = ~/.config/zsh-config/znap
+	repo = ~/.config/zsh-config/mafredri/zsh-async
+	repo = ~/.config/zsh-config/ohmyzsh/ohmyzsh
+	repo = ~/.config/zsh-config/sorin-ionescu/prezto
+	repo = ~/.config/zsh-config/zdharma-continuum/fast-syntax-highlighting
+	repo = ~/.config/zsh-config/zsh-users/zsh-autosuggestions
+	repo = ~/.config/zsh-config/zsh-users/zsh-history-substring-search
+	repo = ~/.config/zsh-config/zsh-users/zsh-syntax-highlighting
+	repo = ~/.config/zsh-config/marlonrichert/zsh-autocomplete
+	repo = ~/.config/zsh-config/zsh-users/zsh-completions
+	repo = ~/.config/zsh-config/jeffreytse/zsh-vi-mode
+	repo = ~/.config/zsh-config/sindresorhus/pure
 [branch]
 	sort = -committerdate
 [rerere]
 	enabled = true
+[credential "https://github.com"]
+	helper = 
+	helper = !$HOME/.local/share/mise/installs/gh/latest/gh_2.97.0_macOS_arm64/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+	helper = 
+	helper = !$HOME/.local/share/mise/installs/gh/latest/gh_2.97.0_macOS_arm64/bin/gh auth git-credential

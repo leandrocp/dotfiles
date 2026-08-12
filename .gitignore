@@ -17,6 +17,7 @@ Session.vim
 .netrwhist
 *.sublime-workspace
 .sensitive
+/claude/settings.json
 tags
 *.log
 Package Control.last-run
