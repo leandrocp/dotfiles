@@ -66,11 +66,11 @@
       "src": "https://github.com/tjdevries/colorbuddy.nvim"
     },
     "conform.nvim": {
-      "rev": "619363c30309d29ffa631e67c8183f2a72caa373",
+      "rev": "016802de402556da54c36bd7359b441266b01cdd",
       "src": "https://github.com/stevearc/conform.nvim"
     },
     "cyberdream.nvim": {
-      "rev": "d0e6e837b0248e3507f3a295deb4661221610e78",
+      "rev": "3203b1673967e820231a9049a540fa8317bd270c",
       "src": "https://github.com/scottmckendry/cyberdream.nvim"
     },
     "darkplus.nvim": {
@@ -138,7 +138,7 @@
       "src": "https://github.com/projekt0n/github-nvim-theme"
     },
     "gitsigns.nvim": {
-      "rev": "31d6fb2d618bca1482b9f274751ead5f03461408",
+      "rev": "5be654f2232c10ddcad19c1607a67b6b4b78fc29",
       "src": "https://github.com/lewis6991/gitsigns.nvim"
     },
     "gruber-darker.nvim": {
@@ -234,7 +234,7 @@
       "src": "https://github.com/echasnovski/mini.nvim"
     },
     "modus-themes.nvim": {
-      "rev": "17a64464c27c1be605adca13dbe48f2f402fe107",
+      "rev": "56233f0986ef6c8d0eab97e924e87144e584d970",
       "src": "https://github.com/miikanissi/modus-themes.nvim"
     },
     "molokai.nvim": {
@@ -310,7 +310,7 @@
       "src": "https://github.com/catppuccin/nvim"
     },
     "nvim-lspconfig": {
-      "rev": "43ed3797b266e1ee8d222e491379ad471c9d3146",
+      "rev": "d2011e1dd0c27569c551f16b688d86029ae015c9",
       "src": "https://github.com/neovim/nvim-lspconfig"
     },
     "nvim-treesitter": {
@@ -390,7 +390,7 @@
       "src": "https://github.com/cpea2506/relative-toggle.nvim"
     },
     "render-markdown.nvim": {
-      "rev": "f422cb5c6855f150e2ddcfaf44e7157b98b34f6a",
+      "rev": "4663eb3ecd538bd5062628fb6d95bbe6bdca78f6",
       "src": "https://github.com/MeanderingProgrammer/render-markdown.nvim"
     },
     "snacks.nvim": {
@@ -398,7 +398,7 @@
       "src": "https://github.com/folke/snacks.nvim"
     },
     "solarized-osaka.nvim": {
-      "rev": "f675d9a5c58f3b0d6158d665a623f81a62e7bdaf",
+      "rev": "0df74ef0ed6ce9b5aa2d194f1bd6f25a64e11bcc",
       "src": "https://github.com/craftzdog/solarized-osaka.nvim"
     },
     "solarized.nvim": {

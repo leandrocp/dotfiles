@@ -11,6 +11,7 @@ idiomatic_version_file_enable_tools = ["node"]
 [bootstrap.packages]
 "brew:autoconf" = "latest"
 "brew:automake" = "latest"
+"brew:awscli" = "latest"
 "brew:btop" = "latest"
 "brew:clang-format" = "latest"
 "brew:cmark-gfm" = "latest"
@@ -157,6 +158,7 @@ path = [
   "/opt/homebrew/opt/gnu-sed/libexec/gnubin",
   "/opt/homebrew/opt/grep/libexec/gnubin",
   "/opt/homebrew/opt/openjdk/bin",
+  "/opt/homebrew/opt/postgresql@17/bin",
   "$HOME/.bin",
   "$HOME/.local/bin",
   "./bin",
@@ -198,7 +200,6 @@ up = "cd $HOME/.dotfiles && mise run up"
 "npm:typescript" = "latest"
 actionlint = "latest"
 ast-grep = "latest"
-awscli = "latest"
 bun = "latest"
 cmake = "latest"
 "aqua:openai/codex" = "latest"
