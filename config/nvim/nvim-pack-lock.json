@@ -70,7 +70,7 @@
       "src": "https://github.com/stevearc/conform.nvim"
     },
     "cyberdream.nvim": {
-      "rev": "3203b1673967e820231a9049a540fa8317bd270c",
+      "rev": "a2a2e085575b05d3e50cf89847152f7efda8b153",
       "src": "https://github.com/scottmckendry/cyberdream.nvim"
     },
     "darkplus.nvim": {
@@ -130,7 +130,7 @@
       "src": "https://github.com/maxmx03/fluoromachine.nvim"
     },
     "fzf-lua": {
-      "rev": "8671012a7b2a1648595952c655039d51fb301c14",
+      "rev": "05e44d38de0a79c11fba5f7bf8138791b1dbdd1e",
       "src": "https://github.com/ibhagwan/fzf-lua"
     },
     "github-nvim-theme": {
@@ -142,11 +142,11 @@
       "src": "https://github.com/lewis6991/gitsigns.nvim"
     },
     "gruber-darker.nvim": {
-      "rev": "9b68f84bfd6c1278fef2143802ca40c60f2471c0",
+      "rev": "83d99c0eb0fa2513fa5268d097194801fad26660",
       "src": "https://github.com/blazkowolf/gruber-darker.nvim"
     },
     "grug-far.nvim": {
-      "rev": "6e05398cf6cad05b3fb46569db96b1ccfcbbd402",
+      "rev": "11595bf747edc270bce2069d1020502ad4ae56cf",
       "src": "https://github.com/MagicDuck/grug-far.nvim"
     },
     "gruvbox-baby": {
@@ -230,7 +230,7 @@
       "src": "https://github.com/dasupradyumna/midnight.nvim"
     },
     "mini.nvim": {
-      "rev": "629bf6792187e11b4829411c1648f86f28df3963",
+      "rev": "e58ad4b0c9e9376096b9704f98fc00d4c9448870",
       "src": "https://github.com/echasnovski/mini.nvim"
     },
     "modus-themes.nvim": {
@@ -310,11 +310,11 @@
       "src": "https://github.com/catppuccin/nvim"
     },
     "nvim-lspconfig": {
-      "rev": "d2011e1dd0c27569c551f16b688d86029ae015c9",
+      "rev": "fbaef6156f9ad65790931ab543ab1dfec57bbec7",
       "src": "https://github.com/neovim/nvim-lspconfig"
     },
     "nvim-treesitter": {
-      "rev": "c9f9ed6c1892f629ea399f4ee7905f2686fa13f2",
+      "rev": "074aa4422bf029908338e855d0c0f71470a971bb",
       "src": "https://github.com/nvim-treesitter/nvim-treesitter"
     },
     "nvim-treesitter-textobjects": {
@@ -350,7 +350,7 @@
       "src": "https://github.com/navarasu/onedark.nvim"
     },
     "onedarkpro.nvim": {
-      "rev": "6d07cb75191aa56b657de19ffcae092b31ddc810",
+      "rev": "ef009ae60769935a4eced9b3d545ae6013d3d271",
       "src": "https://github.com/olimorris/onedarkpro.nvim"
     },
     "onenord.nvim": {
@@ -398,7 +398,7 @@
       "src": "https://github.com/folke/snacks.nvim"
     },
     "solarized-osaka.nvim": {
-      "rev": "0df74ef0ed6ce9b5aa2d194f1bd6f25a64e11bcc",
+      "rev": "7be007658c1ba2ce303c004613e09af16efb5157",
       "src": "https://github.com/craftzdog/solarized-osaka.nvim"
     },
     "solarized.nvim": {
