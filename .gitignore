@@ -38,4 +38,5 @@ Package Control.user-ca-bundle
 /config/lazygit/state.yml
 /config/lazygit/state.yml
 /config/opencode/package-lock.json
+/claude/settings.json
 *.tmp*
