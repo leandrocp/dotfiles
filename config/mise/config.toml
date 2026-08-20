@@ -253,7 +253,7 @@ python -m http.server "$port"
 description = "Install or upgrade Brewfile packages that mise can't manage"
 run = """
 set -eu
-brew trust --tap abue-ammar/tinycast immanuwell/droast
+brew trust --tap abue-ammar/tinycast immanuwell/droast rjyo/moshi
 brew bundle install --file "$HOME/.dotfiles/Brewfile" --upgrade
 """
 

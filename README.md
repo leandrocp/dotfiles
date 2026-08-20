@@ -19,3 +19,20 @@ MISE_JOBS=1 MISE_GLOBAL_CONFIG_FILE="$PWD/config/mise/config.toml" ~/.local/bin/
 
 1. In Tinycast, open **Settings → Backup → Import** and select
    `~/.dotfiles/config/tinycast/settings.json`.
+
+## Moshi
+
+Bootstrap installs `moshi-hook`. Enable macOS **Remote Login**, install Moshi on
+the phone, and pair over WireGuard:
+
+```sh
+moshi-hook host setup
+```
+
+Moshi detects Herdr automatically. To enable agent notifications:
+
+```sh
+moshi-hook pair --token <token-from-Moshi>
+moshi-hook install
+brew services start moshi-hook
+```
