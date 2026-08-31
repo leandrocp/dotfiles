@@ -59,7 +59,6 @@ trusted_config_paths = ["~/code/supabase"]
 "brew-cask:rectangle" = "latest"
 "brew-cask:screen-studio" = "latest"
 "brew-cask:slack" = "latest"
-"brew-cask:t3-code" = "latest"
 "brew-cask:tableplus" = "latest"
 "brew-cask:zed@preview" = "latest"
 
@@ -194,7 +193,7 @@ up = "cd $HOME/.dotfiles && mise run up"
 "npm:@immich/cli" = "latest"
 "npm:@fsouza/prettierd" = "latest"
 "npm:@github/copilot-language-server" = "latest"
-"npm:@lumis-sh/cli" = { version = "0.4.1", allow_builds = ["@lumis-sh/cli"] }
+"npm:@lumis-sh/cli" = { version = "latest", allow_builds = ["@lumis-sh/cli"] }
 "npm:typescript" = "latest"
 actionlint = "latest"
 ast-grep = "latest"
@@ -265,8 +264,16 @@ depends = ["brew"]
 description = "Update system packages, mise tools, zinit, and Neovim packages"
 run = """
 set -euo pipefail
-sudo -v
+
+# Load Homebrew updates before starting any cask upgrades. A recent Homebrew
+# fix makes all privileged steps in one cask upgrade share a sudo ticket.
+brew update
+export HOMEBREW_NO_AUTO_UPDATE=1
+
 mise self-update
+
+# Prime sudo's built-in credential cache immediately before package upgrades.
+sudo -v
 PATH="/opt/homebrew/bin:/usr/bin:/bin:/usr/sbin:/sbin:$PATH" mise --no-env bootstrap packages apply --yes
 PATH="/opt/homebrew/bin:/usr/bin:/bin:/usr/sbin:/sbin:$PATH" mise --no-env bootstrap packages upgrade --yes
 mise run brew

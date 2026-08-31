@@ -46,7 +46,7 @@
       "version": "1.0.0 - 2.0.0"
     },
     "bluloco.nvim": {
-      "rev": "8973f4b595a96ceb45b3885d533f287182a73c20",
+      "rev": "294aa5ac5e639f36ab5db9729ac7583c37d896dc",
       "src": "https://github.com/uloco/bluloco.nvim"
     },
     "catppuccin-nvim": {
@@ -230,7 +230,7 @@
       "src": "https://github.com/dasupradyumna/midnight.nvim"
     },
     "mini.nvim": {
-      "rev": "1098976ddda3cf00f50c1dda5eef10ccf463d9eb",
+      "rev": "a311ed247d527db9592bb434356badc705363746",
       "src": "https://github.com/echasnovski/mini.nvim"
     },
     "modus-themes.nvim": {
@@ -310,11 +310,11 @@
       "src": "https://github.com/catppuccin/nvim"
     },
     "nvim-lspconfig": {
-      "rev": "3928e638fdedf195b23ae5a18f024afa487982bc",
+      "rev": "16286347bdba1333c7d124d9de9fe6630731b2b2",
       "src": "https://github.com/neovim/nvim-lspconfig"
     },
     "nvim-treesitter": {
-      "rev": "8b98b4470eb326f1c7b50dae79f8c963568e5720",
+      "rev": "19071296d3d643b48615ee574a20e8a03ac40872",
       "src": "https://github.com/nvim-treesitter/nvim-treesitter"
     },
     "nvim-treesitter-textobjects": {
@@ -334,7 +334,7 @@
       "src": "https://github.com/mhartington/oceanic-next"
     },
     "ofirkai.nvim": {
-      "rev": "ff76265e976eae5d5a93320b04dd2345806e3995",
+      "rev": "053041c95dc91168cc43e73c6bf6cba7755ff9fd",
       "src": "https://github.com/ofirgall/ofirkai.nvim"
     },
     "oldworld.nvim": {

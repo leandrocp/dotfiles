@@ -86,7 +86,7 @@ opt.updatetime = 200
 opt.wildmode = "longest:full,full"
 opt.autoread = true
 opt.winminwidth = 5
-opt.wrap = false
+opt.wrap = true
 vim.g.mkdp_filetypes = { "markdown" }
 
 vim.g.loaded_2html_plugin = 1
@@ -446,7 +446,6 @@ require("snacks").setup({
   quickfile = { enabled = true },
   terminal = {},
 })
-
 
 map("n", "<leader>bd", function()
   Snacks.bufdelete()
@@ -1282,10 +1281,7 @@ map("n", "<leader>gH", "<cmd>DiffviewFileHistory %<cr>", { desc = "current file 
 vim.api.nvim_create_user_command("ToggleInlineCompletion", function()
   local enabled = vim.lsp.inline_completion.is_enabled()
   vim.lsp.inline_completion.enable(not enabled)
-  vim.notify(
-    string.format("Inline completion %s", enabled and "disabled" or "enabled"),
-    vim.log.levels.INFO
-  )
+  vim.notify(string.format("Inline completion %s", enabled and "disabled" or "enabled"), vim.log.levels.INFO)
 end, { desc = "Toggle LSP inline completion" })
 
 vim.keymap.set("n", "<leader>ai", "<cmd>ToggleInlineCompletion<CR>", { desc = "Toggle inline completion" })
