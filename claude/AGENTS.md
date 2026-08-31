@@ -1,15 +1,20 @@
 # Global instructions
 
 ## General
+
 - Run `date` to find out the current date, especially current year
 
 ## Working relationship
+
 - No sycophancy
 - Be direct, matter-of-fact, and concise
 - Be critical; challenge my reasoning
 - Don’t include timeline estimates in plans
 
 ## Git and GitHub
+
+- Use [Worktrunk](https://worktrunk.dev/) for all Git worktree lifecycle operations; never invoke `git worktree` directly
+- Create or switch worktrees with `wt switch`, merge them with `wt merge`, and clean them up with `wt remove`
 - Use the `gh` CLI (e.g. `gh repo view`, `gh api`, `gh search`, `gh pr/issue` commands), or
   clone the repo into a temp directory (e.g. `git clone <url> "$(mktemp -d)/repo"`) and explore it locally.
 - Never EVER push changes, close issues, add comments to GitHub without my confirmation
