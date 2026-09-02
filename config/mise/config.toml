@@ -135,6 +135,7 @@ done
 """
 
 [env]
+DOCKER_CONTEXT = "orbstack"
 DO_NOT_TRACK = "true"
 ECTO_EDITOR = "zed __FILE__:__LINE__"
 EDITOR = "nvim"
