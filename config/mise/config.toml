@@ -66,7 +66,6 @@ trusted_config_paths = ["~/code/supabase"]
 [dotfiles]
 "~/.bin" = "~/.dotfiles/bin"
 "~/.claude/CLAUDE.md" = "~/.dotfiles/claude/CLAUDE.md"
-"~/.claude/settings.json" = "~/.dotfiles/claude/settings.json"
 "~/.codex/AGENTS.md" = "~/.dotfiles/codex/AGENTS.md"
 "~/.config/bat" = "~/.dotfiles/config/bat"
 "~/.config/fsh" = "~/.dotfiles/config/fsh"
@@ -99,6 +98,9 @@ trusted_config_paths = ["~/code/supabase"]
 "~/.shell" = "~/.dotfiles/shell"
 "~/.zshenv" = "~/.dotfiles/zshenv"
 "~/.zshrc" = "~/.dotfiles/zshrc"
+
+[bootstrap.brew]
+adopt = true
 
 [bootstrap.macos.dock]
 autohide = true
@@ -194,6 +196,7 @@ up = "cd $HOME/.dotfiles && mise run up"
 
 [tools]
 "aqua:elixir-lang/expert" = "latest"
+"npm:@doist/todoist-cli" = "latest"
 "npm:@immich/cli" = "latest"
 "npm:@fsouza/prettierd" = "latest"
 "npm:@github/copilot-language-server" = "latest"
@@ -261,7 +264,7 @@ brew bundle install --file "$HOME/.dotfiles/Brewfile" --upgrade
 """
 
 [tasks.bootstrap]
-description = "Install packages that require Homebrew"
+description = "Bootstrap packages and config"
 depends = ["brew"]
 
 [tasks.up]

@@ -429,6 +429,10 @@
       "rev": "9a88eae817ef395952e08650b3283726786fb5fb",
       "src": "https://github.com/akinsho/toggleterm.nvim"
     },
+    "token": {
+      "rev": "11be57ef691359f7a5853281ba43a86b3a0b80c2",
+      "src": "https://github.com/ThorstenRhau/token"
+    },
     "tokyodark.nvim": {
       "rev": "659aff3c73dc2e0159314050a81671f0b2eaad01",
       "src": "https://github.com/tiagovla/tokyodark.nvim"
