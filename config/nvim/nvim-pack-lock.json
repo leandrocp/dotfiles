@@ -46,7 +46,7 @@
       "version": "1.0.0 - 2.0.0"
     },
     "bluloco.nvim": {
-      "rev": "294aa5ac5e639f36ab5db9729ac7583c37d896dc",
+      "rev": "caa4233dab772dad1db272c78025dd9682dca9e8",
       "src": "https://github.com/uloco/bluloco.nvim"
     },
     "catppuccin-nvim": {
@@ -70,7 +70,7 @@
       "src": "https://github.com/stevearc/conform.nvim"
     },
     "cyberdream.nvim": {
-      "rev": "39e1fda12c0704e01029b286a4c7e77e33a0c5cd",
+      "rev": "b3f4ef5e9b8ee370c913a48b63e130b730ee8782",
       "src": "https://github.com/scottmckendry/cyberdream.nvim"
     },
     "darkplus.nvim": {
@@ -130,7 +130,7 @@
       "src": "https://github.com/maxmx03/fluoromachine.nvim"
     },
     "fzf-lua": {
-      "rev": "05e44d38de0a79c11fba5f7bf8138791b1dbdd1e",
+      "rev": "13bb178a299f7493dd64427a58e61904c4b58ecb",
       "src": "https://github.com/ibhagwan/fzf-lua"
     },
     "github-nvim-theme": {
@@ -138,7 +138,7 @@
       "src": "https://github.com/projekt0n/github-nvim-theme"
     },
     "gitsigns.nvim": {
-      "rev": "f2421c550618d257048afa650413d9e542ddbe67",
+      "rev": "8d79f2410c76e62b92e51c28c82e28c1c5a3daeb",
       "src": "https://github.com/lewis6991/gitsigns.nvim"
     },
     "gruber-darker.nvim": {
@@ -230,7 +230,7 @@
       "src": "https://github.com/dasupradyumna/midnight.nvim"
     },
     "mini.nvim": {
-      "rev": "ac5dffcc52b8378fbb15efeb0497a83e57a0b01c",
+      "rev": "81ed10ebe1144b0eb9a7f289ffae000c22772c20",
       "src": "https://github.com/echasnovski/mini.nvim"
     },
     "modus-themes.nvim": {
@@ -310,11 +310,11 @@
       "src": "https://github.com/catppuccin/nvim"
     },
     "nvim-lspconfig": {
-      "rev": "ac9d2f7c4757db6320cab6697fe73e5e8adb2457",
+      "rev": "ffd261c09c3dabd0bf1a438f47a8ae3b22f3c3ff",
       "src": "https://github.com/neovim/nvim-lspconfig"
     },
     "nvim-treesitter": {
-      "rev": "9a168f6357ed21c3a636e1727bc7d382abc451b8",
+      "rev": "f603a2f4da48728f80257fb5fbb90145fd1dc173",
       "src": "https://github.com/nvim-treesitter/nvim-treesitter"
     },
     "nvim-treesitter-textobjects": {
@@ -390,7 +390,7 @@
       "src": "https://github.com/cpea2506/relative-toggle.nvim"
     },
     "render-markdown.nvim": {
-      "rev": "a778444a73080301a50c4a6f58c90d7e094dd59e",
+      "rev": "640a3ec6d538bad17c328be373c7cad0293d9589",
       "src": "https://github.com/MeanderingProgrammer/render-markdown.nvim"
     },
     "snacks.nvim": {
@@ -474,7 +474,7 @@
       "src": "https://github.com/bluz71/vim-nightfly-colors"
     },
     "vim-test": {
-      "rev": "f688a3e084779aaaed01ddeba48a0a2164b228ef",
+      "rev": "0ea8ee90e056118343d843a4406644de5e6b37ea",
       "src": "https://github.com/vim-test/vim-test"
     },
     "vim-visual-multi": {

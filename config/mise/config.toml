@@ -276,15 +276,13 @@ set -euo pipefail
 # fix makes all privileged steps in one cask upgrade share a sudo ticket.
 brew update
 export HOMEBREW_NO_AUTO_UPDATE=1
-
 mise self-update
-
-# Prime sudo's built-in credential cache immediately before package upgrades.
 sudo -v
 PATH="/opt/homebrew/bin:/usr/bin:/bin:/usr/sbin:/sbin:$PATH" mise --no-env bootstrap packages apply --yes
 PATH="/opt/homebrew/bin:/usr/bin:/bin:/usr/sbin:/sbin:$PATH" mise --no-env bootstrap packages upgrade --yes
 mise run brew
 mise up
+mix archive.install hex igniter_new --force
 pi update
 pi update --extensions
 zsh -lc 'source "$HOME/.shell/zinit" && zinit self-update && zinit update'
