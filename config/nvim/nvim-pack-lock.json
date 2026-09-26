@@ -130,7 +130,7 @@
       "src": "https://github.com/maxmx03/fluoromachine.nvim"
     },
     "fzf-lua": {
-      "rev": "13bb178a299f7493dd64427a58e61904c4b58ecb",
+      "rev": "78b85d2a522b1e6a2d154216b3e532a1df1ad6d7",
       "src": "https://github.com/ibhagwan/fzf-lua"
     },
     "github-nvim-theme": {
@@ -142,7 +142,7 @@
       "src": "https://github.com/lewis6991/gitsigns.nvim"
     },
     "gruber-darker.nvim": {
-      "rev": "50fa4e583099729fcaaadc73a5afb74f7a91a625",
+      "rev": "35cb97959ef01f7193c94c404c13ddb3d4346654",
       "src": "https://github.com/blazkowolf/gruber-darker.nvim"
     },
     "grug-far.nvim": {
@@ -302,7 +302,7 @@
       "src": "https://github.com/AlexvZyl/nordic.nvim"
     },
     "numb.nvim": {
-      "rev": "36260c446465b1303b0b1922c722904791bdb03f",
+      "rev": "53bfc4ff20e7b44cfe1d2ca62d9f2131f392f1be",
       "src": "https://github.com/nacro90/numb.nvim"
     },
     "nvim": {
@@ -310,7 +310,7 @@
       "src": "https://github.com/catppuccin/nvim"
     },
     "nvim-lspconfig": {
-      "rev": "ffd261c09c3dabd0bf1a438f47a8ae3b22f3c3ff",
+      "rev": "046b1a797af1effe8e0474b9af9657a3761ec58a",
       "src": "https://github.com/neovim/nvim-lspconfig"
     },
     "nvim-treesitter": {
