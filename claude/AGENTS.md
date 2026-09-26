@@ -4,6 +4,13 @@
 
 - Run `date` to find out the current date, especially current year
 
+## Shell commands
+
+- Never wrap commands in `timeout`, `gtimeout`, `timeout -k`, or `perl`/`python` timeout shims by default — just run the command
+- Use the tool's own timeout parameter when a limit is needed; don't reimplement it in the shell
+- Only add an explicit `timeout` when a command is known to hang or block forever (e.g. watch/tail/serve/REPL), and prefer a non-interactive flag (`--no-pager`, `--watch=false`, `-n1`) over a timeout
+- Don't pad commands with `sleep` to "wait for" something; poll for the actual condition or use the tool's blocking/background support
+
 ## Working relationship
 
 - No sycophancy
