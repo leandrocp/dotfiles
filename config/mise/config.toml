@@ -12,6 +12,7 @@ trusted_config_paths = ["~/code/supabase"]
 [bootstrap.packages]
 "brew-cask:bitwarden" = "latest"
 "brew-cask:chatgpt" = "latest"
+"brew-cask:codexbar" = "latest"
 "brew-cask:dash" = "latest"
 "brew-cask:devutils" = "latest"
 "brew-cask:discord" = "latest"
