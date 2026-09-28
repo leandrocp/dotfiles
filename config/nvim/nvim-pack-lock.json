@@ -130,7 +130,7 @@
       "src": "https://github.com/maxmx03/fluoromachine.nvim"
     },
     "fzf-lua": {
-      "rev": "78b85d2a522b1e6a2d154216b3e532a1df1ad6d7",
+      "rev": "ec1b98d3f5f44a1cff1f2c3832af2f09c3d806ca",
       "src": "https://github.com/ibhagwan/fzf-lua"
     },
     "github-nvim-theme": {
@@ -234,7 +234,7 @@
       "src": "https://github.com/echasnovski/mini.nvim"
     },
     "modus-themes.nvim": {
-      "rev": "56233f0986ef6c8d0eab97e924e87144e584d970",
+      "rev": "15ffb5ab6a12f72ee1e8393fe5810d5317da2d3e",
       "src": "https://github.com/miikanissi/modus-themes.nvim"
     },
     "molokai.nvim": {
@@ -242,7 +242,7 @@
       "src": "https://github.com/UtkarshVerma/molokai.nvim"
     },
     "monokai-nightasty.nvim": {
-      "rev": "5731bc3c01e6c94a709021e5ee31070840e47584",
+      "rev": "8429fcab2499af83f27d0368f2a9490ad83d8536",
       "src": "https://github.com/polirritmico/monokai-nightasty.nvim"
     },
     "monokai-pro.nvim": {
@@ -262,7 +262,7 @@
       "src": "https://github.com/diegoulloao/neofusion.nvim"
     },
     "neogit": {
-      "rev": "5adc81b26232954cd7a90f158aa7844c18fc3165",
+      "rev": "c51a1dc7e0e0f40c4c396a2b1ceaa44b44e96032",
       "src": "https://github.com/NeogitOrg/neogit"
     },
     "neomodern.nvim": {
@@ -302,7 +302,7 @@
       "src": "https://github.com/AlexvZyl/nordic.nvim"
     },
     "numb.nvim": {
-      "rev": "53bfc4ff20e7b44cfe1d2ca62d9f2131f392f1be",
+      "rev": "40548e23f3b053defdc5daa99943e05132b99cc9",
       "src": "https://github.com/nacro90/numb.nvim"
     },
     "nvim": {
@@ -310,11 +310,11 @@
       "src": "https://github.com/catppuccin/nvim"
     },
     "nvim-lspconfig": {
-      "rev": "046b1a797af1effe8e0474b9af9657a3761ec58a",
+      "rev": "a9bb4d5f4276aa5cddc015faa3ecc5a7b5a26b14",
       "src": "https://github.com/neovim/nvim-lspconfig"
     },
     "nvim-treesitter": {
-      "rev": "f603a2f4da48728f80257fb5fbb90145fd1dc173",
+      "rev": "728e031f6b11d03d1f0708b7dc4fb0f1d9c8a137",
       "src": "https://github.com/nvim-treesitter/nvim-treesitter"
     },
     "nvim-treesitter-textobjects": {
