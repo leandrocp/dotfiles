@@ -28,7 +28,13 @@
   rebase = true
   ff = only
 [diff]
-  external = difft
+  tool = difftastic
+[difftool]
+  prompt = false
+[difftool "difftastic"]
+  cmd = difft "$LOCAL" "$REMOTE"
+[pager]
+  difftool = true
 [grep]
   extendRegexp = true
   lineNumber = true
@@ -44,9 +50,11 @@
   co = checkout
   cl = clone
   st = status
-  df = diff
+  df = difftool
+  dft = difftool
+  dlog = -c diff.external=difft log --ext-diff
   wt = worktree
-  dc = diff --cached
+  dc = difftool --cached
   l = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
   ll = log --graph --decorate --pretty=oneline --abbrev-commit --all
   g = grep --break --heading --line-number
