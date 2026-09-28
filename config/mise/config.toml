@@ -276,7 +276,7 @@ set -euo pipefail
 # fix makes all privileged steps in one cask upgrade share a sudo ticket.
 brew update
 export HOMEBREW_NO_AUTO_UPDATE=1
-mise self-update
+mise self-update --yes
 sudo -v
 PATH="/opt/homebrew/bin:/usr/bin:/bin:/usr/sbin:/sbin:$PATH" mise --no-env bootstrap packages apply --yes
 PATH="/opt/homebrew/bin:/usr/bin:/bin:/usr/sbin:/sbin:$PATH" mise --no-env bootstrap packages upgrade --yes
