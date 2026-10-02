@@ -201,7 +201,7 @@ up = "cd $HOME/.dotfiles && mise run up"
 "npm:@immich/cli" = "latest"
 "npm:@fsouza/prettierd" = "latest"
 "npm:@github/copilot-language-server" = "latest"
-"npm:@lumis-sh/cli" = { version = "latest", allow_builds = ["@lumis-sh/cli"] }
+"npm:@lumis-sh/cli" = { version = "latest", allow_builds = ["@lumis-sh/cli"], allow_low_downloads = true }
 "npm:typescript" = "latest"
 actionlint = "latest"
 ast-grep = "latest"

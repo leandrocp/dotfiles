@@ -94,7 +94,7 @@
       "src": "https://github.com/sindrets/diffview.nvim"
     },
     "doom-one.nvim": {
-      "rev": "beae92173315c7282f6897e666cfd67fbf0f3ac9",
+      "rev": "960d8bf49904001b7cf37fdc34ca18dffb21b024",
       "src": "https://github.com/NTBBloodbath/doom-one.nvim"
     },
     "dracula.nvim": {
@@ -130,7 +130,7 @@
       "src": "https://github.com/maxmx03/fluoromachine.nvim"
     },
     "fzf-lua": {
-      "rev": "ec1b98d3f5f44a1cff1f2c3832af2f09c3d806ca",
+      "rev": "d5c12c6d72ed84554f0f8dacb84f20da094b6a2d",
       "src": "https://github.com/ibhagwan/fzf-lua"
     },
     "github-nvim-theme": {
@@ -262,7 +262,7 @@
       "src": "https://github.com/diegoulloao/neofusion.nvim"
     },
     "neogit": {
-      "rev": "c51a1dc7e0e0f40c4c396a2b1ceaa44b44e96032",
+      "rev": "70708be9664b7fcdd010eb07bdc3ebc9311c2027",
       "src": "https://github.com/NeogitOrg/neogit"
     },
     "neomodern.nvim": {
@@ -310,11 +310,11 @@
       "src": "https://github.com/catppuccin/nvim"
     },
     "nvim-lspconfig": {
-      "rev": "a9bb4d5f4276aa5cddc015faa3ecc5a7b5a26b14",
+      "rev": "3e8d598d3b5f8338a41699c436e5fa11d2666cf0",
       "src": "https://github.com/neovim/nvim-lspconfig"
     },
     "nvim-treesitter": {
-      "rev": "728e031f6b11d03d1f0708b7dc4fb0f1d9c8a137",
+      "rev": "910fdf6f49e9dee7e7257c7d11a76b040fdfb9de",
       "src": "https://github.com/nvim-treesitter/nvim-treesitter"
     },
     "nvim-treesitter-textobjects": {
@@ -410,7 +410,7 @@
       "src": "https://github.com/sainnhe/sonokai"
     },
     "srcery-vim": {
-      "rev": "d4889a85c26702217838da941f921042c17b6397",
+      "rev": "ae584b8320c6e74bd37ca908e45026163c086628",
       "src": "https://github.com/srcery-colors/srcery-vim"
     },
     "svrana-neosolarized.nvim": {
@@ -430,7 +430,7 @@
       "src": "https://github.com/akinsho/toggleterm.nvim"
     },
     "token": {
-      "rev": "1538e1eadcbc9eb465b33bab71eec48c8bed0b76",
+      "rev": "ce7e1e8bc09a70cf8acfb94e797e7177b1f3b42c",
       "src": "https://github.com/ThorstenRhau/token"
     },
     "tokyodark.nvim": {
