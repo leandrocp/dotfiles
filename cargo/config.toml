@@ -1,0 +1,11 @@
+# Symlinked to ~/.cargo/config.toml. Profile settings here override Cargo.toml.
+
+# Full debuginfo bloats target dirs and slows builds, and is only useful with a
+# debugger. Keep line tables so panics and backtraces still show file:line.
+# Re-enable for a debugging session with CARGO_PROFILE_DEV_DEBUG=true.
+# https://kobzol.github.io/rust/rustc/2025/05/20/disable-debuginfo-to-improve-rust-compile-times.html
+[profile.dev]
+debug = "line-tables-only"
+
+[profile.dev.package."*"]
+debug = false
