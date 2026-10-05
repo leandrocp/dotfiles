@@ -19,5 +19,8 @@
     "npm:@ff-labs/pi-fff",
     "npm:@hypabolic/pi-hypa"
   ],
-  "outputPad": 0
+  "outputPad": 0,
+  "extensions": [
+    "-builtin:mcp"
+  ]
 }
