@@ -70,7 +70,7 @@
       "src": "https://github.com/stevearc/conform.nvim"
     },
     "cyberdream.nvim": {
-      "rev": "b3f4ef5e9b8ee370c913a48b63e130b730ee8782",
+      "rev": "642c55ad2225f9f4809905918121b2c6d252ad58",
       "src": "https://github.com/scottmckendry/cyberdream.nvim"
     },
     "darkplus.nvim": {
@@ -230,7 +230,7 @@
       "src": "https://github.com/dasupradyumna/midnight.nvim"
     },
     "mini.nvim": {
-      "rev": "65d615e1f78775323bfd4651f694824256e2adc1",
+      "rev": "6f0cd5049f414932ba55a5d6f3282a59d55c71a3",
       "src": "https://github.com/echasnovski/mini.nvim"
     },
     "modus-themes.nvim": {
@@ -430,7 +430,7 @@
       "src": "https://github.com/akinsho/toggleterm.nvim"
     },
     "token": {
-      "rev": "ce7e1e8bc09a70cf8acfb94e797e7177b1f3b42c",
+      "rev": "8d0130fa0167931df7e557669f60b5d2da13e1e2",
       "src": "https://github.com/ThorstenRhau/token"
     },
     "tokyodark.nvim": {
