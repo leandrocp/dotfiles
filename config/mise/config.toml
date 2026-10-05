@@ -201,7 +201,6 @@ up = "cd $HOME/.dotfiles && mise run up"
 "npm:@immich/cli" = "latest"
 "npm:@fsouza/prettierd" = "latest"
 "npm:@github/copilot-language-server" = "latest"
-"npm:@lumis-sh/cli" = { version = "latest", allow_builds = ["@lumis-sh/cli"], allow_low_downloads = true }
 "npm:typescript" = "latest"
 actionlint = "latest"
 ast-grep = "latest"
@@ -260,7 +259,7 @@ python -m http.server "$port"
 description = "Install or upgrade Brewfile packages that mise can't manage"
 run = """
 set -eu
-brew trust --tap abue-ammar/tinycast immanuwell/droast rjyo/moshi
+brew trust --tap abue-ammar/tinycast immanuwell/droast leandrocp/lumis rjyo/moshi
 brew bundle install --file "$HOME/.dotfiles/Brewfile" --upgrade
 """
 
