@@ -169,7 +169,6 @@ path = [
   "$HOME/.fly/bin",
   "$HOME/.cargo/bin",
   "/Applications/Postgres.app/Contents/Versions/latest/bin",
-  "$HOME/.opencode/bin",
 ]
 
 [shell_alias]
