@@ -2,48 +2,32 @@
 
 ## General
 
-- Run `date` to find out the current date, especially current year
+- Run `date` when the task depends on the current date or year.
 
 ## Shell commands
 
-- Never wrap commands in `timeout`, `gtimeout`, `timeout -k`, or `perl`/`python` timeout shims by default — just run the command
-- Use the tool's own timeout parameter when a limit is needed; don't reimplement it in the shell
-- Only add an explicit `timeout` when a command is known to hang or block forever (e.g. watch/tail/serve/REPL), and prefer a non-interactive flag (`--no-pager`, `--watch=false`, `-n1`) over a timeout
-- Never invoke `sleep` to wait for background work, delayed output, logs, tests, servers, or rate limits; this includes compound commands such as `sleep 230; tail ...`
-- Use the tool's blocking/background support, completion notifications, job-status primitives, or condition-based polling with a tool-level timeout; if none is available, return control instead of occupying a tool call with a fixed delay
-- Only use `sleep` when the user explicitly requests a delay or when testing sleep behavior itself
+- Prefer non-interactive commands. If a command may block, use the tool's timeout or background controls; do not implement timeouts in the shell.
+- Do not use `sleep` to wait for work; use blocking/background support, completion notifications, job-status checks, or condition-based polling with a tool-level timeout. Only use `sleep` when explicitly requested or when testing it.
 
 ## Working relationship
 
-- No sycophancy
-- Be direct, matter-of-fact, and concise
-- Be critical; challenge my reasoning
-- Don’t include timeline estimates in plans
+- Be direct, matter-of-fact, concise, and critical; challenge weak reasoning, avoid sycophancy, and omit timeline estimates.
 
 ## Subagents and parallelism
 
-Always use the harness's subagent delegation tool (for example, `Task`) to delegate work with an appropriate model when subagents are available. Do not default to doing everything in the main conversation; prefer focused subagents for distinct parts of a task.
+When delegation is authorized and subagents are available, use the harness's delegation tool for distinct workstreams. Run independent workstreams concurrently, keep dependencies sequential, and never assign concurrent edits to the same files.
 
-Before starting multi-step work, identify independent workstreams and launch their subagents concurrently. Do not serialize work that can safely run in parallel. Keep dependent steps sequential, and avoid assigning concurrent agents to edit the same files.
-
-- **Explore** (codebase search, file reading, research): Anthropic `claude-haiku-5-5`; OpenAI `gpt-6-luna`
-- **Plan** (architecture, design, implementation planning): Anthropic `claude-opus-5-5`; OpenAI `gpt-6-astra`
-- **Implementation** (code editing, writing files, running commands): Anthropic `claude-sonnet-5-5`; OpenAI `gpt-6.1-sol`
+- **Explore** (codebase search, file reading, research): Anthropic `claude-haiku-5-5`; OpenAI `gpt-6-luna`.
+- **Plan** (architecture, design, implementation planning): Anthropic `claude-opus-5-5`; OpenAI `gpt-6-astra`.
+- **Implementation** (code editing, writing files, running commands): Anthropic `claude-sonnet-5-5`; OpenAI `gpt-6.1-sol`.
 
 If an exact model identifier is unavailable, use the current equivalent in the same provider and capability tier.
 
 ## Git and GitHub
 
-- Use [Worktrunk](https://worktrunk.dev/) for all Git worktree lifecycle operations; never invoke `git worktree` directly
-- Create or switch worktrees with `wt switch`, merge them with `wt merge`, and clean them up with `wt remove`
-- Use the `gh` CLI (e.g. `gh repo view`, `gh api`, `gh search`, `gh pr/issue` commands), or
-  clone the repo into a temp directory (e.g. `git clone <url> "$(mktemp -d)/repo"`) and explore it locally.
-- Never EVER push changes, close issues, add comments to GitHub without my confirmation
-- When I authorize a push, create a topic branch, push it, and open a PR by default
-- Never push directly to a repository's default branch unless I explicitly say `push to main` or name that branch
-- General instructions such as `push`, `ship`, `publish`, or `do it and push` do not authorize a default-branch push
-- Treat branch tracking as part of push safety: `git checkout -b <topic> origin/<default>` can make the topic branch track the remote default branch, and with `push.default=upstream` even `git push origin <topic>` can update the default branch
-- Create topic branches from a remote default branch with `git switch --no-track -c <topic> origin/<default>` (or `git checkout --no-track -b <topic> origin/<default>`)
-- Before pushing, verify the topic branch does not track the remote default branch; if it does, run `git branch --unset-upstream`
-- Push topic branches with `git push -u origin HEAD` or an explicit `<source>:<destination>` refspec
-- NEVER add Co-Authored-By trailers to commit messages
+- Use [Worktrunk](https://worktrunk.dev/) for Git worktree lifecycle operations: `wt switch`, `wt merge`, and `wt remove`; do not invoke `git worktree` directly.
+- Use the `gh` CLI or clone the repository into a temporary directory to inspect GitHub content.
+- GitHub write operations, including pushes, comments, and closing issues, require explicit confirmation.
+- Authorized pushes use a non-tracking topic branch and open a PR by default; pushing to the default branch requires an explicit request naming that branch.
+- Create topic branches with `git switch --no-track -c <topic> origin/<default>`, verify they do not track the remote default branch, unset an unsafe upstream with `git branch --unset-upstream`, and push with `git push -u origin HEAD`.
+- Do not add `Co-Authored-By` trailers to commit messages.
