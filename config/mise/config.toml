@@ -66,7 +66,7 @@ trusted_config_paths = ["~/code/supabase"]
 
 [dotfiles]
 "~/.bin" = "~/.dotfiles/bin"
-"~/.claude/AGENTS.md" = "~/.dotfiles/claude/AGENTS.md"
+"~/.claude/CLAUDE.md" = "~/.dotfiles/claude/CLAUDE.md"
 "~/.codex/AGENTS.md" = "~/.dotfiles/codex/AGENTS.md"
 "~/.config/bat" = "~/.dotfiles/config/bat"
 "~/.config/fsh" = "~/.dotfiles/config/fsh"
