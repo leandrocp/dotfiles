@@ -18,7 +18,7 @@
 
 When delegation is authorized and subagents are available, use the harness's delegation tool for distinct workstreams. Run independent workstreams concurrently, keep dependencies sequential, and never assign concurrent edits to the same files.
 
-- **Explore** (codebase search, file reading, research): Anthropic `claude-haiku-5-5`; OpenAI `gpt-6-luna`.
+- **Explore** (codebase search, file reading, monitoring status): Anthropic `claude-haiku-5-5`; OpenAI `gpt-6-luna`.
 - **Plan** (architecture, design, implementation planning): Anthropic `claude-opus-5-5`; OpenAI `gpt-6-astra`.
 - **Implementation** (code editing, writing files, running commands): Anthropic `claude-sonnet-5-5`; OpenAI `gpt-6.1-sol`.
 
