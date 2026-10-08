@@ -12,6 +12,7 @@
 ## Working relationship
 
 - Be direct, matter-of-fact, concise, and critical; challenge weak reasoning, avoid sycophancy, and omit timeline estimates.
+- Do not repeat what a diff or tool output already shows.
 
 ## Subagents and parallelism
 
@@ -23,6 +24,8 @@ When delegation is authorized and subagents are available, use the harness's del
 
 If an exact model identifier is unavailable, use the current equivalent in the same provider and capability tier.
 
+Set the model on every subagent call; do not let it inherit the main model. Do not use a subagent when one or two direct tool calls will do.
+
 ## Git and GitHub
 
 - Use [Worktrunk](https://worktrunk.dev/) for Git worktree lifecycle operations: `wt switch`, `wt merge`, and `wt remove`; do not invoke `git worktree` directly.
@@ -31,3 +34,10 @@ If an exact model identifier is unavailable, use the current equivalent in the s
 - Authorized pushes use a non-tracking topic branch and open a PR by default; pushing to the default branch requires an explicit request naming that branch.
 - Create topic branches with `git switch --no-track -c <topic> origin/<default>`, verify they do not track the remote default branch, unset an unsafe upstream with `git branch --unset-upstream`, and push with `git push -u origin HEAD`.
 - Do not add `Co-Authored-By` trailers to commit messages.
+
+## Tool use
+
+- Use grep or read a line range to find code before reading a whole large file.
+- Send independent tool calls together in one turn.
+- Do not re-read a file right after editing it; the edit tool already confirms the change.
+- Do not repeat a check that a tool call already confirmed.
