@@ -88,6 +88,7 @@ trusted_config_paths = ["~/code/supabase"]
 "~/.pi/agent/themes/tokyonight-moon.json" = "~/.dotfiles/pi/agent/themes/tokyonight-moon.json"
 "~/.config/rectangle.json" = "~/.dotfiles/config/rectangle.json"
 "~/.config/ripgrep" = "~/.dotfiles/config/ripgrep"
+"~/.config/rex" = "~/.dotfiles/config/rex"
 "~/.config/yazi" = "~/.dotfiles/config/yazi"
 "~/.config/zed/settings.json" = "~/.dotfiles/config/zed/settings.json"
 "~/.gitconfig" = "~/.dotfiles/gitconfig"
