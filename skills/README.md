@@ -8,6 +8,7 @@ matching tasks, or be called explicitly:
 - **Build:** "Use lp-build to fix issue #123 and verify the original bug is gone."
 - **Polish:** "Use lp-polish on the current diff: simplify it and strengthen tests without changing behavior."
 - **Review:** "Use lp-review on PR #123, focusing on retries and tenant isolation. Report findings without edits."
+- **Open PR:** "Use lp-open-pr to publish the current change as a PR against main and get CI green."
 - **Chain:** "Use lp-build to implement the approved plan, then lp-polish, then lp-review. Stop with the review findings."
 
 This directory is shared through `~/.agents/skills` and `~/.claude/skills` symlinks.
