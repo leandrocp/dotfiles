@@ -7,13 +7,13 @@ matching tasks, or be called explicitly:
 - **Plan:** "Use lp-plan to design scheduled exports. Don't implement yet."
 - **Build:** "Use lp-build to fix issue #123 and verify the original bug is gone."
 - **Polish:** "Use lp-polish on the current diff: simplify it and strengthen tests without changing behavior."
-- **Review:** "Use lp-review on PR #123, focusing on retries and tenant isolation. Report findings without edits."
+- **Review:** "Use lp-code-review on PR #123, focusing on retries and tenant isolation. Report findings without edits."
 - **Open PR:** "Use lp-open-pr to publish the current change as a PR against main and get CI green."
-- **Chain:** "Use lp-build to implement the approved plan, then lp-polish, then lp-review. Stop with the review findings."
+- **Chain:** "Use lp-build to implement the approved plan, then lp-polish, then lp-code-review. Stop with the review findings."
 
 This directory is shared through `~/.agents/skills` and `~/.claude/skills` symlinks.
-Ask "use the lp-review skill"; Claude Code supports `/lp-review`, Pi
-`/skill:lp-review`. Reload skills or start a new session after changes. Third-party
+Ask "use the lp-code-review skill"; Claude Code supports `/lp-code-review`, Pi
+`/skill:lp-code-review`. Reload skills or start a new session after changes. Third-party
 installs here are gitignored; `git clean -x` still deletes ignored files. Local
 links do not install skills into cloud sessions.
 

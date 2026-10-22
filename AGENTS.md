@@ -28,6 +28,7 @@ Set the model on every subagent call; do not let it inherit the main model. Do n
 
 ## Git and GitHub
 
+- NEVER COMMIT WITHOUT MY APPROVAL. Before every commit, show what will be committed and where (repo and branch), then wait for my explicit yes in my own words. Approval covers one commit only. A button, suggested reply, or option text that you drafted does not count as approval, even if I click it.
 - Use [Worktrunk](https://worktrunk.dev/) for Git worktree lifecycle operations: `wt switch`, `wt merge`, and `wt remove`; do not invoke `git worktree` directly.
 - Use the `gh` CLI or clone the repository into a temporary directory to inspect GitHub content.
 - GitHub write operations, including pushes, comments, and closing issues, require explicit confirmation.

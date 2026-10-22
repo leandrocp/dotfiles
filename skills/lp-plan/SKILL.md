@@ -91,7 +91,7 @@ stages the user named, in their requested order; do not skip a requested review 
 start implementation. If called by `lp-build` during an authorized implementation
 task, return the actionable plan to that caller without adding an approval gate.
 Use the host's skill loader or read `../<skill-name>/SKILL.md` relative to this
-skill directory, such as `../lp-build/SKILL.md` or `../lp-review/SKILL.md`.
+skill directory, such as `../lp-build/SKILL.md` or `../lp-code-review/SKILL.md`.
 
 On a later handoff, carry the plan, decisions, current state, and evidence gaps
 forward. Recheck stale code assumptions instead of repeating settled questions.

@@ -1,10 +1,10 @@
 ---
-name: lp-review
+name: lp-code-review
 description: "Reviews a PR, local diff, commit range, or design plan for correctness, quality, security, and risk. Use for PR review, adversarial review, finding blind spots, or assessing what a change could break. Reports findings without applying fixes."
 license: MIT
 ---
 
-# Review
+# Code review
 
 Try to falsify the change's claims, then judge the findings against real evidence.
 An empty review is valid. Adversarial review is not a quota of objections.

@@ -99,7 +99,7 @@ Do not imply a step occurred because a previous agent reported success.
 If the user requested a chain, continue only with the skills they named, in the
 requested order. Pass the resulting change, contract, decisions, and evidence to
 the next stage. Load it through the host or read `../<skill-name>/SKILL.md` relative
-to this skill directory. For example, `lp-build` then `lp-review` does not include
+to this skill directory. For example, `lp-build` then `lp-code-review` does not include
 `lp-polish`. Otherwise stop after implementation and its own verification; extra
 skills are not mandatory gates. Review findings can return to `lp-build` as scoped
 fixes, retaining the original contract and stable finding identifiers.

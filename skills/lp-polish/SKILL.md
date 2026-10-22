@@ -92,5 +92,5 @@ gaps, and actual delivery state. No change is a valid outcome when the code alre
 meets the bar. For a chain, continue only with the named stages in the requested
 order. Hand the next stage the final diff, contract, decisions, and current evidence.
 Use the host's skill loader or read `../<skill-name>/SKILL.md` relative to this skill
-directory, such as `../lp-review/SKILL.md` or `../lp-build/SKILL.md`. Do not
+directory, such as `../lp-code-review/SKILL.md` or `../lp-build/SKILL.md`. Do not
 auto-publish, push, merge, or turn cleanup into an endless loop.
