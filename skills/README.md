@@ -1,9 +1,14 @@
 # Workflow skills
 
-`lp-sharpen` improves a prompt, `lp-plan` designs the change, `lp-build` implements
-or fixes it, `lp-polish` simplifies and checks it, and `lp-review` challenges it
-without editing. Use each independently or name a chain in order. The `lp-` prefix
-avoids common built-in names; these skills can also load automatically for matching tasks.
+The `lp-` prefix avoids common built-in names. Skills can load automatically for
+matching tasks, or be called explicitly:
+
+- **Sharpen:** "Use lp-sharpen to rewrite this prompt: make the dashboard faster."
+- **Plan:** "Use lp-plan to design scheduled exports. Don't implement yet."
+- **Build:** "Use lp-build to fix issue #123 and verify the original bug is gone."
+- **Polish:** "Use lp-polish on the current diff: simplify it and strengthen tests without changing behavior."
+- **Review:** "Use lp-review on PR #123, focusing on retries and tenant isolation. Report findings without edits."
+- **Chain:** "Use lp-build to implement the approved plan, then lp-polish, then lp-review. Stop with the review findings."
 
 This directory is shared through `~/.agents/skills` and `~/.claude/skills` symlinks.
 Ask "use the lp-review skill"; Claude Code supports `/lp-review`, Pi
