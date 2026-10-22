@@ -1,0 +1,10 @@
+# Keep third-party installs local when tools write through the global symlinks.
+/*
+!/.gitignore
+!/README.md
+!/LICENSE
+!/lp-sharpen/
+!/lp-plan/
+!/lp-build/
+!/lp-review/
+!/lp-polish/

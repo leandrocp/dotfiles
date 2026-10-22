@@ -14,8 +14,11 @@ curl https://mise.run | sh
 ~/.local/bin/mise exec git@latest -- git clone git@github.com:leandrocp/dotfiles.git ~/.dotfiles
 cd ~/.dotfiles
 ~/.local/bin/mise trust "$PWD/config/mise/config.toml"
-MISE_JOBS=1 MISE_GLOBAL_CONFIG_FILE="$PWD/config/mise/config.toml" ~/.local/bin/mise bootstrap --yes --force-dotfiles
+MISE_JOBS=1 MISE_GLOBAL_CONFIG_FILE="$PWD/config/mise/config.toml" ~/.local/bin/mise bootstrap --yes
 ```
+
+Bootstrap refuses conflicting dotfiles. Back up and reconcile existing files or
+skill directories before retrying; forced replacement can delete their contents.
 
 1. In Tinycast, open **Settings → Backup → Import** and select
    `~/.dotfiles/config/tinycast/settings.json`.

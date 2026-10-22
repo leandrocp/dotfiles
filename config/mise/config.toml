@@ -65,8 +65,10 @@ trusted_config_paths = ["~/code/supabase"]
 "brew:zsh" = "latest"
 
 [dotfiles]
+"~/.agents/skills" = "~/.dotfiles/skills"
 "~/.bin" = "~/.dotfiles/bin"
 "~/.claude/CLAUDE.md" = "~/.dotfiles/claude/CLAUDE.md"
+"~/.claude/skills" = "~/.dotfiles/skills"
 "~/.codex/AGENTS.md" = "~/.dotfiles/codex/AGENTS.md"
 "~/.config/bat" = "~/.dotfiles/config/bat"
 "~/.config/fsh" = "~/.dotfiles/config/fsh"
