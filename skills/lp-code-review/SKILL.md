@@ -40,6 +40,11 @@ Use the lenses that apply, keeping spec compliance distinct from code standards:
 - **Structure:** ownership, dependency direction, public contracts, unnecessary layers,
   repeated policy, speculative configurability, and misuse of existing abstractions.
   Show a concrete maintenance cost rather than demanding a preferred style.
+- **Consistency:** whether the change follows the patterns and style already in the
+  codebase. Compare it with sibling modules and nearby code for error handling,
+  naming, module layout, test setup, and idiom. Flag a new way of doing something the
+  codebase already does one way, and cite the existing example. A linter-enforced
+  rule is tooling's job; an established pattern with no counterpart is not a defect.
 - **Verification:** whether tests exercise real behavior and would fail on a plausible
   regression; whether runtime evidence supports the actual claim. Check for removed
   assertions, skipped tests, suppressions, and weakened gates.
