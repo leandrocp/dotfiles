@@ -147,7 +147,7 @@ keybindings:
           command: gh pr ready --repo {{.RepoName}} {{.PrNumber}} --undo
           name: move to draft
 repoPaths:
-    :owner/:repo: ~/work/:owner/:repo
+    :owner/:repo: ~/work/repos/:owner/:repo
 theme:
     ui:
         sectionsShowCount: true

@@ -7,7 +7,7 @@ experimental = true
 minimum_release_age = "0s"
 system_packages.managers = ["brew", "brew-cask"]
 idiomatic_version_file_enable_tools = ["node"]
-trusted_config_paths = ["~/work/supabase", "~/work/leandrocp"]
+trusted_config_paths = ["~/work/repos/supabase", "~/work/repos/leandrocp"]
 
 [bootstrap.packages]
 "brew-cask:bitwarden" = "latest"
