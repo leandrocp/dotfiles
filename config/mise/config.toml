@@ -7,7 +7,7 @@ experimental = true
 minimum_release_age = "0s"
 system_packages.managers = ["brew", "brew-cask"]
 idiomatic_version_file_enable_tools = ["node"]
-trusted_config_paths = ["~/code/supabase"]
+trusted_config_paths = ["~/work/supabase", "~/work/leandrocp"]
 
 [bootstrap.packages]
 "brew-cask:bitwarden" = "latest"
@@ -75,6 +75,7 @@ trusted_config_paths = ["~/code/supabase"]
 "~/.config/ghostty" = "~/.dotfiles/config/ghostty"
 "~/.config/git" = "~/.dotfiles/config/git"
 "~/.config/herdr/config.toml" = "~/.dotfiles/config/herdr/config.toml"
+"~/.config/worktrunk/config.toml" = "~/.dotfiles/config/worktrunk/config.toml"
 "~/.config/lazygit" = "~/.dotfiles/config/lazygit"
 "~/.config/linearmouse" = "~/.dotfiles/config/linearmouse"
 "~/.config/lumis" = "~/.dotfiles/config/lumis"
@@ -298,7 +299,7 @@ description = "Clean package-manager caches and generated artifacts"
 run = """
 set -euo pipefail
 
-printf 'Run cleanup? This deletes caches, unused mise tool versions, Docker artifacts, and node_modules under $HOME/code. [y/N] '
+printf 'Run cleanup? This deletes caches, unused mise tool versions, Docker artifacts, and node_modules under $HOME/work. [y/N] '
 read -r confirm
 case "$confirm" in
   [yY]) ;;
@@ -314,7 +315,7 @@ mise prune
 
 echo "==> npm"
 npm cache verify
-npx --yes npkill --directory "$HOME/code" --exclude-sensitive --delete-all -y
+npx --yes npkill --directory "$HOME/work" --exclude-sensitive --delete-all -y
 
 echo "==> mac-cleaner-cli"
 echo "Leave browser categories unselected. mac-cleaner-cli has no non-interactive browser skip flag."
@@ -342,7 +343,7 @@ rm -rf "$sweep_stub"
 
 # Editors and tools that don't source zshenv still build into per-project
 # target/ dirs. Unset CARGO_TARGET_DIR so sweep resolves each project's own.
-env -u CARGO_TARGET_DIR cargo sweep --recursive --time 14 "$HOME/code"
+env -u CARGO_TARGET_DIR cargo sweep --recursive --time 14 "$HOME/work"
 
 echo "==> Docker"
 if command -v docker >/dev/null && docker info >/dev/null 2>&1; then

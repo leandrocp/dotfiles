@@ -1,0 +1,3 @@
+# https://worktrunk.dev/config
+
+worktree-path = "~/work/worktrees/{{ repo }}.{{ branch | sanitize }}"
