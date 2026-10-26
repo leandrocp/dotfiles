@@ -24,6 +24,12 @@ to verify it. Planning alone does not authorize implementation.
    user has not delegated them. Offer a recommendation with its tradeoff. Group
    independent questions; defer questions that depend on unanswered ones.
 
+When the scoped task substantively involves Rust source or Rust-specific Cargo
+configuration, load `lp-rust` if available through the host's skill loader or read
+`../lp-rust/SKILL.md` relative to this skill directory. Apply it only to the Rust
+portion; do not load it merely because the repository contains Rust. If unavailable,
+continue using repository guidance without installing it.
+
 Use a short inline plan for a clear local change. Use the project's existing plan
 format and location for substantial or multi-session work. Do not create tracker
 items, duplicate an existing spec system, or overwrite another unfinished plan.

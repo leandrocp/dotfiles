@@ -18,6 +18,12 @@ Identify the intended behavior, non-goals, affected public contracts, and checks
 that define success. Preserve unrelated worktree changes. Use repository commands
 and existing patterns; do not introduce a new framework to perform a small task.
 
+When the scoped task substantively involves Rust source or Rust-specific Cargo
+configuration, load `lp-rust` if available through the host's skill loader or read
+`../lp-rust/SKILL.md` relative to this skill directory. Apply it only to the Rust
+portion; do not load it merely because the repository contains Rust. If unavailable,
+continue using repository guidance without installing it.
+
 Reuse an existing plan without treating it as infallible. Recheck stale assumptions.
 For a small request, establish the local contract and proceed. For a substantial
 request with unresolved design, use `lp-plan` through the host's skill loader or

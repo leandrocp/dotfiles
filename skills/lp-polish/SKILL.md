@@ -19,6 +19,12 @@ Read the code, callers, tests, and relevant history until the contract is clear.
 Understand outputs, errors, side effects, ordering, compatibility, and any measured
 performance constraints before calling something redundant.
 
+When the scoped task substantively involves Rust source or Rust-specific Cargo
+configuration, load `lp-rust` if available through the host's skill loader or read
+`../lp-rust/SKILL.md` relative to this skill directory. Apply it only to the Rust
+portion; do not load it merely because the repository contains Rust. If unavailable,
+continue using repository guidance without installing it.
+
 Discover the existing formatter, linter, type checker, and test commands from the
 repository. Use prior results only if they still apply to the current code and
 environment. Establish relevant baseline checks before structural edits; distinguish

@@ -22,6 +22,12 @@ State the intended behavior and constraints before judging the implementation.
 If no specification exists, use the request and observable contracts, identifying
 uncertain intent. Do not require a tracker setup or invent missing requirements.
 
+When the scoped task substantively involves Rust source or Rust-specific Cargo
+configuration, load `lp-rust` if available through the host's skill loader or read
+`../lp-rust/SKILL.md` relative to this skill directory. Apply it only to the Rust
+portion; do not load it merely because the repository contains Rust. If unavailable,
+continue using repository guidance without installing it.
+
 For a plan, review feasibility, dependencies, acceptance criteria, risk, and the
 verification strategy. Do not claim implementation or runtime verification occurred.
 
