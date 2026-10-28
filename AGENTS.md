@@ -3,6 +3,7 @@
 ## General
 
 - Run `date` when the task depends on the current date or year.
+- Include the relevant ticket, issue, or PR identifier in the thread or session title in every harness (Pi, Claude Code, Amp, etc.) when one is available.
 
 ## Shell commands
 
