@@ -26,7 +26,6 @@ trusted_config_paths = ["~/work/repos/supabase", "~/work/repos/leandrocp"]
 "brew-cask:proton-mail-bridge" = "latest"
 "brew-cask:proton-pass" = "latest"
 "brew-cask:rectangle" = "latest"
-"brew-cask:screen-studio" = "latest"
 "brew-cask:slack" = "latest"
 "brew-cask:tableplus" = "latest"
 "brew-cask:zed@preview" = "latest"
