@@ -70,7 +70,7 @@
       "src": "https://github.com/stevearc/conform.nvim"
     },
     "cyberdream.nvim": {
-      "rev": "642c55ad2225f9f4809905918121b2c6d252ad58",
+      "rev": "2dbd7e944014cf880eb824c1026337bdab1f8d69",
       "src": "https://github.com/scottmckendry/cyberdream.nvim"
     },
     "darkplus.nvim": {
@@ -130,7 +130,7 @@
       "src": "https://github.com/maxmx03/fluoromachine.nvim"
     },
     "fzf-lua": {
-      "rev": "5dca84ef44f37b960a128a43d044ee348ff86fb4",
+      "rev": "5b88d6f0af7fcb41d4a8bb340bf70d7e3824ee9d",
       "src": "https://github.com/ibhagwan/fzf-lua"
     },
     "github-nvim-theme": {
@@ -138,7 +138,7 @@
       "src": "https://github.com/projekt0n/github-nvim-theme"
     },
     "gitsigns.nvim": {
-      "rev": "683137003522aebd6948358334164a6ba2ca7cd5",
+      "rev": "d4854fa9a94b5c8b37dd209fb4a19e98e764186f",
       "src": "https://github.com/lewis6991/gitsigns.nvim"
     },
     "gruber-darker.nvim": {
@@ -230,7 +230,7 @@
       "src": "https://github.com/dasupradyumna/midnight.nvim"
     },
     "mini.nvim": {
-      "rev": "a6e23131010b800ecbab85fa6adc0ff38eae2c2d",
+      "rev": "a03ad899bda446b5a81cfa99d8aeeb92241522f3",
       "src": "https://github.com/echasnovski/mini.nvim"
     },
     "modus-themes.nvim": {
@@ -262,7 +262,7 @@
       "src": "https://github.com/diegoulloao/neofusion.nvim"
     },
     "neogit": {
-      "rev": "832a2db084ac25c2801fd73a3fab58f3c82ed2ec",
+      "rev": "697ad3ee86a73cf6b6758b838d7a7d76cf3b9f86",
       "src": "https://github.com/NeogitOrg/neogit"
     },
     "neomodern.nvim": {
@@ -310,11 +310,11 @@
       "src": "https://github.com/catppuccin/nvim"
     },
     "nvim-lspconfig": {
-      "rev": "77b7432d4770d23b277d37923e5a08a442d8bb07",
+      "rev": "995088d7a05aced8078d6fe53891826696a96ae8",
       "src": "https://github.com/neovim/nvim-lspconfig"
     },
     "nvim-treesitter": {
-      "rev": "29212d826054bb2948fa9d3a99eca9bf6a050eb2",
+      "rev": "a2f694478be07f89c2d03cc17858a8745a400c4b",
       "src": "https://github.com/nvim-treesitter/nvim-treesitter"
     },
     "nvim-treesitter-textobjects": {
@@ -410,7 +410,7 @@
       "src": "https://github.com/sainnhe/sonokai"
     },
     "srcery-vim": {
-      "rev": "b2c469a8127a2ec07a72aada26ab7d4bd075faa2",
+      "rev": "a0cd1b23cc1b9b694fb1772d93e13f0307b063c1",
       "src": "https://github.com/srcery-colors/srcery-vim"
     },
     "svrana-neosolarized.nvim": {
@@ -430,7 +430,7 @@
       "src": "https://github.com/akinsho/toggleterm.nvim"
     },
     "token": {
-      "rev": "19acc041465c89739778a6054da8039b68798251",
+      "rev": "ac6b6c656f20f4095b5ec6912c600ec0c964979d",
       "src": "https://github.com/ThorstenRhau/token"
     },
     "tokyodark.nvim": {
@@ -474,7 +474,7 @@
       "src": "https://github.com/bluz71/vim-nightfly-colors"
     },
     "vim-test": {
-      "rev": "3afb1cf5cd3013e8822e6eecf612fc36c974a98f",
+      "rev": "f7cab8f327c838b129476792619aa6180847469f",
       "src": "https://github.com/vim-test/vim-test"
     },
     "vim-visual-multi": {
