@@ -8,6 +8,8 @@ source ~/.shell/options
 source ~/.shell/aliases
 
 command -v fzf >/dev/null 2>&1 && source <(fzf --zsh)
+# fall back to mise shims so j exists even if mise activate didn't put zoxide on PATH
+(( $+commands[zoxide] )) || [[ ! -x ~/.local/share/mise/shims/zoxide ]] || path+=(~/.local/share/mise/shims)
 command -v zoxide >/dev/null 2>&1 && eval "$(zoxide init --cmd j zsh)"
 
 precmd() {
