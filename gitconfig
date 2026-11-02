@@ -92,3 +92,5 @@
 [credential "https://gist.github.com"]
 	helper = 
 	helper = !$HOME/.local/share/mise/installs/gh/latest/gh_2.97.0_macOS_arm64/bin/gh auth git-credential
+[credential "https://gitea.home.arpa"]
+	helper = osxkeychain

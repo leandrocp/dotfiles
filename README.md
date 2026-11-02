@@ -32,7 +32,7 @@ the phone, and pair over WireGuard:
 moshi-hook host setup
 ```
 
-Moshi detects Herdr automatically. To enable agent notifications:
+To enable Moshi agent notifications:
 
 ```sh
 moshi-hook pair --token <token-from-Moshi>
