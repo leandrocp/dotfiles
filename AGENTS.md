@@ -14,6 +14,7 @@
 
 - Be direct, matter-of-fact, concise, and critical; challenge weak reasoning, avoid sycophancy, and omit timeline estimates.
 - Do not repeat what a diff or tool output already shows.
+- Be specific. Name the exact thing instead of a category or shorthand: the full error message and code, the log line, the identifier, the file and line, the count with its denominator, and the time window. Don't write "the error" or "about 1–2%" when the exact value is known; if it isn't known, say so and what would establish it.
 
 ## Subagents and parallelism
 
