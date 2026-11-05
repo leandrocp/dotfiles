@@ -21,7 +21,6 @@ trusted_config_paths = ["~/work/repos/supabase", "~/work/repos/leandrocp"]
 "brew-cask:macdown" = "latest"
 "brew-cask:muzzle" = "latest"
 "brew-cask:obsidian" = "latest"
-"brew-cask:paseo" = "latest"
 "brew-cask:proton-mail" = "latest"
 "brew-cask:proton-mail-bridge" = "latest"
 "brew-cask:proton-pass" = "latest"
@@ -125,6 +124,7 @@ login_shell = "/bin/zsh"
 
 [bootstrap.hooks.post-defaults]
 run = """
+defaults write com.superlogical.rex Workspace.terminalCopyOnSelect -bool true
 symbolic_hotkeys_plist="$HOME/Library/Preferences/com.apple.symbolichotkeys.plist"
 for key in 64 65; do
   /usr/libexec/PlistBuddy -c "Set :AppleSymbolicHotKeys:${key}:enabled false" "$symbolic_hotkeys_plist" 2>/dev/null || \
@@ -260,7 +260,7 @@ python -m http.server "$port"
 description = "Install or upgrade Brewfile packages that mise can't manage"
 run = """
 set -eu
-brew trust --tap abue-ammar/tinycast immanuwell/droast leandrocp/lumis rjyo/moshi
+brew trust --tap abue-ammar/tinycast anomalyco/tap immanuwell/droast leandrocp/lumis rjyo/moshi
 brew bundle install --file "$HOME/.dotfiles/Brewfile" --upgrade
 """
 
