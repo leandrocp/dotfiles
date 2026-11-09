@@ -1,5 +1,5 @@
 {
-  "lastChangelogVersion": "1.4.0",
+  "lastChangelogVersion": "1.5.0",
   "theme": "tokyonight-moon",
   "defaultProvider": "openai-codex",
   "defaultModel": "gpt-5.6-sol",
@@ -22,5 +22,12 @@
   "outputPad": 0,
   "extensions": [
     "-builtin:mcp"
-  ]
+  ],
+  "extensionChangelogVersions": {
+    "{\"source\":\"npm:pi-web-access\",\"scope\":\"user\"}": "0.46.0",
+    "{\"source\":\"npm:pi-mcp-adapter\",\"scope\":\"user\"}": "7.0.0",
+    "{\"source\":\"npm:pi-elixir\",\"scope\":\"user\"}": "0.8.5",
+    "{\"source\":\"npm:pi-subagents\",\"scope\":\"user\"}": "0.84.0",
+    "{\"source\":\"npm:pi-lens\",\"scope\":\"user\"}": "4.4.8"
+  }
 }

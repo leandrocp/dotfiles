@@ -2,6 +2,9 @@
 
 export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:$HOME/.local/bin:$PATH"
 
+# Hermes Agent command
+case ":$PATH:" in *":$HOME/.local/bin:"*) ;; *) export PATH="$HOME/.local/bin:$PATH" ;; esac
+
 command -v mise >/dev/null 2>&1 && eval "$(mise activate zsh)"
 
 export MANPATH=/usr/local/opt/gnu-sed/libexec/gnuman:$MANPATH

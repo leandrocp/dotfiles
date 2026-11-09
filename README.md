@@ -22,20 +22,3 @@ skill directories before retrying; forced replacement can delete their contents.
 
 1. In Tinycast, open **Settings → Backup → Import** and select
    `~/.dotfiles/config/tinycast/settings.json`.
-
-## Moshi
-
-Bootstrap installs `moshi-hook`. Enable macOS **Remote Login**, install Moshi on
-the phone, and pair over WireGuard:
-
-```sh
-moshi-hook host setup
-```
-
-To enable Moshi agent notifications:
-
-```sh
-moshi-hook pair --token <token-from-Moshi>
-moshi-hook install
-brew services start moshi-hook
-```

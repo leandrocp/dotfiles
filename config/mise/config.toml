@@ -199,7 +199,6 @@ up = "cd $HOME/.dotfiles && mise run up"
 "npm:@doist/todoist-cli" = "latest"
 "npm:@immich/cli" = "latest"
 "npm:@fsouza/prettierd" = "latest"
-"npm:@github/copilot-language-server" = "latest"
 "npm:typescript" = "latest"
 actionlint = "latest"
 amp = "latest"
@@ -241,7 +240,7 @@ supabase = "latest"
 tree-sitter = "0.26"
 typos = "latest"
 uv = "latest"
-vercel = "latest"
+vercel = { version = "latest", trust_policy_excludes = ["vercel", "@vercel/*"] }
 websocat = "latest"
 yazi = "latest"
 yq = "latest"
@@ -260,7 +259,7 @@ python -m http.server "$port"
 description = "Install or upgrade Brewfile packages that mise can't manage"
 run = """
 set -eu
-brew trust --tap abue-ammar/tinycast anomalyco/tap immanuwell/droast leandrocp/lumis rjyo/moshi
+brew trust --tap abue-ammar/tinycast anomalyco/tap immanuwell/droast leandrocp/lumis
 brew bundle install --file "$HOME/.dotfiles/Brewfile" --upgrade
 """
 
