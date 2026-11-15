@@ -1,0 +1,4 @@
+{
+  "description": "suggested-replies hooks module",
+  "modules": ["./register.js"]
+}

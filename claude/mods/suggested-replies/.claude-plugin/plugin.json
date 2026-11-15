@@ -1,0 +1,6 @@
+{
+  "name": "suggested-replies",
+  "version": "0.1.0",
+  "description": "Shows predicted next replies as buttons above the prompt, Amp-style",
+  "author": { "name": "Leandro Pereira" }
+}
