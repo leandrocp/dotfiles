@@ -20,3 +20,5 @@ Session.vim
 .sensitive
 !.dockerignore
 settings.local.json
+
+**/.claude/settings.local.json
