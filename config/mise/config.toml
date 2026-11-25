@@ -21,6 +21,7 @@ trusted_config_paths = ["~/work/repos/supabase", "~/work/repos/leandrocp"]
 "brew-cask:macdown" = "latest"
 "brew-cask:muzzle" = "latest"
 "brew-cask:obsidian" = "latest"
+"brew-cask:openlogi" = "latest"
 "brew-cask:proton-mail" = "latest"
 "brew-cask:proton-mail-bridge" = "latest"
 "brew-cask:proton-pass" = "latest"
@@ -254,6 +255,10 @@ port="${1:-8000}"
 sleep 1 && open "http://localhost:${port}/" &
 python -m http.server "$port"
 """
+
+[tasks.amp-runner]
+description = "Start Amp runner"
+run = "amp --no-tui --no-serve-cwd --discover-dirs=$HOME/work --discover-depth 4"
 
 [tasks.brew]
 description = "Install or upgrade Brewfile packages that mise can't manage"
