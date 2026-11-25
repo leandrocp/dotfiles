@@ -316,7 +316,7 @@ mise prune
 
 echo "==> npm"
 npm cache verify
-npx --yes npkill --directory "$HOME/work" --exclude-sensitive --delete-all -y
+npx --yes npkill --directory "$HOME/work" --targets node_modules --delete-all -y --json
 
 echo "==> mac-cleaner-cli"
 echo "Leave browser categories unselected. mac-cleaner-cli has no non-interactive browser skip flag."
